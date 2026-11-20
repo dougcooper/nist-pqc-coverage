@@ -1106,6 +1106,18 @@ kbd {
   margin-left: auto;
 }
 
+.policy-links {
+  margin-left: 0.15rem;
+}
+
+.policy-links a {
+  color: var(--pqc-accent);
+  font-size: 0.76rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
 .policy-flag {
   padding: 0.08rem 0.45rem;
   border: 1px solid var(--theme-foreground-faintest);

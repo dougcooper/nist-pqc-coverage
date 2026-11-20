@@ -126,9 +126,13 @@ const list = html`<div class="policy-list">${grouped.map((card) => {
   );
   return html`<details class="policy-card">
     <summary>
-      <span class="policy-cert"><a href="${certUrl(card)}" target="_blank" rel="noopener">${card.cert}</a></span>
+      <span class="policy-cert">${card.cert}</span>
       <span class="policy-module">${card.module ?? "module name not stated"}</span>
       <span class="policy-meta">${card.vendor ?? ""}${card.module_type ? ` · ${card.module_type}` : ""}</span>
+      <span class="policy-links">
+        <a href="${certUrl(card)}" target="_blank" rel="noopener"
+           onclick=${(event) => event.stopPropagation()}>CMVP certificate ↗</a>
+      </span>
       <span class="policy-flags">
         ${tested ? html`<span class="policy-flag">tested</span>` : ""}
         ${affirmedHere ? html`<span class="policy-flag affirmed">vendor-affirmed</span>` : ""}
