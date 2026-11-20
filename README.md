@@ -76,7 +76,8 @@ become SQL parameters.
 - **Pipeline** — modules in process / IUT with their inferred PQC evidence, and
   validated CAVP implementations without an active CMVP certificate.
 - **Tested configurations** — tested and vendor-affirmed operating environments
-  quoted from each certificate's non-proprietary security policy.
+  quoted from each certificate's non-proprietary security policy, one collapsible
+  card per certificate with a Simple/Expanded switch for the policy text.
 - **SQL console** — a simple builder (view, what to group by, a measure,
   filters) and a full read-only editor behind two tabs; the SQL the builder runs
   is shown above the results, and **Open in SQL** hands it to the editor. Both
