@@ -9,7 +9,7 @@ filters to see where vendor coverage is concentrated, and which targets are
 still thin.
 
 ```js
-import {num, familyColors, families} from "./components/common.js";
+import {num, familyColors, families, moduleKinds} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, heatmap, palette} from "./components/echarts.js";
 import {dataTable} from "./components/table.js";
@@ -24,7 +24,7 @@ const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverag
 const includePipeline = view(Inputs.toggle({label: "Include CMVP in progress", value: false}));
 const family = view(Inputs.select(["All algorithms", ...families], {label: "PQC family", value: "All algorithms"}));
 const osFamily = view(Inputs.select(["All OS families", ...osFamilyOptions], {label: "OS family", value: "All OS families"}));
-const moduleType = view(Inputs.select(["All module types", "SOFTWARE", "HARDWARE", "FIRMWARE"], {label: "Module type", value: "All module types"}));
+const moduleType = view(Inputs.select(["All module types", ...moduleKinds.keys()], {label: "Module type", value: "All module types"}));
 ```
 
 ```js
@@ -34,7 +34,7 @@ const where = (() => {
   if (!includePipeline) clauses.push("(source = 'CMVP' OR (source = 'CAVP' AND status = 'none_yet'))");
   if (family !== "All algorithms") { clauses.push("pqc_family = ?"); params.push(family); }
   if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
-  if (moduleType !== "All module types") { clauses.push("upper(module_type) = ?"); params.push(moduleType); }
+  if (moduleType !== "All module types") { clauses.push("module_kind = ?"); params.push(moduleKinds.get(moduleType)); }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 ```

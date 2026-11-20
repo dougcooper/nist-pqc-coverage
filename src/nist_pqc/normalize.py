@@ -205,3 +205,35 @@ def normalize_oe(oe_name: str, dependencies: dict | None) -> dict[str, str]:
 
 def target_label(os_name: str, arch: str) -> str:
     return f"{os_name} / {arch}" if os_name else arch
+
+
+# NIST spells module types differently in CAVP ("SOFTWARE", "SW Hybrid") and
+# CMVP ("Software", "Software-hybrid", "Firmware-hybrid"). One vocabulary makes
+# filters and agent queries predictable.
+_MODULE_KINDS = {
+    "software": "software",
+    "software-hybrid": "software_hybrid",
+    "software hybrid": "software_hybrid",
+    "sw hybrid": "software_hybrid",
+    "sw-hybrid": "software_hybrid",
+    "firmware": "firmware",
+    "firmware-hybrid": "firmware_hybrid",
+    "firmware hybrid": "firmware_hybrid",
+    "hw/fw hybrid": "firmware_hybrid",
+    "hardware": "hardware",
+}
+
+MODULE_KIND_LABELS = {
+    "software": "Software",
+    "software_hybrid": "Software-hybrid",
+    "firmware": "Firmware",
+    "firmware_hybrid": "Firmware-hybrid",
+    "hardware": "Hardware",
+}
+
+
+def module_kind_of(module_type: str | None) -> str:
+    """Normalize a published module type to software, software_hybrid, ..."""
+    text = " ".join((module_type or "").replace("_", " ").split()).lower()
+    return _MODULE_KINDS.get(text, "")
+

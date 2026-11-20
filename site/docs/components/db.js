@@ -37,7 +37,7 @@ const VIEWS = [
     "validated_software",
     ["validated"],
     `CREATE OR REPLACE VIEW validated_software AS
-       SELECT * FROM validated WHERE upper(module_type) LIKE 'SOFTWARE%'`,
+       SELECT * FROM validated WHERE module_kind IN ('software', 'software_hybrid')`,
   ],
   [
     "with_in_process",
@@ -50,7 +50,7 @@ const VIEWS = [
     "with_in_process_software",
     ["with_in_process"],
     `CREATE OR REPLACE VIEW with_in_process_software AS
-       SELECT * FROM with_in_process WHERE upper(module_type) LIKE 'SOFTWARE%'`,
+       SELECT * FROM with_in_process WHERE module_kind IN ('software', 'software_hybrid')`,
   ],
   [
     "targets",

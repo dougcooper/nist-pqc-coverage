@@ -29,7 +29,7 @@ const [stats] = await query(db, `
   SELECT
     (SELECT count(*) FROM cavp) AS cavp,
     count(DISTINCT CASE WHEN source = 'CMVP' THEN record_id END) AS cmvp,
-    count(DISTINCT CASE WHEN source = 'CMVP' AND upper(module_type) LIKE 'SOFTWARE%'
+    count(DISTINCT CASE WHEN source = 'CMVP' AND module_kind IN ('software', 'software_hybrid')
                         THEN record_id END) AS cmvp_software,
     (SELECT count(*) FROM in_process) AS in_progress,
     (SELECT count(DISTINCT module || '|' || vendor) FROM in_process) AS in_progress_modules,

@@ -62,3 +62,13 @@ export function downloadLink(file, label) {
   a.download = file.name;
   return a;
 }
+
+export const moduleKinds = new Map([
+  ["Software", "software"],
+  ["Software-hybrid", "software_hybrid"],
+  ["Firmware", "firmware"],
+  ["Firmware-hybrid", "firmware_hybrid"],
+  ["Hardware", "hardware"]
+]);
+
+export const softwareKinds = "('software', 'software_hybrid')";

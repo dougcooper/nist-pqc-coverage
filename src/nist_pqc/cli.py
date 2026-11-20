@@ -10,11 +10,11 @@ from pathlib import Path
 
 from . import cavp, cmvp, export, matching, parquet, policy, upstream
 from .http import Fetcher
-from .normalize import normalize_oe
+from .normalize import module_kind_of, normalize_oe
 
 CAVP_VALIDATION_COLUMNS = [
     "cert", "validation_id", "vendor", "implementation", "version", "type",
-    "first_validated", "url", "n_algorithms", "n_pqc_algorithms",
+    "module_kind", "first_validated", "url", "n_algorithms", "n_pqc_algorithms",
     "pqc_algorithms", "pqc_families", "cmvp_status", "cmvp_certs",
     "in_process_modules",
 ]
@@ -30,7 +30,7 @@ OE_COLUMNS = [
 ]
 CMVP_CERT_COLUMNS = [
     "cert", "vendor", "module", "standard", "status", "level", "module_type",
-    "embodiment", "upstream", "validated", "sunset", "lab",
+    "module_kind", "embodiment", "upstream", "validated", "sunset", "lab",
     "security_policy_url", "url", "pqc_algorithms", "pqc_families", "cavp_certs",
 ]
 CMVP_LINK_COLUMNS = [
@@ -47,7 +47,8 @@ POLICY_COLUMNS = [
 ]
 COVERAGE_COLUMNS = [
     "source", "record_id", "cert", "vendor", "product", "module_type",
-    "upstream", "status", "validated", "url", "oe_id", "oe_name", "os_family",
+    "module_kind", "upstream", "status", "validated", "url", "oe_id", "oe_name",
+    "os_family",
     "os_name", "os_product", "os_version", "arch", "cpu", "cpu_vendor",
     "cpu_series", "target", "pqc_algorithm", "pqc_family", "parameter_sets",
     "functions", "evidence",
@@ -321,6 +322,7 @@ def scrape(args: argparse.Namespace) -> None:
                 "implementation": detail.implementation,
                 "version": detail.version,
                 "type": detail.type,
+                "module_kind": module_kind_of(detail.type),
                 "first_validated": export.to_iso(detail.first_validated),
                 "url": detail.url,
                 "n_algorithms": len({row.algorithm for row in detail.rows}),
@@ -383,6 +385,7 @@ def scrape(args: argparse.Namespace) -> None:
                 "status": cert.status,
                 "level": cert.level,
                 "module_type": cert.module_type,
+                "module_kind": module_kind_of(cert.module_type),
                 "embodiment": cert.embodiment,
                 "upstream": upstream.classify(
                     cert.vendor, cert.module, cert.description
@@ -421,6 +424,7 @@ def scrape(args: argparse.Namespace) -> None:
             "vendor": vendor,
             "product": product,
             "module_type": module_type,
+            "module_kind": module_kind_of(module_type),
             "upstream": upstream.classify(vendor, product),
             "status": status,
             "validated": export.to_iso(validated),
@@ -501,11 +505,12 @@ def scrape(args: argparse.Namespace) -> None:
     with_in_process = validated_rows + [
         row for row in coverage_rows if row["source"] in ("CMVP-MIP", "CMVP-IUT")
     ]
+    software_kinds = ("software", "software_hybrid")
     software_validated = [
-        row for row in validated_rows if row["module_type"].upper().startswith("SOFTWARE")
+        row for row in validated_rows if row["module_kind"] in software_kinds
     ]
     software_with_in_process = [
-        row for row in with_in_process if row["module_type"].upper().startswith("SOFTWARE")
+        row for row in with_in_process if row["module_kind"] in software_kinds
     ]
     target_rows = (
         export.coverage_targets(validated_rows, "validated")

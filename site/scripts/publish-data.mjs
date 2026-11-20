@@ -26,6 +26,8 @@ const NOTES = {
   module: "CMVP module name",
   implementation: "CAVP implementation name",
   module_type: "Type as published: SOFTWARE | HARDWARE | FIRMWARE (CMVP), or the CAVP type",
+  module_kind:
+    "Normalized module type: software | software_hybrid | firmware | firmware_hybrid | hardware; empty for modules in process",
   type: "CAVP type: SOFTWARE | HARDWARE | FIRMWARE",
   upstream: "Keyword match to a known upstream library (AWS-LC, OpenSSL, Bouncy Castle, ...); empty when no match",
   status:
@@ -270,6 +272,10 @@ Every row has a \`source\`:
   unknown.
 - **arch** values: x86_64, arm64, arm32, x86, ppc64, s390x, riscv64, mips,
   unknown.
+- **module_kind** normalizes NIST's spellings: software, software_hybrid,
+  firmware, firmware_hybrid, hardware. The software scopes include software-hybrid
+  modules (software that relies on a hardware component) and exclude
+  firmware-hybrid ones. Modules in process have no published type.
 - \`upstream\` is a keyword match against vendor and product names (AWS-LC,
   OpenSSL, BoringSSL, wolfSSL, mbed TLS, SymCrypt, Bouncy Castle, Mozilla NSS,
   corecrypto, GnuTLS, Libgcrypt, Crypto++, Botan). Empty means unclassified, not

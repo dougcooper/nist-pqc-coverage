@@ -179,7 +179,7 @@ const scopeClause = variant === "with_in_process" || variant === "with_in_proces
   ? "source <> 'CAVP' OR status = 'none_yet'"
   : "(source = 'CMVP' OR (source = 'CAVP' AND status = 'none_yet'))";
 const scopeWhere = softwareOnly
-  ? `(${scopeClause}) AND upper(module_type) LIKE 'SOFTWARE%'`
+  ? `(${scopeClause}) AND module_kind IN ('software', 'software_hybrid')`
   : `(${scopeClause})`;
 
 const targetProducts = await query(db, `

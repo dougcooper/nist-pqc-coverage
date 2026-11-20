@@ -40,6 +40,12 @@ Outputs land in `data/`:
 | `coverage_greedy.csv` | Greedy set cover: which products cover the most targets |
 | `metadata.json` | Run timestamp, counts, data-as-of date |
 
+`module_type` is kept as NIST publishes it (`SOFTWARE`, `Software`, `SW Hybrid`,
+`Firmware-hybrid`, …). The normalized `module_kind` column maps those spellings to
+`software`, `software_hybrid`, `firmware`, `firmware_hybrid` or `hardware`; the
+software scopes include software-hybrid modules and exclude firmware-hybrid ones.
+Modules in process have no published type, so their `module_kind` is empty.
+
 ## Data caveats
 
 - CMVP certificate pages do not publish tested operating environments. The

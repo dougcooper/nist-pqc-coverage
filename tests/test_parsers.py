@@ -264,3 +264,15 @@ def test_coverage_targets_and_greedy():
     assert greedy[0]["product"] == "P1"
     assert greedy[0]["targets_covered"] == 2
     assert greedy[-1]["pct_targets"] == 100.0
+
+
+def test_module_kind_normalizes_cavp_and_cmvp_spellings():
+    assert normalize.module_kind_of("SOFTWARE") == "software"
+    assert normalize.module_kind_of("Software") == "software"
+    assert normalize.module_kind_of("SW Hybrid") == "software_hybrid"
+    assert normalize.module_kind_of("Software-hybrid") == "software_hybrid"
+    assert normalize.module_kind_of("FIRMWARE") == "firmware"
+    assert normalize.module_kind_of("Firmware-hybrid") == "firmware_hybrid"
+    assert normalize.module_kind_of("HARDWARE") == "hardware"
+    assert normalize.module_kind_of("") == ""
+    assert normalize.module_kind_of(None) == ""

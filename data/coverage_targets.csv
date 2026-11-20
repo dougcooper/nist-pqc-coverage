@@ -298,217 +298,217 @@ with_in_process,184,"Windows 11 Pro 25H2, OS Build 26200.8655 / x86_64","Windows
 with_in_process,185,Windows 2022 / x86_64,Windows 2022,x86_64,windows,1,1,1,0.4,226,99.6,90,100.0
 with_in_process,186,Windows-11 64 bits / x86_64,Windows-11 64 bits,x86_64,windows,1,1,1,0.4,227,100.0,90,100.0
 with_in_process,187,iPadOS 17 / arm64,iPadOS 17,arm64,ios,1,1,1,0.4,227,100.0,90,100.0
-validated_software,1,Amazon Linux 2023 / x86_64,Amazon Linux 2023,x86_64,linux,9,13,13,13.0,13,13.0,9,23.7
-validated_software,2,Amazon Linux 2023 / arm64,Amazon Linux 2023,arm64,linux,8,12,12,12.0,13,13.0,9,23.7
-validated_software,3,Apple macOS 15 / arm64,Apple macOS 15,arm64,macos,6,7,7,7.0,13,13.0,9,23.7
-validated_software,4,FreeBSD 14 / x86_64,FreeBSD 14,x86_64,freebsd,6,7,7,7.0,13,13.0,9,23.7
-validated_software,5,Linux 5.4 / arm32,Linux 5.4,arm32,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,6,Microsoft Windows 11 / arm64,Microsoft Windows 11,arm64,windows,6,7,7,7.0,13,13.0,9,23.7
-validated_software,7,Microsoft Windows Server 2022 / x86_64,Microsoft Windows Server 2022,x86_64,windows,6,7,7,7.0,13,13.0,9,23.7
-validated_software,8,Oracle Linux 9 / arm64,Oracle Linux 9,arm64,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,9,Oracle Linux 9 / x86_64,Oracle Linux 9,x86_64,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,10,Red Hat Enterprise Linux 9 / arm64,Red Hat Enterprise Linux 9,arm64,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,11,Red Hat Enterprise Linux 9 / x86_64,Red Hat Enterprise Linux 9,x86_64,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,12,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00 / ppc64,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00,ppc64,linux,6,7,7,7.0,13,13.0,9,23.7
-validated_software,13,Alpine Linux 3.20 image / arm64,Alpine Linux 3.20 image,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,14,Alpine Linux 3.20 image / x86_64,Alpine Linux 3.20 image,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,15,Google Prodimage with Linux 5.10.0 / arm64,Google Prodimage with Linux 5.10.0,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,16,Google Prodimage with Linux 5.10.0 / x86_64,Google Prodimage with Linux 5.10.0,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,17,SUSE Linux Enterprise Server 15 SP6 / arm64,SUSE Linux Enterprise Server 15 SP6,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,18,SUSE Linux Enterprise Server 15 SP6 / x86_64,SUSE Linux Enterprise Server 15 SP6,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-validated_software,19,Ubuntu 22.04 / x86_64,Ubuntu 22.04,x86_64,linux,3,4,4,4.0,17,17.0,11,28.9
-validated_software,20,Ubuntu 24.04 LTS / x86_64,Ubuntu 24.04 LTS,x86_64,linux,3,3,3,3.0,20,20.0,14,36.8
-validated_software,21,Windows 11 / x86,Windows 11,x86,windows,2,13,13,13.0,33,33.0,16,42.1
-validated_software,22,x86_64,,x86_64,none,2,5,5,5.0,37,37.0,17,44.7
-validated_software,23,Apple Safari 26 with JavaScriptCore WebAssembly engine / arm64,Apple Safari 26 with JavaScriptCore WebAssembly engine,arm64,macos,2,2,2,2.0,37,37.0,17,44.7
-validated_software,24,Google Chrome 150 with V8 WebAssembly engine / x86_64,Google Chrome 150 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-validated_software,25,Microsoft Edge 148 with V8 WebAssembly engine / x86_64,Microsoft Edge 148 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-validated_software,26,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine / x86_64,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-validated_software,27,OpenJDK 17 / x86_64,OpenJDK 17,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-validated_software,28,OpenJDK 21 / x86_64,OpenJDK 21,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-validated_software,29,Ubuntu 24.04 / x86_64,Ubuntu 24.04,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-validated_software,30,Ubuntu 23.04 / arm64,Ubuntu 23.04,arm64,linux,1,14,14,14.0,47,47.0,19,50.0
-validated_software,31,Debian 11.7 / arm32,Debian 11.7,arm32,linux,1,10,10,10.0,52,52.0,19,50.0
-validated_software,32,Ubuntu 24.04 / riscv64,Ubuntu 24.04,riscv64,linux,1,9,9,9.0,58,58.0,19,50.0
-validated_software,33,Fedora 40 / x86,Fedora 40,x86,linux,1,6,6,6.0,58,58.0,19,50.0
-validated_software,34,macOS Sonoma 14 / arm64,macOS Sonoma 14,arm64,macos,1,6,6,6.0,58,58.0,19,50.0
-validated_software,35,Fedora 42 / x86,Fedora 42,x86,linux,1,4,4,4.0,58,58.0,19,50.0
-validated_software,36,openSUSE Tumbleweed 20240524 / x86,openSUSE Tumbleweed 20240524,x86,linux,1,4,4,4.0,62,62.0,19,50.0
-validated_software,37,openSUSE Tumbleweed 20240810 / x86,openSUSE Tumbleweed 20240810,x86,linux,1,4,4,4.0,63,63.0,19,50.0
-validated_software,38,openSUSE Tumbleweed 20241012 / x86,openSUSE Tumbleweed 20241012,x86,linux,1,4,4,4.0,65,65.0,19,50.0
-validated_software,39,openSUSE Tumbleweed 20250205 / x86,openSUSE Tumbleweed 20250205,x86,linux,1,4,4,4.0,67,67.0,19,50.0
-validated_software,40,openSUSE Tumbleweed 20250522 / x86,openSUSE Tumbleweed 20250522,x86,linux,1,4,4,4.0,69,69.0,19,50.0
-validated_software,41,openSUSE Tumbleweed 20251009 / x86,openSUSE Tumbleweed 20251009,x86,linux,1,4,4,4.0,71,71.0,19,50.0
-validated_software,42,Ubuntu 23.04 / riscv64,Ubuntu 23.04,riscv64,linux,1,3,3,3.0,71,71.0,19,50.0
-validated_software,43,arm64,,arm64,none,1,2,2,2.0,71,71.0,19,50.0
-validated_software,44,Debian 12 (Bookworm) / x86_64,Debian 12 (Bookworm),x86_64,linux,1,2,2,2.0,73,73.0,20,52.6
-validated_software,45,Debian 12.0 / arm32,Debian 12.0,arm32,linux,1,2,2,2.0,74,74.0,20,52.6
-validated_software,46,Fedora 41 / x86,Fedora 41,x86,linux,1,2,2,2.0,74,74.0,20,52.6
-validated_software,47,FreeBSD 14.3 / x86_64,FreeBSD 14.3,x86_64,freebsd,1,2,2,2.0,74,74.0,20,52.6
-validated_software,48,Microsoft Windows Server 2025 Standard 64-bit / x86_64,Microsoft Windows Server 2025 Standard 64-bit,x86_64,windows,1,2,2,2.0,74,74.0,20,52.6
-validated_software,49,QEMU KVM / x86_64,QEMU KVM,x86_64,simulator,1,2,2,2.0,74,74.0,20,52.6
-validated_software,50,Raspberry Pi OS (Debian 12) / arm64,Raspberry Pi OS (Debian 12),arm64,linux,1,2,2,2.0,76,76.0,21,55.3
-validated_software,51,Rocky Linux 8.10 (Green Obsidian) / x86_64,Rocky Linux 8.10 (Green Obsidian),x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,52,Ubuntu 24.10 / x86,Ubuntu 24.10,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,53,Ubuntu 25.04 / x86,Ubuntu 25.04,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,54,Ubuntu 25.10 / x86,Ubuntu 25.10,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,55,Ubuntu Linux 24.04.2 LTS (Noble Numbat) / x86_64,Ubuntu Linux 24.04.2 LTS (Noble Numbat),x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,56,VMware ESXi 8.0 / x86_64,VMware ESXi 8.0,x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-validated_software,57,macOS 15.5 / arm64,macOS 15.5,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-validated_software,58,macOS Sequoia 15 / arm64,macOS Sequoia 15,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-validated_software,59,macOS Sonoma 15 / arm64,macOS Sonoma 15,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-validated_software,60,macOS Tahoe 26 / arm64,macOS Tahoe 26,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-validated_software,61,AlmaLinux 9 / x86_64,AlmaLinux 9,x86_64,linux,1,1,1,1.0,79,79.0,23,60.5
-validated_software,62,Alpine Linux 3.22 image / arm64,Alpine Linux 3.22 image,arm64,linux,1,1,1,1.0,79,79.0,23,60.5
-validated_software,63,Alpine Linux 3.22 image / x86_64,Alpine Linux 3.22 image,x86_64,linux,1,1,1,1.0,79,79.0,23,60.5
-validated_software,64,Android 14 / arm64,Android 14,arm64,android,1,1,1,1.0,79,79.0,23,60.5
-validated_software,65,Chainguard Image 20230214 / arm64,Chainguard Image 20230214,arm64,linux,1,1,1,1.0,80,80.0,24,63.2
-validated_software,66,Chainguard Image 20230214 / x86_64,Chainguard Image 20230214,x86_64,linux,1,1,1,1.0,80,80.0,24,63.2
-validated_software,67,Debian 11 / x86_64,Debian 11,x86_64,linux,1,1,1,1.0,81,81.0,25,65.8
-validated_software,68,Debian GNU/Linux 11 (bullseye) aarch64 / arm64,Debian GNU/Linux 11 (bullseye) aarch64,arm64,linux,1,1,1,1.0,82,82.0,26,68.4
-validated_software,69,Dell PowerStoreOS 5 / x86_64,Dell PowerStoreOS 5,x86_64,appliance,1,1,1,1.0,82,82.0,26,68.4
-validated_software,70,EOSv4 / arm64,EOSv4,arm64,appliance,1,1,1,1.0,83,83.0,27,71.1
-validated_software,71,EOSv4 / x86_64,EOSv4,x86_64,appliance,1,1,1,1.0,83,83.0,27,71.1
-validated_software,72,Google Prodimage with Linux 6.6 / arm64,Google Prodimage with Linux 6.6,arm64,linux,1,1,1,1.0,83,83.0,27,71.1
-validated_software,73,Google Prodimage with Linux 6.6 / x86_64,Google Prodimage with Linux 6.6,x86_64,linux,1,1,1,1.0,83,83.0,27,71.1
-validated_software,74,IOS 17.5.1 / arm64,IOS 17.5.1,arm64,ios,1,1,1,1.0,83,83.0,27,71.1
-validated_software,75,Linux Debian 11.3 / arm64,Linux Debian 11.3,arm64,linux,1,1,1,1.0,84,84.0,28,73.7
-validated_software,76,Linux Debian 12.0 (64 bit) / x86_64,Linux Debian 12.0 (64 bit),x86_64,linux,1,1,1,1.0,85,85.0,29,76.3
-validated_software,77,Linux Ubuntu 20.04 LTS (64-bit) / x86_64,Linux Ubuntu 20.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,86,86.0,29,76.3
-validated_software,78,Linux Ubuntu 22.04 LTS (64-bit) / x86_64,Linux Ubuntu 22.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,87,87.0,30,78.9
-validated_software,79,Linux Ubuntu 22.04 LTS 64-bit / arm64,Linux Ubuntu 22.04 LTS 64-bit,arm64,linux,1,1,1,1.0,87,87.0,30,78.9
-validated_software,80,Linux Ubuntu 24.04 LTS / arm64,Linux Ubuntu 24.04 LTS,arm64,linux,1,1,1,1.0,88,88.0,30,78.9
-validated_software,81,Linux Ubuntu 24.04 LTS / x86_64,Linux Ubuntu 24.04 LTS,x86_64,linux,1,1,1,1.0,88,88.0,30,78.9
-validated_software,82,Linux Ubuntu 24.04 LTS (64-bit) / x86_64,Linux Ubuntu 24.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,88,88.0,30,78.9
-validated_software,83,Linux Ubuntu 24.04.1 LTS / x86_64,Linux Ubuntu 24.04.1 LTS,x86_64,linux,1,1,1,1.0,89,89.0,30,78.9
-validated_software,84,Microsoft Windows 10 / x86_64,Microsoft Windows 10,x86_64,windows,1,1,1,1.0,90,90.0,31,81.6
-validated_software,85,Microsoft Windows 11 Home / x86_64,Microsoft Windows 11 Home,x86_64,windows,1,1,1,1.0,91,91.0,32,84.2
-validated_software,86,OpenJDK 11 / x86_64,OpenJDK 11,x86_64,linux,1,1,1,1.0,91,91.0,32,84.2
-validated_software,87,OpenJDK 8 / x86_64,OpenJDK 8,x86_64,linux,1,1,1,1.0,91,91.0,32,84.2
-validated_software,88,Oracle JRE 8 / x86_64,Oracle JRE 8,x86_64,hypervisor,1,1,1,1.0,91,91.0,32,84.2
-validated_software,89,PowerStoreOS 4.1 / x86_64,PowerStoreOS 4.1,x86_64,appliance,1,1,1,1.0,91,91.0,32,84.2
-validated_software,90,ProHarden OS 6 / x86_64,ProHarden OS 6,x86_64,appliance,1,1,1,1.0,92,92.0,33,86.8
-validated_software,91,RHEL v7.9 / x86_64,RHEL v7.9,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-validated_software,92,Red Hat 9.4 / x86_64,Red Hat 9.4,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-validated_software,93,Red Hat Enterprise Linux 10 / arm64,Red Hat Enterprise Linux 10,arm64,linux,1,1,1,1.0,93,93.0,34,89.5
-validated_software,94,Red Hat Enterprise Linux 10 / x86_64,Red Hat Enterprise Linux 10,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-validated_software,95,Red Hat Enterprise Linux 8.10 / x86_64,Red Hat Enterprise Linux 8.10,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-validated_software,96,Rocky Linux 9 / x86_64,Rocky Linux 9,x86_64,linux,1,1,1,1.0,94,94.0,34,89.5
-validated_software,97,SUSE Linux Enterprise Server 16.0 / arm64,SUSE Linux Enterprise Server 16.0,arm64,linux,1,1,1,1.0,94,94.0,34,89.5
-validated_software,98,SUSE Linux Enterprise Server 16.0 / x86_64,SUSE Linux Enterprise Server 16.0,x86_64,linux,1,1,1,1.0,94,94.0,34,89.5
-validated_software,99,USIT RTOS 3.0 / arm64,USIT RTOS 3.0,arm64,rtos,1,1,1,1.0,95,95.0,35,92.1
-validated_software,100,Ubuntu 22.04 / arm32,Ubuntu 22.04,arm32,linux,1,1,1,1.0,96,96.0,35,92.1
-validated_software,101,Ubuntu 22.04 LTS / x86_64,Ubuntu 22.04 LTS,x86_64,linux,1,1,1,1.0,97,97.0,36,94.7
-validated_software,102,Ubuntu 24.04.1 / x86_64,Ubuntu 24.04.1,x86_64,linux,1,1,1,1.0,98,98.0,37,97.4
-validated_software,103,VMware Photon OS 5.0 / x86_64,VMware Photon OS 5.0,x86_64,linux,1,1,1,1.0,98,98.0,37,97.4
-validated_software,104,Windows 11 Enterprise (64 bit) / x86_64,Windows 11 Enterprise (64 bit),x86_64,windows,1,1,1,1.0,98,98.0,37,97.4
-validated_software,105,"Windows 11 Pro 25H2, OS Build 26200.8655 / x86_64","Windows 11 Pro 25H2, OS Build 26200.8655",x86_64,windows,1,1,1,1.0,99,99.0,38,100.0
-validated_software,106,Windows 2022 / x86_64,Windows 2022,x86_64,windows,1,1,1,1.0,99,99.0,38,100.0
-validated_software,107,Windows-11 64 bits / x86_64,Windows-11 64 bits,x86_64,windows,1,1,1,1.0,100,100.0,38,100.0
-with_in_process_software,1,Amazon Linux 2023 / x86_64,Amazon Linux 2023,x86_64,linux,9,13,13,13.0,13,13.0,9,23.7
-with_in_process_software,2,Amazon Linux 2023 / arm64,Amazon Linux 2023,arm64,linux,8,12,12,12.0,13,13.0,9,23.7
-with_in_process_software,3,Apple macOS 15 / arm64,Apple macOS 15,arm64,macos,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,4,FreeBSD 14 / x86_64,FreeBSD 14,x86_64,freebsd,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,5,Linux 5.4 / arm32,Linux 5.4,arm32,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,6,Microsoft Windows 11 / arm64,Microsoft Windows 11,arm64,windows,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,7,Microsoft Windows Server 2022 / x86_64,Microsoft Windows Server 2022,x86_64,windows,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,8,Oracle Linux 9 / arm64,Oracle Linux 9,arm64,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,9,Oracle Linux 9 / x86_64,Oracle Linux 9,x86_64,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,10,Red Hat Enterprise Linux 9 / arm64,Red Hat Enterprise Linux 9,arm64,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,11,Red Hat Enterprise Linux 9 / x86_64,Red Hat Enterprise Linux 9,x86_64,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,12,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00 / ppc64,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00,ppc64,linux,6,7,7,7.0,13,13.0,9,23.7
-with_in_process_software,13,Alpine Linux 3.20 image / arm64,Alpine Linux 3.20 image,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,14,Alpine Linux 3.20 image / x86_64,Alpine Linux 3.20 image,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,15,Google Prodimage with Linux 5.10.0 / arm64,Google Prodimage with Linux 5.10.0,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,16,Google Prodimage with Linux 5.10.0 / x86_64,Google Prodimage with Linux 5.10.0,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,17,SUSE Linux Enterprise Server 15 SP6 / arm64,SUSE Linux Enterprise Server 15 SP6,arm64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,18,SUSE Linux Enterprise Server 15 SP6 / x86_64,SUSE Linux Enterprise Server 15 SP6,x86_64,linux,6,6,6,6.0,13,13.0,9,23.7
-with_in_process_software,19,Ubuntu 22.04 / x86_64,Ubuntu 22.04,x86_64,linux,3,4,4,4.0,17,17.0,11,28.9
-with_in_process_software,20,Ubuntu 24.04 LTS / x86_64,Ubuntu 24.04 LTS,x86_64,linux,3,3,3,3.0,20,20.0,14,36.8
-with_in_process_software,21,Windows 11 / x86,Windows 11,x86,windows,2,13,13,13.0,33,33.0,16,42.1
-with_in_process_software,22,x86_64,,x86_64,none,2,5,5,5.0,37,37.0,17,44.7
-with_in_process_software,23,Apple Safari 26 with JavaScriptCore WebAssembly engine / arm64,Apple Safari 26 with JavaScriptCore WebAssembly engine,arm64,macos,2,2,2,2.0,37,37.0,17,44.7
-with_in_process_software,24,Google Chrome 150 with V8 WebAssembly engine / x86_64,Google Chrome 150 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-with_in_process_software,25,Microsoft Edge 148 with V8 WebAssembly engine / x86_64,Microsoft Edge 148 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-with_in_process_software,26,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine / x86_64,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine,x86_64,windows,2,2,2,2.0,37,37.0,17,44.7
-with_in_process_software,27,OpenJDK 17 / x86_64,OpenJDK 17,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-with_in_process_software,28,OpenJDK 21 / x86_64,OpenJDK 21,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-with_in_process_software,29,Ubuntu 24.04 / x86_64,Ubuntu 24.04,x86_64,linux,2,2,2,2.0,39,39.0,19,50.0
-with_in_process_software,30,Ubuntu 23.04 / arm64,Ubuntu 23.04,arm64,linux,1,14,14,14.0,47,47.0,19,50.0
-with_in_process_software,31,Debian 11.7 / arm32,Debian 11.7,arm32,linux,1,10,10,10.0,52,52.0,19,50.0
-with_in_process_software,32,Ubuntu 24.04 / riscv64,Ubuntu 24.04,riscv64,linux,1,9,9,9.0,58,58.0,19,50.0
-with_in_process_software,33,Fedora 40 / x86,Fedora 40,x86,linux,1,6,6,6.0,58,58.0,19,50.0
-with_in_process_software,34,macOS Sonoma 14 / arm64,macOS Sonoma 14,arm64,macos,1,6,6,6.0,58,58.0,19,50.0
-with_in_process_software,35,Fedora 42 / x86,Fedora 42,x86,linux,1,4,4,4.0,58,58.0,19,50.0
-with_in_process_software,36,openSUSE Tumbleweed 20240524 / x86,openSUSE Tumbleweed 20240524,x86,linux,1,4,4,4.0,62,62.0,19,50.0
-with_in_process_software,37,openSUSE Tumbleweed 20240810 / x86,openSUSE Tumbleweed 20240810,x86,linux,1,4,4,4.0,63,63.0,19,50.0
-with_in_process_software,38,openSUSE Tumbleweed 20241012 / x86,openSUSE Tumbleweed 20241012,x86,linux,1,4,4,4.0,65,65.0,19,50.0
-with_in_process_software,39,openSUSE Tumbleweed 20250205 / x86,openSUSE Tumbleweed 20250205,x86,linux,1,4,4,4.0,67,67.0,19,50.0
-with_in_process_software,40,openSUSE Tumbleweed 20250522 / x86,openSUSE Tumbleweed 20250522,x86,linux,1,4,4,4.0,69,69.0,19,50.0
-with_in_process_software,41,openSUSE Tumbleweed 20251009 / x86,openSUSE Tumbleweed 20251009,x86,linux,1,4,4,4.0,71,71.0,19,50.0
-with_in_process_software,42,Ubuntu 23.04 / riscv64,Ubuntu 23.04,riscv64,linux,1,3,3,3.0,71,71.0,19,50.0
-with_in_process_software,43,arm64,,arm64,none,1,2,2,2.0,71,71.0,19,50.0
-with_in_process_software,44,Debian 12 (Bookworm) / x86_64,Debian 12 (Bookworm),x86_64,linux,1,2,2,2.0,73,73.0,20,52.6
-with_in_process_software,45,Debian 12.0 / arm32,Debian 12.0,arm32,linux,1,2,2,2.0,74,74.0,20,52.6
-with_in_process_software,46,Fedora 41 / x86,Fedora 41,x86,linux,1,2,2,2.0,74,74.0,20,52.6
-with_in_process_software,47,FreeBSD 14.3 / x86_64,FreeBSD 14.3,x86_64,freebsd,1,2,2,2.0,74,74.0,20,52.6
-with_in_process_software,48,Microsoft Windows Server 2025 Standard 64-bit / x86_64,Microsoft Windows Server 2025 Standard 64-bit,x86_64,windows,1,2,2,2.0,74,74.0,20,52.6
-with_in_process_software,49,QEMU KVM / x86_64,QEMU KVM,x86_64,simulator,1,2,2,2.0,74,74.0,20,52.6
-with_in_process_software,50,Raspberry Pi OS (Debian 12) / arm64,Raspberry Pi OS (Debian 12),arm64,linux,1,2,2,2.0,76,76.0,21,55.3
-with_in_process_software,51,Rocky Linux 8.10 (Green Obsidian) / x86_64,Rocky Linux 8.10 (Green Obsidian),x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,52,Ubuntu 24.10 / x86,Ubuntu 24.10,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,53,Ubuntu 25.04 / x86,Ubuntu 25.04,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,54,Ubuntu 25.10 / x86,Ubuntu 25.10,x86,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,55,Ubuntu Linux 24.04.2 LTS (Noble Numbat) / x86_64,Ubuntu Linux 24.04.2 LTS (Noble Numbat),x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,56,VMware ESXi 8.0 / x86_64,VMware ESXi 8.0,x86_64,linux,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,57,macOS 15.5 / arm64,macOS 15.5,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,58,macOS Sequoia 15 / arm64,macOS Sequoia 15,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,59,macOS Sonoma 15 / arm64,macOS Sonoma 15,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,60,macOS Tahoe 26 / arm64,macOS Tahoe 26,arm64,macos,1,2,2,2.0,78,78.0,22,57.9
-with_in_process_software,61,AlmaLinux 9 / x86_64,AlmaLinux 9,x86_64,linux,1,1,1,1.0,79,79.0,23,60.5
-with_in_process_software,62,Alpine Linux 3.22 image / arm64,Alpine Linux 3.22 image,arm64,linux,1,1,1,1.0,79,79.0,23,60.5
-with_in_process_software,63,Alpine Linux 3.22 image / x86_64,Alpine Linux 3.22 image,x86_64,linux,1,1,1,1.0,79,79.0,23,60.5
-with_in_process_software,64,Android 14 / arm64,Android 14,arm64,android,1,1,1,1.0,79,79.0,23,60.5
-with_in_process_software,65,Chainguard Image 20230214 / arm64,Chainguard Image 20230214,arm64,linux,1,1,1,1.0,80,80.0,24,63.2
-with_in_process_software,66,Chainguard Image 20230214 / x86_64,Chainguard Image 20230214,x86_64,linux,1,1,1,1.0,80,80.0,24,63.2
-with_in_process_software,67,Debian 11 / x86_64,Debian 11,x86_64,linux,1,1,1,1.0,81,81.0,25,65.8
-with_in_process_software,68,Debian GNU/Linux 11 (bullseye) aarch64 / arm64,Debian GNU/Linux 11 (bullseye) aarch64,arm64,linux,1,1,1,1.0,82,82.0,26,68.4
-with_in_process_software,69,Dell PowerStoreOS 5 / x86_64,Dell PowerStoreOS 5,x86_64,appliance,1,1,1,1.0,82,82.0,26,68.4
-with_in_process_software,70,EOSv4 / arm64,EOSv4,arm64,appliance,1,1,1,1.0,83,83.0,27,71.1
-with_in_process_software,71,EOSv4 / x86_64,EOSv4,x86_64,appliance,1,1,1,1.0,83,83.0,27,71.1
-with_in_process_software,72,Google Prodimage with Linux 6.6 / arm64,Google Prodimage with Linux 6.6,arm64,linux,1,1,1,1.0,83,83.0,27,71.1
-with_in_process_software,73,Google Prodimage with Linux 6.6 / x86_64,Google Prodimage with Linux 6.6,x86_64,linux,1,1,1,1.0,83,83.0,27,71.1
-with_in_process_software,74,IOS 17.5.1 / arm64,IOS 17.5.1,arm64,ios,1,1,1,1.0,83,83.0,27,71.1
-with_in_process_software,75,Linux Debian 11.3 / arm64,Linux Debian 11.3,arm64,linux,1,1,1,1.0,84,84.0,28,73.7
-with_in_process_software,76,Linux Debian 12.0 (64 bit) / x86_64,Linux Debian 12.0 (64 bit),x86_64,linux,1,1,1,1.0,85,85.0,29,76.3
-with_in_process_software,77,Linux Ubuntu 20.04 LTS (64-bit) / x86_64,Linux Ubuntu 20.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,86,86.0,29,76.3
-with_in_process_software,78,Linux Ubuntu 22.04 LTS (64-bit) / x86_64,Linux Ubuntu 22.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,87,87.0,30,78.9
-with_in_process_software,79,Linux Ubuntu 22.04 LTS 64-bit / arm64,Linux Ubuntu 22.04 LTS 64-bit,arm64,linux,1,1,1,1.0,87,87.0,30,78.9
-with_in_process_software,80,Linux Ubuntu 24.04 LTS / arm64,Linux Ubuntu 24.04 LTS,arm64,linux,1,1,1,1.0,88,88.0,30,78.9
-with_in_process_software,81,Linux Ubuntu 24.04 LTS / x86_64,Linux Ubuntu 24.04 LTS,x86_64,linux,1,1,1,1.0,88,88.0,30,78.9
-with_in_process_software,82,Linux Ubuntu 24.04 LTS (64-bit) / x86_64,Linux Ubuntu 24.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,88,88.0,30,78.9
-with_in_process_software,83,Linux Ubuntu 24.04.1 LTS / x86_64,Linux Ubuntu 24.04.1 LTS,x86_64,linux,1,1,1,1.0,89,89.0,30,78.9
-with_in_process_software,84,Microsoft Windows 10 / x86_64,Microsoft Windows 10,x86_64,windows,1,1,1,1.0,90,90.0,31,81.6
-with_in_process_software,85,Microsoft Windows 11 Home / x86_64,Microsoft Windows 11 Home,x86_64,windows,1,1,1,1.0,91,91.0,32,84.2
-with_in_process_software,86,OpenJDK 11 / x86_64,OpenJDK 11,x86_64,linux,1,1,1,1.0,91,91.0,32,84.2
-with_in_process_software,87,OpenJDK 8 / x86_64,OpenJDK 8,x86_64,linux,1,1,1,1.0,91,91.0,32,84.2
-with_in_process_software,88,Oracle JRE 8 / x86_64,Oracle JRE 8,x86_64,hypervisor,1,1,1,1.0,91,91.0,32,84.2
-with_in_process_software,89,PowerStoreOS 4.1 / x86_64,PowerStoreOS 4.1,x86_64,appliance,1,1,1,1.0,91,91.0,32,84.2
-with_in_process_software,90,ProHarden OS 6 / x86_64,ProHarden OS 6,x86_64,appliance,1,1,1,1.0,92,92.0,33,86.8
-with_in_process_software,91,RHEL v7.9 / x86_64,RHEL v7.9,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-with_in_process_software,92,Red Hat 9.4 / x86_64,Red Hat 9.4,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-with_in_process_software,93,Red Hat Enterprise Linux 10 / arm64,Red Hat Enterprise Linux 10,arm64,linux,1,1,1,1.0,93,93.0,34,89.5
-with_in_process_software,94,Red Hat Enterprise Linux 10 / x86_64,Red Hat Enterprise Linux 10,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-with_in_process_software,95,Red Hat Enterprise Linux 8.10 / x86_64,Red Hat Enterprise Linux 8.10,x86_64,linux,1,1,1,1.0,93,93.0,34,89.5
-with_in_process_software,96,Rocky Linux 9 / x86_64,Rocky Linux 9,x86_64,linux,1,1,1,1.0,94,94.0,34,89.5
-with_in_process_software,97,SUSE Linux Enterprise Server 16.0 / arm64,SUSE Linux Enterprise Server 16.0,arm64,linux,1,1,1,1.0,94,94.0,34,89.5
-with_in_process_software,98,SUSE Linux Enterprise Server 16.0 / x86_64,SUSE Linux Enterprise Server 16.0,x86_64,linux,1,1,1,1.0,94,94.0,34,89.5
-with_in_process_software,99,USIT RTOS 3.0 / arm64,USIT RTOS 3.0,arm64,rtos,1,1,1,1.0,95,95.0,35,92.1
-with_in_process_software,100,Ubuntu 22.04 / arm32,Ubuntu 22.04,arm32,linux,1,1,1,1.0,96,96.0,35,92.1
-with_in_process_software,101,Ubuntu 22.04 LTS / x86_64,Ubuntu 22.04 LTS,x86_64,linux,1,1,1,1.0,97,97.0,36,94.7
-with_in_process_software,102,Ubuntu 24.04.1 / x86_64,Ubuntu 24.04.1,x86_64,linux,1,1,1,1.0,98,98.0,37,97.4
-with_in_process_software,103,VMware Photon OS 5.0 / x86_64,VMware Photon OS 5.0,x86_64,linux,1,1,1,1.0,98,98.0,37,97.4
-with_in_process_software,104,Windows 11 Enterprise (64 bit) / x86_64,Windows 11 Enterprise (64 bit),x86_64,windows,1,1,1,1.0,98,98.0,37,97.4
-with_in_process_software,105,"Windows 11 Pro 25H2, OS Build 26200.8655 / x86_64","Windows 11 Pro 25H2, OS Build 26200.8655",x86_64,windows,1,1,1,1.0,99,99.0,38,100.0
-with_in_process_software,106,Windows 2022 / x86_64,Windows 2022,x86_64,windows,1,1,1,1.0,99,99.0,38,100.0
-with_in_process_software,107,Windows-11 64 bits / x86_64,Windows-11 64 bits,x86_64,windows,1,1,1,1.0,100,100.0,38,100.0
+validated_software,1,Amazon Linux 2023 / x86_64,Amazon Linux 2023,x86_64,linux,9,13,13,12.9,13,12.9,9,23.7
+validated_software,2,Amazon Linux 2023 / arm64,Amazon Linux 2023,arm64,linux,8,12,12,11.9,13,12.9,9,23.7
+validated_software,3,Apple macOS 15 / arm64,Apple macOS 15,arm64,macos,6,7,7,6.9,13,12.9,9,23.7
+validated_software,4,FreeBSD 14 / x86_64,FreeBSD 14,x86_64,freebsd,6,7,7,6.9,13,12.9,9,23.7
+validated_software,5,Linux 5.4 / arm32,Linux 5.4,arm32,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,6,Microsoft Windows 11 / arm64,Microsoft Windows 11,arm64,windows,6,7,7,6.9,13,12.9,9,23.7
+validated_software,7,Microsoft Windows Server 2022 / x86_64,Microsoft Windows Server 2022,x86_64,windows,6,7,7,6.9,13,12.9,9,23.7
+validated_software,8,Oracle Linux 9 / arm64,Oracle Linux 9,arm64,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,9,Oracle Linux 9 / x86_64,Oracle Linux 9,x86_64,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,10,Red Hat Enterprise Linux 9 / arm64,Red Hat Enterprise Linux 9,arm64,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,11,Red Hat Enterprise Linux 9 / x86_64,Red Hat Enterprise Linux 9,x86_64,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,12,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00 / ppc64,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00,ppc64,linux,6,7,7,6.9,13,12.9,9,23.7
+validated_software,13,Alpine Linux 3.20 image / arm64,Alpine Linux 3.20 image,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,14,Alpine Linux 3.20 image / x86_64,Alpine Linux 3.20 image,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,15,Google Prodimage with Linux 5.10.0 / arm64,Google Prodimage with Linux 5.10.0,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,16,Google Prodimage with Linux 5.10.0 / x86_64,Google Prodimage with Linux 5.10.0,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,17,SUSE Linux Enterprise Server 15 SP6 / arm64,SUSE Linux Enterprise Server 15 SP6,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,18,SUSE Linux Enterprise Server 15 SP6 / x86_64,SUSE Linux Enterprise Server 15 SP6,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+validated_software,19,Ubuntu 22.04 / x86_64,Ubuntu 22.04,x86_64,linux,3,4,4,4.0,17,16.8,11,28.9
+validated_software,20,Ubuntu 24.04 LTS / x86_64,Ubuntu 24.04 LTS,x86_64,linux,3,3,3,3.0,20,19.8,14,36.8
+validated_software,21,Windows 11 / x86,Windows 11,x86,windows,2,13,13,12.9,33,32.7,16,42.1
+validated_software,22,Ubuntu 24.04 / riscv64,Ubuntu 24.04,riscv64,linux,2,10,10,9.9,40,39.6,17,44.7
+validated_software,23,x86_64,,x86_64,none,2,5,5,5.0,44,43.6,18,47.4
+validated_software,24,Apple Safari 26 with JavaScriptCore WebAssembly engine / arm64,Apple Safari 26 with JavaScriptCore WebAssembly engine,arm64,macos,2,2,2,2.0,44,43.6,18,47.4
+validated_software,25,Google Chrome 150 with V8 WebAssembly engine / x86_64,Google Chrome 150 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+validated_software,26,Microsoft Edge 148 with V8 WebAssembly engine / x86_64,Microsoft Edge 148 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+validated_software,27,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine / x86_64,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+validated_software,28,OpenJDK 17 / x86_64,OpenJDK 17,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+validated_software,29,OpenJDK 21 / x86_64,OpenJDK 21,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+validated_software,30,Ubuntu 24.04 / x86_64,Ubuntu 24.04,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+validated_software,31,Ubuntu 23.04 / arm64,Ubuntu 23.04,arm64,linux,1,14,14,13.9,54,53.5,20,52.6
+validated_software,32,Debian 11.7 / arm32,Debian 11.7,arm32,linux,1,10,10,9.9,59,58.4,20,52.6
+validated_software,33,Fedora 40 / x86,Fedora 40,x86,linux,1,6,6,5.9,59,58.4,20,52.6
+validated_software,34,macOS Sonoma 14 / arm64,macOS Sonoma 14,arm64,macos,1,6,6,5.9,59,58.4,20,52.6
+validated_software,35,Fedora 42 / x86,Fedora 42,x86,linux,1,4,4,4.0,59,58.4,20,52.6
+validated_software,36,openSUSE Tumbleweed 20240524 / x86,openSUSE Tumbleweed 20240524,x86,linux,1,4,4,4.0,63,62.4,20,52.6
+validated_software,37,openSUSE Tumbleweed 20240810 / x86,openSUSE Tumbleweed 20240810,x86,linux,1,4,4,4.0,64,63.4,20,52.6
+validated_software,38,openSUSE Tumbleweed 20241012 / x86,openSUSE Tumbleweed 20241012,x86,linux,1,4,4,4.0,66,65.3,20,52.6
+validated_software,39,openSUSE Tumbleweed 20250205 / x86,openSUSE Tumbleweed 20250205,x86,linux,1,4,4,4.0,68,67.3,20,52.6
+validated_software,40,openSUSE Tumbleweed 20250522 / x86,openSUSE Tumbleweed 20250522,x86,linux,1,4,4,4.0,70,69.3,20,52.6
+validated_software,41,openSUSE Tumbleweed 20251009 / x86,openSUSE Tumbleweed 20251009,x86,linux,1,4,4,4.0,72,71.3,20,52.6
+validated_software,42,Ubuntu 23.04 / riscv64,Ubuntu 23.04,riscv64,linux,1,3,3,3.0,72,71.3,20,52.6
+validated_software,43,arm64,,arm64,none,1,2,2,2.0,72,71.3,20,52.6
+validated_software,44,Debian 12 (Bookworm) / x86_64,Debian 12 (Bookworm),x86_64,linux,1,2,2,2.0,74,73.3,21,55.3
+validated_software,45,Debian 12.0 / arm32,Debian 12.0,arm32,linux,1,2,2,2.0,75,74.3,21,55.3
+validated_software,46,Fedora 41 / x86,Fedora 41,x86,linux,1,2,2,2.0,75,74.3,21,55.3
+validated_software,47,FreeBSD 14.3 / x86_64,FreeBSD 14.3,x86_64,freebsd,1,2,2,2.0,75,74.3,21,55.3
+validated_software,48,Microsoft Windows Server 2025 Standard 64-bit / x86_64,Microsoft Windows Server 2025 Standard 64-bit,x86_64,windows,1,2,2,2.0,75,74.3,21,55.3
+validated_software,49,QEMU KVM / x86_64,QEMU KVM,x86_64,simulator,1,2,2,2.0,75,74.3,21,55.3
+validated_software,50,Raspberry Pi OS (Debian 12) / arm64,Raspberry Pi OS (Debian 12),arm64,linux,1,2,2,2.0,77,76.2,21,55.3
+validated_software,51,Rocky Linux 8.10 (Green Obsidian) / x86_64,Rocky Linux 8.10 (Green Obsidian),x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,52,Ubuntu 24.10 / x86,Ubuntu 24.10,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,53,Ubuntu 25.04 / x86,Ubuntu 25.04,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,54,Ubuntu 25.10 / x86,Ubuntu 25.10,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,55,Ubuntu Linux 24.04.2 LTS (Noble Numbat) / x86_64,Ubuntu Linux 24.04.2 LTS (Noble Numbat),x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,56,VMware ESXi 8.0 / x86_64,VMware ESXi 8.0,x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+validated_software,57,macOS 15.5 / arm64,macOS 15.5,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+validated_software,58,macOS Sequoia 15 / arm64,macOS Sequoia 15,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+validated_software,59,macOS Sonoma 15 / arm64,macOS Sonoma 15,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+validated_software,60,macOS Tahoe 26 / arm64,macOS Tahoe 26,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+validated_software,61,AlmaLinux 9 / x86_64,AlmaLinux 9,x86_64,linux,1,1,1,1.0,80,79.2,23,60.5
+validated_software,62,Alpine Linux 3.22 image / arm64,Alpine Linux 3.22 image,arm64,linux,1,1,1,1.0,80,79.2,23,60.5
+validated_software,63,Alpine Linux 3.22 image / x86_64,Alpine Linux 3.22 image,x86_64,linux,1,1,1,1.0,80,79.2,23,60.5
+validated_software,64,Android 14 / arm64,Android 14,arm64,android,1,1,1,1.0,80,79.2,23,60.5
+validated_software,65,Chainguard Image 20230214 / arm64,Chainguard Image 20230214,arm64,linux,1,1,1,1.0,81,80.2,24,63.2
+validated_software,66,Chainguard Image 20230214 / x86_64,Chainguard Image 20230214,x86_64,linux,1,1,1,1.0,81,80.2,24,63.2
+validated_software,67,Debian 11 / x86_64,Debian 11,x86_64,linux,1,1,1,1.0,82,81.2,25,65.8
+validated_software,68,Debian GNU/Linux 11 (bullseye) aarch64 / arm64,Debian GNU/Linux 11 (bullseye) aarch64,arm64,linux,1,1,1,1.0,83,82.2,26,68.4
+validated_software,69,Dell PowerStoreOS 5 / x86_64,Dell PowerStoreOS 5,x86_64,appliance,1,1,1,1.0,83,82.2,26,68.4
+validated_software,70,EOSv4 / arm64,EOSv4,arm64,appliance,1,1,1,1.0,84,83.2,27,71.1
+validated_software,71,EOSv4 / x86_64,EOSv4,x86_64,appliance,1,1,1,1.0,84,83.2,27,71.1
+validated_software,72,Google Prodimage with Linux 6.6 / arm64,Google Prodimage with Linux 6.6,arm64,linux,1,1,1,1.0,84,83.2,27,71.1
+validated_software,73,Google Prodimage with Linux 6.6 / x86_64,Google Prodimage with Linux 6.6,x86_64,linux,1,1,1,1.0,84,83.2,27,71.1
+validated_software,74,IOS 17.5.1 / arm64,IOS 17.5.1,arm64,ios,1,1,1,1.0,84,83.2,27,71.1
+validated_software,75,Linux Debian 11.3 / arm64,Linux Debian 11.3,arm64,linux,1,1,1,1.0,85,84.2,28,73.7
+validated_software,76,Linux Debian 12.0 (64 bit) / x86_64,Linux Debian 12.0 (64 bit),x86_64,linux,1,1,1,1.0,86,85.1,29,76.3
+validated_software,77,Linux Ubuntu 20.04 LTS (64-bit) / x86_64,Linux Ubuntu 20.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,87,86.1,29,76.3
+validated_software,78,Linux Ubuntu 22.04 LTS (64-bit) / x86_64,Linux Ubuntu 22.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,88,87.1,30,78.9
+validated_software,79,Linux Ubuntu 22.04 LTS 64-bit / arm64,Linux Ubuntu 22.04 LTS 64-bit,arm64,linux,1,1,1,1.0,88,87.1,30,78.9
+validated_software,80,Linux Ubuntu 24.04 LTS / arm64,Linux Ubuntu 24.04 LTS,arm64,linux,1,1,1,1.0,89,88.1,30,78.9
+validated_software,81,Linux Ubuntu 24.04 LTS / x86_64,Linux Ubuntu 24.04 LTS,x86_64,linux,1,1,1,1.0,89,88.1,30,78.9
+validated_software,82,Linux Ubuntu 24.04 LTS (64-bit) / x86_64,Linux Ubuntu 24.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,89,88.1,30,78.9
+validated_software,83,Linux Ubuntu 24.04.1 LTS / x86_64,Linux Ubuntu 24.04.1 LTS,x86_64,linux,1,1,1,1.0,90,89.1,30,78.9
+validated_software,84,Microsoft Windows 10 / x86_64,Microsoft Windows 10,x86_64,windows,1,1,1,1.0,91,90.1,31,81.6
+validated_software,85,Microsoft Windows 11 Home / x86_64,Microsoft Windows 11 Home,x86_64,windows,1,1,1,1.0,92,91.1,32,84.2
+validated_software,86,OpenJDK 11 / x86_64,OpenJDK 11,x86_64,linux,1,1,1,1.0,92,91.1,32,84.2
+validated_software,87,OpenJDK 8 / x86_64,OpenJDK 8,x86_64,linux,1,1,1,1.0,92,91.1,32,84.2
+validated_software,88,Oracle JRE 8 / x86_64,Oracle JRE 8,x86_64,hypervisor,1,1,1,1.0,92,91.1,32,84.2
+validated_software,89,PowerStoreOS 4.1 / x86_64,PowerStoreOS 4.1,x86_64,appliance,1,1,1,1.0,92,91.1,32,84.2
+validated_software,90,ProHarden OS 6 / x86_64,ProHarden OS 6,x86_64,appliance,1,1,1,1.0,93,92.1,33,86.8
+validated_software,91,RHEL v7.9 / x86_64,RHEL v7.9,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+validated_software,92,Red Hat 9.4 / x86_64,Red Hat 9.4,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+validated_software,93,Red Hat Enterprise Linux 10 / arm64,Red Hat Enterprise Linux 10,arm64,linux,1,1,1,1.0,94,93.1,34,89.5
+validated_software,94,Red Hat Enterprise Linux 10 / x86_64,Red Hat Enterprise Linux 10,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+validated_software,95,Red Hat Enterprise Linux 8.10 / x86_64,Red Hat Enterprise Linux 8.10,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+validated_software,96,Rocky Linux 9 / x86_64,Rocky Linux 9,x86_64,linux,1,1,1,1.0,95,94.1,34,89.5
+validated_software,97,SUSE Linux Enterprise Server 16.0 / arm64,SUSE Linux Enterprise Server 16.0,arm64,linux,1,1,1,1.0,95,94.1,34,89.5
+validated_software,98,SUSE Linux Enterprise Server 16.0 / x86_64,SUSE Linux Enterprise Server 16.0,x86_64,linux,1,1,1,1.0,95,94.1,34,89.5
+validated_software,99,USIT RTOS 3.0 / arm64,USIT RTOS 3.0,arm64,rtos,1,1,1,1.0,96,95.0,35,92.1
+validated_software,100,Ubuntu 22.04 / arm32,Ubuntu 22.04,arm32,linux,1,1,1,1.0,97,96.0,35,92.1
+validated_software,101,Ubuntu 22.04 LTS / x86_64,Ubuntu 22.04 LTS,x86_64,linux,1,1,1,1.0,98,97.0,36,94.7
+validated_software,102,Ubuntu 24.04.1 / x86_64,Ubuntu 24.04.1,x86_64,linux,1,1,1,1.0,99,98.0,37,97.4
+validated_software,103,VMware Photon OS 5.0 / x86_64,VMware Photon OS 5.0,x86_64,linux,1,1,1,1.0,99,98.0,37,97.4
+validated_software,104,Windows 11 Enterprise (64 bit) / x86_64,Windows 11 Enterprise (64 bit),x86_64,windows,1,1,1,1.0,99,98.0,37,97.4
+validated_software,105,"Windows 11 Pro 25H2, OS Build 26200.8655 / x86_64","Windows 11 Pro 25H2, OS Build 26200.8655",x86_64,windows,1,1,1,1.0,100,99.0,38,100.0
+validated_software,106,Windows 2022 / x86_64,Windows 2022,x86_64,windows,1,1,1,1.0,100,99.0,38,100.0
+validated_software,107,Windows-11 64 bits / x86_64,Windows-11 64 bits,x86_64,windows,1,1,1,1.0,101,100.0,38,100.0
+with_in_process_software,1,Amazon Linux 2023 / x86_64,Amazon Linux 2023,x86_64,linux,9,13,13,12.9,13,12.9,9,23.7
+with_in_process_software,2,Amazon Linux 2023 / arm64,Amazon Linux 2023,arm64,linux,8,12,12,11.9,13,12.9,9,23.7
+with_in_process_software,3,Apple macOS 15 / arm64,Apple macOS 15,arm64,macos,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,4,FreeBSD 14 / x86_64,FreeBSD 14,x86_64,freebsd,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,5,Linux 5.4 / arm32,Linux 5.4,arm32,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,6,Microsoft Windows 11 / arm64,Microsoft Windows 11,arm64,windows,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,7,Microsoft Windows Server 2022 / x86_64,Microsoft Windows Server 2022,x86_64,windows,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,8,Oracle Linux 9 / arm64,Oracle Linux 9,arm64,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,9,Oracle Linux 9 / x86_64,Oracle Linux 9,x86_64,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,10,Red Hat Enterprise Linux 9 / arm64,Red Hat Enterprise Linux 9,arm64,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,11,Red Hat Enterprise Linux 9 / x86_64,Red Hat Enterprise Linux 9,x86_64,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,12,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00 / ppc64,Red Hat Enterprise Linux 9 with PowerVM FW1040.00 with VIOS 3.1.3.00,ppc64,linux,6,7,7,6.9,13,12.9,9,23.7
+with_in_process_software,13,Alpine Linux 3.20 image / arm64,Alpine Linux 3.20 image,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,14,Alpine Linux 3.20 image / x86_64,Alpine Linux 3.20 image,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,15,Google Prodimage with Linux 5.10.0 / arm64,Google Prodimage with Linux 5.10.0,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,16,Google Prodimage with Linux 5.10.0 / x86_64,Google Prodimage with Linux 5.10.0,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,17,SUSE Linux Enterprise Server 15 SP6 / arm64,SUSE Linux Enterprise Server 15 SP6,arm64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,18,SUSE Linux Enterprise Server 15 SP6 / x86_64,SUSE Linux Enterprise Server 15 SP6,x86_64,linux,6,6,6,5.9,13,12.9,9,23.7
+with_in_process_software,19,Ubuntu 22.04 / x86_64,Ubuntu 22.04,x86_64,linux,3,4,4,4.0,17,16.8,11,28.9
+with_in_process_software,20,Ubuntu 24.04 LTS / x86_64,Ubuntu 24.04 LTS,x86_64,linux,3,3,3,3.0,20,19.8,14,36.8
+with_in_process_software,21,Windows 11 / x86,Windows 11,x86,windows,2,13,13,12.9,33,32.7,16,42.1
+with_in_process_software,22,Ubuntu 24.04 / riscv64,Ubuntu 24.04,riscv64,linux,2,10,10,9.9,40,39.6,17,44.7
+with_in_process_software,23,x86_64,,x86_64,none,2,5,5,5.0,44,43.6,18,47.4
+with_in_process_software,24,Apple Safari 26 with JavaScriptCore WebAssembly engine / arm64,Apple Safari 26 with JavaScriptCore WebAssembly engine,arm64,macos,2,2,2,2.0,44,43.6,18,47.4
+with_in_process_software,25,Google Chrome 150 with V8 WebAssembly engine / x86_64,Google Chrome 150 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+with_in_process_software,26,Microsoft Edge 148 with V8 WebAssembly engine / x86_64,Microsoft Edge 148 with V8 WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+with_in_process_software,27,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine / x86_64,Mozilla Firefox 152 with SpiderMonkey WebAssembly engine,x86_64,windows,2,2,2,2.0,44,43.6,18,47.4
+with_in_process_software,28,OpenJDK 17 / x86_64,OpenJDK 17,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+with_in_process_software,29,OpenJDK 21 / x86_64,OpenJDK 21,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+with_in_process_software,30,Ubuntu 24.04 / x86_64,Ubuntu 24.04,x86_64,linux,2,2,2,2.0,46,45.5,20,52.6
+with_in_process_software,31,Ubuntu 23.04 / arm64,Ubuntu 23.04,arm64,linux,1,14,14,13.9,54,53.5,20,52.6
+with_in_process_software,32,Debian 11.7 / arm32,Debian 11.7,arm32,linux,1,10,10,9.9,59,58.4,20,52.6
+with_in_process_software,33,Fedora 40 / x86,Fedora 40,x86,linux,1,6,6,5.9,59,58.4,20,52.6
+with_in_process_software,34,macOS Sonoma 14 / arm64,macOS Sonoma 14,arm64,macos,1,6,6,5.9,59,58.4,20,52.6
+with_in_process_software,35,Fedora 42 / x86,Fedora 42,x86,linux,1,4,4,4.0,59,58.4,20,52.6
+with_in_process_software,36,openSUSE Tumbleweed 20240524 / x86,openSUSE Tumbleweed 20240524,x86,linux,1,4,4,4.0,63,62.4,20,52.6
+with_in_process_software,37,openSUSE Tumbleweed 20240810 / x86,openSUSE Tumbleweed 20240810,x86,linux,1,4,4,4.0,64,63.4,20,52.6
+with_in_process_software,38,openSUSE Tumbleweed 20241012 / x86,openSUSE Tumbleweed 20241012,x86,linux,1,4,4,4.0,66,65.3,20,52.6
+with_in_process_software,39,openSUSE Tumbleweed 20250205 / x86,openSUSE Tumbleweed 20250205,x86,linux,1,4,4,4.0,68,67.3,20,52.6
+with_in_process_software,40,openSUSE Tumbleweed 20250522 / x86,openSUSE Tumbleweed 20250522,x86,linux,1,4,4,4.0,70,69.3,20,52.6
+with_in_process_software,41,openSUSE Tumbleweed 20251009 / x86,openSUSE Tumbleweed 20251009,x86,linux,1,4,4,4.0,72,71.3,20,52.6
+with_in_process_software,42,Ubuntu 23.04 / riscv64,Ubuntu 23.04,riscv64,linux,1,3,3,3.0,72,71.3,20,52.6
+with_in_process_software,43,arm64,,arm64,none,1,2,2,2.0,72,71.3,20,52.6
+with_in_process_software,44,Debian 12 (Bookworm) / x86_64,Debian 12 (Bookworm),x86_64,linux,1,2,2,2.0,74,73.3,21,55.3
+with_in_process_software,45,Debian 12.0 / arm32,Debian 12.0,arm32,linux,1,2,2,2.0,75,74.3,21,55.3
+with_in_process_software,46,Fedora 41 / x86,Fedora 41,x86,linux,1,2,2,2.0,75,74.3,21,55.3
+with_in_process_software,47,FreeBSD 14.3 / x86_64,FreeBSD 14.3,x86_64,freebsd,1,2,2,2.0,75,74.3,21,55.3
+with_in_process_software,48,Microsoft Windows Server 2025 Standard 64-bit / x86_64,Microsoft Windows Server 2025 Standard 64-bit,x86_64,windows,1,2,2,2.0,75,74.3,21,55.3
+with_in_process_software,49,QEMU KVM / x86_64,QEMU KVM,x86_64,simulator,1,2,2,2.0,75,74.3,21,55.3
+with_in_process_software,50,Raspberry Pi OS (Debian 12) / arm64,Raspberry Pi OS (Debian 12),arm64,linux,1,2,2,2.0,77,76.2,21,55.3
+with_in_process_software,51,Rocky Linux 8.10 (Green Obsidian) / x86_64,Rocky Linux 8.10 (Green Obsidian),x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,52,Ubuntu 24.10 / x86,Ubuntu 24.10,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,53,Ubuntu 25.04 / x86,Ubuntu 25.04,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,54,Ubuntu 25.10 / x86,Ubuntu 25.10,x86,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,55,Ubuntu Linux 24.04.2 LTS (Noble Numbat) / x86_64,Ubuntu Linux 24.04.2 LTS (Noble Numbat),x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,56,VMware ESXi 8.0 / x86_64,VMware ESXi 8.0,x86_64,linux,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,57,macOS 15.5 / arm64,macOS 15.5,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,58,macOS Sequoia 15 / arm64,macOS Sequoia 15,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,59,macOS Sonoma 15 / arm64,macOS Sonoma 15,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,60,macOS Tahoe 26 / arm64,macOS Tahoe 26,arm64,macos,1,2,2,2.0,79,78.2,22,57.9
+with_in_process_software,61,AlmaLinux 9 / x86_64,AlmaLinux 9,x86_64,linux,1,1,1,1.0,80,79.2,23,60.5
+with_in_process_software,62,Alpine Linux 3.22 image / arm64,Alpine Linux 3.22 image,arm64,linux,1,1,1,1.0,80,79.2,23,60.5
+with_in_process_software,63,Alpine Linux 3.22 image / x86_64,Alpine Linux 3.22 image,x86_64,linux,1,1,1,1.0,80,79.2,23,60.5
+with_in_process_software,64,Android 14 / arm64,Android 14,arm64,android,1,1,1,1.0,80,79.2,23,60.5
+with_in_process_software,65,Chainguard Image 20230214 / arm64,Chainguard Image 20230214,arm64,linux,1,1,1,1.0,81,80.2,24,63.2
+with_in_process_software,66,Chainguard Image 20230214 / x86_64,Chainguard Image 20230214,x86_64,linux,1,1,1,1.0,81,80.2,24,63.2
+with_in_process_software,67,Debian 11 / x86_64,Debian 11,x86_64,linux,1,1,1,1.0,82,81.2,25,65.8
+with_in_process_software,68,Debian GNU/Linux 11 (bullseye) aarch64 / arm64,Debian GNU/Linux 11 (bullseye) aarch64,arm64,linux,1,1,1,1.0,83,82.2,26,68.4
+with_in_process_software,69,Dell PowerStoreOS 5 / x86_64,Dell PowerStoreOS 5,x86_64,appliance,1,1,1,1.0,83,82.2,26,68.4
+with_in_process_software,70,EOSv4 / arm64,EOSv4,arm64,appliance,1,1,1,1.0,84,83.2,27,71.1
+with_in_process_software,71,EOSv4 / x86_64,EOSv4,x86_64,appliance,1,1,1,1.0,84,83.2,27,71.1
+with_in_process_software,72,Google Prodimage with Linux 6.6 / arm64,Google Prodimage with Linux 6.6,arm64,linux,1,1,1,1.0,84,83.2,27,71.1
+with_in_process_software,73,Google Prodimage with Linux 6.6 / x86_64,Google Prodimage with Linux 6.6,x86_64,linux,1,1,1,1.0,84,83.2,27,71.1
+with_in_process_software,74,IOS 17.5.1 / arm64,IOS 17.5.1,arm64,ios,1,1,1,1.0,84,83.2,27,71.1
+with_in_process_software,75,Linux Debian 11.3 / arm64,Linux Debian 11.3,arm64,linux,1,1,1,1.0,85,84.2,28,73.7
+with_in_process_software,76,Linux Debian 12.0 (64 bit) / x86_64,Linux Debian 12.0 (64 bit),x86_64,linux,1,1,1,1.0,86,85.1,29,76.3
+with_in_process_software,77,Linux Ubuntu 20.04 LTS (64-bit) / x86_64,Linux Ubuntu 20.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,87,86.1,29,76.3
+with_in_process_software,78,Linux Ubuntu 22.04 LTS (64-bit) / x86_64,Linux Ubuntu 22.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,88,87.1,30,78.9
+with_in_process_software,79,Linux Ubuntu 22.04 LTS 64-bit / arm64,Linux Ubuntu 22.04 LTS 64-bit,arm64,linux,1,1,1,1.0,88,87.1,30,78.9
+with_in_process_software,80,Linux Ubuntu 24.04 LTS / arm64,Linux Ubuntu 24.04 LTS,arm64,linux,1,1,1,1.0,89,88.1,30,78.9
+with_in_process_software,81,Linux Ubuntu 24.04 LTS / x86_64,Linux Ubuntu 24.04 LTS,x86_64,linux,1,1,1,1.0,89,88.1,30,78.9
+with_in_process_software,82,Linux Ubuntu 24.04 LTS (64-bit) / x86_64,Linux Ubuntu 24.04 LTS (64-bit),x86_64,linux,1,1,1,1.0,89,88.1,30,78.9
+with_in_process_software,83,Linux Ubuntu 24.04.1 LTS / x86_64,Linux Ubuntu 24.04.1 LTS,x86_64,linux,1,1,1,1.0,90,89.1,30,78.9
+with_in_process_software,84,Microsoft Windows 10 / x86_64,Microsoft Windows 10,x86_64,windows,1,1,1,1.0,91,90.1,31,81.6
+with_in_process_software,85,Microsoft Windows 11 Home / x86_64,Microsoft Windows 11 Home,x86_64,windows,1,1,1,1.0,92,91.1,32,84.2
+with_in_process_software,86,OpenJDK 11 / x86_64,OpenJDK 11,x86_64,linux,1,1,1,1.0,92,91.1,32,84.2
+with_in_process_software,87,OpenJDK 8 / x86_64,OpenJDK 8,x86_64,linux,1,1,1,1.0,92,91.1,32,84.2
+with_in_process_software,88,Oracle JRE 8 / x86_64,Oracle JRE 8,x86_64,hypervisor,1,1,1,1.0,92,91.1,32,84.2
+with_in_process_software,89,PowerStoreOS 4.1 / x86_64,PowerStoreOS 4.1,x86_64,appliance,1,1,1,1.0,92,91.1,32,84.2
+with_in_process_software,90,ProHarden OS 6 / x86_64,ProHarden OS 6,x86_64,appliance,1,1,1,1.0,93,92.1,33,86.8
+with_in_process_software,91,RHEL v7.9 / x86_64,RHEL v7.9,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+with_in_process_software,92,Red Hat 9.4 / x86_64,Red Hat 9.4,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+with_in_process_software,93,Red Hat Enterprise Linux 10 / arm64,Red Hat Enterprise Linux 10,arm64,linux,1,1,1,1.0,94,93.1,34,89.5
+with_in_process_software,94,Red Hat Enterprise Linux 10 / x86_64,Red Hat Enterprise Linux 10,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+with_in_process_software,95,Red Hat Enterprise Linux 8.10 / x86_64,Red Hat Enterprise Linux 8.10,x86_64,linux,1,1,1,1.0,94,93.1,34,89.5
+with_in_process_software,96,Rocky Linux 9 / x86_64,Rocky Linux 9,x86_64,linux,1,1,1,1.0,95,94.1,34,89.5
+with_in_process_software,97,SUSE Linux Enterprise Server 16.0 / arm64,SUSE Linux Enterprise Server 16.0,arm64,linux,1,1,1,1.0,95,94.1,34,89.5
+with_in_process_software,98,SUSE Linux Enterprise Server 16.0 / x86_64,SUSE Linux Enterprise Server 16.0,x86_64,linux,1,1,1,1.0,95,94.1,34,89.5
+with_in_process_software,99,USIT RTOS 3.0 / arm64,USIT RTOS 3.0,arm64,rtos,1,1,1,1.0,96,95.0,35,92.1
+with_in_process_software,100,Ubuntu 22.04 / arm32,Ubuntu 22.04,arm32,linux,1,1,1,1.0,97,96.0,35,92.1
+with_in_process_software,101,Ubuntu 22.04 LTS / x86_64,Ubuntu 22.04 LTS,x86_64,linux,1,1,1,1.0,98,97.0,36,94.7
+with_in_process_software,102,Ubuntu 24.04.1 / x86_64,Ubuntu 24.04.1,x86_64,linux,1,1,1,1.0,99,98.0,37,97.4
+with_in_process_software,103,VMware Photon OS 5.0 / x86_64,VMware Photon OS 5.0,x86_64,linux,1,1,1,1.0,99,98.0,37,97.4
+with_in_process_software,104,Windows 11 Enterprise (64 bit) / x86_64,Windows 11 Enterprise (64 bit),x86_64,windows,1,1,1,1.0,99,98.0,37,97.4
+with_in_process_software,105,"Windows 11 Pro 25H2, OS Build 26200.8655 / x86_64","Windows 11 Pro 25H2, OS Build 26200.8655",x86_64,windows,1,1,1,1.0,100,99.0,38,100.0
+with_in_process_software,106,Windows 2022 / x86_64,Windows 2022,x86_64,windows,1,1,1,1.0,100,99.0,38,100.0
+with_in_process_software,107,Windows-11 64 bits / x86_64,Windows-11 64 bits,x86_64,windows,1,1,1,1.0,101,100.0,38,100.0
