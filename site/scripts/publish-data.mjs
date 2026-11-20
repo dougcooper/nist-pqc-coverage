@@ -351,11 +351,16 @@ the NIST source and the retrieval date above.
 `;
 }
 
+const parquetDir = join(site, "docs", "data");
 const names = (await readdir(dataDir))
-  .filter((name) => /\.(csv|parquet|json)$/.test(name))
+  .filter((name) => /\.(csv|json)$/.test(name))
+  .sort();
+const parquetNames = (await readdir(parquetDir))
+  .filter((name) => name.endsWith(".parquet"))
   .sort();
 await mkdir(out, {recursive: true});
 for (const name of names) await copyFile(join(dataDir, name), join(out, name));
+for (const name of parquetNames) await copyFile(join(parquetDir, name), join(out, name));
 
 const metadata = JSON.parse(await readFile(join(dataDir, "metadata.json"), "utf8"));
 const schema = await buildSchema(names);
@@ -383,5 +388,5 @@ for (const page of pages) {
 }
 
 console.log(
-  `published ${names.length} data files, llms.txt, schema.json and summary.json to dist/downloads`
+  `published ${names.length} data files and ${parquetNames.length} Parquet files, plus llms.txt, schema.json and summary.json, to dist/downloads`
 );
