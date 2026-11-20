@@ -9,7 +9,7 @@ on, drawn from the NIST CAVP and CMVP databases. Use the other pages to see
 targets, coverage curves, and the validation pipeline.
 
 ```js
-import {num, familyColors, sourceLabel} from "./components/common.js";
+import {num, familyColors} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, palette} from "./components/echarts.js";
 import {dataTable} from "./components/table.js";
@@ -27,44 +27,43 @@ const meta = FileAttachment("data/metadata.json").json();
 ```js
 const [stats] = await query(db, `
   SELECT
-    count(DISTINCT product_key) AS products,
+    (SELECT count(*) FROM cavp) AS cavp,
+    count(DISTINCT CASE WHEN source = 'CMVP' THEN record_id END) AS cmvp,
+    count(DISTINCT CASE WHEN source = 'CMVP' AND upper(module_type) LIKE 'SOFTWARE%'
+                        THEN record_id END) AS cmvp_software,
+    (SELECT count(*) FROM in_process) AS in_progress,
+    (SELECT count(DISTINCT module || '|' || vendor) FROM in_process) AS in_progress_modules,
     count(DISTINCT CASE WHEN arch NOT IN ('', 'unknown') THEN target_key END) AS targets,
-    count(DISTINCT vendor) AS vendors,
-    count(DISTINCT CASE WHEN upper(module_type) LIKE 'SOFTWARE%' THEN product_key END) AS software
-  FROM validated`);
-```
-
-```js
-const [matched] = await query(db, `
-  SELECT count(*) AS n FROM in_process WHERE pqc_evidence = 'cavp_name_match'`);
+    count(DISTINCT vendor) AS vendors
+  FROM coverage`);
 ```
 
 ```js
 html`<div class="stats">
   <div class="stat">
-    <div class="value">${num.format(stats.products)}</div>
-    <div class="label">validated products</div>
-    <div class="hint">CAVP validations plus active CMVP certificates</div>
+    <div class="value">${num.format(stats.cavp)}</div>
+    <div class="label">CAVP</div>
+    <div class="hint">PQC algorithm validations</div>
+  </div>
+  <div class="stat">
+    <div class="value">${num.format(stats.cmvp)}</div>
+    <div class="label">CMVP</div>
+    <div class="hint">active certificates, ${num.format(stats.cmvp_software)} of them software</div>
+  </div>
+  <div class="stat">
+    <div class="value">${num.format(stats.in_progress)}</div>
+    <div class="label">CMVP in progress</div>
+    <div class="hint">${num.format(stats.in_progress_modules)} modules in MIP and IUT</div>
   </div>
   <div class="stat">
     <div class="value">${num.format(stats.targets)}</div>
     <div class="label">OS / CPU targets</div>
-    <div class="hint">normalized operating environments</div>
+    <div class="hint">including CMVP in progress</div>
   </div>
   <div class="stat">
     <div class="value">${num.format(stats.vendors)}</div>
     <div class="label">vendors</div>
-    <div class="hint">with at least one validated PQC product</div>
-  </div>
-  <div class="stat">
-    <div class="value">${num.format(stats.software)}</div>
-    <div class="label">software products</div>
-    <div class="hint">excludes hardware and firmware modules</div>
-  </div>
-  <div class="stat">
-    <div class="value">${num.format(matched.n)}</div>
-    <div class="label">in-process modules</div>
-    <div class="hint">matched to a PQC CAVP validation</div>
+    <div class="hint">across the three programs</div>
   </div>
 </div>`
 ```
@@ -76,7 +75,7 @@ html`<div class="note">
 </div>`
 ```
 
-## Validated products by algorithm family
+## Coverage by algorithm family
 
 ```js
 const familyRows = await query(db, `
@@ -100,33 +99,40 @@ display(
 );
 ```
 
-## Where the coverage comes from
+<div class="small">
+  Distinct modules per family. A CAVP validation already covered by a CMVP
+  certificate is not counted twice.
+</div>
+
+## Targets by program
+
+How many normalized OS / CPU targets each program covers.
 
 ```js
-const sourceRows = (await query(db, `
-  SELECT source, count(DISTINCT product_key) AS count
+const programRows = await query(db, `
+  SELECT program, count(DISTINCT target_key) AS count
   FROM coverage
-  WHERE source <> 'CAVP' OR status = 'none_yet'
+  WHERE arch NOT IN ('', 'unknown')
   GROUP BY 1
-  ORDER BY 2 DESC`)).map((d) => ({source: sourceLabel(d.source), count: d.count}));
+  ORDER BY 2 DESC`);
 ```
 
 ```js
 display(
-  barChart(sourceRows, {
-    x: "source",
+  barChart(programRows, {
+    x: "program",
     y: "count",
     horizontal: true,
     labels: true,
     colors: [palette[0]],
-    height: 180
+    height: 160
   })
 );
 ```
 
 <div class="small">
-  CAVP rows already covered by an active CMVP certificate are omitted here to
-  avoid counting the same product twice; they still appear in the explorer.
+  A target is an OS version and architecture pair after normalization. The same
+  target can appear under more than one program.
 </div>
 
 ## Validations over time

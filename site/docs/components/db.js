@@ -12,6 +12,9 @@ const VIEWS = [
     ["coverage_raw"],
     `CREATE OR REPLACE VIEW coverage AS
        SELECT *,
+         CASE WHEN source = 'CAVP' THEN 'CAVP'
+              WHEN source = 'CMVP' THEN 'CMVP'
+              ELSE 'CMVP in progress' END AS program,
          source || '|' || record_id || '|' || coalesce(vendor, '') || '|' ||
            coalesce(product, '') AS product_key,
          os_label || ' \u00b7 ' || arch AS target_key

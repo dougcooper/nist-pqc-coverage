@@ -27,10 +27,10 @@ const db = await openDb({
 
 ```js
 const scopeLabels = {
-  validated: "Validated \u2014 all embodiments",
-  validated_software: "Validated \u2014 software only",
-  with_in_process: "Validated + in process \u2014 all embodiments",
-  with_in_process_software: "Validated + in process \u2014 software only"
+  validated: "CAVP + CMVP \u2014 all embodiments",
+  validated_software: "CAVP + CMVP \u2014 software only",
+  with_in_process: "CAVP + CMVP + in progress \u2014 all embodiments",
+  with_in_process_software: "CAVP + CMVP + in progress \u2014 software only"
 };
 const variant = view(
   Inputs.select(Object.keys(scopeLabels), {
@@ -65,7 +65,7 @@ html`<div class="stats">
   <div class="stat">
     <div class="value">${num.format(targets.length)}</div>
     <div class="label">targets in scope</div>
-    <div class="hint">${softwareOnly ? "software products" : (variant === "with_in_process" || variant === "with_in_process_software") ? "including in-process modules" : "validated products"}</div>
+    <div class="hint">${softwareOnly ? "software modules" : (variant === "with_in_process" || variant === "with_in_process_software") ? "including CMVP in progress" : "distinct modules"}</div>
   </div>
   <div class="stat">
     <div class="value">${targets.length ? num.format(targets[0].products) : 0}</div>

@@ -47,10 +47,10 @@ export function quarterOf(iso) {
 
 export function sourceLabel(source) {
   const labels = {
-    CAVP: "CAVP validation",
-    CMVP: "CMVP certificate",
-    "CMVP-MIP": "Modules in process",
-    "CMVP-IUT": "IUT",
+    CAVP: "CAVP",
+    CMVP: "CMVP",
+    "CMVP-MIP": "CMVP in progress",
+    "CMVP-IUT": "CMVP in progress",
   };
   return labels[source] ?? source;
 }

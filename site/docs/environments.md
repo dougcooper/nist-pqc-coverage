@@ -21,7 +21,7 @@ const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverag
 ```
 
 ```js
-const includePipeline = view(Inputs.toggle({label: "Include in-process (MIP/IUT)", value: false}));
+const includePipeline = view(Inputs.toggle({label: "Include CMVP in progress", value: false}));
 const family = view(Inputs.select(["All algorithms", ...families], {label: "PQC family", value: "All algorithms"}));
 const osFamily = view(Inputs.select(["All OS families", ...osFamilyOptions], {label: "OS family", value: "All OS families"}));
 const moduleType = view(Inputs.select(["All module types", "SOFTWARE", "HARDWARE", "FIRMWARE"], {label: "Module type", value: "All module types"}));
@@ -53,8 +53,8 @@ const [stats] = await query(db, `
 html`<div class="stats">
   <div class="stat">
     <div class="value">${num.format(stats.products)}</div>
-    <div class="label">products</div>
-    <div class="hint">in the current filter</div>
+    <div class="label">modules</div>
+    <div class="hint">CAVP + CMVP, deduplicated, in the current filter</div>
   </div>
   <div class="stat">
     <div class="value">${num.format(stats.targets)}</div>

@@ -4,10 +4,11 @@ title: Pipeline
 
 # Validation pipeline
 
-Modules-in-process and IUT (implementation under test) entries have no
-algorithms or operating environments on the NIST lists. This page shows the
-inference used to connect them to PQC CAVP validations, and the validated PQC
-implementations that do not yet have an active CMVP certificate.
+**CMVP in progress** is the modules-in-process (MIP) and implementation-under-test
+(IUT) lists. Those entries have no algorithms or operating environments on NIST's
+pages, so this page shows the inference used to connect them to PQC CAVP
+validations, and the CAVP implementations that do not yet have an active CMVP
+certificate.
 
 ```js
 import {num} from "./components/common.js";
