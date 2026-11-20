@@ -111,6 +111,24 @@ integrated GPUs the browser can lose the WebGPU device during generation
 and the SQL stays in the chat, so a failed answer costs a few seconds rather than
 the page. The site works without it.
 
+## Data for agents
+
+The site publishes the dataset at stable URLs, so an agent or a notebook can use
+it without running the dashboard's JavaScript:
+
+- <https://dougcooper.github.io/nist-pqc-coverage/llms.txt> — what the data is,
+  the three programs, the `validated` set, caveats, and example DuckDB queries.
+  Every page links to it from `<head>` and the footer, and `robots.txt` points
+  at it.
+- <https://dougcooper.github.io/nist-pqc-coverage/downloads/> — every CSV and
+  Parquet file under a name that never changes, plus `schema.json` (columns,
+  types and one-line meanings, generated from the CSV headers) and
+  `summary.json` (counts and top targets, small enough to read first).
+
+`site/scripts/publish-data.mjs` runs after `observable build` and produces those
+files; Framework itself only serves content-hashed copies such as
+`_file/data/pqc_coverage.<hash>.csv`.
+
 ## Publishing
 
 The site is static and deploys to GitHub Pages. `.github/workflows/pages.yml`

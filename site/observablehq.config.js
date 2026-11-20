@@ -10,7 +10,7 @@ export default {
   preserveExtension: true,
   pager: false,
   footer:
-    "Source: NIST CSRC CAVP and CMVP. OS/CPU fields are heuristic normalizations; in-process matches are inferred.",
+    `Source: NIST CSRC CAVP and CMVP. OS/CPU fields are heuristic normalizations; in-process matches are inferred. <a href="https://dougcooper.github.io/nist-pqc-coverage/llms.txt">llms.txt</a> describes the data for agents.`,
   pages: [
     {name: "Overview", path: "/"},
     {name: "Operating environments", path: "/environments"},

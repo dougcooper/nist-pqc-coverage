@@ -145,6 +145,20 @@ display(html`<ul class="small">${downloads}</ul>`);
 ```
 
 ```js
+display(html`<div class="note small">
+  <strong>Working with an agent or a notebook?</strong>
+  The same files are published at stable URLs too:
+  <a href="https://dougcooper.github.io/nist-pqc-coverage/llms.txt">llms.txt</a>
+  explains the three programs, the views and the caveats in plain text,
+  <a href="https://dougcooper.github.io/nist-pqc-coverage/downloads/schema.json">schema.json</a>
+  describes every column, and
+  <a href="https://dougcooper.github.io/nist-pqc-coverage/downloads/summary.json">summary.json</a>
+  holds the headline counts. Every CSV and Parquet file sits under
+  <code>downloads/</code> with a name that never changes.
+</div>`);
+```
+
+```js
 import {mountAgent} from "./components/ask.js";
 ```
 

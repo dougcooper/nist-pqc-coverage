@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "observable preview",
-    "build": "observable build",
+    "build": "observable build && node scripts/publish-data.mjs",
     "sources": "node scripts/sync-data.mjs"
   },
   "dependencies": {
