@@ -104,35 +104,55 @@ display(
   certificate is not counted twice.
 </div>
 
-## Targets by program
+## Targets by validation stage
 
-How many normalized OS / CPU targets each program covers.
+Each OS / CPU target counted once, at its furthest stage.
 
 ```js
-const programRows = await query(db, `
-  SELECT program, count(DISTINCT target_key) AS count
-  FROM coverage
-  WHERE arch NOT IN ('', 'unknown')
+const stageRows = await query(db, `
+  WITH per_target AS (
+    SELECT target_key,
+           max(CASE WHEN program = 'CMVP' THEN 2
+                    WHEN program = 'CMVP in progress' THEN 1
+                    ELSE 0 END) AS level
+    FROM coverage
+    WHERE arch NOT IN ('', 'unknown')
+    GROUP BY 1
+  )
+  SELECT CASE level WHEN 2 THEN 'CMVP'
+                    WHEN 1 THEN 'CMVP in progress'
+                    ELSE 'CAVP only' END AS stage,
+         count(*) AS count
+  FROM per_target
   GROUP BY 1
-  ORDER BY 2 DESC`);
+  ORDER BY min(level)`);
 ```
 
 ```js
+const stageColors = new Map([
+  ["CAVP only", palette[0]],
+  ["CMVP in progress", palette[3]],
+  ["CMVP", palette[2]]
+]);
 display(
-  barChart(programRows, {
-    x: "program",
+  barChart(stageRows, {
+    x: "stage",
     y: "count",
     horizontal: true,
     labels: true,
-    colors: [palette[0]],
+    colorBy: "stage",
+    colors: (stage) => stageColors.get(stage) ?? palette[0],
     height: 160
   })
 );
 ```
 
 <div class="small">
-  A target is an OS version and architecture pair after normalization. The same
-  target can appear under more than one program.
+  <strong>CAVP only</strong>: no CMVP certificate or in-progress module reports the
+  target. <strong>CMVP in progress</strong>: a module on that target is in the MIP or
+  IUT list. <strong>CMVP</strong>: at least one active certificate covers it. The three
+  bars add up to the number of targets. A target is an OS version and architecture
+  pair after normalization; bare-metal environments with no OS count by architecture.
 </div>
 
 ## Validations over time
@@ -198,26 +218,33 @@ display(
 
 ```js
 const upstreamRows = await query(db, `
-  SELECT upstream,
-         count(DISTINCT product_key) AS products,
-         count(DISTINCT target_key) AS targets
-  FROM validated
-  WHERE coalesce(upstream, '') <> ''
-  GROUP BY upstream
-  ORDER BY products DESC
-  LIMIT 20`);
+  WITH k AS (
+    SELECT coalesce(nullif(upstream, ''), 'Not classified') AS library,
+           source || '|' || record_id || '|' || coalesce(vendor, '') || '|' || coalesce(product, '') AS product_key,
+           source IN ('CMVP-MIP', 'CMVP-IUT') AS in_progress,
+           CASE WHEN coalesce(os_name, '') <> '' THEN os_name || ' / ' || arch ELSE arch END AS target_key
+    FROM coverage
+    WHERE arch NOT IN ('', 'unknown')
+      AND (source IN ('CMVP', 'CMVP-MIP', 'CMVP-IUT') OR (source = 'CAVP' AND status = 'none_yet'))
+  )
+  SELECT library,
+         count(DISTINCT product_key) FILTER (WHERE NOT in_progress) AS validated,
+         count(DISTINCT product_key) FILTER (WHERE in_progress) AS in_progress,
+         count(DISTINCT target_key) FILTER (WHERE NOT in_progress) AS targets
+  FROM k
+  GROUP BY 1
+  ORDER BY library = 'Not classified', validated DESC, in_progress DESC`);
 ```
 
 ```js
 display(
   dataTable(upstreamRows, {
     columns: [
-      {key: "upstream", label: "Library"},
-      {key: "products", label: "Products"},
+      {key: "library", label: "Library"},
+      {key: "validated", label: "Validated modules"},
+      {key: "in_progress", label: "In progress"},
       {key: "targets", label: "Targets"}
     ],
-    sort: "products",
-    reverse: true,
     pageSize: 10,
     csv: "upstream-libraries.csv"
   })
@@ -225,8 +252,11 @@ display(
 ```
 
 <div class="small">
-  Matched by keyword on vendor, module, and description text. Certificates that
-  do not name a known library are omitted; the mapping is a hint, not an audit.
+  A keyword match on each module's name, so a rebrand collapses to the library it
+  embeds (Ciena's modem to wolfSSL). NIST does not publish component dependencies,
+  and most module names do not mention one: <strong>Not classified</strong> is the
+  honest remainder, not a gap in the data. Validated counts active CMVP certificates
+  plus CAVP validations without one; in progress covers the MIP and IUT lists.
 </div>
 
 ```js

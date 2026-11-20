@@ -17,6 +17,8 @@ RULES: list[tuple[str, str]] = [
     ("mbed TLS", r"\bmbed\s*tls\b"),
     ("SymCrypt", r"\bsymcrypt\b"),
     ("Bouncy Castle", r"\bbouncy\s*castle\b"),
+    ("GnuTLS", r"\bgnutls\b"),
+    ("Libgcrypt", r"\blibgcrypt\b"),
     ("Mozilla NSS", r"\bnss\b|\bmozilla\b"),
     ("corecrypto", r"\bcorecrypto\b"),
     ("Crypto++", r"crypto\+\+"),
