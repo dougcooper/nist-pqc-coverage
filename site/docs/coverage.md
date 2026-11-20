@@ -108,19 +108,27 @@ const topTargets = targets.slice(0, 20);
 ```
 
 ```js
+const compact = window.innerWidth < 700;
+```
+
+```js
 Plot.plot({
-  height: 560,
-  marginLeft: 260,
-  marginRight: 170,
+  height: compact ? 520 : 560,
+  marginLeft: compact ? 140 : 260,
+  marginRight: compact ? 50 : 170,
   x: {label: "distinct products", grid: true},
-  y: {label: null},
+  y: {
+    label: null,
+    tickFormat: (d) => (compact && d.length > 24 ? `${d.slice(0, 23)}\u2026` : d)
+  },
   color: {scheme: "Blues"},
   marks: [
     Plot.barX(topTargets, {x: "products", y: "target", fill: "products", tip: true}),
     Plot.text(topTargets, {
       x: "products",
       y: "target",
-      text: (d) => `${d.products} products / ${d.vendors} vendors`,
+      text: (d) =>
+        compact ? `${d.products}` : `${d.products} products / ${d.vendors} vendors`,
       dx: 5,
       textAnchor: "start",
       fill: "currentColor",

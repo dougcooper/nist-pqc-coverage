@@ -34,7 +34,9 @@ const rows = coverage.filter(
 );
 
 const products = new Set(rows.map(productKey));
-const targets = new Set(rows.map((d) => `${osLabel(d)}|${d.arch}`));
+const targets = new Set(
+  rows.filter((d) => d.arch && d.arch !== "unknown").map((d) => `${osLabel(d)}|${d.arch}`)
+);
 const vendors = new Set(rows.map((d) => d.vendor));
 const unknown = rows.filter((d) => d.os_family === "unknown");
 ```
@@ -126,11 +128,19 @@ const osRows = d3
 ```
 
 ```js
+const compact = window.innerWidth < 700;
+```
+
+```js
 Plot.plot({
   height: 480,
-  marginLeft: 210,
+  marginLeft: compact ? 150 : 210,
+  marginRight: compact ? 40 : 20,
   x: {label: "distinct products", grid: true},
-  y: {label: null},
+  y: {
+    label: null,
+    tickFormat: (d) => (compact && d.length > 18 ? `${d.slice(0, 17)}\u2026` : d)
+  },
   marks: [
     Plot.barX(osRows, {x: "products", y: "os", fill: "#4e79a7", tip: true}),
     Plot.text(osRows, {
@@ -166,9 +176,13 @@ const cpuRows = d3
 ```js
 Plot.plot({
   height: 480,
-  marginLeft: 210,
+  marginLeft: compact ? 150 : 210,
+  marginRight: compact ? 40 : 20,
   x: {label: "distinct products", grid: true},
-  y: {label: null},
+  y: {
+    label: null,
+    tickFormat: (d) => (compact && d.length > 18 ? `${d.slice(0, 17)}\u2026` : d)
+  },
   marks: [
     Plot.barX(cpuRows, {x: "products", y: "cpu", fill: "#59a14f", tip: true}),
     Plot.text(cpuRows, {
