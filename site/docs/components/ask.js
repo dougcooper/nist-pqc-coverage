@@ -16,6 +16,12 @@ export const MODELS = [
     note: "default: fast, writes plain SQL"
   },
   {
+    id: "Qwen2.5-Coder-0.5B-Instruct",
+    label: "Qwen2.5-Coder 0.5B",
+    size: "~0.4 GB",
+    note: "small: for weak GPUs, less accurate"
+  },
+  {
     id: "Qwen3.5-2B",
     label: "Qwen3.5 2B",
     size: "~1.4 GB",
@@ -314,6 +320,12 @@ export function createAgent({db, onSql, source, describe, models = MODELS, shade
     option.textContent = `${model.label} (${model.size})`;
     modelSelect.append(option);
   }
+  try {
+    const saved = localStorage.getItem("pqc-agent-model");
+    if (saved && models.some((model) => model.id === saved)) modelSelect.value = saved;
+  } catch {
+    // Private-mode storage can throw; the default model is fine.
+  }
 
   let worker = null;
   let requestId = 0;
@@ -406,6 +418,11 @@ export function createAgent({db, onSql, source, describe, models = MODELS, shade
       await send({type: "init", model: id});
       ready = id;
       progress.hidden = true;
+      try {
+        localStorage.setItem("pqc-agent-model", model.id);
+      } catch {
+        // Remembering the choice is a convenience, not a requirement.
+      }
       await refreshModel();
       question.focus();
     } catch (error) {
@@ -543,9 +560,38 @@ export function createAgent({db, onSql, source, describe, models = MODELS, shade
     scrollLog();
   }
 
+  // A lost WebGPU device cannot be revived inside the worker that owned it, so
+  // throw the worker away and let a new one request a new adapter. One retry,
+  // then the error goes back to the reader with an explanation.
+  async function restartWorker() {
+    if (worker) {
+      worker.terminate();
+      worker = null;
+    }
+    for (const handler of pending.values()) handler.reject(new Error("Stopped."));
+    pending.clear();
+    const model = ready ?? modelId(selected(), shaderF16);
+    ready = null;
+    setProgress(0.12, "Graphics device lost \u2014 restarting the model\u2026");
+    await ensureWorker();
+    await send({type: "init", model});
+    ready = model;
+    progress.hidden = true;
+    await refreshModel();
+  }
+
   async function generate(messages) {
-    const reply = await send({type: "chat", messages, schema: RESPONSE_SCHEMA, maxTokens: 400});
-    return parseAnswer(reply.text);
+    const payload = {type: "chat", messages, schema: RESPONSE_SCHEMA, maxTokens: 360};
+    try {
+      const reply = await send(payload);
+      return parseAnswer(reply.text);
+    } catch (error) {
+      const reason = String(error?.message ?? error);
+      if (!/device|GPUBuffer|mapAsync|unmapped|lost|GPU/i.test(reason)) throw error;
+      await restartWorker();
+      const reply = await send(payload);
+      return parseAnswer(reply.text);
+    }
   }
 
   async function ask(text) {
@@ -605,13 +651,46 @@ export function createAgent({db, onSql, source, describe, models = MODELS, shade
       if (out && answer) renderAnswer(message, answer, out);
       else if (answer) renderFailure(message, answer, lastError);
       else {
-        message.replaceChildren(
-          element(
+        const reason = String(lastError?.message ?? "unknown error").replace(/\.$/, "");
+        const lost = /device-lost|device|GPUBuffer|mapAsync|lost/i.test(reason);
+        if (!lost) {
+          message.replaceChildren(
+            element(
+              "p",
+              "agent-error",
+              `The model could not answer: ${reason}. Try again, or reload the page if it keeps happening.`
+            )
+          );
+        } else {
+          const small = models.find((model) => /0\.5B/.test(model.id));
+          const note = element(
             "p",
             "agent-error",
-            `The model could not answer: ${String(lastError?.message ?? "unknown error").replace(/\.$/, "")}. Try again, or reload the page if it keeps happening.`
-          )
-        );
+            `The browser lost its graphics device and could not restart the model. This adapter may not have enough memory for ${selected().label}. ` +
+              "The SQL console works without the model."
+          );
+          if (small && small.id !== modelSelect.value) {
+            const fix = element("button", "agent-action", `Use ${small.label} (${small.size}) and try again`);
+            fix.type = "button";
+            fix.addEventListener("click", async () => {
+              fix.disabled = true;
+              fix.textContent = `Loading ${small.label}\u2026`;
+              try {
+                modelSelect.value = small.id;
+                await refreshModel();
+                await loadModel();
+                await ask(text);
+              } catch (error) {
+                appendError(`Could not switch to ${small.label}: ${error?.message ?? error}`);
+              }
+            });
+            const actions = element("div", "agent-actions");
+            actions.append(fix);
+            message.replaceChildren(note, actions);
+          } else {
+            message.replaceChildren(note);
+          }
+        }
       }
     } catch (error) {
       message.replaceChildren(element("p", "agent-error", error?.message ?? String(error)));

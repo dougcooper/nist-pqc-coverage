@@ -14,11 +14,15 @@ let lastModel = null;
 // The default 32k context allocates a KV cache big enough to exhaust shared GPU
 // memory on laptops, which shows up as a lost WebGPU device on the first long
 // prompt. A few thousand tokens is plenty for this task.
-const ENGINE_SETTINGS = {context_window_size: 2048, prefill_chunk_size: 1024};
+const ENGINE_SETTINGS = {context_window_size: 2048, prefill_chunk_size: 512};
 
-// Errors that mean "the engine or its device is gone", not "the SQL is wrong".
-const RECOVERABLE =
-  /device|GPUBuffer|mapAsync|unmapped|GPU|not loaded|reload|pipeline|uninitialized/i;
+// The WebGPU device itself is gone. Nothing in this worker can revive it: the
+// page has to throw the worker away so it can request a new adapter and device.
+const DEVICE_LOST = /device|GPUBuffer|mapAsync|unmapped|GPU|lost/i;
+
+// The device is alive but the engine lost its model (for example after an
+// interrupted reload). Reloading in place is enough.
+const MODEL_STATE = /not loaded|reload|pipeline|uninitialized/i;
 
 const models = prebuiltAppConfig.model_list
   .filter((model) => /Qwen/.test(model.model_id))
@@ -73,7 +77,7 @@ async function init({id, model}) {
   send({id, type: "status", status: "ready", model, models});
 }
 
-async function chat({id, messages, schema, maxTokens = 400, temperature = 0}) {
+async function chat({id, messages, schema, maxTokens = 360, temperature = 0}) {
   const model = loadedModel ?? lastModel;
   if (!model) throw new Error("No model is selected. Choose one and download it first.");
   const request = () =>
@@ -86,8 +90,7 @@ async function chat({id, messages, schema, maxTokens = 400, temperature = 0}) {
         : {})
     });
 
-  let reply;
-  try {
+  const run = async () => {
     // The engine can be present but have no model loaded (for example after an
     // interrupted reload), so check for that as well as for a null engine.
     if (!engine) {
@@ -95,23 +98,26 @@ async function chat({id, messages, schema, maxTokens = 400, temperature = 0}) {
       await load(id, model);
     }
     await engine.resetChat();
-    reply = await request();
+    return request();
+  };
+
+  let reply;
+  try {
+    reply = await run();
   } catch (error) {
-    if (!RECOVERABLE.test(describe(error))) throw error;
-    // Shared-memory GPUs occasionally drop the WebGPU device mid-generation.
-    // A fresh engine fixes it, so reload once and retry before giving up.
-    send({id, type: "progress", progress: 0, text: "Graphics hiccup \u2014 reloading the model\u2026"});
-    await drop();
-    try {
-      await load(id, model);
-      await engine.resetChat();
-      reply = await request();
-    } catch (again) {
+    const reason = describe(error);
+    if (DEVICE_LOST.test(reason)) {
+      // Only a new worker with a new adapter can get past this, so hand the
+      // decision to the page instead of spinning up a doomed engine here.
       await drop();
-      throw new Error(
-        `The model could not be reloaded after a graphics error: ${describe(again)}. Reload the page to start fresh.`
-      );
+      throw new Error(`device-lost: ${reason}`);
     }
+    if (!MODEL_STATE.test(reason)) throw error;
+    // Shared-memory GPUs occasionally drop the model but keep the device.
+    send({id, type: "progress", progress: 0, text: "Reloading the model\u2026"});
+    await drop();
+    await load(id, model);
+    reply = await run();
   }
   const text = reply.choices?.[0]?.message?.content ?? "";
   send({id, type: "done", text, usage: reply.usage ?? null});

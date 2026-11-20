@@ -99,6 +99,10 @@ is sent to a server; the model is fetched from Hugging Face once and cached in t
 browser (Storage → Cache Storage), with a **Delete model** button to reclaim the
 space.
 
+If the graphics adapter cannot hold the default model, the panel offers a 0.4 GB
+Qwen2.5-Coder 0.5B instead and remembers the choice; it is less accurate but runs
+on integrated GPUs.
+
 It only appears on a desktop-sized window with a WebGPU adapter that has at least
 1 GiB of buffer size, and it never downloads anything until you ask for it. On
 integrated GPUs the browser can lose the WebGPU device during generation
