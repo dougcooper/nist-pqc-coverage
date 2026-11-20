@@ -8,13 +8,14 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from . import cavp, cmvp, export, matching, parquet, policy, upstream
+from . import cavp, cmvp, export, language, matching, parquet, policy, upstream
 from .http import Fetcher
 from .normalize import module_kind_of, normalize_oe
 
 CAVP_VALIDATION_COLUMNS = [
     "cert", "validation_id", "vendor", "implementation", "version", "type",
-    "module_kind", "first_validated", "url", "n_algorithms", "n_pqc_algorithms",
+    "module_kind", "description", "impl_language", "impl_language_source",
+    "first_validated", "url", "n_algorithms", "n_pqc_algorithms",
     "pqc_algorithms", "pqc_families", "cmvp_status", "cmvp_certs",
     "in_process_modules",
 ]
@@ -30,16 +31,17 @@ OE_COLUMNS = [
 ]
 CMVP_CERT_COLUMNS = [
     "cert", "vendor", "module", "standard", "status", "level", "module_type",
-    "module_kind", "embodiment", "upstream", "validated", "sunset", "lab",
+    "module_kind", "embodiment", "upstream", "description", "impl_language",
+    "impl_language_source", "validated", "sunset", "lab",
     "security_policy_url", "url", "pqc_algorithms", "pqc_families", "cavp_certs",
 ]
 CMVP_LINK_COLUMNS = [
     "cmvp_cert", "cavp_cert", "cavp_validation_id", "algorithm", "pqc_family",
 ]
 IN_PROCESS_COLUMNS = [
-    "list", "module", "vendor", "standard", "status", "status_date",
-    "pqc_evidence", "match_score", "matched_cavp_certs",
-    "matched_implementations", "url",
+    "list", "module", "vendor", "impl_language", "impl_language_source",
+    "standard", "status", "status_date", "pqc_evidence", "match_score",
+    "matched_cavp_certs", "matched_implementations", "url",
 ]
 POLICY_COLUMNS = [
     "cert", "kind", "embodiment", "page", "pdf_url",
@@ -47,8 +49,8 @@ POLICY_COLUMNS = [
 ]
 COVERAGE_COLUMNS = [
     "source", "record_id", "cert", "vendor", "product", "module_type",
-    "module_kind", "upstream", "status", "validated", "url", "oe_id", "oe_name",
-    "os_family",
+    "module_kind", "upstream", "impl_language", "impl_language_source",
+    "status", "validated", "url", "oe_id", "oe_name", "os_family",
     "os_name", "os_product", "os_version", "arch", "cpu", "cpu_vendor",
     "cpu_series", "target", "pqc_algorithm", "pqc_family", "parameter_sets",
     "functions", "evidence",
@@ -272,11 +274,14 @@ def scrape(args: argparse.Namespace) -> None:
         if evidence == "cavp_name_match":
             for detail in matched:
                 strong_by_cert[detail.cert].append(row)
+        lang = language.classify("", row.vendor, row.module)
         in_process_rows.append(
             {
                 "list": row.list_name,
                 "module": row.module,
                 "vendor": row.vendor,
+                "impl_language": lang.name,
+                "impl_language_source": lang.source,
                 "standard": row.standard,
                 "status": row.status,
                 "status_date": export.to_iso(row.status_date),
@@ -314,6 +319,12 @@ def scrape(args: argparse.Namespace) -> None:
         families = unique(row.family for row in pqc_rows)
         algorithms = unique(row.algorithm for row in pqc_rows)
         pipeline = strong_by_cert.get(detail.cert, [])
+        lang = language.classify(
+            detail.description,
+            detail.vendor,
+            detail.implementation,
+            module_kind_of(detail.type),
+        )
         cavp_rows.append(
             {
                 "cert": detail.cert,
@@ -323,6 +334,9 @@ def scrape(args: argparse.Namespace) -> None:
                 "version": detail.version,
                 "type": detail.type,
                 "module_kind": module_kind_of(detail.type),
+                "description": detail.description,
+                "impl_language": lang.name,
+                "impl_language_source": lang.source,
                 "first_validated": export.to_iso(detail.first_validated),
                 "url": detail.url,
                 "n_algorithms": len({row.algorithm for row in detail.rows}),
@@ -376,6 +390,13 @@ def scrape(args: argparse.Namespace) -> None:
             cavp.family_from_text(algorithm.algorithm)
             for algorithm in cert.pqc_algorithms
         )
+        library = upstream.classify(cert.vendor, cert.module, cert.description)
+        lang = language.classify(
+            cert.description,
+            cert.vendor,
+            cert.module,
+            module_kind_of(cert.module_type),
+        )
         cmvp_rows.append(
             {
                 "cert": cert.cert,
@@ -387,9 +408,10 @@ def scrape(args: argparse.Namespace) -> None:
                 "module_type": cert.module_type,
                 "module_kind": module_kind_of(cert.module_type),
                 "embodiment": cert.embodiment,
-                "upstream": upstream.classify(
-                    cert.vendor, cert.module, cert.description
-                ),
+                "upstream": library,
+                "description": cert.description,
+                "impl_language": lang.name,
+                "impl_language_source": lang.source,
                 "validated": export.to_iso(cert.validated),
                 "sunset": export.to_iso(cert.sunset),
                 "lab": cert.lab,
@@ -411,12 +433,14 @@ def scrape(args: argparse.Namespace) -> None:
     def add_coverage(
         *, source: str, record_id: str, cert: str, vendor: str, product: str,
         module_type: str, status: str, validated: str, url: str,
-        row: cavp.DetailRow, evidence: str,
+        description: str, row: cavp.DetailRow, evidence: str,
     ) -> None:
         key = (source, record_id, row.oe_id, row.algorithm)
         if key in coverage:
             return
         oe = oes.get(row.oe_id, {})
+        kind = module_kind_of(module_type)
+        lang = language.classify(description, vendor, product, kind)
         coverage[key] = {
             "source": source,
             "record_id": record_id,
@@ -424,8 +448,10 @@ def scrape(args: argparse.Namespace) -> None:
             "vendor": vendor,
             "product": product,
             "module_type": module_type,
-            "module_kind": module_kind_of(module_type),
+            "module_kind": kind,
             "upstream": upstream.classify(vendor, product),
+            "impl_language": lang.name,
+            "impl_language_source": lang.source,
             "status": status,
             "validated": export.to_iso(validated),
             "url": url,
@@ -454,7 +480,7 @@ def scrape(args: argparse.Namespace) -> None:
                 vendor=detail.vendor, product=detail.implementation,
                 module_type=detail.type, status=cavp_status(detail.cert),
                 validated=detail.first_validated, url=detail.url,
-                row=row, evidence="cavp_validated",
+                description=detail.description, row=row, evidence="cavp_validated",
             )
 
     for cert in active_certs:
@@ -472,7 +498,7 @@ def scrape(args: argparse.Namespace) -> None:
                     vendor=cert.vendor, product=cert.module,
                     module_type=cert.module_type, status=cert.status,
                     validated=cert.validated, url=cert.url,
-                    row=row, evidence="cmvp_active",
+                    description=cert.description, row=row, evidence="cmvp_active",
                 )
 
     for row, matched in zip(in_process, matches):
@@ -484,7 +510,7 @@ def scrape(args: argparse.Namespace) -> None:
                     module_type="", status=row.status,
                     validated=row.status_date,
                     url=cmvp.MIP_URL if row.list_name == "MIP" else cmvp.IUT_URL,
-                    row=oe_row, evidence="cavp_name_match",
+                    description="", row=oe_row, evidence="cavp_name_match",
                 )
 
     coverage_rows = sorted(
@@ -591,6 +617,11 @@ def scrape(args: argparse.Namespace) -> None:
                 "Security policy PDFs are extracted best-effort: the raw tested and "
                 "vendor-affirmed OE sections are authoritative, while the OS/CPU "
                 "candidate columns are regex hints, not compliance evidence.",
+                "Implementation language is inferred from NIST descriptions, "
+                "product names, or a curated upstream-library map; "
+                "impl_language_source records which. Hardware and firmware "
+                "without evidence are not_applicable; empty with none means "
+                "unknown.",
             ],
         },
     )

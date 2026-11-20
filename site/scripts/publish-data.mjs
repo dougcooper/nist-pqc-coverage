@@ -30,6 +30,11 @@ const NOTES = {
     "Normalized module type: software | software_hybrid | firmware | firmware_hybrid | hardware; empty for modules in process",
   type: "CAVP type: SOFTWARE | HARDWARE | FIRMWARE",
   upstream: "Keyword match to a known upstream library (AWS-LC, OpenSSL, Bouncy Castle, ...); empty when no match",
+  description: "Free-text module description from NIST; the evidence for impl_language when it is stated",
+  impl_language:
+    "Inferred implementation language (C, C++, C#, Java, Go, Rust, ...); empty when unknown or not applicable. A hint, not a NIST field",
+  impl_language_source:
+    "Evidence for impl_language: stated (NIST description) | name (product name) | upstream (known library) | not_applicable (hardware/firmware without evidence) | none",
   status:
     "For CAVP rows: active (an active CMVP certificate covers it), in_process (matched to a CMVP module in process), none_yet. For CMVP rows: certificate status.",
   cmvp_status: "active | in_process | none_yet (CAVP rows only)",
@@ -280,6 +285,13 @@ Every row has a \`source\`:
   OpenSSL, BoringSSL, wolfSSL, mbed TLS, SymCrypt, Bouncy Castle, Mozilla NSS,
   corecrypto, GnuTLS, Libgcrypt, Crypto++, Botan). Empty means unclassified, not
   "no library".
+- \`impl_language\` is a **hint**, not a NIST field. \`impl_language_source\` says
+  why: \`stated\` (the module description says "implemented in pure Java"),
+  \`name\` (the product name identifies the language), \`upstream\` (a known
+  library such as OpenSSL or AWS-LC), \`not_applicable\` (hardware or firmware
+  with no language evidence), or \`none\`. Empty language plus \`none\` means
+  unknown. "C language API" describes an interface, not an implementation,
+  and is not counted.
 
 ## Example questions (DuckDB)
 
@@ -330,6 +342,16 @@ Which certificates cover SLH-DSA:
 SELECT cert, vendor, module, pqc_algorithms
 FROM read_csv('cmvp_certs.csv', header = true)
 WHERE list_contains(string_split(pqc_families, ';'), 'SLH-DSA');
+\`\`\`
+
+Validated products by implementation language:
+
+\`\`\`sql
+SELECT coalesce(nullif(impl_language, ''), 'unknown') AS language,
+       count(DISTINCT vendor || '|' || product) AS products
+FROM read_csv('pqc_coverage.csv', header = true)
+WHERE source = 'CMVP' OR (source = 'CAVP' AND status = 'none_yet')
+GROUP BY 1 ORDER BY products DESC;
 \`\`\`
 
 ## Caveats

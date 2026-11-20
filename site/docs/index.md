@@ -104,6 +104,54 @@ display(
   certificate is not counted twice.
 </div>
 
+## Implementation languages
+
+NIST publishes no structured implementation-language field. This counts
+distinct validated software products where the language is stated in the module
+description, identified by the product name, or known from the upstream
+library; the remainder is unknown. Hardware and firmware are excluded because
+NIST does not publish their implementation language.
+
+```js
+const languageRows = await query(db, `
+  SELECT impl_language_label AS language,
+         impl_language_source AS source,
+         count(DISTINCT product_key) AS count
+  FROM validated
+  WHERE impl_language_source <> 'not_applicable'
+  GROUP BY 1, 2
+  ORDER BY count DESC, language`);
+```
+
+```js
+const languageSourceColors = new Map([
+  ["stated", palette[2]],
+  ["name", palette[1]],
+  ["upstream", palette[0]],
+  ["none", palette[9]]
+]);
+display(
+  barChart(languageRows, {
+    x: "language",
+    y: "count",
+    series: "source",
+    stack: true,
+    horizontal: true,
+    colors: languageSourceColors,
+    height: 260
+  })
+);
+```
+
+<div class="small">
+  Stacked by evidence: <strong>stated</strong> means the NIST description says
+  so (for example "implemented in pure Java"); <strong>name</strong> means the
+  product name identifies it; <strong>upstream</strong> means a known library
+  such as OpenSSL or AWS-LC; <strong>none</strong> is the honest remainder for
+  software. Hardware and firmware are left out of this chart.
+  "C language API" is an interface, not an implementation, and is not counted.
+</div>
+
 ## Targets by validation stage
 
 Each OS / CPU target counted once, at its furthest stage.

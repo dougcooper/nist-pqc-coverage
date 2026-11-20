@@ -24,6 +24,7 @@ const DIMENSIONS = [
   ["os_name", "OS version"],
   ["cpu", "CPU"],
   ["upstream", "Upstream library"],
+  ["impl_language_label", "Implementation language"],
   ["parameter_sets", "Parameter sets"]
 ];
 

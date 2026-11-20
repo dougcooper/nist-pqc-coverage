@@ -25,6 +25,9 @@ const upstreamOptions = (await query(db, `
   WHERE coalesce(upstream, '') <> '' ORDER BY 1`)).map((d) => d.upstream);
 const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverage ORDER BY 1`)).map((d) => d.os_family);
 const archOptions = (await query(db, `SELECT DISTINCT arch FROM coverage ORDER BY 1`)).map((d) => d.arch);
+const implLanguageOptions = (await query(db, `
+  SELECT DISTINCT impl_language_label FROM coverage
+  ORDER BY impl_language_label`)).map((d) => d.impl_language_label);
 const [total] = await query(db, `SELECT count(*) AS n FROM coverage`);
 ```
 
@@ -61,6 +64,12 @@ const moduleKind = view(
     value: "All module kinds"
   })
 );
+const implLanguage = view(
+  Inputs.select(["All implementation languages", ...implLanguageOptions], {
+    label: "Implementation language",
+    value: "All implementation languages"
+  })
+);
 ```
 
 ```js
@@ -73,13 +82,15 @@ const where = (() => {
   if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
   if (arch !== "All architectures") { clauses.push("arch = ?"); params.push(arch); }
   if (moduleKind !== "All module kinds") { clauses.push("module_kind = ?"); params.push(moduleKinds.get(moduleKind)); }
+  if (implLanguage !== "All implementation languages") { clauses.push("impl_language_label = ?"); params.push(implLanguage); }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 ```
 
 ```js
 const rows = (await query(db, `
-  SELECT source, vendor, product, module_type, upstream, status, pqc_algorithm AS algorithm,
+  SELECT source, vendor, product, module_type, upstream, impl_language_label,
+         impl_language_source, status, pqc_algorithm AS algorithm,
          parameter_sets, os_family, os_name, os_version, arch, cpu, target, evidence,
          strftime(validated, '%Y-%m-%d') AS validated, url
   FROM coverage ${where.sql}`, where.params)).map((d) => ({...d, source: sourceLabel(d.source)}));
@@ -101,6 +112,8 @@ display(
       {key: "product", label: "Product", width: 200},
       {key: "module_type", label: "Type"},
       {key: "upstream", label: "Upstream", hideOnCard: true},
+      {key: "impl_language_label", label: "Language"},
+      {key: "impl_language_source", label: "Language source", hideOnCard: true},
       {key: "status", label: "Status", hideOnCard: true},
       {key: "algorithm", label: "Algorithm"},
       {key: "parameter_sets", label: "Parameter sets", hideOnCard: true},

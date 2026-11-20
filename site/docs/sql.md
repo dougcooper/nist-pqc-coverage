@@ -57,7 +57,7 @@ What is actually in the low-cardinality columns, with row counts:
 
 ```js
 const dictionary = await Promise.all(
-  ["source", "status", "os_family", "arch", "pqc_family", "module_type", "upstream"].map(
+  ["source", "status", "os_family", "arch", "pqc_family", "module_type", "upstream", "impl_language_label"].map(
     async (column) => {
       const rows = await query(
         db,

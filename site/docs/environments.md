@@ -18,6 +18,9 @@ import {dataTable} from "./components/table.js";
 ```js
 const db = await openDb({coverage_raw: FileAttachment("data/pqc_coverage.parquet")});
 const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverage ORDER BY 1`)).map((d) => d.os_family);
+const implLanguageOptions = (await query(db, `
+  SELECT DISTINCT impl_language_label FROM coverage
+  ORDER BY impl_language_label`)).map((d) => d.impl_language_label);
 ```
 
 ```js
@@ -25,6 +28,7 @@ const includePipeline = view(Inputs.toggle({label: "Include CMVP in progress", v
 const family = view(Inputs.select(["All algorithms", ...families], {label: "PQC family", value: "All algorithms"}));
 const osFamily = view(Inputs.select(["All OS families", ...osFamilyOptions], {label: "OS family", value: "All OS families"}));
 const moduleType = view(Inputs.select(["All module types", ...moduleKinds.keys()], {label: "Module type", value: "All module types"}));
+const implLanguage = view(Inputs.select(["All implementation languages", ...implLanguageOptions], {label: "Implementation language", value: "All implementation languages"}));
 ```
 
 ```js
@@ -35,6 +39,7 @@ const where = (() => {
   if (family !== "All algorithms") { clauses.push("pqc_family = ?"); params.push(family); }
   if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
   if (moduleType !== "All module types") { clauses.push("module_kind = ?"); params.push(moduleKinds.get(moduleType)); }
+  if (implLanguage !== "All implementation languages") { clauses.push("impl_language_label = ?"); params.push(implLanguage); }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 ```
@@ -178,7 +183,9 @@ const envRows = await query(db, `
          string_agg(DISTINCT cpu_vendor, ', ' ORDER BY cpu_vendor)
            FILTER (WHERE coalesce(cpu_vendor, '') <> '') AS "cpuVendor",
          string_agg(DISTINCT module_type, ', ' ORDER BY module_type)
-           FILTER (WHERE coalesce(module_type, '') <> '') AS "moduleTypes"
+           FILTER (WHERE coalesce(module_type, '') <> '') AS "moduleTypes",
+         string_agg(DISTINCT impl_language_label, ', ' ORDER BY impl_language_label)
+           AS languages
   FROM coverage ${where.sql}
   GROUP BY 1, 2, 3
   ORDER BY products DESC`, where.params);
@@ -195,7 +202,8 @@ display(
       {key: "vendors", label: "Vendors"},
       {key: "families", label: "Families"},
       {key: "cpuVendor", label: "CPU vendor"},
-      {key: "moduleTypes", label: "Module types"}
+      {key: "moduleTypes", label: "Module types"},
+      {key: "languages", label: "Languages", hideOnCard: true}
     ],
     sort: "products",
     reverse: true,

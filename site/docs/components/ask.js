@@ -72,7 +72,7 @@ export async function storageInfo() {
 }
 
 const VIEW_NOTES = `Tables (DuckDB, read-only):
-coverage: one row per source, record, environment and algorithm. Columns: source, record_id, vendor, product, module_type, os_name, os_family, arch, cpu, cpu_series, pqc_algorithm, pqc_family, parameter_sets, status, first_validated, upstream, os_label, product_key, target_key.
+coverage: one row per source, record, environment and algorithm. Columns: source, record_id, vendor, product, module_type, os_name, os_family, arch, cpu, cpu_series, pqc_algorithm, pqc_family, parameter_sets, status, first_validated, upstream, impl_language, impl_language_source, impl_language_label, os_label, product_key, target_key.
 validated: coverage rows for CMVP certificates plus CAVP validations with no CMVP certificate.
 validated_software: validated where module_type starts with SOFTWARE.
 with_in_process: validated plus modules in process at CMVP.
@@ -89,7 +89,9 @@ A: {"title":"Products per PQC family","sql":"SELECT pqc_family, count(DISTINCT p
 Q: Which targets have the most validated products?
 A: {"title":"Top targets","sql":"SELECT target, products, vendors FROM targets ORDER BY products DESC LIMIT 25","chart":"bar","x":"target","y":"products"}
 Q: Which CAVP validations have no CMVP certificate yet?
-A: {"title":"CAVP validations without a CMVP certificate","sql":"SELECT cert, vendor, implementation FROM cavp WHERE cmvp_status = 'none_yet' ORDER BY vendor","chart":"none"}`;
+A: {"title":"CAVP validations without a CMVP certificate","sql":"SELECT cert, vendor, implementation FROM cavp WHERE cmvp_status = 'none_yet' ORDER BY vendor","chart":"none"}
+Q: How many validated products are there per implementation language?
+A: {"title":"Products per implementation language","sql":"SELECT impl_language_label AS language, count(DISTINCT product_key) AS products FROM validated GROUP BY 1 ORDER BY 2 DESC","chart":"bar","x":"language","y":"products"}`;
 
 const RESPONSE_SCHEMA = {
   type: "object",
@@ -136,7 +138,7 @@ export async function describeData(db) {
        WHERE table_schema = 'main' ORDER BY 1`
     ),
     Promise.all(
-      ["os_family", "arch", "source", "pqc_family"].map(async (column) => {
+      ["os_family", "arch", "source", "pqc_family", "impl_language_label"].map(async (column) => {
         const rows = await query(
           db,
           `SELECT DISTINCT ${column} AS value FROM coverage

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T15:42:34+00:00",
+  "generated_at": "2026-11-20T19:39:22+00:00",
   "data_as_of": "2026-11-19",
   "counts": {
     "cavp_pqc_validations": 344,
@@ -47,6 +47,7 @@
     "CMVP certificate pages do not list operating environments; they are inherited from the linked CAVP validations.",
     "Modules-in-process and IUT lists carry no algorithms; PQC evidence is inferred from vendor/name matching and must be treated as indicative (see pqc_evidence).",
     "OS family, product, version and CPU architecture are normalized heuristically from CAVP operating-environment text.",
-    "Security policy PDFs are extracted best-effort: the raw tested and vendor-affirmed OE sections are authoritative, while the OS/CPU candidate columns are regex hints, not compliance evidence."
+    "Security policy PDFs are extracted best-effort: the raw tested and vendor-affirmed OE sections are authoritative, while the OS/CPU candidate columns are regex hints, not compliance evidence.",
+    "Implementation language is inferred from NIST descriptions, product names, or a curated upstream-library map; impl_language_source records which. Hardware and firmware without evidence are not_applicable; empty with none means unknown."
   ]
 }

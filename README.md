@@ -46,6 +46,13 @@ Outputs land in `data/`:
 software scopes include software-hybrid modules and exclude firmware-hybrid ones.
 Modules in process have no published type, so their `module_kind` is empty.
 
+`impl_language` is a best-effort hint, not a NIST field. It comes from the module
+description when NIST states it (`impl_language_source=stated`), from an
+unmistakable product name (`name`), or from the curated upstream-library map
+(`upstream`, e.g. OpenSSL and AWS-LC are C). Hardware and firmware without any
+evidence are `not_applicable`; empty plus `none` means unknown. The CAVP and
+CMVP tables also keep the raw `description` that produced the evidence.
+
 ## Data caveats
 
 - CMVP certificate pages do not publish tested operating environments. The
@@ -62,6 +69,13 @@ Modules in process have no published type, so their `module_kind` is empty.
 - OS family/product/version and CPU architecture are heuristic normalizations
   of free-text OE names and dependency data. Rows that fail to match keep
   `os_family=unknown` and are reported at the end of each scrape.
+- Implementation language is not published by NIST as a structured field.
+  `impl_language` is evidence-bearing: `stated` when the description says so,
+  `name` when the product name identifies it, `upstream` when a known library
+  (OpenSSL, AWS-LC, …) identifies it. Hardware and firmware with no evidence are
+  `not_applicable`; the software remainder is `none`. Treat it as a hint, not a
+  compliance claim. "C language API" describes an interface, not the
+  implementation, and is not counted.
 - `--include-historical` adds non-active CMVP certificates (excluded by default).
 
 ## Dashboard
@@ -73,10 +87,11 @@ queries shared views (`coverage`, `validated`, `validated_software`,
 `with_in_process`, `targets`) defined in `site/docs/components/db.js`; filters
 become SQL parameters.
 
-- **Overview** — validated products by family, source, and quarter; top vendors.
+- **Overview** — validated products by family, source, and quarter;
+  implementation-language mix by evidence source; top vendors.
 - **Operating environments** — OS-family × architecture heatmap, most-covered OS
   versions and CPUs, and the full target table, with filters for source,
-  algorithm family, OS family, and module type.
+  algorithm family, OS family, module type, and implementation language.
 - **Coverage** — targets ranked by product/vendor count, cumulative coverage
   curve, greedy product selection, and per-target drill-down.
 - **Pipeline** — modules in process / IUT with their inferred PQC evidence, and
@@ -88,7 +103,8 @@ become SQL parameters.
   filters) and a full read-only editor behind two tabs; the SQL the builder runs
   is shown above the results, and **Open in SQL** hands it to the editor. Both
   share the column dictionary, schema browser, table/chart view, and CSV download.
-- **Explorer** — the full `pqc_coverage.csv` table with search and filters.
+- **Explorer** — the full `pqc_coverage.csv` table with search and filters,
+  including implementation language.
 
 Charts are [ECharts](https://echarts.apache.org/) styled like Evidence (quiet
 axes, rounded bars, theme-aware); tables are a shared component with sorting,

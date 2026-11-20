@@ -126,6 +126,7 @@ const where = (() => {
 
 const pipelineRows = await query(db, `
   SELECT module, vendor, list, status,
+         coalesce(nullif(impl_language, ''), 'Unknown') AS language,
          strftime(status_date, '%Y-%m-%d') AS status_date,
          pqc_evidence, match_score AS score,
          matched_cavp_certs AS matched, url
@@ -149,6 +150,7 @@ display(
     columns: [
       {key: "module", label: "Module", width: 260},
       {key: "vendor", label: "Vendor", width: 180},
+      {key: "language", label: "Language"},
       {key: "list", label: "List"},
       {key: "status", label: "Status"},
       {key: "status_date", label: "Status date"},
@@ -185,6 +187,9 @@ completed a CMVP module certificate (or the certificate is not active).
 ```js
 const noCmvpRows = await query(db, `
   SELECT cert, vendor, implementation, pqc_families AS families,
+         CASE WHEN coalesce(impl_language, '') <> '' THEN impl_language
+              WHEN impl_language_source = 'not_applicable' THEN 'Not applicable'
+              ELSE 'Unknown' END AS language,
          strftime(first_validated, '%Y-%m-%d') AS validated,
          in_process_modules AS pipeline, url
   FROM cavp
@@ -199,6 +204,7 @@ display(
       {key: "cert", label: "CAVP cert"},
       {key: "vendor", label: "Vendor", width: 180},
       {key: "implementation", label: "Implementation", width: 240},
+      {key: "language", label: "Language"},
       {key: "families", label: "Families"},
       {key: "validated", label: "First validated"},
       {key: "pipeline", label: "In-process match", hideOnCard: true},

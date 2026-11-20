@@ -185,6 +185,7 @@ const scopeWhere = softwareOnly
 const targetProducts = await query(db, `
   SELECT source, record_id, vendor, product,
          any_value(status) AS status,
+         any_value(impl_language_label) AS language,
          string_agg(DISTINCT pqc_family, ', ' ORDER BY pqc_family) AS families,
          string_agg(DISTINCT pqc_algorithm, ', ' ORDER BY pqc_algorithm) AS algorithms,
          string_agg(DISTINCT cpu, '; ' ORDER BY cpu)
@@ -206,6 +207,7 @@ display(
       {key: "product", label: "Product", width: 240},
       {key: "source", label: "Source"},
       {key: "status", label: "Status"},
+      {key: "language", label: "Language"},
       {key: "families", label: "Families"},
       {key: "algorithms", label: "Algorithms"},
       {key: "cpus", label: "CPUs", hideOnCard: true},

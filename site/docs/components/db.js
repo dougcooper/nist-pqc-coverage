@@ -17,6 +17,9 @@ const VIEWS = [
               ELSE 'CMVP in progress' END AS program,
          source || '|' || record_id || '|' || coalesce(vendor, '') || '|' ||
            coalesce(product, '') AS product_key,
+         CASE WHEN coalesce(impl_language, '') <> '' THEN impl_language
+              WHEN impl_language_source = 'not_applicable' THEN 'Not applicable'
+              ELSE 'Unknown' END AS impl_language_label,
          os_label || ' \u00b7 ' || arch AS target_key
        FROM (
          SELECT *,
