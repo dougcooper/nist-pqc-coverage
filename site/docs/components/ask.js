@@ -199,9 +199,10 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
   el.innerHTML = `
     <div class="ask-head">
       <div>
-        <h3>Ask the data</h3>
-        <p class="small muted">A small model runs in this browser, writes the SQL, and the
-          console below runs it. Nothing is uploaded.</p>
+        <h3>Ask a question</h3>
+        <p class="small muted">Type a question in plain English. The model runs in
+          this browser and writes the SQL; nothing is uploaded. The first question
+          downloads about 1 GB.</p>
       </div>
       <span class="ask-badge" hidden></span>
     </div>

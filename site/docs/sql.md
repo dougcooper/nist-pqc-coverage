@@ -29,11 +29,6 @@ const db = await openDb({
 });
 ```
 
-```js
-const sqlConsole = createConsole({db});
-display(sqlConsole.el);
-```
-
 ## Ask the data
 
 ```js
@@ -45,23 +40,27 @@ if (report.ok) {
     onSql: (sql, options) => sqlConsole.setQuery(sql, options),
     shaderF16: report.shaderF16
   });
+  display(ask.el);
   await ask.refresh();
-  sqlConsole.el.before(ask.el);
 } else {
   display(
     html`<div class="note small">
       <strong>Ask is not available here.</strong> ${report.reason}
-      You can still query the data with the console below.
     </div>`
   );
 }
 ```
 
-The first question downloads a small language model (about 1 GB) into this
-browser. After that it runs offline. Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or
-<kbd>Cmd</kbd>+<kbd>Enter</kbd>) to run a query. The console accepts one
-read-only `SELECT`/`WITH` statement; write, attach and install are rejected, as
-are reads of remote files.
+## Query
+
+```js
+const sqlConsole = createConsole({db});
+display(sqlConsole.el);
+```
+
+Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or <kbd>Cmd</kbd>+<kbd>Enter</kbd>) to run
+a query. The console accepts one read-only `SELECT`/`WITH` statement; write,
+attach and install are rejected, as are reads of remote files.
 
 ## Column dictionary
 
