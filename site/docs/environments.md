@@ -12,6 +12,7 @@ still thin.
 import {num, familyColors, families} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, heatmap, palette} from "./components/echarts.js";
+import {dataTable} from "./components/table.js";
 ```
 
 ```js
@@ -184,23 +185,24 @@ const envRows = await query(db, `
 ```
 
 ```js
-Inputs.table(envRows, {
-  columns: ["os", "arch", "cpu", "products", "vendors", "families", "cpuVendor", "moduleTypes"],
-  header: {
-    os: "OS",
-    arch: "Arch",
-    cpu: "CPU / SoC",
-    products: "Products",
-    vendors: "Vendors",
-    families: "Families",
-    cpuVendor: "CPU vendor",
-    moduleTypes: "Module types"
-  },
-  sort: "products",
-  reverse: true,
-  rows: 40,
-  width: {os: 220, cpu: 220}
-})
+display(
+  dataTable(envRows, {
+    columns: [
+      {key: "os", label: "OS", width: 200},
+      {key: "arch", label: "Arch"},
+      {key: "cpu", label: "CPU / SoC", width: 200},
+      {key: "products", label: "Products"},
+      {key: "vendors", label: "Vendors"},
+      {key: "families", label: "Families"},
+      {key: "cpuVendor", label: "CPU vendor"},
+      {key: "moduleTypes", label: "Module types"}
+    ],
+    sort: "products",
+    reverse: true,
+    pageSize: 15,
+    csv: "operating-environment-targets.csv"
+  })
+);
 ```
 
 ## Environments that need tuning
@@ -221,12 +223,16 @@ const unknownRows = await query(db, `
 
 ```js
 unknownRows.length
-  ? Inputs.table(unknownRows, {
-      columns: ["oe", "products", "vendors"],
-      header: {oe: "CAVP operating environment text", products: "Products", vendors: "Vendors"},
+  ? dataTable(unknownRows, {
+      columns: [
+        {key: "oe", label: "CAVP operating environment text"},
+        {key: "products", label: "Products"},
+        {key: "vendors", label: "Vendors"}
+      ],
       sort: "products",
       reverse: true,
-      rows: 25
+      pageSize: 10,
+      csv: "unparsed-environments.csv"
     })
   : html`<div class="note">Every environment in this filter was parsed into an OS family.</div>`
 ```

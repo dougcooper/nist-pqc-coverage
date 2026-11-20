@@ -13,6 +13,7 @@ implementations that do not yet have an active CMVP certificate.
 import {num} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, palette} from "./components/echarts.js";
+import {dataTable} from "./components/table.js";
 ```
 
 ```js
@@ -110,7 +111,6 @@ const evidence = view(
     format: (v) => evidenceLabel[v] ?? v
   })
 );
-const search = view(Inputs.text({label: "Search", placeholder: "module or vendor\u2026"}));
 ```
 
 ```js
@@ -119,11 +119,6 @@ const where = (() => {
   const params = [];
   if (list !== "All lists") { clauses.push("list = ?"); params.push(list); }
   if (evidence !== "All evidence") { clauses.push("pqc_evidence = ?"); params.push(evidence); }
-  const q = search.trim();
-  if (q) {
-    clauses.push("lower(coalesce(module, '') || ' ' || coalesce(vendor, '')) LIKE '%' || lower(?) || '%'");
-    params.push(q);
-  }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 
@@ -141,24 +136,43 @@ html`<div class="small">${num.format(pipelineRows.length)} rows</div>`
 ```
 
 ```js
-Inputs.table(pipelineRows, {
-  columns: ["module", "vendor", "list", "status", "status_date", "pqc_evidence", "score", "matched", "url"],
-  header: {
-    module: "Module",
-    vendor: "Vendor",
-    list: "List",
-    status: "Status",
-    status_date: "Status date",
-    pqc_evidence: "Evidence",
-    score: "Score",
-    matched: "Matched CAVP certs",
-    url: "NIST"
-  },
-  format: {pqc_evidence: (v) => evidenceLabel[v] ?? v},
-  sort: "vendor",
-  rows: 40,
-  width: {module: 300, vendor: 220, matched: 140}
-})
+const evidenceBadge = {
+  cavp_name_match: "match",
+  name_keyword: "keyword",
+  cavp_vendor_only: "weak",
+  none: "none"
+};
+display(
+  dataTable(pipelineRows, {
+    columns: [
+      {key: "module", label: "Module", width: 260},
+      {key: "vendor", label: "Vendor", width: 180},
+      {key: "list", label: "List"},
+      {key: "status", label: "Status"},
+      {key: "status_date", label: "Status date"},
+      {
+        key: "pqc_evidence",
+        label: "Evidence",
+        format: (value) => evidenceLabel[value] ?? value,
+        badge: (value) => evidenceBadge[value] ?? "none"
+      },
+      {key: "score", label: "Score", hideOnCard: true},
+      {key: "matched", label: "Matched CAVP certs", hideOnCard: true},
+      {
+        key: "url",
+        label: "NIST",
+        html: (row) =>
+          row.url
+            ? `<a href="${String(row.url).replace(/"/g, "&quot;")}" target="_blank" rel="noopener">module</a>`
+            : ""
+      }
+    ],
+    sort: "vendor",
+    pageSize: 12,
+    cardTitle: "module",
+    csv: "in-process-modules.csv"
+  })
+);
 ```
 
 ## Validated PQC CAVP implementations without an active CMVP certificate
@@ -177,19 +191,28 @@ const noCmvpRows = await query(db, `
 ```
 
 ```js
-Inputs.table(noCmvpRows, {
-  columns: ["cert", "vendor", "implementation", "families", "validated", "pipeline", "url"],
-  header: {
-    cert: "CAVP cert",
-    vendor: "Vendor",
-    implementation: "Implementation",
-    families: "Families",
-    validated: "First validated",
-    pipeline: "In-process match",
-    url: "NIST"
-  },
-  sort: "vendor",
-  rows: 30,
-  width: {implementation: 340, vendor: 220, pipeline: 220}
-})
+display(
+  dataTable(noCmvpRows, {
+    columns: [
+      {key: "cert", label: "CAVP cert"},
+      {key: "vendor", label: "Vendor", width: 180},
+      {key: "implementation", label: "Implementation", width: 240},
+      {key: "families", label: "Families"},
+      {key: "validated", label: "First validated"},
+      {key: "pipeline", label: "In-process match", hideOnCard: true},
+      {
+        key: "url",
+        label: "NIST",
+        html: (row) =>
+          row.url
+            ? `<a href="${String(row.url).replace(/"/g, "&quot;")}" target="_blank" rel="noopener">validation</a>`
+            : ""
+      }
+    ],
+    sort: "vendor",
+    pageSize: 12,
+    cardTitle: "implementation",
+    csv: "cavp-without-cmvp.csv"
+  })
+);
 ```

@@ -14,6 +14,10 @@ normalized CAVP operating environments; vendor-affirmed entries exist only in
 these policies and are not part of the normalized target counts.
 
 ```js
+import {dataTable} from "./components/table.js";
+```
+
+```js
 const sections = FileAttachment("data/cmvp_policy_sections.csv").csv();
 const certs = FileAttachment("data/cmvp_certs.csv").csv();
 ```
@@ -77,20 +81,29 @@ html`${grouped.map((cert) => html`<section>
 ```
 
 ```js
-Inputs.table(withSections, {
-  columns: ["cert", "vendor", "module", "module_type", "sectionCount", "vendorAffirmed", "security_policy_url"],
-  header: {
-    cert: "Cert",
-    vendor: "Vendor",
-    module: "Module",
-    module_type: "Type",
-    sectionCount: "OE sections",
-    vendorAffirmed: "Vendor-affirmed",
-    security_policy_url: "Policy"
-  },
-  sort: "vendorAffirmed",
-  reverse: true,
-  rows: 40,
-  width: {module: 320}
-})
+display(
+  dataTable(withSections, {
+    columns: [
+      {key: "cert", label: "Cert"},
+      {key: "vendor", label: "Vendor", width: 180},
+      {key: "module", label: "Module", width: 240},
+      {key: "module_type", label: "Type"},
+      {key: "sectionCount", label: "OE sections"},
+      {key: "vendorAffirmed", label: "Vendor-affirmed", format: (value) => (value ? "yes" : "no")},
+      {
+        key: "security_policy_url",
+        label: "Policy",
+        html: (row) =>
+          row.security_policy_url
+            ? `<a href="${String(row.security_policy_url).replace(/"/g, "&quot;")}" target="_blank" rel="noopener">PDF</a>`
+            : ""
+      }
+    ],
+    sort: "vendorAffirmed",
+    reverse: true,
+    pageSize: 12,
+    cardTitle: "module",
+    csv: "policy-certificates.csv"
+  })
+);
 ```

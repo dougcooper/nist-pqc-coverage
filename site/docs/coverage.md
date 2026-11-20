@@ -14,6 +14,7 @@ software-only scope.
 import {num} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, lineChart, palette} from "./components/echarts.js";
+import {dataTable} from "./components/table.js";
 ```
 
 ```js
@@ -141,21 +142,23 @@ html`<div class="note">
 ```
 
 ```js
-Inputs.table(greedy, {
-  columns: ["rank", "vendor", "product", "targets_covered", "targets_total", "cumulative_targets", "pct_targets"],
-  header: {
-    rank: "#",
-    vendor: "Vendor",
-    product: "Product",
-    targets_covered: "New targets",
-    targets_total: "Targets",
-    cumulative_targets: "Cumulative",
-    pct_targets: "% covered"
-  },
-  sort: "rank",
-  rows: 30,
-  width: {product: 360}
-})
+display(
+  dataTable(greedy, {
+    columns: [
+      {key: "rank", label: "#"},
+      {key: "vendor", label: "Vendor"},
+      {key: "product", label: "Product", width: 240},
+      {key: "targets_covered", label: "New targets", hideOnCard: true},
+      {key: "targets_total", label: "Targets"},
+      {key: "cumulative_targets", label: "Cumulative"},
+      {key: "pct_targets", label: "% covered", format: (value) => `${value}%`}
+    ],
+    sort: "rank",
+    pageSize: 12,
+    cardTitle: "product",
+    csv: `greedy-cover-${variant}.csv`
+  })
+);
 ```
 
 ## Drill into a target
@@ -196,19 +199,28 @@ const targetProducts = await query(db, `
 ```
 
 ```js
-Inputs.table(targetProducts, {
-  columns: ["vendor", "product", "source", "status", "families", "algorithms", "cpus", "url"],
-  header: {
-    vendor: "Vendor",
-    product: "Product",
-    source: "Source",
-    status: "Status",
-    families: "Families",
-    algorithms: "Algorithms",
-    cpus: "CPUs",
-    url: "NIST"
-  },
-  rows: 40,
-  width: {product: 320, algorithms: 240}
-})
+display(
+  dataTable(targetProducts, {
+    columns: [
+      {key: "vendor", label: "Vendor"},
+      {key: "product", label: "Product", width: 240},
+      {key: "source", label: "Source"},
+      {key: "status", label: "Status"},
+      {key: "families", label: "Families"},
+      {key: "algorithms", label: "Algorithms"},
+      {key: "cpus", label: "CPUs", hideOnCard: true},
+      {
+        key: "url",
+        label: "NIST",
+        html: (row) =>
+          row.url
+            ? `<a href="${String(row.url).replace(/"/g, "&quot;")}" target="_blank" rel="noopener">certificate</a>`
+            : ""
+      }
+    ],
+    pageSize: 12,
+    cardTitle: "product",
+    csv: "target-products.csv"
+  })
+);
 ```

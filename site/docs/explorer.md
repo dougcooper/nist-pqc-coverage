@@ -10,6 +10,7 @@ to the NIST source page for each record.
 ```js
 import {num, families, sourceLabel} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
+import {dataTable} from "./components/table.js";
 ```
 
 ```js
@@ -54,7 +55,6 @@ const arch = view(
     value: "All architectures"
   })
 );
-const search = view(Inputs.text({label: "Search", placeholder: "vendor, product, OS, CPU\u2026"}));
 ```
 
 ```js
@@ -66,13 +66,6 @@ const where = (() => {
   if (upstream !== "All upstream libraries") { clauses.push("upstream = ?"); params.push(upstream); }
   if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
   if (arch !== "All architectures") { clauses.push("arch = ?"); params.push(arch); }
-  const q = search.trim();
-  if (q) {
-    clauses.push(`lower(coalesce(vendor, '') || ' ' || coalesce(product, '') || ' ' ||
-      coalesce(upstream, '') || ' ' || coalesce(os_name, '') || ' ' ||
-      coalesce(cpu, '') || ' ' || coalesce(pqc_algorithm, '')) LIKE '%' || lower(?) || '%'`);
-    params.push(q);
-  }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 ```
@@ -87,40 +80,45 @@ const rows = (await query(db, `
 
 ```js
 html`<div class="small">
-  ${num.format(rows.length)} of ${num.format(total.n)} rows ·
+  ${num.format(rows.length)} of ${num.format(total.n)} rows in this filter ·
   <a href="${sourceFile.href}" download="${sourceFile.name}">download pqc_coverage.csv</a>
 </div>`
 ```
 
 ```js
-Inputs.table(rows, {
-  columns: [
-    "source", "vendor", "product", "module_type", "upstream", "status", "algorithm",
-    "parameter_sets", "os_family", "os_name", "os_version", "arch", "cpu",
-    "target", "evidence", "validated", "url"
-  ],
-  header: {
-    source: "Source",
-    vendor: "Vendor",
-    product: "Product",
-    module_type: "Type",
-    upstream: "Upstream",
-    status: "Status",
-    algorithm: "Algorithm",
-    parameter_sets: "Parameter sets",
-    os_family: "OS family",
-    os_name: "OS",
-    os_version: "Version",
-    arch: "Arch",
-    cpu: "CPU",
-    target: "Target",
-    evidence: "Evidence",
-    validated: "Validated",
-    url: "NIST"
-  },
-  rows: 25,
-  width: {product: 280, parameter_sets: 220, target: 220}
-})
+display(
+  dataTable(rows, {
+    columns: [
+      {key: "source", label: "Source"},
+      {key: "vendor", label: "Vendor", width: 160},
+      {key: "product", label: "Product", width: 200},
+      {key: "module_type", label: "Type"},
+      {key: "upstream", label: "Upstream", hideOnCard: true},
+      {key: "status", label: "Status", hideOnCard: true},
+      {key: "algorithm", label: "Algorithm"},
+      {key: "parameter_sets", label: "Parameter sets", hideOnCard: true},
+      {key: "os_family", label: "OS family", hideOnCard: true},
+      {key: "os_name", label: "OS"},
+      {key: "os_version", label: "Version", hideOnCard: true},
+      {key: "arch", label: "Arch"},
+      {key: "cpu", label: "CPU", hideOnCard: true},
+      {key: "target", label: "Target", hideOnCard: true},
+      {key: "evidence", label: "Evidence", hideOnCard: true},
+      {key: "validated", label: "Validated", hideOnCard: true},
+      {
+        key: "url",
+        label: "NIST",
+        html: (row) =>
+          row.url
+            ? `<a href="${String(row.url).replace(/"/g, "&quot;")}" target="_blank" rel="noopener">source</a>`
+            : ""
+      }
+    ],
+    pageSize: 25,
+    cardTitle: "product",
+    csv: "pqc-coverage-filtered.csv"
+  })
+);
 ```
 
 ## Download the data

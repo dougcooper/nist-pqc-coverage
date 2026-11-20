@@ -12,6 +12,7 @@ targets, coverage curves, and the validation pipeline.
 import {num, familyColors, sourceLabel} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {barChart, palette} from "./components/echarts.js";
+import {dataTable} from "./components/table.js";
 ```
 
 ```js
@@ -171,18 +172,20 @@ const vendorRows = await query(db, `
 ```
 
 ```js
-Inputs.table(vendorRows, {
-  columns: ["vendor", "products", "targets", "families"],
-  header: {
-    vendor: "Vendor",
-    products: "Products",
-    targets: "Targets",
-    families: "Families"
-  },
-  sort: "products",
-  reverse: true,
-  rows: 25
-})
+display(
+  dataTable(vendorRows, {
+    columns: [
+      {key: "vendor", label: "Vendor"},
+      {key: "products", label: "Products"},
+      {key: "targets", label: "Targets"},
+      {key: "families", label: "Families"}
+    ],
+    sort: "products",
+    reverse: true,
+    pageSize: 10,
+    csv: "vendors.csv"
+  })
+);
 ```
 
 ## Upstream libraries
@@ -200,13 +203,19 @@ const upstreamRows = await query(db, `
 ```
 
 ```js
-Inputs.table(upstreamRows, {
-  columns: ["upstream", "products", "targets"],
-  header: {upstream: "Library", products: "Products", targets: "Targets"},
-  sort: "products",
-  reverse: true,
-  rows: 20
-})
+display(
+  dataTable(upstreamRows, {
+    columns: [
+      {key: "upstream", label: "Library"},
+      {key: "products", label: "Products"},
+      {key: "targets", label: "Targets"}
+    ],
+    sort: "products",
+    reverse: true,
+    pageSize: 10,
+    csv: "upstream-libraries.csv"
+  })
+);
 ```
 
 <div class="small">

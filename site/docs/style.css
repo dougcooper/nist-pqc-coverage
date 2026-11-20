@@ -271,3 +271,163 @@ kbd {
     max-width: 12rem;
   }
 }
+
+/* Data table */
+
+.data-table {
+  margin: 1rem 0 2rem;
+}
+
+.dt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.dt-search {
+  flex: 1 1 12rem;
+  max-width: 22rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--theme-foreground-faintest);
+  border-radius: 6px;
+  background: var(--theme-background-alt);
+  color: var(--theme-foreground);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.dt-search:focus {
+  outline: 2px solid var(--pqc-accent);
+  outline-offset: 1px;
+}
+
+.dt-count {
+  margin-left: auto;
+}
+
+.dt-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.82rem;
+}
+
+.dt-table th,
+.dt-table td {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--theme-foreground-faintest);
+  vertical-align: top;
+}
+
+.dt-table th {
+  position: sticky;
+  top: 0;
+  background: var(--theme-background);
+  white-space: nowrap;
+}
+
+.dt-table tbody tr:nth-child(even) {
+  background: var(--theme-background-alt);
+}
+
+.dt-sort {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dt-sort:hover {
+  color: var(--pqc-accent);
+}
+
+.dt-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.dt-pager {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dt-pager button {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--theme-foreground-faintest);
+  border-radius: 5px;
+  background: var(--theme-background-alt);
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.dt-pager button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.dt-cards {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.dt-card {
+  border: 1px solid var(--theme-foreground-faintest);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  background: var(--theme-background-alt);
+}
+
+.dt-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.dt-card dl {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.dt-card .dt-field {
+  display: grid;
+  grid-template-columns: minmax(84px, 38%) 1fr;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.dt-card dt {
+  color: var(--theme-foreground-muted);
+  font-size: 0.75rem;
+  padding-top: 0.1rem;
+}
+
+.dt-card dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.dt-card details {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.dt-card summary {
+  cursor: pointer;
+  color: var(--theme-foreground-muted);
+  font-size: 0.78rem;
+}
