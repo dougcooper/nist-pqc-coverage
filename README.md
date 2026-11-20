@@ -92,16 +92,17 @@ search, pagination, CSV download, and a card layout below 640 px.
 
 A floating **Ask** button in the corner of every data page opens a chat that turns
 a question into SQL with a small language model running entirely in your browser
-([WebLLM](https://github.com/mlc-ai/web-llm), Qwen2.5-Coder 1.5B, about 1 GB), runs
-it against the same data, and shows the table or chart in the conversation. On the
-SQL console the answer can be sent to the editor with **Open in console**. Nothing
-is sent to a server; the model is fetched from Hugging Face once and cached in the
-browser (Storage → Cache Storage), with a **Delete model** button to reclaim the
-space.
+([WebLLM](https://github.com/mlc-ai/web-llm)). The default is Qwen2.5-Coder 0.5B
+(about 0.4 GB), which runs on integrated GPUs; the model menu also offers
+Qwen2.5-Coder 1.5B (about 1 GB) for machines with a stronger GPU, which writes
+better SQL. The agent runs the query against the same data and shows the table or
+chart in the conversation. On the SQL console the answer can be sent to the editor
+with **Open in console**. Nothing is sent to a server; the model is fetched from
+Hugging Face once and cached in the browser (Storage → Cache Storage), with a
+**Delete model** button to reclaim the space.
 
-If the graphics adapter cannot hold the default model, the panel offers a 0.4 GB
-Qwen2.5-Coder 0.5B instead and remembers the choice; it is less accurate but runs
-on integrated GPUs.
+If the graphics adapter cannot hold the selected model, the chat offers to switch
+to the 0.4 GB one, and the site remembers the choice.
 
 It only appears on a desktop-sized window with a WebGPU adapter that has at least
 1 GiB of buffer size, and it never downloads anything until you ask for it. On

@@ -3,23 +3,24 @@
 // the browser; nothing is uploaded.
 //
 // It only appears on desktop machines that have a usable WebGPU adapter, and the
-// model is a ~1 GB download, so nothing is fetched until the reader asks.
+// model is a ~0.4 GB download, so nothing is fetched until the reader asks.
 import {query} from "./db.js";
 import {runStatement, toCsv, validateStatement} from "./sql.js";
 import {barChart, lineChart} from "./echarts.js";
 
 export const MODELS = [
   {
-    id: "Qwen2.5-Coder-1.5B-Instruct",
-    label: "Qwen2.5-Coder 1.5B",
-    size: "~1.0 GB",
-    note: "default: fast, writes plain SQL"
-  },
-  {
     id: "Qwen2.5-Coder-0.5B-Instruct",
     label: "Qwen2.5-Coder 0.5B",
     size: "~0.4 GB",
-    note: "small: for weak GPUs, less accurate"
+    note: "default: runs on integrated GPUs",
+    default: true
+  },
+  {
+    id: "Qwen2.5-Coder-1.5B-Instruct",
+    label: "Qwen2.5-Coder 1.5B",
+    size: "~1.0 GB",
+    note: "better answers, needs a stronger GPU"
   },
   {
     id: "Qwen3.5-2B",
@@ -320,6 +321,7 @@ export function createAgent({db, onSql, source, describe, models = MODELS, shade
     option.textContent = `${model.label} (${model.size})`;
     modelSelect.append(option);
   }
+  modelSelect.value = (models.find((model) => model.default) ?? models[0]).id;
   try {
     const saved = localStorage.getItem("pqc-agent-model");
     if (saved && models.some((model) => model.id === saved)) modelSelect.value = saved;
