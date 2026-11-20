@@ -75,6 +75,10 @@ become SQL parameters.
   curve, greedy product selection, and per-target drill-down.
 - **Pipeline** — modules in process / IUT with their inferred PQC evidence, and
   validated CAVP implementations without an active CMVP certificate.
+- **Tested configurations** — tested and vendor-affirmed operating environments
+  quoted from each certificate's non-proprietary security policy.
+- **SQL console** — query the Parquet/CSV data directly with DuckDB-WASM, with a
+  column dictionary, schema browser, and CSV download of any result.
 - **Explorer** — the full `pqc_coverage.csv` table with search and filters.
 
 ## Publishing

@@ -17,6 +17,7 @@ export default {
     {name: "Coverage", path: "/coverage"},
     {name: "Pipeline", path: "/pipeline"},
     {name: "Tested configurations", path: "/policies"},
+    {name: "SQL console", path: "/sql"},
     {name: "Explorer", path: "/explorer"},
   ],
 };
