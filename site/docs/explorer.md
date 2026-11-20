@@ -8,7 +8,7 @@ Every row of the flattened coverage dataset. Filter, search, and sort; links go
 to the NIST source page for each record.
 
 ```js
-import {num, families, sourceLabel} from "./components/common.js";
+import {num, families, sourceLabel, moduleKinds} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
 import {dataTable} from "./components/table.js";
 ```
@@ -55,6 +55,12 @@ const arch = view(
     value: "All architectures"
   })
 );
+const moduleKind = view(
+  Inputs.select(["All module kinds", ...moduleKinds.keys()], {
+    label: "Module kind",
+    value: "All module kinds"
+  })
+);
 ```
 
 ```js
@@ -66,6 +72,7 @@ const where = (() => {
   if (upstream !== "All upstream libraries") { clauses.push("upstream = ?"); params.push(upstream); }
   if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
   if (arch !== "All architectures") { clauses.push("arch = ?"); params.push(arch); }
+  if (moduleKind !== "All module kinds") { clauses.push("module_kind = ?"); params.push(moduleKinds.get(moduleKind)); }
   return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
 })();
 ```

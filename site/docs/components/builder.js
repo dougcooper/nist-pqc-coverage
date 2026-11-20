@@ -19,7 +19,7 @@ const DIMENSIONS = [
   ["product", "Product"],
   ["pqc_family", "PQC family"],
   ["source", "Source"],
-  ["module_type", "Module type"],
+  ["module_kind", "Module kind"],
   ["status", "CMVP status"],
   ["os_name", "OS version"],
   ["cpu", "CPU"],
