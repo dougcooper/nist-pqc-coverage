@@ -9,57 +9,63 @@ filters to see where vendor coverage is concentrated, and which targets are
 still thin.
 
 ```js
-import {num, familyColors, families, isValidated, productKey, osLabel, splitList} from "./components/common.js";
+import {num, familyColors, families} from "./components/common.js";
+import {openDb, query} from "./components/db.js";
 ```
 
 ```js
-const coverage = FileAttachment("data/pqc_coverage.csv").csv();
+const db = await openDb({coverage_raw: FileAttachment("data/pqc_coverage.parquet")});
+const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverage ORDER BY 1`)).map((d) => d.os_family);
 ```
 
 ```js
 const includePipeline = view(Inputs.toggle({label: "Include in-process (MIP/IUT)", value: false}));
 const family = view(Inputs.select(["All algorithms", ...families], {label: "PQC family", value: "All algorithms"}));
-const osFamilyOptions = ["All OS families", ...Array.from(new Set(coverage.map((d) => d.os_family))).sort()];
-const osFamily = view(Inputs.select(osFamilyOptions, {label: "OS family", value: "All OS families"}));
+const osFamily = view(Inputs.select(["All OS families", ...osFamilyOptions], {label: "OS family", value: "All OS families"}));
 const moduleType = view(Inputs.select(["All module types", "SOFTWARE", "HARDWARE", "FIRMWARE"], {label: "Module type", value: "All module types"}));
 ```
 
 ```js
-const rows = coverage.filter(
-  (d) =>
-    (includePipeline || isValidated(d)) &&
-    (family === "All algorithms" || d.pqc_family === family) &&
-    (osFamily === "All OS families" || d.os_family === osFamily) &&
-    (moduleType === "All module types" || d.module_type === moduleType)
-);
+const where = (() => {
+  const clauses = [];
+  const params = [];
+  if (!includePipeline) clauses.push("(source = 'CMVP' OR (source = 'CAVP' AND status = 'none_yet'))");
+  if (family !== "All algorithms") { clauses.push("pqc_family = ?"); params.push(family); }
+  if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
+  if (moduleType !== "All module types") { clauses.push("upper(module_type) = ?"); params.push(moduleType); }
+  return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
+})();
+```
 
-const products = new Set(rows.map(productKey));
-const targets = new Set(
-  rows.filter((d) => d.arch && d.arch !== "unknown").map((d) => `${osLabel(d)}|${d.arch}`)
-);
-const vendors = new Set(rows.map((d) => d.vendor));
-const unknown = rows.filter((d) => d.os_family === "unknown");
+```js
+const [stats] = await query(db, `
+  SELECT
+    count(DISTINCT product_key) AS products,
+    count(DISTINCT CASE WHEN arch NOT IN ('', 'unknown') THEN target_key END) AS targets,
+    count(DISTINCT vendor) AS vendors,
+    count(*) FILTER (WHERE os_family = 'unknown') AS unknown
+  FROM coverage ${where.sql}`, where.params);
 ```
 
 ```js
 html`<div class="stats">
   <div class="stat">
-    <div class="value">${num.format(products.size)}</div>
+    <div class="value">${num.format(stats.products)}</div>
     <div class="label">products</div>
     <div class="hint">in the current filter</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(targets.size)}</div>
+    <div class="value">${num.format(stats.targets)}</div>
     <div class="label">OS / CPU targets</div>
     <div class="hint">distinct normalized environments</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(vendors.size)}</div>
+    <div class="value">${num.format(stats.vendors)}</div>
     <div class="label">vendors</div>
     <div class="hint">supporting at least one target</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(unknown.length)}</div>
+    <div class="value">${num.format(stats.unknown)}</div>
     <div class="label">unparsed OS rows</div>
     <div class="hint">free-text environments to tune</div>
   </div>
@@ -69,18 +75,20 @@ html`<div class="stats">
 ## OS family by architecture
 
 ```js
-const osFamilies = [...new Set(rows.map((d) => d.os_family))].sort();
+const cellCounts = await query(db, `
+  SELECT os_family, arch,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT vendor) AS vendors
+  FROM coverage ${where.sql}
+  GROUP BY 1, 2`, where.params);
+
+const osFamilies = [...new Set(cellCounts.map((d) => d.os_family))].sort();
 const archOrder = ["x86_64", "arm64", "arm32", "ppc64", "s390x", "riscv64", "mips", "x86", "unknown"].filter(
-  (arch) => rows.some((d) => d.arch === arch)
+  (arch) => cellCounts.some((d) => d.arch === arch)
 );
 const cells = d3.cross(osFamilies, archOrder).map(([os_family, arch]) => {
-  const subset = rows.filter((d) => d.os_family === os_family && d.arch === arch);
-  return {
-    os_family,
-    arch,
-    products: new Set(subset.map(productKey)).size,
-    vendors: new Set(subset.map((d) => d.vendor)).size
-  };
+  const found = cellCounts.find((d) => d.os_family === os_family && d.arch === arch);
+  return {os_family, arch, products: found?.products ?? 0, vendors: found?.vendors ?? 0};
 });
 ```
 
@@ -112,19 +120,16 @@ Plot.plot({
 ## Most-covered OS versions
 
 ```js
-const osRows = d3
-  .rollups(
-    rows,
-    (subset) => ({
-      products: new Set(subset.map(productKey)).size,
-      vendors: new Set(subset.map((d) => d.vendor)).size,
-      arch: [...new Set(subset.map((d) => d.arch))].sort().join(", ")
-    }),
-    (d) => osLabel(d)
-  )
-  .map(([os, value]) => ({os, ...value}))
-  .sort((a, b) => d3.descending(a.products, b.products))
-  .slice(0, 20);
+const osRows = await query(db, `
+  SELECT os_label AS os,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT vendor) AS vendors,
+         string_agg(DISTINCT arch, ', ' ORDER BY arch)
+           FILTER (WHERE coalesce(arch, '') <> '') AS arch
+  FROM coverage ${where.sql}
+  GROUP BY 1
+  ORDER BY products DESC
+  LIMIT 20`, where.params);
 ```
 
 ```js
@@ -159,18 +164,14 @@ Plot.plot({
 ## CPUs and SoCs
 
 ```js
-const cpuRows = d3
-  .rollups(
-    rows,
-    (subset) => ({
-      products: new Set(subset.map(productKey)).size,
-      vendors: new Set(subset.map((d) => d.vendor)).size
-    }),
-    (d) => d.cpu || d.cpu_series || "(unspecified)"
-  )
-  .map(([cpu, value]) => ({cpu, ...value}))
-  .sort((a, b) => d3.descending(a.products, b.products))
-  .slice(0, 20);
+const cpuRows = await query(db, `
+  SELECT coalesce(nullif(cpu, ''), nullif(cpu_series, ''), '(unspecified)') AS cpu,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT vendor) AS vendors
+  FROM coverage ${where.sql}
+  GROUP BY 1
+  ORDER BY products DESC
+  LIMIT 20`, where.params);
 ```
 
 ```js
@@ -201,23 +202,19 @@ Plot.plot({
 ## Target table
 
 ```js
-const envRows = d3
-  .rollups(
-    rows,
-    (subset) => ({
-      products: new Set(subset.map(productKey)).size,
-      vendors: new Set(subset.map((d) => d.vendor)).size,
-      families: [...new Set(subset.map((d) => d.pqc_family))].sort().join(", "),
-      cpuVendor: [...new Set(subset.map((d) => d.cpu_vendor))].filter(Boolean).sort().join(", "),
-      moduleTypes: [...new Set(subset.map((d) => d.module_type))].filter(Boolean).sort().join(", ")
-    }),
-    (d) => `${osLabel(d)}|${d.arch}|${d.cpu || d.cpu_series || ""}`
-  )
-  .map(([key, value]) => {
-    const [os, arch, cpu] = key.split("|");
-    return {os, arch, cpu, ...value};
-  })
-  .sort((a, b) => d3.descending(a.products, b.products));
+const envRows = await query(db, `
+  SELECT os_label AS os, arch,
+         coalesce(nullif(cpu, ''), nullif(cpu_series, ''), '') AS cpu,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT vendor) AS vendors,
+         string_agg(DISTINCT pqc_family, ', ' ORDER BY pqc_family) AS families,
+         string_agg(DISTINCT cpu_vendor, ', ' ORDER BY cpu_vendor)
+           FILTER (WHERE coalesce(cpu_vendor, '') <> '') AS "cpuVendor",
+         string_agg(DISTINCT module_type, ', ' ORDER BY module_type)
+           FILTER (WHERE coalesce(module_type, '') <> '') AS "moduleTypes"
+  FROM coverage ${where.sql}
+  GROUP BY 1, 2, 3
+  ORDER BY products DESC`, where.params);
 ```
 
 ```js
@@ -243,17 +240,17 @@ Inputs.table(envRows, {
 ## Environments that need tuning
 
 ```js
-const unknownRows = d3
-  .rollups(
-    unknown,
-    (subset) => ({
-      products: new Set(subset.map(productKey)).size,
-      vendors: [...new Set(subset.map((d) => d.vendor))].sort().join("; ")
-    }),
-    (d) => d.oe_name
-  )
-  .map(([oe, value]) => ({oe, ...value}))
-  .sort((a, b) => d3.descending(a.products, b.products));
+const unknownWhere = where.sql
+  ? `${where.sql} AND os_family = 'unknown'`
+  : "WHERE os_family = 'unknown'";
+const unknownRows = await query(db, `
+  SELECT oe_name AS oe,
+         count(DISTINCT product_key) AS products,
+         string_agg(DISTINCT vendor, '; ' ORDER BY vendor) AS vendors
+  FROM coverage ${unknownWhere}
+  GROUP BY 1
+  ORDER BY products DESC
+  LIMIT 25`, where.params);
 ```
 
 ```js

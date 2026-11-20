@@ -19,6 +19,8 @@ with the request rate; the default stays at one request per second. Cached pages
 are reused (`--refresh` refetches them).
 
 The dashboard is built with [Observable Framework](https://observablehq.com/framework/).
+The pages query the data through DuckDB-WASM, so the committed CSVs are first
+converted to Parquet (`uv run nist-pqc parquet`, also part of `make sync-data`).
 `make site` builds for the GitHub Pages path (`/nist-pqc-coverage/`); use
 `make site BASE=/` for a root-path build.
 
@@ -58,8 +60,12 @@ Outputs land in `data/`:
 
 ## Dashboard
 
-`site/` is an [Observable Framework](https://observablehq.com/framework/) project
-that reads the CSVs copied into `site/docs/data/`:
+`site/` is an [Observable Framework](https://observablehq.com/framework/) project.
+`make sync-data` converts `data/*.csv` to Parquet in `site/docs/data/` and copies
+the CSVs and `metadata.json` beside them. Each page opens DuckDB-WASM once and
+queries shared views (`coverage`, `validated`, `validated_software`,
+`with_in_process`, `targets`) defined in `site/docs/components/db.js`; filters
+become SQL parameters.
 
 - **Overview** — validated products by family, source, and quarter; top vendors.
 - **Operating environments** — OS-family × architecture heatmap, most-covered OS

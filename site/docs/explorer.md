@@ -9,35 +9,47 @@ to the NIST source page for each record.
 
 ```js
 import {num, families, sourceLabel} from "./components/common.js";
+import {openDb, query} from "./components/db.js";
 ```
 
 ```js
-const coverage = FileAttachment("data/pqc_coverage.csv").csv();
+const db = await openDb({coverage_raw: FileAttachment("data/pqc_coverage.parquet")});
 const sourceFile = FileAttachment("data/pqc_coverage.csv");
 ```
 
 ```js
+const sourceOptions = (await query(db, `SELECT DISTINCT source FROM coverage ORDER BY 1`)).map((d) => d.source);
+const upstreamOptions = (await query(db, `
+  SELECT DISTINCT upstream FROM coverage
+  WHERE coalesce(upstream, '') <> '' ORDER BY 1`)).map((d) => d.upstream);
+const osFamilyOptions = (await query(db, `SELECT DISTINCT os_family FROM coverage ORDER BY 1`)).map((d) => d.os_family);
+const archOptions = (await query(db, `SELECT DISTINCT arch FROM coverage ORDER BY 1`)).map((d) => d.arch);
+const [total] = await query(db, `SELECT count(*) AS n FROM coverage`);
+```
+
+```js
 const source = view(
-  Inputs.select(["All sources", ...Array.from(new Set(coverage.map((d) => d.source))).sort()], {
+  Inputs.select(["All sources", ...sourceOptions], {
     label: "Source",
     value: "All sources",
     format: (v) => sourceLabel(v)
   })
 );
 const family = view(Inputs.select(["All algorithms", ...families], {label: "Family", value: "All algorithms"}));
-const upstreams = [
-  "All upstream libraries",
-  ...Array.from(new Set(coverage.map((d) => d.upstream).filter(Boolean))).sort()
-];
-const upstream = view(Inputs.select(upstreams, {label: "Upstream", value: upstreams[0]}));
+const upstream = view(
+  Inputs.select(["All upstream libraries", ...upstreamOptions], {
+    label: "Upstream",
+    value: "All upstream libraries"
+  })
+);
 const osFamily = view(
-  Inputs.select(["All OS families", ...Array.from(new Set(coverage.map((d) => d.os_family))).sort()], {
+  Inputs.select(["All OS families", ...osFamilyOptions], {
     label: "OS family",
     value: "All OS families"
   })
 );
 const arch = view(
-  Inputs.select(["All architectures", ...Array.from(new Set(coverage.map((d) => d.arch))).sort()], {
+  Inputs.select(["All architectures", ...archOptions], {
     label: "Architecture",
     value: "All architectures"
   })
@@ -46,44 +58,36 @@ const search = view(Inputs.text({label: "Search", placeholder: "vendor, product,
 ```
 
 ```js
-const rows = coverage
-  .filter(
-    (d) =>
-      (source === "All sources" || d.source === source) &&
-      (family === "All algorithms" || d.pqc_family === family) &&
-      (upstream === "All upstream libraries" || d.upstream === upstream) &&
-      (osFamily === "All OS families" || d.os_family === osFamily) &&
-      (arch === "All architectures" || d.arch === arch)
-  )
-  .filter((d) => {
-    const q = search.trim().toLowerCase();
-    if (!q) return true;
-    return `${d.vendor} ${d.product} ${d.upstream} ${d.os_name} ${d.cpu} ${d.pqc_algorithm}`.toLowerCase().includes(q);
-  })
-  .map((d) => ({
-    source: sourceLabel(d.source),
-    vendor: d.vendor,
-    product: d.product,
-    module_type: d.module_type,
-    upstream: d.upstream,
-    status: d.status,
-    algorithm: d.pqc_algorithm,
-    parameter_sets: d.parameter_sets,
-    os_family: d.os_family,
-    os_name: d.os_name,
-    os_version: d.os_version,
-    arch: d.arch,
-    cpu: d.cpu,
-    target: d.target,
-    evidence: d.evidence,
-    validated: d.validated,
-    url: d.url
-  }));
+const where = (() => {
+  const clauses = [];
+  const params = [];
+  if (source !== "All sources") { clauses.push("source = ?"); params.push(source); }
+  if (family !== "All algorithms") { clauses.push("pqc_family = ?"); params.push(family); }
+  if (upstream !== "All upstream libraries") { clauses.push("upstream = ?"); params.push(upstream); }
+  if (osFamily !== "All OS families") { clauses.push("os_family = ?"); params.push(osFamily); }
+  if (arch !== "All architectures") { clauses.push("arch = ?"); params.push(arch); }
+  const q = search.trim();
+  if (q) {
+    clauses.push(`lower(coalesce(vendor, '') || ' ' || coalesce(product, '') || ' ' ||
+      coalesce(upstream, '') || ' ' || coalesce(os_name, '') || ' ' ||
+      coalesce(cpu, '') || ' ' || coalesce(pqc_algorithm, '')) LIKE '%' || lower(?) || '%'`);
+    params.push(q);
+  }
+  return {sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params};
+})();
+```
+
+```js
+const rows = (await query(db, `
+  SELECT source, vendor, product, module_type, upstream, status, pqc_algorithm AS algorithm,
+         parameter_sets, os_family, os_name, os_version, arch, cpu, target, evidence,
+         strftime(validated, '%Y-%m-%d') AS validated, url
+  FROM coverage ${where.sql}`, where.params)).map((d) => ({...d, source: sourceLabel(d.source)}));
 ```
 
 ```js
 html`<div class="small">
-  ${num.format(rows.length)} of ${num.format(coverage.length)} rows ·
+  ${num.format(rows.length)} of ${num.format(total.n)} rows ·
   <a href="${sourceFile.href}" download="${sourceFile.name}">download pqc_coverage.csv</a>
 </div>`
 ```

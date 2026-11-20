@@ -11,13 +11,16 @@ cover the most targets with the fewest builds. For a software product, use the
 software-only scope.
 
 ```js
-import {num, isValidated, productKey, osLabel, targetKey} from "./components/common.js";
+import {num} from "./components/common.js";
+import {openDb, query} from "./components/db.js";
 ```
 
 ```js
-const coverage = FileAttachment("data/pqc_coverage.csv").csv();
-const targetAll = FileAttachment("data/coverage_targets.csv").csv();
-const greedyAll = FileAttachment("data/coverage_greedy.csv").csv();
+const db = await openDb({
+  coverage_raw: FileAttachment("data/pqc_coverage.parquet"),
+  coverage_targets: FileAttachment("data/coverage_targets.parquet"),
+  coverage_greedy: FileAttachment("data/coverage_greedy.parquet")
+});
 ```
 
 ```js
@@ -46,32 +49,11 @@ html`<div class="note small">
 ```
 
 ```js
-const targets = targetAll
-  .filter((d) => d.variant === variant)
-  .map((d) => ({
-    ...d,
-    rank: +d.rank,
-    vendors: +d.vendors,
-    products: +d.products,
-    certs: +d.certs,
-    pct_products: +d.pct_products,
-    cumulative_products: +d.cumulative_products,
-    cumulative_pct_products: +d.cumulative_pct_products,
-    cumulative_vendors: +d.cumulative_vendors,
-    cumulative_pct_vendors: +d.cumulative_pct_vendors
-  }));
+const targets = await query(db, `
+  SELECT * FROM coverage_targets WHERE variant = ? ORDER BY rank`, [variant]);
 
-const greedy = greedyAll
-  .filter((d) => d.variant === variant)
-  .map((d) => ({
-    ...d,
-    rank: +d.rank,
-    targets_covered: +d.targets_covered,
-    targets_total: +d.targets_total,
-    cumulative_targets: +d.cumulative_targets,
-    pct_targets: +d.pct_targets,
-    universe_targets: +d.universe_targets
-  }));
+const greedy = await query(db, `
+  SELECT * FROM coverage_greedy WHERE variant = ? ORDER BY rank`, [variant]);
 
 const ninetieth = targets.find((d) => d.cumulative_pct_products >= 90);
 ```
@@ -212,35 +194,27 @@ const selected = view(
 ```
 
 ```js
-const scopeRows = coverage.filter((d) => {
-  const base =
-    isValidated(d) ||
-    (variant === "with_in_process" || variant === "with_in_process_software") &&
-    d.source.startsWith("CMVP-");
-  if (!base) return false;
-  if (softwareOnly) return (d.module_type || "").toUpperCase().startsWith("SOFTWARE");
-  return true;
-});
+const scopeClause = variant === "with_in_process" || variant === "with_in_process_software"
+  ? "source <> 'CAVP' OR status = 'none_yet'"
+  : "(source = 'CMVP' OR (source = 'CAVP' AND status = 'none_yet'))";
+const scopeWhere = softwareOnly
+  ? `(${scopeClause}) AND upper(module_type) LIKE 'SOFTWARE%'`
+  : `(${scopeClause})`;
 
-const csvTarget = (d) => (d.os_name ? `${d.os_name} / ${d.arch}` : d.arch);
-
-const targetProducts = d3
-  .rollups(
-    scopeRows.filter((d) => csvTarget(d) === selected.target),
-    (subset) => ({
-      vendor: subset[0].vendor,
-      product: subset[0].product,
-      source: subset[0].source,
-      status: subset[0].status,
-      families: [...new Set(subset.map((d) => d.pqc_family))].sort().join(", "),
-      algorithms: [...new Set(subset.map((d) => d.pqc_algorithm))].sort().join(", "),
-      cpus: [...new Set(subset.map((d) => d.cpu))].filter(Boolean).sort().join("; "),
-      url: subset[0].url
-    }),
-    (d) => productKey(d)
-  )
-  .map(([, value]) => value)
-  .sort((a, b) => d3.ascending(a.vendor, b.vendor));
+const targetProducts = await query(db, `
+  SELECT source, record_id, vendor, product,
+         any_value(status) AS status,
+         string_agg(DISTINCT pqc_family, ', ' ORDER BY pqc_family) AS families,
+         string_agg(DISTINCT pqc_algorithm, ', ' ORDER BY pqc_algorithm) AS algorithms,
+         string_agg(DISTINCT cpu, '; ' ORDER BY cpu)
+           FILTER (WHERE coalesce(cpu, '') <> '') AS cpus,
+         any_value(url) AS url
+  FROM coverage
+  WHERE ${scopeWhere}
+    AND CASE WHEN coalesce(os_name, '') <> '' THEN os_name || ' / ' || arch
+             ELSE arch END = ?
+  GROUP BY source, record_id, vendor, product
+  ORDER BY vendor`, [selected.target]);
 ```
 
 ```js

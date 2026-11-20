@@ -8,7 +8,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from . import cavp, cmvp, export, matching, policy, upstream
+from . import cavp, cmvp, export, matching, parquet, policy, upstream
 from .http import Fetcher
 from .normalize import normalize_oe
 
@@ -608,6 +608,19 @@ def scrape(args: argparse.Namespace) -> None:
     log(f"wrote CSVs to {out_dir}")
 
 
+def write_parquet(args) -> None:
+    csv_dir = Path(args.csv_dir)
+    out_dir = Path(args.out)
+    if not csv_dir.is_dir():
+        raise SystemExit(f"no CSV directory at {csv_dir}")
+    files = parquet.convert_dir(csv_dir, out_dir)
+    if not files:
+        raise SystemExit(f"no CSVs found in {csv_dir}")
+    rows = sum(parquet.row_count(path) for path in files)
+    megabytes = sum(path.stat().st_size for path in files) / 1e6
+    log(f"wrote {len(files)} Parquet files ({rows} rows, {megabytes:.1f} MB) to {out_dir}")
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="nist-pqc")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -632,6 +645,15 @@ def main(argv: list[str] | None = None) -> None:
     scrape_parser.add_argument("--verbose-matches", action="store_true")
     scrape_parser.add_argument("--quiet", action="store_true")
     scrape_parser.set_defaults(func=scrape)
+
+    parquet_parser = sub.add_parser(
+        "parquet", help="convert data/*.csv to Parquet for the dashboard"
+    )
+    parquet_parser.add_argument("--csv-dir", default="data", help="CSV directory")
+    parquet_parser.add_argument(
+        "--out", default="site/docs/data", help="Parquet output directory"
+    )
+    parquet_parser.set_defaults(func=write_parquet)
 
     args = parser.parse_args(argv)
     args.func(args)

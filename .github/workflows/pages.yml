@@ -19,11 +19,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: site/package-lock.json
+      - name: Convert CSV to Parquet
+        run: uv run nist-pqc parquet
       - name: Install site dependencies
         working-directory: site
         run: npm ci

@@ -9,55 +9,58 @@ on, drawn from the NIST CAVP and CMVP databases. Use the other pages to see
 targets, coverage curves, and the validation pipeline.
 
 ```js
-import {num, familyColors, families, splitList, isValidated, productKey, targetKey, quarterOf, sourceLabel} from "./components/common.js";
+import {num, familyColors, families, sourceLabel} from "./components/common.js";
+import {openDb, query} from "./components/db.js";
 ```
 
 ```js
-const coverage = FileAttachment("data/pqc_coverage.csv").csv();
-const cavp = FileAttachment("data/cavp_validations.csv").csv();
-const pipeline = FileAttachment("data/cmvp_in_process.csv").csv();
+const db = await openDb({
+  coverage_raw: FileAttachment("data/pqc_coverage.parquet"),
+  cavp: FileAttachment("data/cavp_validations.parquet"),
+  in_process: FileAttachment("data/cmvp_in_process.parquet")
+});
 const meta = FileAttachment("data/metadata.json").json();
 ```
 
 ```js
-const validated = coverage.filter(isValidated);
-const products = new Set(validated.map(productKey));
-const targets = new Set(
-  validated.filter((d) => d.arch && d.arch !== "unknown").map(targetKey)
-);
-const vendors = new Set(validated.map((d) => d.vendor));
-const software = new Set(
-  validated
-    .filter((d) => (d.module_type || "").toUpperCase().startsWith("SOFTWARE"))
-    .map(productKey)
-);
-const matched = pipeline.filter((d) => d.pqc_evidence === "cavp_name_match");
+const [stats] = await query(db, `
+  SELECT
+    count(DISTINCT product_key) AS products,
+    count(DISTINCT CASE WHEN arch NOT IN ('', 'unknown') THEN target_key END) AS targets,
+    count(DISTINCT vendor) AS vendors,
+    count(DISTINCT CASE WHEN upper(module_type) LIKE 'SOFTWARE%' THEN product_key END) AS software
+  FROM validated`);
+```
+
+```js
+const [matched] = await query(db, `
+  SELECT count(*) AS n FROM in_process WHERE pqc_evidence = 'cavp_name_match'`);
 ```
 
 ```js
 html`<div class="stats">
   <div class="stat">
-    <div class="value">${num.format(products.size)}</div>
+    <div class="value">${num.format(stats.products)}</div>
     <div class="label">validated products</div>
     <div class="hint">CAVP validations plus active CMVP certificates</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(targets.size)}</div>
+    <div class="value">${num.format(stats.targets)}</div>
     <div class="label">OS / CPU targets</div>
     <div class="hint">normalized operating environments</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(vendors.size)}</div>
+    <div class="value">${num.format(stats.vendors)}</div>
     <div class="label">vendors</div>
     <div class="hint">with at least one validated PQC product</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(software.size)}</div>
+    <div class="value">${num.format(stats.software)}</div>
     <div class="label">software products</div>
     <div class="hint">excludes hardware and firmware modules</div>
   </div>
   <div class="stat">
-    <div class="value">${num.format(matched.length)}</div>
+    <div class="value">${num.format(matched.n)}</div>
     <div class="label">in-process modules</div>
     <div class="hint">matched to a PQC CAVP validation</div>
   </div>
@@ -74,14 +77,11 @@ html`<div class="note">
 ## Validated products by algorithm family
 
 ```js
-const familyRows = d3
-  .rollups(
-    validated,
-    (rows) => new Set(rows.map(productKey)).size,
-    (d) => d.pqc_family
-  )
-  .map(([family, count]) => ({family, count}))
-  .sort((a, b) => d3.descending(a.count, b.count));
+const familyRows = await query(db, `
+  SELECT pqc_family AS family, count(DISTINCT product_key) AS count
+  FROM validated
+  GROUP BY 1
+  ORDER BY 2 DESC`);
 ```
 
 ```js
@@ -110,16 +110,12 @@ Plot.plot({
 ## Where the coverage comes from
 
 ```js
-const sourceRows = d3
-  .rollups(
-    coverage.filter(
-      (d) => d.source !== "CAVP" || d.status === "none_yet"
-    ),
-    (rows) => new Set(rows.map(productKey)).size,
-    (d) => d.source
-  )
-  .map(([source, count]) => ({source: sourceLabel(source), count}))
-  .sort((a, b) => d3.descending(a.count, b.count));
+const sourceRows = (await query(db, `
+  SELECT source, count(DISTINCT product_key) AS count
+  FROM coverage
+  WHERE source <> 'CAVP' OR status = 'none_yet'
+  GROUP BY 1
+  ORDER BY 2 DESC`)).map((d) => ({source: sourceLabel(d.source), count: d.count}));
 ```
 
 ```js
@@ -150,23 +146,15 @@ Plot.plot({
 ## Validations over time
 
 ```js
-const timelineRows = cavp.flatMap((d) =>
-  splitList(d.pqc_families).map((family) => ({
-    quarter: quarterOf(d.first_validated),
-    family
-  }))
-).filter((d) => d.quarter);
-
-const timeline = d3
-  .rollups(
-    timelineRows,
-    (rows) => rows.length,
-    (d) => d.quarter,
-    (d) => d.family
-  )
-  .flatMap(([quarter, byFamily]) =>
-    byFamily.map(([family, count]) => ({quarter, family, count}))
-  );
+const timeline = await query(db, `
+  SELECT strftime(first_validated, '%Y') || ' Q' ||
+           CAST(1 + (month(first_validated) - 1) / 3 AS INTEGER) AS quarter,
+         trim(f.family) AS family,
+         count(*) AS count
+  FROM cavp, unnest(string_split(pqc_families, ';')) AS f(family)
+  WHERE first_validated IS NOT NULL AND trim(f.family) <> ''
+  GROUP BY 1, 2
+  ORDER BY 1`);
 ```
 
 ```js
@@ -187,22 +175,19 @@ Plot.plot({
 ## Top vendors
 
 ```js
-const vendorRows = d3
-  .rollups(
-    validated,
-    (rows) => ({
-      products: new Set(rows.map(productKey)).size,
-      targets: new Set(rows.map(targetKey)).size,
-      families: [...new Set(rows.map((d) => d.pqc_family))].sort().join(", ")
-    }),
-    (d) => d.vendor
-  )
-  .map(([vendor, value]) => ({vendor, ...value}))
-  .sort((a, b) => d3.descending(a.products, b.products));
+const vendorRows = await query(db, `
+  SELECT vendor,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT CASE WHEN arch NOT IN ('', 'unknown') THEN target_key END) AS targets,
+         string_agg(DISTINCT pqc_family, ', ' ORDER BY pqc_family) AS families
+  FROM validated
+  GROUP BY vendor
+  ORDER BY products DESC
+  LIMIT 25`);
 ```
 
 ```js
-Inputs.table(vendorRows.slice(0, 25), {
+Inputs.table(vendorRows, {
   columns: ["vendor", "products", "targets", "families"],
   header: {
     vendor: "Vendor",
@@ -219,17 +204,15 @@ Inputs.table(vendorRows.slice(0, 25), {
 ## Upstream libraries
 
 ```js
-const upstreamRows = d3
-  .rollups(
-    validated.filter((d) => d.upstream),
-    (rows) => ({
-      products: new Set(rows.map(productKey)).size,
-      targets: new Set(rows.map(targetKey)).size
-    }),
-    (d) => d.upstream
-  )
-  .map(([upstream, value]) => ({upstream, ...value}))
-  .sort((a, b) => d3.descending(a.products, b.products));
+const upstreamRows = await query(db, `
+  SELECT upstream,
+         count(DISTINCT product_key) AS products,
+         count(DISTINCT target_key) AS targets
+  FROM validated
+  WHERE coalesce(upstream, '') <> ''
+  GROUP BY upstream
+  ORDER BY products DESC
+  LIMIT 20`);
 ```
 
 ```js

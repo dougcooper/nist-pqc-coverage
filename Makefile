@@ -1,6 +1,6 @@
 BASE ?= /nist-pqc-coverage/
 
-.PHONY: install scrape sync-data site dev test
+.PHONY: install scrape parquet sync-data site dev test
 
 install:
 	uv sync
@@ -8,7 +8,10 @@ install:
 scrape:
 	uv run nist-pqc scrape
 
-sync-data:
+parquet:
+	uv run nist-pqc parquet
+
+sync-data: parquet
 	cd site && node scripts/sync-data.mjs
 
 site: sync-data
