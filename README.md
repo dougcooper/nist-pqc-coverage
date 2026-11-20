@@ -77,8 +77,10 @@ become SQL parameters.
   validated CAVP implementations without an active CMVP certificate.
 - **Tested configurations** — tested and vendor-affirmed operating environments
   quoted from each certificate's non-proprietary security policy.
-- **SQL console** — query the Parquet/CSV data directly with DuckDB-WASM, with a
-  column dictionary, schema browser, and CSV download of any result.
+- **SQL console** — a simple builder (view, what to group by, a measure,
+  filters) and a full read-only editor behind two tabs; the SQL the builder runs
+  is shown above the results, and **Open in SQL** hands it to the editor. Both
+  share the column dictionary, schema browser, table/chart view, and CSV download.
 - **Explorer** — the full `pqc_coverage.csv` table with search and filters.
 
 Charts are [ECharts](https://echarts.apache.org/) styled like Evidence (quiet

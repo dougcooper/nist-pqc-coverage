@@ -15,7 +15,7 @@ and `targets` (one row per OS/architecture with product and vendor counts).
 
 ```js
 import {openDb, query} from "./components/db.js";
-import {createConsole} from "./components/console.js";
+import {createWorkspace} from "./components/workspace.js";
 import {mountAgent} from "./components/ask.js";
 ```
 
@@ -31,21 +31,24 @@ const db = await openDb({
 
 ## Query
 
+Pick a view, what to group by, a measure, and filters; the SQL it will run is
+shown above the results, and **Open in SQL** moves it to the editor.
+
 ```js
-const sqlConsole = createConsole({db});
-display(sqlConsole.el);
+const workspace = createWorkspace({db});
+display(workspace.el);
 ```
 
 ```js
 await mountAgent({
   db,
   source: FileAttachment("data/llm-worker.worker"),
-  onSql: (sql, options) => sqlConsole.setQuery(sql, options)
+  onSql: (sql, options) => workspace.setQuery(sql, options)
 });
 ```
 
-Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or <kbd>Cmd</kbd>+<kbd>Enter</kbd>) to run
-a query. The console accepts one read-only `SELECT`/`WITH` statement; write,
+In the SQL tab, <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or <kbd>Cmd</kbd>+<kbd>Enter</kbd>)
+runs a query. The console accepts one read-only `SELECT`/`WITH` statement; write,
 attach and install are rejected, as are reads of remote files.
 
 ## Column dictionary
