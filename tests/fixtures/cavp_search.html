@@ -1,0 +1,3402 @@
+<!DOCTYPE html>
+<html lang="en-us" xml:lang="en-us">
+<head>
+    <meta charset="utf-8" />
+    <title>Cryptographic Algorithm Validation Program | CSRC</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msapplication-config" content="/CSRC/Media/images/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="google-site-verification" content="xbrnrVYDgLD-Bd64xHLCt4XsPXzUhQ-4lGMj4TdUUTA" />
+    
+
+	<meta name="description" content="" />
+
+	<!-- dcterms meta information -->
+	<meta name="dcterms.title" content="Validation Search - Cryptographic Algorithm Validation Program | CSRC | CSRC" />
+	<meta name="dcterms.description" content="" />
+	<meta name="dcterms.creator" content="Computer Security Division, Information Technology Laboratory, National Institute of Standards and Technology, U.S. Department of Commerce" />
+	<meta name="dcterms.date.created" scheme="ISO8601" content="2016-10-05" />
+	<meta name="dcterms.date.reviewed" scheme="ISO8601" content="2026-09-22" />
+	<meta name="dcterms.language" scheme="DCTERMS.RFC1766" content="EN-US" />
+
+	<!-- Facebook OpenGraph Tags -->
+	<meta name="og:site_name" content="CSRC | NIST" />
+	<meta name="og:type" content="article" />
+	<meta name="og:url" content="https://content.csrc.e1c.nist.gov/projects/cryptographic-algorithm-validation-program/validation-search?searchMode=validation&amp;algorithm=179&amp;algorithm=180&amp;ipp=250" />
+	<meta name="og:title" content="Validation Search - Cryptographic Algorithm Validation Program | CSRC | CSRC" />
+	<meta name="og:description" content="" />
+
+	<meta name="article:tag" content="assurance; cryptography; testing &amp; validation" />
+	<meta name="article:published_time" content="2016-10-05" />
+		<meta name="article:modified_time" content="2026-09-22" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="manifest" href="/images/icons/manifest.json" />
+    <link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#000000" />
+    <link href="/CSRC/Media/images/favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <link href="/CSRC/Media/images/favicons/favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="/dist/app.css" rel="stylesheet" />
+    
+    <!-- Highlight.js -->
+    <link href="/dist/highlight-js/github.css" rel="stylesheet" />
+    
+    <!-- USWDS Top -->
+    <link href="/dist/uswds/css/uswds.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/dist/uswds/js/uswds-init.min.js"></script>
+
+    <!-- reCAPTCHA v3 -->
+    <style>
+    .grecaptcha-badge {
+        visibility: hidden;
+    }
+    </style>
+
+    
+	<style type="text/css">
+		th.sortable i {
+			color: white;
+		}
+
+		th.sortable a {
+			text-decoration: none;
+			color: white;
+		}
+	</style>
+
+
+    <script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=nist&subagency=csrc&pua=UA-66610693-15&yt=true&exts=xsd,xml,wav,mpg,mpeg,avi,rtf,webm,ogg,ogv,oga,map,otf,eot,svg,ttf,woff"></script>
+    <style id="antiClickjackCss">
+        body > * {
+            display: none !important;
+        }
+        #antiClickjack {
+            display: block !important;
+        }
+    </style>
+    <noscript>
+        <style id="antiClickjackNoScript">
+            body > * { display: block !important; }
+            #antiClickjack {
+                display: none !important;
+            }
+        </style>
+    </noscript>
+    <script type="text/javascript" id="antiClickjackScript">
+        if (self === top) {
+            // no clickjacking
+            var antiClickjack = document.getElementById("antiClickjackCss"); antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            setTimeout(tryForward(), 5000);
+        }
+        function tryForward() {
+            top.location = self.location;
+        }
+    </script>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSQ0PLGJZP"></script> 
+    <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-TSQ0PLGJZP'); </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZQC4NCJ');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQC4NCJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="antiClickjack" style="display: none;">
+        <strong style="font-size: 1.6rem;">You are viewing this page in an unauthorized frame window.</strong>
+        <p>This is a potential security issue, you are being redirected to <a href="https://csrc.nist.gov">https://csrc.nist.gov</a>.</p>
+    </div>
+
+    <section
+    class="usa-banner"
+    aria-label="Official website of the United States government">
+    <div class="usa-accordion">
+        <header class="usa-banner__header">
+            <noscript>
+                <p style="font-size: 0.85rem; font-weight: bold;">You have JavaScript disabled. This site requires JavaScript to be enabled for complete site functionality.</p>
+            </noscript>
+            <div class="usa-banner__inner">
+                <div class="grid-col-auto">
+                    <img
+                        aria-hidden="true"
+                        class="usa-banner__header-flag"
+                        src="/dist/uswds/img/us_flag_small.png"
+                        alt=""/>
+                </div>
+                <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+                    <p class="usa-banner__header-text">
+                        An official website of the United States government
+                    </p>
+                    <p class="usa-banner__header-action">Here’s how you know</p>
+                </div>
+                <button
+                    type="button"
+                    class="usa-accordion__button usa-banner__button"
+                    aria-expanded="false"
+                    aria-controls="gov-banner-default">
+                    <span class="usa-banner__button-text">Here’s how you know</span>
+                </button>
+            </div>
+        </header>
+        <div
+            class="usa-banner__content usa-accordion__content"
+            id="gov-banner-default">
+            <div class="grid-row grid-gap-lg">
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img
+                        class="usa-banner__icon usa-media-block__img"
+                        src="/dist/uswds/img/icon-dot-gov.svg"
+                        role="img"
+                        alt=""
+                        aria-hidden="true"/>
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Official websites use .gov</strong><br/>A
+                            <strong>.gov</strong> website belongs to an official government
+                            organization in the United States.
+                        </p>
+                    </div>
+                </div>
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img
+                        class="usa-banner__icon usa-media-block__img"
+                        src="/dist/uswds/img/icon-https.svg"
+                        role="img"
+                        alt=""
+                        aria-hidden="true"/>
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Secure .gov websites use HTTPS</strong><br/>A
+                            <strong>lock</strong> (
+                            <span class="icon-lock">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="52"
+                                    height="64"
+                                    viewBox="0 0 52 64"
+                                    class="usa-banner__lock-image"
+                                    role="img"
+                                    aria-labelledby="banner-lock-description-default"
+                                    focusable="false">
+                                    <title id="banner-lock-title-default">Lock</title>
+                                    <desc id="banner-lock-description-default">Locked padlock icon</desc>
+                                    <path
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/>
+                                </svg>
+                            </span
+                            >) or <strong>https://</strong> means you’ve safely connected to
+                            the .gov website. Share sensitive information only on official,
+                            secure websites.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <nav id="navbar" class="navbar">
+    <div id="nist-menu-container" class="container">
+        <div class="row">
+            <!-- Brand -->
+            <div class="col-xs-6 col-md-4 navbar-header">
+                <a class="navbar-brand" href="https://www.nist.gov" target='_blank' rel="noopener noreferrer" id="navbar-brand-image">
+                    <img src="/CSRC/media/images/svg/nist-logo.svg" alt="National Institute of Standards and Technology" width="110" height="30">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-8 navbar-nist-logo">
+                <div class="form-inline hidden-sm hidden-xs">
+                    <form name="site-search" id="site-search-form" action="/search" method="GET">
+                        <label for="search-csrc-query" class="element-invisible">Search</label>
+                        <input autocomplete="off" class="form-control" id="search-csrc-query" name="keywords" type="text" size="15" maxlength="128" placeholder="Search CSRC" />
+                        <input type="hidden" name="ipp" value="25" />
+                        <input type="hidden" name="sortBy" value="relevance" />
+                        <input type="hidden" name="showOnly" value="publications,projects,news,events,presentations,glossary,topics" />
+                        <input type="hidden" name="topicsMatch" value="ANY" />
+                        <input type="hidden" name="status" value="Final,Draft" />
+                        <button type="submit" id="search-csrc-submit-btn" class="form-submit">
+                            <span class="element-invisible">Search</span>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <span id="nvd-menu-button" class="pull-right">
+                    <a href="#" id="nvd-menu-button-link">
+                        <span class="fa fa-bars"></span>
+                        <span id="nvd-menu-full-text">CSRC MENU</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-inline hidden-md hidden-lg">
+        <form name="site-search-mobile" id="site-search-form-mobile" action="/search" method="GET">
+            <label for="search-csrc-query-mobile" class="element-invisible">Search</label>
+            <input autocomplete="off" class="form-control" id="search-csrc-query-mobile" name="keywords" type="text" size="15" maxlength="128" placeholder="Search CSRC" />
+            <button type="submit" id="search-csrc-submit-btn-mobile" class="form-submit">
+                <span class="element-invisible">Search</span>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="main-menu-row container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="main-menu-drop" class="col-lg-12" style="display: none;">
+            <ul>
+                <li><a href="/projects">Projects</a></li>
+                <li>
+                    <a href="/publications">
+                        Publications
+                        <span class="expander fa fa-plus" id="main-menu-pubs-expander" data-expander-name="publications" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="publications" id="main-menu-pubs-expanded">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p><a href="/publications/drafts-open-for-comment">Drafts for Public Comment</a></p>
+                                <p><a href="/publications/draft-pubs">All Public Drafts</a></p>
+                                <p><a href="/publications/final-pubs">Final Pubs</a></p>
+                                <p><a href="/publications/fips">FIPS <small>(standards)</small></a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/publications/sp">Special Publications (SP<small>s</small>)</a></p>
+                                <p><a href="/publications/ir">IR <small>(interagency/internal reports)</small></a></p>
+                                <p><a href="/publications/cswp">CSWP <small>(cybersecurity white papers)</small></a></p>
+                                <p><a href="/publications/itl-bulletin">ITL Bulletins</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/publications/project-description">Project Descriptions</a></p>
+                                <p><a href="/publications/journal-article">Journal Articles</a></p>
+                                <p><a href="/publications/conference-paper">Conference Papers</a></p>
+                                <p><a href="/publications/book">Books</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/topics">
+                        Topics
+                        <span class="expander fa fa-plus" id="main-menu-topics-expander" data-expander-name="topics" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="topics" id="main-menu-topics-expanded">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Security-and-Privacy">Security & Privacy</a></p>
+                                <p><a href="/Topics/Applications">Applications</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Technologies">Technologies</a></p>
+                                <p><a href="/Topics/Sectors">Sectors</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Laws-and-Regulations">Laws & Regulations</a></p>
+                                <p><a href="/Topics/Activities-and-Products">Activities & Products</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/news">News & Updates</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/glossary">Glossary</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li>
+                    <a href="/about">
+                        About CSRC
+                        <span class="expander fa fa-plus" id="main-menu-about-expander" data-expander-name="about" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="about" id="main-menu-about-expanded">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p>
+                                    <strong><a href="/Groups/Computer-Security-Division">Computer Security Division</a></strong><br />
+                                    <ul>
+                                        <li><a href="/Groups/Computer-Security-Division/Cryptographic-Technology">Cryptographic Technology</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/software-security-group">Software Security Group</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/hardware-security-group">Hardware Security Group</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/Security-Engineering-and-Risk-Management">Security Engineering and Risk Management</a></li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p>
+                                    <strong><a href="/Groups/Applied-Cybersecurity-Division">Applied Cybersecurity Division</a></strong><br />
+                                    <ul>
+                                        <li><a href="/Groups/Applied-Cybersecurity-Division/Cybersecurity-and-Privacy-Applications">Cybersecurity and Privacy Applications</a></li>
+                                        <li><a href="/Groups/Applied-Cybersecurity-Division/National-Cybersecurity-Center-of-Excellence">National Cybersecurity Center of Excellence (NCCoE)</a></li>
+                                        <li><a href="https://www.nist.gov/nice/">National Initiative for Cybersecurity Education (NICE)</a></li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    <a href="/contact">
+                                        Contact Us
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /#mobile-nav-container -->
+    </div>
+
+</nav>
+
+    <section id="itl-header" class="has-menu">
+        <div class="itl-background"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="hidden-xs hidden-sm" id="itl-header-lg">
+                            <a href="https://www.nist.gov/itl" target='_blank' rel="noopener noreferrer" id="itl-header-link">Information Technology Laboratory</a>
+                        </div>
+                        <div class="hidden-xs hidden-sm" id="csrc-header-lg">
+                            <a href="/" id="csrc-header-link-lg">Computer Security Resource Center</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="hidden-xs hidden-sm hidden-md">
+                            <a id="logo-csrc-lg" href="/"><img id="img-logo-csrc-lg" src="/CSRC/Media/images/nist-logo-csrc-white.svg" alt="CSRC Logo" class="csrc-header-logo"></a>
+                        </div>
+                        <div class="hidden-lg">
+                            <a id="logo-csrc-sm" href="/"><img id="img-logo-csrc-sm" src="/CSRC/Media/images/nist-logo-csrc-white.svg" alt="CSRC Logo" class="csrc-header-logo"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <div id="body-section" class="container">
+        
+        
+
+
+
+
+<div class="breadcrumb">
+        <a href="/projects" class="breadcrumb-link">Projects</a>
+        <a href="/projects/cryptographic-algorithm-validation-program" class="breadcrumb-link">Cryptographic Algorithm Validation Program</a>
+</div>
+
+
+	<h1 id="projectName">Cryptographic Algorithm Validation Program <small id="project-acronym">CAVP</small></h1>
+
+
+<div class="page-social-buttons" id=&quot;news-social-buttons&quot;>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fcryptographic-algorithm-validation-program%2Fvalidation-search%3Fsearchmode%3Dvalidation%26algorithm%3D179%26algorithm%3D180%26ipp%3D250" class="social-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i><span class="sr-only">Share to Facebook</span></a>
+    <a href="https://x.com/share?url=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fcryptographic-algorithm-validation-program%2Fvalidation-search%3Fsearchmode%3Dvalidation%26algorithm%3D179%26algorithm%3D180%26ipp%3D250" class="social-twitter"><i class="fa-brands fa-x-twitter"></i><span class="sr-only">Share to X</span></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fcryptographic-algorithm-validation-program%2Fvalidation-search%3Fsearchmode%3Dvalidation%26algorithm%3D179%26algorithm%3D180%26ipp%3D250&amp;source=csrc.nist.gov" class="social-linked-in"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i><span class="sr-only">Share to LinkedIn</span></a>
+    <a href="/cdn-cgi/l/email-protection#4b74383e29212e283f7628383928652522383f652c243d6d2a263b7029242f327608232e28206b243e3f6b3f2322386b38223f2e6b233f3f3b3871646428383928652522383f652c243d643b3924212e283f38642839323b3f242c392a3b232228662a272c2439223f2326663d2a27222f2a3f222425663b39242c392a26643d2a27222f2a3f22242566382e2a39282374382e2a39282306242f2e763d2a27222f2a3f2224256d2a263b702a272c2439223f2326767a7c726d2a263b702a272c2439223f2326767a737b6d2a263b70223b3b76797e7b" class="social-email"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><span class="sr-only">Share ia Email</span></a>
+</div>
+
+
+<div class="row visible-sm visible-xs visible-md">
+	<div class="col-sm-12">
+        <div class="bs-callout bs-callout-subnav" id="projectLinksContainer-sm">
+            <h4><i class="fa fa-link"></i> Project Links</h4>
+            <div class="project-icons-container">
+                <span>
+                    <a href="/projects/cryptographic-algorithm-validation-program" id="NavOverviewLink-sm">
+                        <i class="fa fa-info-circle"></i> Overview
+                    </a>
+                </span>
+                                                                                <span>
+                    <a href="/Projects/cryptographic-algorithm-validation-program/presentations" id="NavPresLink-sm" data-count="35">
+                        <i class="fa fa-desktop"></i> Presentations
+                    </a>
+                </span>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+<div class="row">
+
+	<div class="col-sm-12">
+
+		<p id="content">
+			
+		</p>
+
+<form action="/projects/cryptographic-algorithm-validation-program/validation-search" class="bs-callout bs-callout-success csrc-search-form" data-csrc-form="true" data-form-name="search" method="get">			<div class="form-group row">
+				<label class="col-md-2">Search By</label>
+				<div class="col-md-10">
+					<label class="radio-inline">
+						<input Name="searchMode" checked="checked" id="searchMode-validation" name="Form.Mode" type="radio" value="validation" /> Validation
+					</label>
+					<label class="radio-inline">
+						<input Name="searchMode" id="searchMode-implementation" name="Form.Mode" type="radio" value="implementation" /> Implementation
+					</label>
+				</div>
+			</div>
+			<br />
+			<div id="byValidationCriteria" class="form-inline form-group row" data-shown-source="searchMode" data-shown-value="validation">
+				<label class="col-md-2">Validation Number</label>
+				<div class="form-group form-inline col-md-10">
+					<select Name="family" class="form-control" id="search-family" name="Form.Family"><option value="">Prefix</option>
+<option value="1">A</option>
+<option value="18">C</option>
+<option value="2">AES</option>
+<option value="4">Component</option>
+<option value="6">DRBG</option>
+<option value="7">DSA</option>
+<option value="8">ECDSA</option>
+<option value="9">HMAC</option>
+<option value="10">KAS</option>
+<option value="11">KDF</option>
+<option value="13">RSA</option>
+<option value="14">SHA-3</option>
+<option value="15">SHS</option>
+<option value="17">TDES</option>
+<option value="3">CCM</option>
+<option value="5">DES</option>
+<option value="12">RNG</option>
+<option value="16">Skipjack</option>
+</select>
+					<input Name="validationNumber" class="form-control" data-val="true" data-val-length="The field ValidationNumber must be a string with a maximum length of 255." data-val-length-max="255" id="search-validationNumber" name="Form.ValidationNumber" placeholder="Number" type="text" value="" />
+					<br />
+				</div>
+			</div>
+			<div id="byImplementationCriteria" data-shown-source="searchMode" data-shown-value="implementation" style="display: none;">
+				<div class="form-group row">
+					<label for="search-vendor" class="col-md-2">Vendor Name</label>
+					<div class="col-md-10">
+						<input Name="vendor" class="form-control" data-val="true" data-val-length="The field Vendor must be a string with a maximum length of 1024." data-val-length-max="1024" id="search-vendor" name="Form.Vendor" type="text" value="" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="search-product" class="col-md-2">Implementation Name</label>
+					<div class="col-md-10">
+						<input Name="product" class="form-control" data-val="true" data-val-length="The field Product must be a string with a maximum length of 1024." data-val-length-max="1024" id="search-product" name="Form.Product" type="text" value="" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="search-productType" class="col-md-2">Product Type</label>
+					<div class="col-md-2">
+						<select Name="productType" class="form-control" id="search-productType" name="Form.ProductType"><option selected="selected" value="-1"></option>
+<option value="0">Software</option>
+<option value="1">Hardware</option>
+<option value="2">Firmware</option>
+<option value="3">Unknown</option>
+</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="search-algorithm" class="col-md-2">
+						Includes
+ Algorithm(s)
+			</label>
+			<div class="col-md-4">
+				<select Name="algorithm" class="form-control" id="search-algorithm" multiple="multiple" name="Form.Algorithms"><optgroup label="Active">
+<option value="1">AES-CBC</option>
+<option value="2">AES-CBC-CS1</option>
+<option value="3">AES-CBC-CS2</option>
+<option value="4">AES-CBC-CS3</option>
+<option value="5">AES-CCM</option>
+<option value="6">AES-CFB1</option>
+<option value="7">AES-CFB128</option>
+<option value="8">AES-CFB8</option>
+<option value="9">AES-CMAC</option>
+<option value="10">AES-CTR</option>
+<option value="11">AES-ECB</option>
+<option value="12">AES-FF1</option>
+<option value="14">AES-GCM</option>
+<option value="16">AES-GMAC</option>
+<option value="17">AES-KW</option>
+<option value="18">AES-KWP</option>
+<option value="19">AES-OFB</option>
+<option value="20">AES-XPN</option>
+<option value="21">AES-XTS</option>
+<option value="22">AES-XTS Testing Revision 2.0</option>
+<option value="184">Ascon AEAD128</option>
+<option value="185">Ascon CXOF128</option>
+<option value="186">Ascon Hash256</option>
+<option value="187">Ascon XOF128</option>
+<option value="24">Conditioning Component AES-CBC-MAC SP800-90B</option>
+<option value="25">Conditioning Component Block Cipher Derivation Function SP800-90B</option>
+<option value="26">Conditioning Component Hash Derivation Function SP800-90B</option>
+<option value="27">Counter DRBG</option>
+<option value="28">cSHAKE-128</option>
+<option value="29">cSHAKE-256</option>
+<option value="37">Deterministic ECDSA SigGen (FIPS186-5)</option>
+<option value="39">DSA KeyGen (FIPS186-4)</option>
+<option value="41">DSA PQGGen (FIPS186-4)</option>
+<option value="43">DSA PQGVer (FIPS186-4)</option>
+<option value="46">DSA SigGen (FIPS186-4)</option>
+<option value="48">DSA SigVer (FIPS186-4)</option>
+<option value="51">ECDSA KeyGen (FIPS186-4)</option>
+<option value="52">ECDSA KeyGen (FIPS186-5)</option>
+<option value="54">ECDSA KeyVer (FIPS186-4)</option>
+<option value="55">ECDSA KeyVer (FIPS186-5)</option>
+<option value="57">ECDSA SigGen (FIPS186-4)</option>
+<option value="58">ECDSA SigGen (FIPS186-5)</option>
+<option value="60">ECDSA SigVer (FIPS186-4)</option>
+<option value="61">ECDSA SigVer (FIPS186-5)</option>
+<option value="62">EDDSA KeyGen</option>
+<option value="63">EDDSA KeyVer</option>
+<option value="64">EDDSA SigGen</option>
+<option value="65">EDDSA SigVer</option>
+<option value="66">Hash DRBG</option>
+<option value="67">HMAC DRBG</option>
+<option value="68">HMAC-SHA-1</option>
+<option value="69">HMAC-SHA2-224</option>
+<option value="70">HMAC-SHA2-256</option>
+<option value="71">HMAC-SHA2-384</option>
+<option value="72">HMAC-SHA2-512</option>
+<option value="73">HMAC-SHA2-512/224</option>
+<option value="74">HMAC-SHA2-512/256</option>
+<option value="75">HMAC-SHA3-224</option>
+<option value="76">HMAC-SHA3-256</option>
+<option value="77">HMAC-SHA3-384</option>
+<option value="78">HMAC-SHA3-512</option>
+<option value="79">KAS-ECC</option>
+<option value="80">KAS-ECC CDH-Component</option>
+<option value="168">KAS-ECC CDH-Component SP800-56Ar3</option>
+<option value="81">KAS-ECC Component</option>
+<option value="82">KAS-ECC Sp800-56Ar3</option>
+<option value="83">KAS-ECC-SSC Sp800-56Ar3</option>
+<option value="84">KAS-FFC</option>
+<option value="85">KAS-FFC Component</option>
+<option value="86">KAS-FFC Sp800-56Ar3</option>
+<option value="87">KAS-FFC-SSC Sp800-56Ar3</option>
+<option value="88">KAS-IFC</option>
+<option value="89">KAS-IFC-SSC</option>
+<option value="169">KAS-KC SP800-56</option>
+<option value="90">KDA HKDF Sp800-56Cr1</option>
+<option value="91">KDA HKDF SP800-56Cr2</option>
+<option value="92">KDA OneStep Sp800-56Cr1</option>
+<option value="93">KDA OneStep SP800-56Cr2</option>
+<option value="170">KDA OneStepNoCounter SP800-56Cr2</option>
+<option value="94">KDA TwoStep Sp800-56Cr1</option>
+<option value="95">KDA TwoStep SP800-56Cr2</option>
+<option value="96">KDF ANS 9.42</option>
+<option value="97">KDF ANS 9.63</option>
+<option value="98">KDF IKEv1</option>
+<option value="99">KDF IKEv2</option>
+<option value="171">KDF KMAC Sp800-108r1</option>
+<option value="100">KDF SNMP</option>
+<option value="101">KDF SP800-108</option>
+<option value="193">KDF SPDM</option>
+<option value="102">KDF SRTP</option>
+<option value="103">KDF SSH</option>
+<option value="104">KDF TLS</option>
+<option value="105">KDF TPM</option>
+<option value="106">KMAC-128</option>
+<option value="107">KMAC-256</option>
+<option value="108">KTS-IFC</option>
+<option value="173">LMS KeyGen</option>
+<option value="174">LMS SigGen</option>
+<option value="175">LMS SigVer</option>
+<option value="176">ML-DSA KeyGen</option>
+<option value="177">ML-DSA SigGen</option>
+<option value="178">ML-DSA SigVer</option>
+<option selected="selected" value="179">ML-KEM EncapDecap</option>
+<option selected="selected" value="180">ML-KEM KeyGen</option>
+<option value="109">ParallelHash-128</option>
+<option value="110">ParallelHash-256</option>
+<option value="111">PBKDF</option>
+<option value="116">RSA Decryption Primitive</option>
+<option value="172">RSA Decryption Primitive Sp800-56Br2</option>
+<option value="118">RSA KeyGen (FIPS186-4)</option>
+<option value="119">RSA KeyGen (FIPS186-5)</option>
+<option value="121">RSA SigGen (FIPS186-4)</option>
+<option value="122">RSA SigGen (FIPS186-5)</option>
+<option value="123">RSA Signature Primitive</option>
+<option value="124">RSA SigVer (FIPS186-2)</option>
+<option value="125">RSA SigVer (FIPS186-4)</option>
+<option value="126">RSA SigVer (FIPS186-5)</option>
+<option value="127">Safe Primes Key Generation</option>
+<option value="128">Safe Primes Key Verification</option>
+<option value="129">SHA-1</option>
+<option value="130">SHA2-224</option>
+<option value="131">SHA2-256</option>
+<option value="132">SHA2-384</option>
+<option value="133">SHA2-512</option>
+<option value="134">SHA2-512/224</option>
+<option value="135">SHA2-512/256</option>
+<option value="136">SHA3-224</option>
+<option value="137">SHA3-256</option>
+<option value="138">SHA3-384</option>
+<option value="139">SHA3-512</option>
+<option value="140">SHAKE-128</option>
+<option value="141">SHAKE-256</option>
+<option value="181">SLH-DSA KeyGen</option>
+<option value="182">SLH-DSA SigGen</option>
+<option value="183">SLH-DSA SigVer</option>
+<option value="150">TDES-CBC</option>
+<option value="151">TDES-CBCI</option>
+<option value="152">TDES-CFB1</option>
+<option value="153">TDES-CFB64</option>
+<option value="154">TDES-CFB8</option>
+<option value="155">TDES-CFBP1</option>
+<option value="156">TDES-CFBP64</option>
+<option value="157">TDES-CFBP8</option>
+<option value="158">TDES-CMAC</option>
+<option value="159">TDES-CTR</option>
+<option value="160">TDES-ECB</option>
+<option value="161">TDES-KW</option>
+<option value="162">TDES-OFB</option>
+<option value="163">TDES-OFBI</option>
+<option value="164">TLS v1.2 KDF RFC7627</option>
+<option value="165">TLS v1.3 KDF</option>
+<option value="166">TupleHash-128</option>
+<option value="167">TupleHash-256</option>
+</optgroup>
+<optgroup label="Historical">
+<option value="23">CCM</option>
+<option value="30">DES CBC</option>
+<option value="31">DES CFB1</option>
+<option value="32">DES CFB64</option>
+<option value="33">DES CFB8</option>
+<option value="34">DES CTR</option>
+<option value="35">DES ECB</option>
+<option value="36">DES OFB</option>
+<option value="38">DSA KeyGen (FIPS186-2)</option>
+<option value="40">DSA PQGGen (FIPS186-2)</option>
+<option value="42">DSA PQGVer (FIPS186-2)</option>
+<option value="44">DSA Primality (FIPS186-2)</option>
+<option value="45">DSA SigGen (FIPS186-2)</option>
+<option value="47">DSA SigVer (FIPS186-2)</option>
+<option value="49">Dual EC DRBG</option>
+<option value="50">ECDSA KeyGen (FIPS186-2)</option>
+<option value="53">ECDSA KeyVer (FIPS186-2)</option>
+<option value="56">ECDSA SigGen (FIPS186-2)</option>
+<option value="59">ECDSA SigVer (FIPS186-2)</option>
+<option value="112">RNG ANSI X9.31</option>
+<option value="113">RNG ANSI X9.62</option>
+<option value="114">RNG FIPS (186-2)</option>
+<option value="115">RNG FIPS (186-2) General Purpose</option>
+<option value="117">RSA KeyGen (FIPS186-2)</option>
+<option value="120">RSA SigGen (FIPS186-2)</option>
+<option value="142">Skipjack CBC</option>
+<option value="143">Skipjack CFB1</option>
+<option value="144">Skipjack CFB16</option>
+<option value="145">Skipjack CFB32</option>
+<option value="146">Skipjack CFB64</option>
+<option value="147">Skipjack CFB8</option>
+<option value="148">Skipjack ECB</option>
+<option value="149">Skipjack OFB</option>
+</optgroup>
+</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="search-dateFrom" class="col-md-2">Validation Date</label>
+			<div class="col-md-7 form-inline form-date-inline">
+				<div class="input-group date" data-date-picker="true">
+					<input Name="dateFrom" class="form-control" data-control-type="date" data-val="true" data-val-date="The field Date must be a date." data-validation="true" data-validation-compare-field="searchDateTo" data-validation-message="From date must be less than To date" data-validation-type="less-than-date" id="searchDateFrom" name="Form.DateFrom" placeholder="  /  /    " type="text" value="" />
+					<span class="input-group-addon">
+						<span class="fa fa-calendar">
+						</span>
+					</span>
+				</div>
+				<div class="input-group date" data-date-picker="true">
+					<input Name="dateTo" class="form-control" data-control-type="date" data-val="true" data-val-date="The field DateTo must be a date." id="searchDateTo" name="Form.DateTo" placeholder="  /  /    " type="text" value="" />
+					<span class="input-group-addon">
+						<span class="fa fa-calendar">
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="search-ipp" class="col-md-2">Items Per Page</label>
+			<div class="col-md-2">
+				<select Name="ipp" class="form-control" id="search-ipp" name="Form.ItemsPerPage"><option value="25">25</option>
+<option value="50">50</option>
+<option value="75">75</option>
+<option value="100">100</option>
+<option selected="selected" value="250">250</option>
+</select>
+			</div>
+		</div>
+		<div style="display: none;" data-form-error-pane="true" class="text-danger">
+			<strong class="text-danger">Please fix the following:</strong>
+			<ul data-form-error-list="true">
+			</ul>
+			<div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+		</div>
+		<br />
+		<div class="form-group">
+			<button type="submit" id="search-submit" name="submit-btn" data-form-button="submit" class="btn">Search</button>
+			<button type="reset" id="search-reset" name="reset-btn" data-form-button="reset" class="btn">Reset</button>
+		</div>
+</form>
+			<div class="row top-pagination-area">
+				<div class="col-lg-6 col-sm-12">
+					<span id='showing-results-text' data-total-pages='1' data-first-record='1' data-last-record='248' data-current-page='1' data-items-per-page='250' data-total-results='248'>Showing <strong id="showing-results-total">248</strong> matching records.</span>
+				</div>
+				<div class="col-lg-6 col-sm-12">
+					<span class="pull-right hidden-sm hidden-xs hidden-xxs">
+						<span class='pagination-links' id='top-pagination-container' data-total-pages='1' data-min-page='1' data-max-page='1' data-current-page='1' data-show-first='False' data-show-last='False'></span>
+					</span>
+					<p class="text-center hidden-md hidden-lg">
+						<span class='pagination-links' id='mobile-top-pagination-container' data-total-pages='1' data-min-page='1' data-max-page='1' data-current-page='1' data-show-first='False' data-show-last='False'></span>
+					</p>
+				</div>
+			</div>
+			<div class="search-results-list"
+				 id="divResults"
+				 data-total-records="248"
+				 data-page="1"
+				 data-first-record="1"
+				 data-last-record="248"
+				 data-ipp="250">
+				<table class="table table-condensed publications-table table-bordered">
+					<thead>
+						<tr>
+								<th class="text-center sortable">Vendor</th>
+								<th class="text-center sortable"><a href="?searchMode=validation&algorithm=179,180&ipp=250&orderBy=Implementation">Implementation<i class="fa fa-sort-amount-asc order-by pull-right"><span class="element-invisible">Order by Implementation</span></i></a></th>
+								<th class="text-center sortable"><a href="?searchMode=validation&algorithm=179,180&ipp=250&orderBy=ValidationNumber">Validation Number<i class="fa fa-sort-amount-asc order-by pull-right"><span class="element-invisible">Order by Validation Number</span></i></a></th>
+								<th class="text-center sortable"><a href="?searchMode=validation&algorithm=179,180&ipp=250&orderBy=ValidationDate">Validation Date<i class="fa fa-sort-amount-asc order-by pull-right"><span class="element-invisible">Order by Validation Date</span></i></a></th>
+						</tr>
+					</thead>
+					<tbody>
+								<tr>
+										<td rowspan="1" id="vendor-name-1">Advanced Micro Devices (AMD)</td>
+										<td rowspan="1"><a href="details?product=21289" id="product-name-1">Caliptra ML-KEM-1024 KeyGen, encapDecap</a></td>
+									<td class="text-center">
+										<a href="details?validation=41091" id="validation-number-1-0">
+											A8481
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-1-0">6/3/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-2">AhP-Tech Inc.</td>
+										<td rowspan="1"><a href="details?product=19197" id="product-name-2">Ah-Crypto library for AhP-Tech Quantum Computing Cloud Platform</a></td>
+									<td class="text-center">
+										<a href="details?validation=39072" id="validation-number-2-0">
+											A6462
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-2-0">1/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-3">Alibaba Cloud Computing Ltd.</td>
+										<td rowspan="1"><a href="details?product=20308" id="product-name-3">Alibaba Cloud Crypto (Alibaba Cloud Crypto)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40143" id="validation-number-3-0">
+											A7533
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-3-0">10/15/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-4">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18874" id="product-name-4">AWS-LC Cryptographic Module (dynamic build) (C_SHA)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38794" id="validation-number-4-0">
+											A6184
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-4-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-5">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20664" id="product-name-5">AWS-LC Cryptographic Module (dynamic build) (C_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40472" id="validation-number-5-0">
+											A7862
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-5-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-6">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21852" id="product-name-6">AWS-LC Cryptographic Module (dynamic build) (C_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41568" id="validation-number-6-0">
+											A8958
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-6-0">9/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-7">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18972" id="product-name-7">AWS-LC Cryptographic Module (dynamic build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38889" id="validation-number-7-0">
+											A6279
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-7-0">11/22/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-8">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20674" id="product-name-8">AWS-LC Cryptographic Module (dynamic build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40482" id="validation-number-8-0">
+											A7872
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-8-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-9">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21883" id="product-name-9">AWS-LC Cryptographic Module (dynamic build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41599" id="validation-number-9-0">
+											A8989
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-9-0">9/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-10">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18882" id="product-name-10">AWS-LC Cryptographic Module (dynamic build) (SHA_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38790" id="validation-number-10-0">
+											A6180
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-10-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-11">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18879" id="product-name-11">AWS-LC Cryptographic Module (dynamic build) (SHA_AVX)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38787" id="validation-number-11-0">
+											A6177
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-11-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-12">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18878" id="product-name-12">AWS-LC Cryptographic Module (dynamic build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38786" id="validation-number-12-0">
+											A6176
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-12-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-13">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20657" id="product-name-13">AWS-LC Cryptographic Module (dynamic build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40465" id="validation-number-13-0">
+											A7855
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-13-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-14">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21872" id="product-name-14">AWS-LC Cryptographic Module (dynamic build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41588" id="validation-number-14-0">
+											A8978
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-14-0">9/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-15">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18971" id="product-name-15">AWS-LC Cryptographic Module (dynamic build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38888" id="validation-number-15-0">
+											A6278
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-15-0">11/22/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-16">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20673" id="product-name-16">AWS-LC Cryptographic Module (dynamic build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40481" id="validation-number-16-0">
+											A7871
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-16-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-17">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21882" id="product-name-17">AWS-LC Cryptographic Module (dynamic build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41598" id="validation-number-17-0">
+											A8988
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-17-0">9/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-18">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18881" id="product-name-18">AWS-LC Cryptographic Module (dynamic build) (SHA_SHANI)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38789" id="validation-number-18-0">
+											A6179
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-18-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-19">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18880" id="product-name-19">AWS-LC Cryptographic Module (dynamic build) (SHA_SSSE3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38788" id="validation-number-19-0">
+											A6178
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-19-0">11/16/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-20">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20667" id="product-name-20">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40475" id="validation-number-20-0">
+											A7865
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-20-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-21">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21855" id="product-name-21">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41571" id="validation-number-21-0">
+											A8961
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-21-0">9/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-22">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20678" id="product-name-22">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_N1)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40486" id="validation-number-22-0">
+											A7876
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-22-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-23">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21887" id="product-name-23">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_N1)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41603" id="validation-number-23-0">
+											A8993
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-23-0">9/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-24">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20676" id="product-name-24">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40484" id="validation-number-24-0">
+											A7874
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-24-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-25">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21885" id="product-name-25">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41601" id="validation-number-25-0">
+											A8991
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-25-0">9/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-26">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20677" id="product-name-26">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_V2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40485" id="validation-number-26-0">
+											A7875
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-26-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-27">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21886" id="product-name-27">AWS-LC Cryptographic Module (dynamic build) (SHA3_ASM_V2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41602" id="validation-number-27-0">
+											A8992
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-27-0">9/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-28">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18997" id="product-name-28">AWS-LC Cryptographic Module (static build) (C_SHA)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38905" id="validation-number-28-0">
+											A6295
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-28-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-29">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20709" id="product-name-29">AWS-LC Cryptographic Module (static build) (C_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40527" id="validation-number-29-0">
+											A7917
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-29-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-30">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21921" id="product-name-30">AWS-LC Cryptographic Module (static build) (C_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41630" id="validation-number-30-0">
+											A9020
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-30-0">9/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-31">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18991" id="product-name-31">AWS-LC Cryptographic Module (static build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38899" id="validation-number-31-0">
+											A6289
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-31-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-32">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20719" id="product-name-32">AWS-LC Cryptographic Module (static build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40521" id="validation-number-32-0">
+											A7911
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-32-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-33">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=22010" id="product-name-33">AWS-LC Cryptographic Module (static build) (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41694" id="validation-number-33-0">
+											A9084
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-33-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-34">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18993" id="product-name-34">AWS-LC Cryptographic Module (static build) (SHA_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38901" id="validation-number-34-0">
+											A6291
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-34-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-35">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=19015" id="product-name-35">AWS-LC Cryptographic Module (static build) (SHA_AVX)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38923" id="validation-number-35-0">
+											A6313
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-35-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-36">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=19014" id="product-name-36">AWS-LC Cryptographic Module (static build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38922" id="validation-number-36-0">
+											A6312
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-36-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-37">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20702" id="product-name-37">AWS-LC Cryptographic Module (static build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40512" id="validation-number-37-0">
+											A7902
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-37-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-38">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21941" id="product-name-38">AWS-LC Cryptographic Module (static build) (SHA_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41650" id="validation-number-38-0">
+											A9040
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-38-0">9/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-39">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=18990" id="product-name-39">AWS-LC Cryptographic Module (static build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38898" id="validation-number-39-0">
+											A6288
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-39-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-40">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20718" id="product-name-40">AWS-LC Cryptographic Module (static build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40520" id="validation-number-40-0">
+											A7910
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-40-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-41">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=22009" id="product-name-41">AWS-LC Cryptographic Module (static build) (SHA_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41693" id="validation-number-41-0">
+											A9083
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-41-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-42">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=19017" id="product-name-42">AWS-LC Cryptographic Module (static build) (SHA_SHANI)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38925" id="validation-number-42-0">
+											A6315
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-42-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-43">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=19016" id="product-name-43">AWS-LC Cryptographic Module (static build) (SHA_SSSE3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38924" id="validation-number-43-0">
+											A6314
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-43-0">11/25/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-44">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20712" id="product-name-44">AWS-LC Cryptographic Module (static build) (SHA3_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40530" id="validation-number-44-0">
+											A7920
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-44-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-45">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=21924" id="product-name-45">AWS-LC Cryptographic Module (static build) (SHA3_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41633" id="validation-number-45-0">
+											A9023
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-45-0">9/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-46">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20723" id="product-name-46">AWS-LC Cryptographic Module (static build) (SHA3_ASM_N1)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40525" id="validation-number-46-0">
+											A7915
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-46-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-47">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=22014" id="product-name-47">AWS-LC Cryptographic Module (static build) (SHA3_ASM_N1)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41698" id="validation-number-47-0">
+											A9088
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-47-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-48">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20721" id="product-name-48">AWS-LC Cryptographic Module (static build) (SHA3_ASM_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40523" id="validation-number-48-0">
+											A7913
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-48-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-49">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=22012" id="product-name-49">AWS-LC Cryptographic Module (static build) (SHA3_ASM_SHA3)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41696" id="validation-number-49-0">
+											A9086
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-49-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-50">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=20722" id="product-name-50">AWS-LC Cryptographic Module (static build) (SHA3_ASM_V2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40524" id="validation-number-50-0">
+											A7914
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-50-0">1/21/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-51">Amazon Web Services, Inc.</td>
+										<td rowspan="1"><a href="details?product=22013" id="product-name-51">AWS-LC Cryptographic Module (static build) (SHA3_ASM_V2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41697" id="validation-number-51-0">
+											A9087
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-51-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-52">Analog Devices, Inc.</td>
+										<td rowspan="1"><a href="details?product=21171" id="product-name-52">Optical Security (HW)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40954" id="validation-number-52-0">
+											A8344
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-52-0">5/14/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-53">ANGELATEK LTD.</td>
+										<td rowspan="1"><a href="details?product=19805" id="product-name-53">Angela CryptoModule Cryptographic Algorithm Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=39647" id="validation-number-53-0">
+											A7037
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-53-0">6/18/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-54">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=20368" id="product-name-54">Apple corecrypto Module [Apple silicon, Kernel, Software, SL1] (vng_hwassist)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40247" id="validation-number-54-0">
+											A7637
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-54-0">10/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-55">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=21829" id="product-name-55">Apple corecrypto Module [Apple silicon, Kernel, Software, SL1] (vng_hwassist)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41775" id="validation-number-55-0">
+											A9165
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-55-0">10/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-56">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=20372" id="product-name-56">Apple corecrypto Module [Apple silicon, Secure Key Store, Hardware, SL2] (c_ltc)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40259" id="validation-number-56-0">
+											A7649
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-56-0">10/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-57">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=21818" id="product-name-57">Apple corecrypto Module [Apple silicon, Secure Key Store, Hardware, SL2] (c_ltc)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41764" id="validation-number-57-0">
+											A9154
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-57-0">10/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-58">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=20361" id="product-name-58">Apple corecrypto Module [Apple silicon, User, Software, SL1] (vng_hwassist)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40255" id="validation-number-58-0">
+											A7645
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-58-0">10/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-59">Apple Inc.</td>
+										<td rowspan="1"><a href="details?product=21837" id="product-name-59">Apple corecrypto Module [Apple silicon, User, Software, SL1] (vng_hwassist)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41783" id="validation-number-59-0">
+											A9173
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-59-0">10/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-60">ASUSTeK Computer Inc.</td>
+										<td rowspan="1"><a href="details?product=21553" id="product-name-60">Post-Quantum Cryptography Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41282" id="validation-number-60-0">
+											A8672
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-60-0">6/26/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-61">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18305" id="product-name-61">leancrypto (ARM_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38248" id="validation-number-61-0">
+											A5638
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-61-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-62">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18701" id="product-name-62">leancrypto (ARM_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38611" id="validation-number-62-0">
+											A6001
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-62-0">10/21/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-63">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19292" id="product-name-63">leancrypto (ARM_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39185" id="validation-number-63-0">
+											A6575
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-63-0">2/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-64">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19755" id="product-name-64">leancrypto (ARM_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39606" id="validation-number-64-0">
+											A6996
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-64-0">6/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-65">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18307" id="product-name-65">leancrypto (AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38245" id="validation-number-65-0">
+											A5635
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-65-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-66">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18697" id="product-name-66">leancrypto (AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38607" id="validation-number-66-0">
+											A5997
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-66-0">10/21/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-67">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19287" id="product-name-67">leancrypto (AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39180" id="validation-number-67-0">
+											A6570
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-67-0">2/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-68">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19751" id="product-name-68">leancrypto (AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39602" id="validation-number-68-0">
+											A6992
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-68-0">6/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-69">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18304" id="product-name-69">leancrypto (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38244" id="validation-number-69-0">
+											A5634
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-69-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-70">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18306" id="product-name-70">leancrypto (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38254" id="validation-number-70-0">
+											A5644
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-70-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-71">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18694" id="product-name-71">leancrypto (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38604" id="validation-number-71-0">
+											A5994
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-71-0">10/21/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-72">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19286" id="product-name-72">leancrypto (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39179" id="validation-number-72-0">
+											A6569
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-72-0">2/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-73">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19750" id="product-name-73">leancrypto (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39601" id="validation-number-73-0">
+											A6991
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-73-0">6/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-74">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18300" id="product-name-74">leancrypto (Kernel_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38250" id="validation-number-74-0">
+											A5640
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-74-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-75">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18715" id="product-name-75">leancrypto (Kernel_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38620" id="validation-number-75-0">
+											A6010
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-75-0">10/23/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-76">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19305" id="product-name-76">leancrypto (Kernel_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39194" id="validation-number-76-0">
+											A6584
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-76-0">2/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-77">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19765" id="product-name-77">leancrypto (Kernel_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39621" id="validation-number-77-0">
+											A7011
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-77-0">6/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-78">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18299" id="product-name-78">leancrypto (Kernel_C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38249" id="validation-number-78-0">
+											A5639
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-78-0">8/15/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-79">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=18714" id="product-name-79">leancrypto (Kernel_C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=38619" id="validation-number-79-0">
+											A6009
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-79-0">10/23/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-80">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19304" id="product-name-80">leancrypto (Kernel_C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39193" id="validation-number-80-0">
+											A6583
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-80-0">2/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-81">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19764" id="product-name-81">leancrypto (Kernel_C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39620" id="validation-number-81-0">
+											A7010
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-81-0">6/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-82">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19301" id="product-name-82">leancrypto (RISCV64)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39195" id="validation-number-82-0">
+											A6585
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-82-0">2/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-83">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19757" id="product-name-83">leancrypto (RISCV64)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39608" id="validation-number-83-0">
+											A6998
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-83-0">6/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-84">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19303" id="product-name-84">leancrypto (RISCV64_RVV)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39197" id="validation-number-84-0">
+											A6587
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-84-0">2/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-85">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=19759" id="product-name-85">leancrypto (RISCV64_RVV)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39610" id="validation-number-85-0">
+											A7000
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-85-0">6/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-86">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20335" id="product-name-86">leancrypto (without PAA - ARM ASM implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40160" id="validation-number-86-0">
+											A7550
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-86-0">10/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-87">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20326" id="product-name-87">leancrypto (without PAA - AVX2 implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40149" id="validation-number-87-0">
+											A7539
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-87-0">10/16/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-88">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20325" id="product-name-88">leancrypto (without PAA - C implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40148" id="validation-number-88-0">
+											A7538
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-88-0">10/16/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-89">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20348" id="product-name-89">leancrypto (without PAA - Kernel AVX2 implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40165" id="validation-number-89-0">
+											A7555
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-89-0">10/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-90">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20347" id="product-name-90">leancrypto (without PAA - Kernel C implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40164" id="validation-number-90-0">
+											A7554
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-90-0">10/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-91">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20332" id="product-name-91">leancrypto (without PAA - RISCV64 implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40157" id="validation-number-91-0">
+											A7547
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-91-0">10/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-92">atsec corp.</td>
+										<td rowspan="1"><a href="details?product=20334" id="product-name-92">leancrypto (without PAA - RISCV64 RVV implementation)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40159" id="validation-number-92-0">
+											A7549
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-92-0">10/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-93">AWS</td>
+										<td rowspan="1"><a href="details?product=21658" id="product-name-93">AWS Key Management Service Cryptographic Algorithm Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41414" id="validation-number-93-0">
+											A8804
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-93-0">7/24/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-94">Beijing JN TASS Technology Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20001" id="product-name-94">TASS CloudHSM SJJ1528</a></td>
+									<td class="text-center">
+										<a href="details?validation=39793" id="validation-number-94-0">
+											A7183
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-94-0">7/17/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-95">Beijing JN TASS Technology Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=19709" id="product-name-95">TASS Crypto Engine (PQC)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39569" id="validation-number-95-0">
+											A6959
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-95-0">5/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-96">Best PQC Intelligent Cybersecurity Ltd.</td>
+										<td rowspan="1"><a href="details?product=20590" id="product-name-96">Best PQC MLKEM</a></td>
+									<td class="text-center">
+										<a href="details?validation=40405" id="validation-number-96-0">
+											A7795
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-96-0">12/15/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-97">Blackberry Limited</td>
+										<td rowspan="1"><a href="details?product=19667" id="product-name-97">Security Builder FIPS Java Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=39595" id="validation-number-97-0">
+											A6985
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-97-0">5/30/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-98">Blackberry Limited</td>
+										<td rowspan="1"><a href="details?product=19666" id="product-name-98">Security Builder FIPS Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=39597" id="validation-number-98-0">
+											A6987
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-98-0">5/30/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-99">Broadcom Inc.</td>
+										<td rowspan="1"><a href="details?product=21166" id="product-name-99">ML-KEM</a></td>
+									<td class="text-center">
+										<a href="details?validation=40967" id="validation-number-99-0">
+											A8357
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-99-0">5/19/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-100">Broadcom Inc.</td>
+										<td rowspan="1"><a href="details?product=21463" id="product-name-100">PGP Cryptographic Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=41228" id="validation-number-100-0">
+											A8618
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-100-0">6/22/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-101">Centre for Development of Telematics</td>
+										<td rowspan="1"><a href="details?product=20638" id="product-name-101">C-DOT ML-KEM Cryptographic Algorithms</a></td>
+									<td class="text-center">
+										<a href="details?validation=40488" id="validation-number-101-0">
+											A7878
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-101-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-102">Centre for Development of Telematics</td>
+										<td rowspan="1"><a href="details?product=21789" id="product-name-102">C-DOT ML-KEM Cryptographic Algorithms</a></td>
+									<td class="text-center">
+										<a href="details?validation=41533" id="validation-number-102-0">
+											A8923
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-102-0">9/3/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-103">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20427" id="product-name-103">Chainguard FIPS Provider for OpenSSL (NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40194" id="validation-number-103-0">
+											A7584
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-103-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-104">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20415" id="product-name-104">Chainguard FIPS Provider for OpenSSL (SHA3_ASM)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40203" id="validation-number-104-0">
+											A7593
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-104-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-105">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20414" id="product-name-105">Chainguard FIPS Provider for OpenSSL (SHA3_AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40222" id="validation-number-105-0">
+											A7612
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-105-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-106">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20413" id="product-name-106">Chainguard FIPS Provider for OpenSSL (SHA3_AVX512)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40221" id="validation-number-106-0">
+											A7611
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-106-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-107">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20412" id="product-name-107">Chainguard FIPS Provider for OpenSSL (SHA3_AVX512VL)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40220" id="validation-number-107-0">
+											A7610
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-107-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-108">Chainguard, Inc.</td>
+										<td rowspan="1"><a href="details?product=20428" id="product-name-108">Chainguard FIPS Provider for OpenSSL (SHA3_CE)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40195" id="validation-number-108-0">
+											A7585
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-108-0">10/27/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-109">Check Point Software Technologies</td>
+										<td rowspan="1"><a href="details?product=21399" id="product-name-109">Check Point Gaia OS R82.10 Cryptography Module running on Check Point Firewall models MHO140, MHO175, 3920, 3950, 3970, 3980, 9100, 9200, 9300, 9400, 9700, 9800, 19100, 19200, 29100, 29200, 700S, 700M, 7000L, 7000XL, 7000Ultra, and Cloud Firewall and Cloud Management series VM with VMware ESXi 8.0.0</a></td>
+									<td class="text-center">
+										<a href="details?validation=41201" id="validation-number-109-0">
+											A8591
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-109-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-110">Chelpis Quantum Corp., Ltd.</td>
+										<td rowspan="1"><a href="details?product=19778" id="product-name-110">Chelpis Post-Quantum Collection - mlkem-native (C backend)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39634" id="validation-number-110-0">
+											A7024
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-110-0">6/11/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-111">Chelpis Quantum Corp., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20833" id="product-name-111">Chelpis Post-Quantum Collection (Optimized)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40631" id="validation-number-111-0">
+											A8021
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-111-0">2/10/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-112">Chelpis Quantum Corp., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20834" id="product-name-112">Chelpis Post-Quantum Collection (Portable)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40633" id="validation-number-112-0">
+											A8023
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-112-0">2/11/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-113">Chipsea Technologies (Shenzhen) Corp.</td>
+										<td rowspan="1"><a href="details?product=22084" id="product-name-113">Chipsea E251x Embedded Controller chip with PQC Cryptographic Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=41812" id="validation-number-113-0">
+											A9202
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-113-0">10/23/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-114">Chunghwa Telecom Co., Ltd. Telecommunication Laboratories</td>
+										<td rowspan="1"><a href="details?product=20507" id="product-name-114">HiPKI SafGuard 2000 PQC Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40345" id="validation-number-114-0">
+											A7735
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-114-0">12/5/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-115">Ciena Corporation</td>
+										<td rowspan="1"><a href="details?product=21120" id="product-name-115">Ciena Wavelogic 5e Encryption Modem WolfSSL</a></td>
+									<td class="text-center">
+										<a href="details?validation=40895" id="validation-number-115-0">
+											A8285
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-115-0">4/23/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-116">Ciena Corporation</td>
+										<td rowspan="1"><a href="details?product=21147" id="product-name-116">Ciena Wavelogic 6e Encryption Modem WolfSSL</a></td>
+									<td class="text-center">
+										<a href="details?validation=40930" id="validation-number-116-0">
+											A8320
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-116-0">5/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-117">CIPHERPLUS PTE. LTD.</td>
+										<td rowspan="1"><a href="details?product=20785" id="product-name-117">CipherPlus Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40580" id="validation-number-117-0">
+											A7970
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-117-0">1/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-118">Cisco Systems, Inc.</td>
+										<td rowspan="1"><a href="details?product=19275" id="product-name-118">CiscoSSL OQS FIPS Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=39177" id="validation-number-118-0">
+											A6567
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-118-0">2/5/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-119">Citrix Systems, Inc.</td>
+										<td rowspan="1"><a href="details?product=20273" id="product-name-119">Citrix FIPS Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40096" id="validation-number-119-0">
+											A7486
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-119-0">10/8/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-120">Citrix Systems, Inc.</td>
+										<td rowspan="1"><a href="details?product=22088" id="product-name-120">Citrix FIPS Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41811" id="validation-number-120-0">
+											A9201
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-120-0">10/23/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-121">Code Siren, LLC</td>
+										<td rowspan="1"><a href="details?product=20592" id="product-name-121">Code Siren Post-Quantum Cryptographic (PQC) Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40419" id="validation-number-121-0">
+											A7809
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-121-0">12/19/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-122">Crossbar, Inc.</td>
+										<td rowspan="1"><a href="details?product=21968" id="product-name-122">CrossBar Daric PQC Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41661" id="validation-number-122-0">
+											A9051
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-122-0">9/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-123">Crypto4A Technologies, Inc.</td>
+										<td rowspan="1"><a href="details?product=18297" id="product-name-123">QASM Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=38241" id="validation-number-123-0">
+											A5631
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-123-0">8/14/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-124">CryptoNext Security</td>
+										<td rowspan="1"><a href="details?product=19370" id="product-name-124">C-QSL (ARM_NEON)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39249" id="validation-number-124-0">
+											A6639
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-124-0">3/3/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-125">CryptoNext Security</td>
+										<td rowspan="1"><a href="details?product=19369" id="product-name-125">C-QSL (AVX2)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39248" id="validation-number-125-0">
+											A6638
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-125-0">3/3/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-126">CryptoNext Security</td>
+										<td rowspan="1"><a href="details?product=19368" id="product-name-126">C-QSL (C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39247" id="validation-number-126-0">
+											A6637
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-126-0">3/3/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-127">Ctrl IQ, Inc.</td>
+										<td rowspan="1"><a href="details?product=20576" id="product-name-127">Rocky Linux 9 NSS Cryptographic Module (Generic C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40396" id="validation-number-127-0">
+											A7786
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-127-0">12/15/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-128">Dell Australia Pty Limited, BSAFE Product Team</td>
+										<td rowspan="1"><a href="details?product=21088" id="product-name-128">Dell BSAFE Crypto Module for C v3.1</a></td>
+									<td class="text-center">
+										<a href="details?validation=40882" id="validation-number-128-0">
+											A8272
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-128-0">4/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-129">Dell Australia Pty Limited, BSAFE Product Team</td>
+										<td rowspan="1"><a href="details?product=22115" id="product-name-129">Dell BSAFE Crypto Module for Java</a></td>
+									<td class="text-center">
+										<a href="details?validation=41878" id="validation-number-129-0">
+											A9268
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-129-0">11/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-130">DigiCert, Inc.</td>
+										<td rowspan="1"><a href="details?product=21642" id="product-name-130">DigiCert TrustCore NanoCrypto Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41399" id="validation-number-130-0">
+											A8789
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-130-0">7/22/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-131">DINAMO Cyber Security Company</td>
+										<td rowspan="1"><a href="details?product=21039" id="product-name-131">DINAMO Hardware Security Module Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40842" id="validation-number-131-0">
+											A8232
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-131-0">4/8/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-132">EigenQ Inc</td>
+										<td rowspan="1"><a href="details?product=19528" id="product-name-132">EigenQ Quantum Encryption Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=39407" id="validation-number-132-0">
+											A6797
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-132-0">4/14/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-133">Entrust Corporation</td>
+										<td rowspan="1"><a href="details?product=20056" id="product-name-133">nShield 5 Algorithm Library - nCore</a></td>
+									<td class="text-center">
+										<a href="details?validation=39895" id="validation-number-133-0">
+											A7285
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-133-0">7/30/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-134">FortifyIQ, Inc.</td>
+										<td rowspan="1"><a href="details?product=20849" id="product-name-134">FortiPQC software library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40644" id="validation-number-134-0">
+											A8034
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-134-0">2/23/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-135">Futurex LP</td>
+										<td rowspan="1"><a href="details?product=20805" id="product-name-135">GSP4000 Hardware Security Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40608" id="validation-number-135-0">
+											A7998
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-135-0">2/4/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-136">Geomys LLC</td>
+										<td rowspan="1"><a href="details?product=19371" id="product-name-136">Go Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=39260" id="validation-number-136-0">
+											A6650
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-136-0">3/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-137">Geomys LLC</td>
+										<td rowspan="1"><a href="details?product=20783" id="product-name-137">Go Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40638" id="validation-number-137-0">
+											A8028
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-137-0">2/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-138">Geomys LLC</td>
+										<td rowspan="1"><a href="details?product=21551" id="product-name-138">Go Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41278" id="validation-number-138-0">
+											A8668
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-138-0">6/25/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-139">Google LLC</td>
+										<td rowspan="1"><a href="details?product=21745" id="product-name-139">Android BoringCrypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=41500" id="validation-number-139-0">
+											A8890
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-139-0">8/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-140">Google, Inc.</td>
+										<td rowspan="1"><a href="details?product=20079" id="product-name-140">BoringCrypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=39913" id="validation-number-140-0">
+											A7303
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-140-0">8/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-141">Google, Inc.</td>
+										<td rowspan="1"><a href="details?product=20486" id="product-name-141">BoringCrypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=40310" id="validation-number-141-0">
+											A7700
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-141-0">11/21/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-142">Google, LLC</td>
+										<td rowspan="1"><a href="details?product=19570" id="product-name-142">BoringCrypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=39448" id="validation-number-142-0">
+											A6838
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-142-0">4/24/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-143">Google, LLC</td>
+										<td rowspan="1"><a href="details?product=21910" id="product-name-143">BoringCrypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=41625" id="validation-number-143-0">
+											A9015
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-143-0">9/25/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-144">Google, LLC</td>
+										<td rowspan="1"><a href="details?product=21185" id="product-name-144">Trusty TEE</a></td>
+									<td class="text-center">
+										<a href="details?validation=40965" id="validation-number-144-0">
+											A8355
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-144-0">5/19/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-145">Hangzhou Hikvision Digital Technology Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20788" id="product-name-145">Hikvision FIPS Provider</a></td>
+									<td class="text-center">
+										<a href="details?validation=40596" id="validation-number-145-0">
+											A7986
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-145-0">1/30/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-146">Hewlett Packard Enterprise</td>
+										<td rowspan="1"><a href="details?product=20448" id="product-name-146">HPE Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40279" id="validation-number-146-0">
+											A7669
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-146-0">11/3/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-147">HOYE Technology CO., LTD.</td>
+										<td rowspan="1"><a href="details?product=20500" id="product-name-147">Blocare PQC Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40327" id="validation-number-147-0">
+											A7717
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-147-0">11/28/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-148">HPE Juniper Networking</td>
+										<td rowspan="1"><a href="details?product=21748" id="product-name-148">Access Point Go Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41502" id="validation-number-148-0">
+											A8892
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-148-0">8/19/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-149">IBM Corporation</td>
+										<td rowspan="1"><a href="details?product=21810" id="product-name-149">IBM 4770-001 (EP11:xCLiC+PKCS11)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41548" id="validation-number-149-0">
+											A8938
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-149-0">9/11/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-150">IBM Corporation</td>
+										<td rowspan="1"><a href="details?product=21295" id="product-name-150">IBM 4770-001 CCA Hardware Security Module (CLIC)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41064" id="validation-number-150-0">
+											A8454
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-150-0">6/2/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-151">IBM Corporation</td>
+										<td rowspan="1"><a href="details?product=21652" id="product-name-151">IBM CryptoLite for C</a></td>
+									<td class="text-center">
+										<a href="details?validation=41401" id="validation-number-151-0">
+											A8791
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-151-0">7/22/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-152">IDEMIA</td>
+										<td rowspan="1"><a href="details?product=21460" id="product-name-152">SPHERE HSM PQC</a></td>
+									<td class="text-center">
+										<a href="details?validation=41274" id="validation-number-152-0">
+											A8664
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-152-0">6/24/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-153">IDEMIA Secure Transactions</td>
+										<td rowspan="1"><a href="details?product=19694" id="product-name-153">IDEMIA Sphere Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=39571" id="validation-number-153-0">
+											A6961
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-153-0">5/28/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-154">Industrial Technology Research Institute (ITRI)</td>
+										<td rowspan="1"><a href="details?product=20465" id="product-name-154">ITRI ML-KEM FPGA Implementation</a></td>
+									<td class="text-center">
+										<a href="details?validation=40292" id="validation-number-154-0">
+											A7682
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-154-0">11/14/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-155">Intel Corporation</td>
+										<td rowspan="1"><a href="details?product=21969" id="product-name-155">Intel® Multi-Buffer Crypto for IPSec</a></td>
+									<td class="text-center">
+										<a href="details?validation=41685" id="validation-number-155-0">
+											A9075
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-155-0">9/30/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-156">Intel Corporation</td>
+										<td rowspan="1"><a href="details?product=20098" id="product-name-156">liboqs</a></td>
+									<td class="text-center">
+										<a href="details?validation=39942" id="validation-number-156-0">
+											A7332
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-156-0">8/14/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-157">ITE Tech. Inc.</td>
+										<td rowspan="1"><a href="details?product=21449" id="product-name-157">ITE IT569x series uCSIO with PQC Cryptographic Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=41275" id="validation-number-157-0">
+											A8665
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-157-0">6/24/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-158">ITE Tech. Inc.</td>
+										<td rowspan="1"><a href="details?product=21092" id="product-name-158">ITE LAx-551x Embedded Controller with PQC Cryptographic Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=40941" id="validation-number-158-0">
+											A8331
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-158-0">5/6/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-159">Jmem Technology</td>
+										<td rowspan="1"><a href="details?product=20059" id="product-name-159">PUF-Embedded Quantum-Safe PQCryptoEngine</a></td>
+									<td class="text-center">
+										<a href="details?validation=39900" id="validation-number-159-0">
+											A7290
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-159-0">7/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-160">KeyPair Consulting Inc.</td>
+										<td rowspan="1"><a href="details?product=20459" id="product-name-160">KeyPair FIPS Provider for OpenSSL</a></td>
+									<td class="text-center">
+										<a href="details?validation=40291" id="validation-number-160-0">
+											A7681
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-160-0">11/13/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-161">Kryptus Seguranca da Informacao S.A.</td>
+										<td rowspan="1"><a href="details?product=18785" id="product-name-161">ASI-HSM AHX5 KNET Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=38676" id="validation-number-161-0">
+											A6066
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-161-0">11/4/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-162">Legion of the Bouncy Castle Inc.</td>
+										<td rowspan="1"><a href="details?product=20052" id="product-name-162">BC-FJA (Bouncy Castle FIPS JAVA API)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39919" id="validation-number-162-0">
+											A7309
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-162-0">8/8/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-163">Legion of the Bouncy Castle Inc.</td>
+										<td rowspan="1"><a href="details?product=20860" id="product-name-163">BC-FJA (Bouncy Castle FIPS JAVA API)</a></td>
+									<td class="text-center">
+										<a href="details?validation=40710" id="validation-number-163-0">
+											A8100
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-163-0">3/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-164">Legion of the Bouncy Castle Inc.</td>
+										<td rowspan="1"><a href="details?product=19716" id="product-name-164">BC-FNA (Bouncy Castle FIPS .NET 4.8 API)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39583" id="validation-number-164-0">
+											A6973
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-164-0">5/29/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-165">Legion of the Bouncy Castle Inc.</td>
+										<td rowspan="1"><a href="details?product=19717" id="product-name-165">BC-FNA (Bouncy Castle FIPS .NET 6.0 API)</a></td>
+									<td class="text-center">
+										<a href="details?validation=39584" id="validation-number-165-0">
+											A6974
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-165-0">5/29/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-166">Marvell Semiconductor, Inc.</td>
+										<td rowspan="1"><a href="details?product=19612" id="product-name-166">LS2-OQS-Crypto</a></td>
+									<td class="text-center">
+										<a href="details?validation=39487" id="validation-number-166-0">
+											A6877
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-166-0">5/1/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-167">Novachips Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20097" id="product-name-167">Cryptographic Components in Novachips NV7X Controller</a></td>
+									<td class="text-center">
+										<a href="details?validation=39951" id="validation-number-167-0">
+											A7341
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-167-0">8/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-168">Nuvoton Technology Corporation</td>
+										<td rowspan="1"><a href="details?product=22057" id="product-name-168">Nuvoton - Module-Lattice-Based Post Quantum Cryptography for ML-KEM</a></td>
+									<td class="text-center">
+										<a href="details?validation=41829" id="validation-number-168-0">
+											A9219
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-168-0">11/4/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-169">Nuvoton Technology Corporation</td>
+										<td rowspan="1"><a href="details?product=21093" id="product-name-169">Nuvoton NCT6694B Cryptographic Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=40957" id="validation-number-169-0">
+											A8347
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-169-0">5/14/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-170">Open Security Research Inc.</td>
+										<td rowspan="1"><a href="details?product=21135" id="product-name-170">OSR PQC Solutions</a></td>
+									<td class="text-center">
+										<a href="details?validation=40917" id="validation-number-170-0">
+											A8307
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-170-0">4/27/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-171">Oracle Corporation</td>
+										<td rowspan="1"><a href="details?product=20549" id="product-name-171">Oracle OpenSSL FIPS Provider</a></td>
+									<td class="text-center">
+										<a href="details?validation=40368" id="validation-number-171-0">
+											A7758
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-171-0">12/11/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-172">Phison Electronics Corporation</td>
+										<td rowspan="1"><a href="details?product=21622" id="product-name-172">PS5028-E28</a></td>
+									<td class="text-center">
+										<a href="details?validation=41450" id="validation-number-172-0">
+											A8840
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-172-0">8/11/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-173">PQSecure Technologies, LLC</td>
+										<td rowspan="1"><a href="details?product=19682" id="product-name-173">libpqsecure</a></td>
+									<td class="text-center">
+										<a href="details?validation=39546" id="validation-number-173-0">
+											A6936
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-173-0">5/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-174">PQSecure Technologies, LLC</td>
+										<td rowspan="1"><a href="details?product=20431" id="product-name-174">Libpqsecure-rs</a></td>
+									<td class="text-center">
+										<a href="details?validation=40226" id="validation-number-174-0">
+											A7616
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-174-0">10/29/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-175">PQSecure Technologies, LLC</td>
+										<td rowspan="1"><a href="details?product=21214" id="product-name-175">PQSecure-Agility</a></td>
+									<td class="text-center">
+										<a href="details?validation=40988" id="validation-number-175-0">
+											A8378
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-175-0">5/26/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-176">PQSecure Technologies, LLC</td>
+										<td rowspan="1"><a href="details?product=19681" id="product-name-176">pqsecure-hw-core</a></td>
+									<td class="text-center">
+										<a href="details?validation=39547" id="validation-number-176-0">
+											A6937
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-176-0">5/20/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-177">PQShield LTD</td>
+										<td rowspan="1"><a href="details?product=19263" id="product-name-177">PQCryptoLib</a></td>
+									<td class="text-center">
+										<a href="details?validation=39163" id="validation-number-177-0">
+											A6553
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-177-0">1/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-178">PQShield LTD</td>
+										<td rowspan="1"><a href="details?product=20478" id="product-name-178">PQCryptoLib-Core</a></td>
+									<td class="text-center">
+										<a href="details?validation=40303" id="validation-number-178-0">
+											A7693
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-178-0">11/18/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-179">PQShield LTD</td>
+										<td rowspan="1"><a href="details?product=21662" id="product-name-179">PQCryptoLib-Core</a></td>
+									<td class="text-center">
+										<a href="details?validation=41417" id="validation-number-179-0">
+											A8807
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-179-0">7/24/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-180">PQShield LTD</td>
+										<td rowspan="1"><a href="details?product=21569" id="product-name-180">PQMicroLib-Core</a></td>
+									<td class="text-center">
+										<a href="details?validation=41350" id="validation-number-180-0">
+											A8740
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-180-0">7/7/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-181">PQShield LTD</td>
+										<td rowspan="1"><a href="details?product=19632" id="product-name-181">PQPerform-Lattice</a></td>
+									<td class="text-center">
+										<a href="details?validation=39530" id="validation-number-181-0">
+											A6920
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-181-0">5/9/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-182">Provision</td>
+										<td rowspan="1"><a href="details?product=22054" id="product-name-182">Provision Cryptographic library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41756" id="validation-number-182-0">
+											A9146
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-182-0">10/8/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-183">PUFsecurity Corporation</td>
+										<td rowspan="1"><a href="details?product=19771" id="product-name-183">PUFpqc – PUF-based post quantum cryptography</a></td>
+									<td class="text-center">
+										<a href="details?validation=39639" id="validation-number-183-0">
+											A7029
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-183-0">6/11/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-184">Qinvicta</td>
+										<td rowspan="1"><a href="details?product=20101" id="product-name-184">Qinvicta TwinStar</a></td>
+									<td class="text-center">
+										<a href="details?validation=39938" id="validation-number-184-0">
+											A7328
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-184-0">8/14/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-185">Quantum Bridge Technologies Inc.</td>
+										<td rowspan="1"><a href="details?product=18983" id="product-name-185">Quantum Bridge cryptolibrary for i7 on Ubuntu</a></td>
+									<td class="text-center">
+										<a href="details?validation=38891" id="validation-number-185-0">
+											A6281
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-185-0">11/22/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-186">QuantumXchange, Inc</td>
+										<td rowspan="1"><a href="details?product=18783" id="product-name-186">PhioTX</a></td>
+									<td class="text-center">
+										<a href="details?validation=38670" id="validation-number-186-0">
+											A6060
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-186-0">11/4/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-187">Rambus Inc.</td>
+										<td rowspan="1"><a href="details?product=19388" id="product-name-187">QSE-IP-86b</a></td>
+									<td class="text-center">
+										<a href="details?validation=39268" id="validation-number-187-0">
+											A6658
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-187-0">3/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-188">Rambus Inc.</td>
+										<td rowspan="1"><a href="details?product=19387" id="product-name-188">QSE-IP-86b-DPA</a></td>
+									<td class="text-center">
+										<a href="details?validation=39267" id="validation-number-188-0">
+											A6657
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-188-0">3/7/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-189">Realtek Semiconductor Corp.</td>
+										<td rowspan="1"><a href="details?product=22113" id="product-name-189">RealSecuriTEE</a></td>
+									<td class="text-center">
+										<a href="details?validation=41831" id="validation-number-189-0">
+											A9221
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-189-0">11/4/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-190">Realtek Semiconductor Corp.</td>
+										<td rowspan="1"><a href="details?product=19572" id="product-name-190">RTS5916</a></td>
+									<td class="text-center">
+										<a href="details?validation=39450" id="validation-number-190-0">
+											A6840
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-190-0">4/24/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-191">Red Hat, LLC</td>
+										<td rowspan="1"><a href="details?product=21450" id="product-name-191">Red Hat Enterprise Linux 10 NSS Cryptographic Module (Generic C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41217" id="validation-number-191-0">
+											A8607
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-191-0">6/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-192">Red Hat, LLC</td>
+										<td rowspan="1"><a href="details?product=21233" id="product-name-192">Red Hat Enterprise Linux 9 NSS Cryptographic Module (Generic C)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41002" id="validation-number-192-0">
+											A8392
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-192-0">5/28/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-193">Rock-solid Microelectronics (Suzhou Shanyuan Microelectronics Co., Ltd.)</td>
+										<td rowspan="1"><a href="details?product=21702" id="product-name-193">Rock-solid HSM IP with PQC</a></td>
+									<td class="text-center">
+										<a href="details?validation=41462" id="validation-number-193-0">
+											A8852
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-193-0">8/12/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-194">SafeLogic, Inc.</td>
+										<td rowspan="1"><a href="details?product=21042" id="product-name-194">CryptoComply 140-3 FIPS Provider with PQC</a></td>
+									<td class="text-center">
+										<a href="details?validation=40838" id="validation-number-194-0">
+											A8228
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-194-0">4/8/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-195">SafeLogic, Inc.</td>
+										<td rowspan="1"><a href="details?product=19278" id="product-name-195">CryptoComply PQ TLS</a></td>
+									<td class="text-center">
+										<a href="details?validation=39173" id="validation-number-195-0">
+											A6563
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-195-0">2/4/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-196">Samsung Electronics Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=20545" id="product-name-196">Samsung BoringCrypto Android</a></td>
+									<td class="text-center">
+										<a href="details?validation=40369" id="validation-number-196-0">
+											A7759
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-196-0">12/12/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-197">Samsung Electronics Co.,Ltd.</td>
+										<td rowspan="1"><a href="details?product=21746" id="product-name-197">Samsung Evan FW Crypto Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=41499" id="validation-number-197-0">
+											A8889
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-197-0">8/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-198">Samsung Electronics Co.,Ltd.</td>
+										<td rowspan="1"><a href="details?product=21764" id="product-name-198">Samsung Evan FW Crypto Engine</a></td>
+									<td class="text-center">
+										<a href="details?validation=41510" id="validation-number-198-0">
+											A8900
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-198-0">8/25/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-199">SANCTUAIRE</td>
+										<td rowspan="1"><a href="details?product=21842" id="product-name-199">SANCTUAIRE Cryptographic Core (Virtuose)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41563" id="validation-number-199-0">
+											A8953
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-199-0">9/18/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-200">Sansec Technology Co., Ltd.</td>
+										<td rowspan="1"><a href="details?product=19364" id="product-name-200">csmsc1</a></td>
+									<td class="text-center">
+										<a href="details?validation=39313" id="validation-number-200-0">
+											A6703
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-200-0">3/11/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-201">SAP SE</td>
+										<td rowspan="1"><a href="details?product=21689" id="product-name-201">SAP SE Garden Linux 1877 OpenSSL Cryptographic Module (PQC)</a></td>
+									<td class="text-center">
+										<a href="details?validation=41445" id="validation-number-201-0">
+											A8835
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-201-0">8/5/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-202">Secure-IC</td>
+										<td rowspan="1"><a href="details?product=18755" id="product-name-202">Secure-IC PQC Solutions</a></td>
+									<td class="text-center">
+										<a href="details?validation=38656" id="validation-number-202-0">
+											A6046
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-202-0">10/30/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-203">SecureMachines</td>
+										<td rowspan="1"><a href="details?product=21594" id="product-name-203">Prastaara Quantum Cryptographic Suite</a></td>
+									<td class="text-center">
+										<a href="details?validation=41351" id="validation-number-203-0">
+											A8741
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-203-0">7/7/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-204">Securosys SA</td>
+										<td rowspan="1"><a href="details?product=20546" id="product-name-204">Primus HSM firmware implementation</a></td>
+									<td class="text-center">
+										<a href="details?validation=40402" id="validation-number-204-0">
+											A7792
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-204-0">12/15/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-205">Securosys SA</td>
+										<td rowspan="1"><a href="details?product=21566" id="product-name-205">Primus HSM firmware implementation</a></td>
+									<td class="text-center">
+										<a href="details?validation=41354" id="validation-number-205-0">
+											A8744
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-205-0">7/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-206">Securosys SA</td>
+										<td rowspan="1"><a href="details?product=18823" id="product-name-206">Primus HSM ML-KEM firmware implementation</a></td>
+									<td class="text-center">
+										<a href="details?validation=38739" id="validation-number-206-0">
+											A6129
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-206-0">11/7/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-207">Senetas Corporation Ltd, distributed by Thales SA (SafeNet)</td>
+										<td rowspan="1"><a href="details?product=21529" id="product-name-207">CE Crypto Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41303" id="validation-number-207-0">
+											A8693
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-207-0">6/26/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-208">Senetas Corporation Ltd, distributed by Thales SA (SafeNet)</td>
+										<td rowspan="1"><a href="details?product=21531" id="product-name-208">CN Series Common Crypto Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41283" id="validation-number-208-0">
+											A8673
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-208-0">6/26/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-209">Shanghai Uni-Sentry Intelligent Technology Co., LTD</td>
+										<td rowspan="1"><a href="details?product=21184" id="product-name-209">UniSentry SecIC-HSM PQC Crypto Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40964" id="validation-number-209-0">
+											A8354
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-209-0">5/19/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-210">Shanghai Uni-Sentry Intelligent Technology Co., LTD</td>
+										<td rowspan="1"><a href="details?product=21000" id="product-name-210">Uni-sentry SecIC-HSM Secure Firmware</a></td>
+									<td class="text-center">
+										<a href="details?validation=40790" id="validation-number-210-0">
+											A8180
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-210-0">3/30/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-211">Shanghai Uni-Sentry Intelligent Technology Co., LTD</td>
+										<td rowspan="1"><a href="details?product=20999" id="product-name-211">Uni-sentry SecIP-PQCHSM Secure Hardware</a></td>
+									<td class="text-center">
+										<a href="details?validation=40789" id="validation-number-211-0">
+											A8179
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-211-0">3/30/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-212">Silvus Technologies</td>
+										<td rowspan="1"><a href="details?product=20543" id="product-name-212">Silvus Crypto Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=40366" id="validation-number-212-0">
+											A7756
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-212-0">12/11/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-213">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21804" id="product-name-213">ST33KTPM Trusted Platform Module cryptographic component</a></td>
+									<td class="text-center">
+										<a href="details?validation=41547" id="validation-number-213-0">
+											A8937
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-213-0">9/9/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-214">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=19884" id="product-name-214">STM32 PQC_CM33 / Size</a></td>
+									<td class="text-center">
+										<a href="details?validation=39735" id="validation-number-214-0">
+											A7125
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-214-0">7/8/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-215">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21431" id="product-name-215">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M0/M0+ series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41202" id="validation-number-215-0">
+											A8592
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-215-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-216">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21432" id="product-name-216">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M0/M0+ series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41206" id="validation-number-216-0">
+											A8596
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-216-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-217">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21439" id="product-name-217">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M3 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41213" id="validation-number-217-0">
+											A8603
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-217-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-218">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21440" id="product-name-218">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M3 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41214" id="validation-number-218-0">
+											A8604
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-218-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-219">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21435" id="product-name-219">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M33 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41209" id="validation-number-219-0">
+											A8599
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-219-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-220">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21436" id="product-name-220">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M33 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41210" id="validation-number-220-0">
+											A8600
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-220-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-221">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21433" id="product-name-221">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M4 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41207" id="validation-number-221-0">
+											A8597
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-221-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-222">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21434" id="product-name-222">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M4 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41208" id="validation-number-222-0">
+											A8598
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-222-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-223">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21441" id="product-name-223">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M55 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41215" id="validation-number-223-0">
+											A8605
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-223-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-224">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21442" id="product-name-224">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M55 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41205" id="validation-number-224-0">
+											A8595
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-224-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-225">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21437" id="product-name-225">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M7 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41211" id="validation-number-225-0">
+											A8601
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-225-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-226">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21438" id="product-name-226">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M7 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41212" id="validation-number-226-0">
+											A8602
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-226-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-227">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21429" id="product-name-227">STM32 STCryptolib X-CUBE-CRYPTOLIB V5 / ARM Cortex M85 series / Fast</a></td>
+									<td class="text-center">
+										<a href="details?validation=41204" id="validation-number-227-0">
+											A8594
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-227-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-228">STMicroelectronics</td>
+										<td rowspan="1"><a href="details?product=21430" id="product-name-228">STM32 STCryptolib X-CUBE-CRYPTOLIB v5 / ARM Cortex M85 series / Small</a></td>
+									<td class="text-center">
+										<a href="details?validation=41203" id="validation-number-228-0">
+											A8593
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-228-0">6/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-229">Synology Inc.</td>
+										<td rowspan="1"><a href="details?product=17685" id="product-name-229">Synology Cryptographic Module (PAA off)</a></td>
+									<td class="text-center">
+										<a href="details?validation=37773" id="validation-number-229-0">
+											A5163
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-229-0">3/6/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-230">Synology Inc.</td>
+										<td rowspan="1"><a href="details?product=17684" id="product-name-230">Synology Cryptographic Module (PAA on)</a></td>
+									<td class="text-center">
+										<a href="details?validation=37768" id="validation-number-230-0">
+											A5158
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-230-0">3/4/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-231">Synopsys, Inc.</td>
+										<td rowspan="1"><a href="details?product=20446" id="product-name-231">Synopsys Agile PQC Solutions</a></td>
+									<td class="text-center">
+										<a href="details?validation=40240" id="validation-number-231-0">
+											A7630
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-231-0">10/31/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-232">Terra Quantum Inc.</td>
+										<td rowspan="1"><a href="details?product=18351" id="product-name-232">TQ42 Cryptography</a></td>
+									<td class="text-center">
+										<a href="details?validation=38266" id="validation-number-232-0">
+											A5656
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-232-0">8/28/2024</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-233">Thales</td>
+										<td rowspan="1"><a href="details?product=21087" id="product-name-233">Thales Luna G7 Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40883" id="validation-number-233-0">
+											A8273
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-233-0">4/17/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-234">Thales</td>
+										<td rowspan="1"><a href="details?product=20110" id="product-name-234">Thales Luna K7 Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=39968" id="validation-number-234-0">
+											A7358
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-234-0">9/2/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-235">Thales Trusted Cyber Technologies</td>
+										<td rowspan="1"><a href="details?product=21505" id="product-name-235">Luna M7 Firmware Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41276" id="validation-number-235-0">
+											A8666
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-235-0">6/25/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-236">Thales Trusted Cyber Technologies</td>
+										<td rowspan="1"><a href="details?product=21506" id="product-name-236">Luna M7 Hybrid (HW/FW) Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41277" id="validation-number-236-0">
+											A8667
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-236-0">6/25/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-237">Thales Trusted Cyber Technologies</td>
+										<td rowspan="1"><a href="details?product=20680" id="product-name-237">Luna T7 Firmware Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40489" id="validation-number-237-0">
+											A7879
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-237-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-238">Thales Trusted Cyber Technologies</td>
+										<td rowspan="1"><a href="details?product=20679" id="product-name-238">Luna T7 Hybrid (HW/FW) Cryptographic Library</a></td>
+									<td class="text-center">
+										<a href="details?validation=40490" id="validation-number-238-0">
+											A7880
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-238-0">1/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-239">The OpenSSL Corporation</td>
+										<td rowspan="1"><a href="details?product=20272" id="product-name-239">OpenSSL FIPS Provider</a></td>
+									<td class="text-center">
+										<a href="details?validation=40091" id="validation-number-239-0">
+											A7481
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-239-0">10/6/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-240">The OpenSSL Corporation</td>
+										<td rowspan="1"><a href="details?product=21973" id="product-name-240">OpenSSL FIPS Provider 3.5</a></td>
+									<td class="text-center">
+										<a href="details?validation=41687" id="validation-number-240-0">
+											A9077
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-240-0">10/1/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-241">Toshiba Corporation</td>
+										<td rowspan="1"><a href="details?product=21604" id="product-name-241">Toshiba Hardware Security Module PQC cryptographic library</a></td>
+									<td class="text-center">
+										<a href="details?validation=41380" id="validation-number-241-0">
+											A8770
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-241-0">7/16/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-242">Two Six Technologies</td>
+										<td rowspan="1"><a href="details?product=21705" id="product-name-242">TrustedKMS Cryptographic Module</a></td>
+									<td class="text-center">
+										<a href="details?validation=41467" id="validation-number-242-0">
+											A8857
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-242-0">8/13/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-243">Utimaco IS GmbH</td>
+										<td rowspan="1"><a href="details?product=20181" id="product-name-243">Lattice Module - ML</a></td>
+									<td class="text-center">
+										<a href="details?validation=40010" id="validation-number-243-0">
+											A7400
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-243-0">9/17/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-244">Versa Networks, Inc.</td>
+										<td rowspan="1"><a href="details?product=22049" id="product-name-244">Intel Multi-Buffer Crypto for IPsec</a></td>
+									<td class="text-center">
+										<a href="details?validation=41787" id="validation-number-244-0">
+											A9177
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-244-0">10/14/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-245">Versa Networks, Inc.</td>
+										<td rowspan="1"><a href="details?product=22050" id="product-name-245">OpenSSL FIPS Provider</a></td>
+									<td class="text-center">
+										<a href="details?validation=41788" id="validation-number-245-0">
+											A9178
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-245-0">10/14/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-246">WiSECURE Technologies Corporation</td>
+										<td rowspan="1"><a href="details?product=20095" id="product-name-246">CRYptographic STandard Algorithm Library (CRYSTAL) – ML-KEM and ML-DSA</a></td>
+									<td class="text-center">
+										<a href="details?validation=39936" id="validation-number-246-0">
+											A7326
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-246-0">8/14/2025</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-247">wolfSSL Inc.</td>
+										<td rowspan="1"><a href="details?product=21279" id="product-name-247">wolfCrypt Post Quantum</a></td>
+									<td class="text-center">
+										<a href="details?validation=41047" id="validation-number-247-0">
+											A8437
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-247-0">5/29/2026</td>
+								</tr>
+								<tr>
+										<td rowspan="1" id="vendor-name-248">Xiphera Ltd.</td>
+										<td rowspan="1"><a href="details?product=20457" id="product-name-248">Xiphera XIP6110B</a></td>
+									<td class="text-center">
+										<a href="details?validation=40289" id="validation-number-248-0">
+											A7679
+										</a>
+									</td>
+									<td class="text-center" id="validation-date-248-0">11/12/2025</td>
+								</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="row bottom-pagination-area">
+				<p class="text-center">
+					<span class='pagination-links' id='bottom-pagination-container' data-total-pages='1' data-min-page='1' data-max-page='1' data-current-page='1' data-show-first='False' data-show-last='False'></span>
+				</p>
+			</div>
+
+
+	</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12 historical-data-area" id="historical-data-area">
+
+            <span>Created <span id="page-created-date">October 05, 2016</span>, Updated <span id="page-updated-date">September 22, 2026</span></span>
+    </div>
+</div>
+
+
+        <div id="footer-pusher"></div>
+
+    </div>
+
+    
+
+    <footer id="footer">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <span class="hidden-xs">
+                    <a href="https://www.nist.gov" title="National Institute of Standards and Technology" rel="home" target='_blank' rel="noopener noreferrer" class="footer-nist-logo" id="footer-nist-logo-link">
+                        <img src="/CSRC/Media/images/nist-logo-brand-white.svg" alt="National Institute of Standards and Technology logo" id="footer-nist-logo" />
+                    </a>
+                </span>
+
+                <div class="row footer-contact-container">
+                    <div class="col-sm-12" id="footer-address">
+                        <strong>HEADQUARTERS</strong><br>
+                        100 Bureau Drive<br>
+                        Gaithersburg, MD 20899
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <ul class="social-list text-right" style="display: block;">
+                    <li class="field-item service-twitter list-horiz">
+                        <a href="https://x.com/NISTCyber" class="social-btn social-btn--large extlink ext" id="footer-social-twitter-link">
+                            <i class="fa-brands fa-x-twitter fa-fw"><span class="element-invisible">X</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+                    </li>
+                    <li class="field-item service-facebook list-horiz">
+                        <a href="https://www.facebook.com/NIST" class="social-btn social-btn--large extlink ext" id="footer-social-facebook-link">
+                            <i class="fa fa-facebook fa-fw"><span class="element-invisible">facebook</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-linkedin list-horiz">
+                        <a href="https://www.linkedin.com/company/nist" class="social-btn social-btn--large extlink ext" id="footer-social-linkedin-link">
+                            <i class="fa fa-linkedin fa-fw"><span class="element-invisible">linkedin</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-instagram list-horiz">
+                        <a href="https://www.instagram.com/usnistgov/" class="social-btn social-btn--large extlink ext" id="footer-social-instagram-link">
+                            <i class="fa fa-instagram fa-fw"><span class="element-invisible">instagram</span></i>
+                            <span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-youtube list-horiz">
+                        <a href="https://www.youtube.com/user/USNISTGOV" class="social-btn social-btn--large extlink ext" id="footer-social-youtube-link">
+                            <i class="fa fa-youtube fa-fw"><span class="element-invisible">youtube</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-rss list-horiz">
+                        <a href="https://www.nist.gov/news-events/nist-rss-feeds" class="social-btn social-btn--large extlink" id="footer-social-rss-link">
+                            <i class="fa fa-rss fa-fw"><span class="element-invisible">rss</span></i>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-govdelivery list-horiz last">
+                        <a href="https://public.govdelivery.com/accounts/USNIST/subscriber/new?qsp=USNIST_3" class="social-btn social-btn--large extlink ext" title="Subscribe to CSRC and publication updates, and other NIST cybersecurity news" id="footer-social-govdelivery-link">
+                            <i class="fa fa-envelope fa-fw"><span class="element-invisible">govdelivery</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-right">
+                    Want updates about CSRC and our publications?
+                    <a href="https://public.govdelivery.com/accounts/USNIST/subscriber/new?qsp=USNIST_3" class="btn btn-lg btn-primary" style="background-color: #12659c!important; border-color: #12659c!important;" id="footer-subscribe-link">Subscribe</a>
+                </p>
+            </div>
+        </div>
+        <div class="row hidden-sm hidden-md hidden-lg">
+            <div class="col-sm-12">
+                <a href="https://www.nist.gov" title="National Institute of Standards and Technology" rel="home" target='_blank' rel="noopener noreferrer" class="footer-nist-logo" id="footer-bottom-nist-logo-link">
+                    <img src="/CSRC/Media/images/logo_rev.png" alt="National Institute of Standards and Technology logo" id="footer-bottom-nist-logo" />
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                    <a href="/about/contact" id="footer-contact-us-link">Contact Us</a> |
+                    <a href="https://www.nist.gov/about-nist/visit" style="display: inline-block;" id="footer-org-link">Our Other Offices</a>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <span class="pull-right text-right">
+                    Send inquiries to <a href="/cdn-cgi/l/email-protection#f89b8b8a9bd59196898d918a81b896918b8cd69f978ec78b8d9a929d9b8cc5bbabaabbd8b196898d918a81" style="display: inline-block;" id="footer-inquiries-link"><span class="__cf_email__" data-cfemail="c7a4b4b5a4eaaea9b6b2aeb5be87a9aeb4b3e9a0a8b1">[email&#160;protected]</span></a>
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="footer-bottom-links-container" id="footer-bottom-links-container">
+                <ul>
+                  <li><a href="https://www.nist.gov/privacy-policy">Site Privacy</a></li>
+                  <li><a href="https://www.nist.gov/oism/accessibility">Accessibility</a></li>
+                  <li><a href="https://www.nist.gov/privacy">Privacy Program</a></li>
+                  <li><a href="https://www.nist.gov/oism/copyrights">Copyrights</a></li>
+                  <li><a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a></li>
+                  <li><a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a></li>
+                  <li><a href="https://www.nist.gov/foia">FOIA</a></li>
+                  <li><a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a></li>
+                  <li><a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a></li>
+                  <li><a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a></li>
+                  <li><a href="https://www.commerce.gov/">Commerce.gov</a></li>
+                  <li><a href="https://www.science.gov/">Science.gov</a></li>
+                  <li><a href="https://www.usa.gov/">USA.gov</a></li>
+                  <li><a href="https://vote.gov/">Vote.gov</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="/dist/js/quick-collapse.js"></script>
+<script type="text/javascript" src="/dist/app.bundle.js"></script>
+<!-- USWDS Bottom -->
+<script type="text/javascript" src="/dist/uswds/js/uswds.min.js"></script>
+
+    
+
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5d2f3d9292917a9',t:'MTc5NTEzMDUwMA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5d2f3d9292917a9',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

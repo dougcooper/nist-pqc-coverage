@@ -1,0 +1,28 @@
+Tested Module Identification – Software, Firmware, Hybrid (Executable Code Sets):
+Package or File Name                                                    Software/         Features Integrity
+                                                                        Firmware                   Test
+                                                                        Version
+bcm.o on Amazon Linux 2023 on Amazon EC2 c6i.metal with                 AWS-LC FIPS                  HMAC-
+192 GiB system memory and Elastic Block Store (EBS) 200 GiB             4.0.0                        SHA2-256
+with Intel(R) Xeon(R) Platinum 8375C
+Table 2: Tested Module Identification – Software, Firmware, Hybrid (Executable Code Sets)
+
+Tested Module Identification – Hybrid Disjoint Hardware:
+N/A for this module.
+
+Tested Operational Environments - Software, Firmware, Hybrid:
+Operating     Hardware Platform                       Processors          PAA/PAI Hypervisor or Version(s)
+System                                                                            Host OS
+Amazon        Amazon EC2 c6i.metal with 192           Intel(R) Xeon(R) Yes          N/A            AWS-LC
+Linux 2023    GiB system memory and Elastic           Platinum 8375C                               FIPS 4.0.0
+              Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 r8g.metal-24xl with          Graviton4         No       N/A            AWS-LC
+Linux 2023    128 GiB system memory and                                                            FIPS 4.0.0
+              Elastic Block Store (EBS) 200 GiB
+Table 3: Tested Operational Environments - Software, Firmware, Hybrid
+
+Vendor-Affirmed Operational Environments - Software, Firmware, Hybrid:
+N/A for this module.
+
+2.3 Excluded Components
+The module does not claim any excluded components.

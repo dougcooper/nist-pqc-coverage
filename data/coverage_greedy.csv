@@ -1,0 +1,179 @@
+variant,rank,vendor,product,record_id,targets_covered,targets_total,cumulative_targets,pct_targets,universe_targets
+validated,1,Virtru Corporation,Virtru Go Cryptographic Module,5460,22,22,22,19.6,112
+validated,2,Geomys LLC,Go Cryptographic Module,5581,10,22,32,28.6,112
+validated,3,atsec corp.,leancrypto (without PAA - C implementation),A7538,8,8,40,35.7,112
+validated,4,"Dell Australia Pty Limited, BSAFE Product Team",Dell BSAFE Crypto Module for Java,5361,6,6,46,41.1,112
+validated,5,atsec corp.,leancrypto (C),A6569,5,8,51,45.5,112
+validated,6,The OpenSSL Corporation,OpenSSL FIPS Provider,A7481,5,5,56,50.0,112
+validated,7,atsec corp.,leancrypto (C),A5994,4,7,60,53.6,112
+validated,8,Terra Quantum Inc.,TQ42 Cryptography,A5656,4,6,64,57.1,112
+validated,9,atsec corp.,leancrypto (C),A6991,3,8,67,59.8,112
+validated,10,"Versa Networks, Inc.",OpenSSL FIPS Provider,A9178,3,3,70,62.5,112
+validated,11,PQShield Ltd.,PQCryptoLib-Core,5587,2,2,72,64.3,112
+validated,12,PQShield LTD,PQCryptoLib-Core,A8807,2,2,74,66.1,112
+validated,13,PQShield LTD,PQCryptoLib,A6553,2,2,76,67.9,112
+validated,14,IDEMIA Secure Transactions,IDEMIA Sphere Cryptographic Library,A6961,2,2,78,69.6,112
+validated,15,"Crossbar, Inc.",CrossBar Daric PQC Cryptographic Library,A9051,2,2,80,71.4,112
+validated,16,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection - mlkem-native (C backend),A7024,2,2,82,73.2,112
+validated,17,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection (Portable),A8023,2,2,84,75.0,112
+validated,18,"Chainguard, Inc.",Chainguard FIPS Provider for OpenSSL,5523,2,2,86,76.8,112
+validated,19,"Arista Networks, Inc.",Aboot crypto verifier,A9230,2,2,88,78.6,112
+validated,20,atsec corp.,leancrypto (C),A5615,1,7,89,79.5,112
+validated,21,,Dell BSAFE Crypto Module for Java,A9268,1,3,90,80.4,112
+validated,22,atsec corp.,leancrypto (Kernel_C),A5639,1,1,91,81.2,112
+validated,23,Two Six Technologies,TrustedKMS Cryptographic Module,A8857,1,1,92,82.1,112
+validated,24,Thales Trusted Cyber Technologies,Luna T7,5450,1,1,93,83.0,112
+validated,25,Silvus Technologies,Silvus Crypto Module,A7756,1,1,94,83.9,112
+validated,26,Shinewave International Inc.,Post-Quantum Cryptography Module within IoT Gateways,A7883,1,1,95,84.8,112
+validated,27,"Shanghai Uni-Sentry Intelligent Technology Co., LTD",UniSentry SecIC-HSM PQC Crypto Module,A8354,1,1,96,85.7,112
+validated,28,"QuantumXchange, Inc",PhioTX,A6060,1,1,97,86.6,112
+validated,29,Quantum Bridge Technologies Inc.,Quantum Bridge cryptolibrary for i7 on Ubuntu,A6281,1,1,98,87.5,112
+validated,30,Provision,Provision Cryptographic library,A9146,1,1,99,88.4,112
+validated,31,"PQSecure Technologies, LLC",libpqsecure,A6936,1,1,100,89.3,112
+validated,32,Legion of the Bouncy Castle Inc.,BC-FJA (Bouncy Castle FIPS Java API),4943,1,1,101,90.2,112
+validated,33,"FortifyIQ, Inc.",PQC-ML-DSA-verify-CL,A8914,1,1,102,91.1,112
+validated,34,CryptoNext Security,C-QSL (C),A6637,1,1,103,92.0,112
+validated,35,CryptoNext Security,C-QSL (AVX2),A6638,1,1,104,92.9,112
+validated,36,CryptoNext Security,C-QSL (ARM_NEON),A6639,1,1,105,93.8,112
+validated,37,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A8923,1,1,106,94.6,112
+validated,38,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A7878,1,1,107,95.5,112
+validated,39,CIPHERPLUS PTE. LTD.,CipherPlus Cryptographic Module,A7970,1,1,108,96.4,112
+validated,40,Best PQC Intelligent Cybersecurity Ltd.,Best PQC MLKEM,A7795,1,1,109,97.3,112
+validated,41,"Beijing JN TASS Technology Co., Ltd.",TASS Crypto Engine,5567,1,1,110,98.2,112
+validated,42,ASUSTeK Computer Inc.,Post-Quantum Cryptography Module,A8672,1,1,111,99.1,112
+validated,43,,Rocky Linux 9 NSS Cryptographic Module (Generic C),A7786,1,1,112,100.0,112
+with_in_process,1,Virtru Corporation,Virtru Go Cryptographic Module,5460,22,22,22,11.8,187
+with_in_process,2,"SafeLogic, Inc.",CryptoComply 140-3 FIPS Provider with PQC,CryptoComply 140-3 FIPS Provider with PQC,13,14,35,18.7,187
+with_in_process,3,Apple Inc.,"Apple corecrypto Module OS 27 [Apple Silicon, User, Software, SL1]","Apple corecrypto Module OS 27 [Apple Silicon, User, Software, SL1]",11,11,46,24.6,187
+with_in_process,4,Geomys LLC,Go Cryptographic Module,5581,10,22,56,29.9,187
+with_in_process,5,Blackberry Limited,Security Builder FIPS Module,Security Builder FIPS Module,9,11,65,34.8,187
+with_in_process,6,atsec corp.,leancrypto (C),A6569,8,8,73,39.0,187
+with_in_process,7,Legion of the Bouncy Castle Inc.,BC-FNA (Bouncy Castle FIPS .NET API),BC-FNA (Bouncy Castle FIPS .NET API),8,8,81,43.3,187
+with_in_process,8,"Dell Australia Pty Limited, BSAFE Product Team",Dell BSAFE Crypto Module for Java 8.0,Dell BSAFE Crypto Module for Java 8.0,7,9,88,47.1,187
+with_in_process,9,Oracle Corporation,Oracle T93 Cryptographic Module,Oracle T93 Cryptographic Module,6,7,94,50.3,187
+with_in_process,10,"Dell Australia Pty Limited, BSAFE Product Team",Dell BSAFE Crypto Module for Java,5361,6,6,100,53.5,187
+with_in_process,11,The OpenSSL Corporation,OpenSSL FIPS Provider,A7481,5,5,105,56.1,187
+with_in_process,12,"Hangzhou Hikvision Digital Technology Co., Ltd",Hikvision FIPS Provider,Hikvision FIPS Provider,5,5,110,58.8,187
+with_in_process,13,atsec corp.,leancrypto (without PAA - C implementation),A7538,4,8,114,61.0,187
+with_in_process,14,atsec corp.,leancrypto (C),A5994,4,7,118,63.1,187
+with_in_process,15,Terra Quantum Inc.,TQ42 Cryptography,A5656,4,6,122,65.2,187
+with_in_process,16,Alibaba Cloud Computing Ltd.,Alibaba Cloud Crypto,Alibaba Cloud Crypto,4,4,126,67.4,187
+with_in_process,17,atsec corp.,leancrypto (C),A6991,3,8,129,69.0,187
+with_in_process,18,"Citrix Systems, Inc.",Citrix FIPS Cryptographic Module,Citrix FIPS Cryptographic Module,3,6,132,70.6,187
+with_in_process,19,"Code Siren, LLC",Code Siren Post-Quantum Cryptographic (PQC) Library for Mobile,Code Siren Post-Quantum Cryptographic (PQC) Library for Mobile,3,3,135,72.2,187
+with_in_process,20,"Red Hat, LLC",Red Hat Enterprise Linux 9 gnutls,Red Hat Enterprise Linux 9 gnutls,2,4,137,73.3,187
+with_in_process,21,"Versa Networks, Inc.",OpenSSL FIPS Provider,A9178,2,3,139,74.3,187
+with_in_process,22,Thales Trusted Cyber Technologies,Luna M7 Cryptographic Module (v7.15.1),Luna M7 Cryptographic Module (v7.15.1),2,2,141,75.4,187
+with_in_process,23,SAP SE,SAP SE Garden Linux OpenSSL Cryptographic Module,SAP SE Garden Linux OpenSSL Cryptographic Module,2,2,143,76.5,187
+with_in_process,24,PQShield Ltd.,PQCryptoLib-Core,5587,2,2,145,77.5,187
+with_in_process,25,PQShield LTD,PQCryptoLib-Core,A8807,2,2,147,78.6,187
+with_in_process,26,PQShield LTD,PQCryptoLib,A6553,2,2,149,79.7,187
+with_in_process,27,"NetApp, Inc.",NetApp CryptoMod,NetApp CryptoMod,2,2,151,80.7,187
+with_in_process,28,IDEMIA Secure Transactions,IDEMIA Sphere Cryptographic Library,A6961,2,2,153,81.8,187
+with_in_process,29,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection - mlkem-native (C backend),A7024,2,2,155,82.9,187
+with_in_process,30,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection (Portable),A8023,2,2,157,84.0,187
+with_in_process,31,"Chainguard, Inc.",Chainguard FIPS Provider for OpenSSL,5523,2,2,159,85.0,187
+with_in_process,32,"Beijing JN TASS Technology Co., Ltd.",TASS CloudHSM,TASS CloudHSM,2,2,161,86.1,187
+with_in_process,33,"Arista Networks, Inc.",Aboot crypto verifier,A9230,2,2,163,87.2,187
+with_in_process,34,atsec corp.,leancrypto (C),A5615,1,7,164,87.7,187
+with_in_process,35,"Google, LLC",BoringCrypto,BoringCrypto,1,4,165,88.2,187
+with_in_process,36,,Dell BSAFE Crypto Module for Java,A9268,1,3,166,88.8,187
+with_in_process,37,"Crossbar, Inc.",CrossBar Daric PQC Cryptographic Library,A9051,1,2,167,89.3,187
+with_in_process,38,atsec corp.,leancrypto (Kernel_C),A5639,1,1,168,89.8,187
+with_in_process,39,Synology Inc.,Synology Kernel 5.10 Cryptographic Library,Synology Kernel 5.10 Cryptographic Library,1,1,169,90.4,187
+with_in_process,40,Silvus Technologies,Silvus Crypto Module,A7756,1,1,170,90.9,187
+with_in_process,41,Shinewave International Inc.,Post-Quantum Cryptography Module within IoT Gateways,A7883,1,1,171,91.4,187
+with_in_process,42,"Shanghai Uni-Sentry Intelligent Technology Co., LTD",UniSentry SecIC-HSM PQC Crypto Module,A8354,1,1,172,92.0,187
+with_in_process,43,Quantum Bridge Technologies Inc.,Quantum Bridge cryptolibrary for i7 on Ubuntu,A6281,1,1,173,92.5,187
+with_in_process,44,Provision,Provision Cryptographic library,A9146,1,1,174,93.0,187
+with_in_process,45,"PQSecure Technologies, LLC",libpqsecure,A6936,1,1,175,93.6,187
+with_in_process,46,"FortifyIQ, Inc.",PQC-ML-DSA-verify-CL,A8914,1,1,176,94.1,187
+with_in_process,47,"DigiCert, Inc.",DigiCert TrustCore NanoCrypto Module,DigiCert TrustCore NanoCrypto Module,1,1,177,94.7,187
+with_in_process,48,DINAMO Cyber Security Company,DINAMO NG Hardware Security Module,DINAMO NG Hardware Security Module,1,1,178,95.2,187
+with_in_process,49,CryptoNext Security,C-QSL (C),A6637,1,1,179,95.7,187
+with_in_process,50,CryptoNext Security,C-QSL (AVX2),A6638,1,1,180,96.3,187
+with_in_process,51,CryptoNext Security,C-QSL (ARM_NEON),A6639,1,1,181,96.8,187
+with_in_process,52,Check Point Software Technologies,"Check Point Gaia OS R82.20 Cryptography Module running on Check Point Firewall models MHO140, MHO175, 3920, 3950, 3970, 3980, 9100, 9200, 9300, 9400, 9700, 9800, 19100, 19200, 29100, 29200, 700S, 700M, 7000L, 7000XL, 7000Ultra, and Cloud Firewall and Cloud Management series VM with VMware ESXi 8.0.0","Check Point Gaia OS R82.20 Cryptography Module running on Check Point Firewall models MHO140, MHO175, 3920, 3950, 3970, 3980, 9100, 9200, 9300, 9400, 9700, 9800, 19100, 19200, 29100, 29200, 700S, 700M, 7000L, 7000XL, 7000Ultra, and Cloud Firewall and Cloud Management series VM with VMware ESXi 8.0.0",1,1,182,97.3,187
+with_in_process,53,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A8923,1,1,183,97.9,187
+with_in_process,54,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A7878,1,1,184,98.4,187
+with_in_process,55,CIPHERPLUS PTE. LTD.,CipherPlus Cryptographic Module,A7970,1,1,185,98.9,187
+with_in_process,56,"Arista Networks, Inc.",Arista Crypto Module v5.0,Arista Crypto Module v5.0,1,1,186,99.5,187
+with_in_process,57,ASUSTeK Computer Inc.,Post-Quantum Cryptography Module,A8672,1,1,187,100.0,187
+validated_software,1,Virtru Corporation,Virtru Go Cryptographic Module,5460,22,22,22,20.6,107
+validated_software,2,Geomys LLC,Go Cryptographic Module,5581,10,22,32,29.9,107
+validated_software,3,atsec corp.,leancrypto (without PAA - C implementation),A7538,8,8,40,37.4,107
+validated_software,4,"Dell Australia Pty Limited, BSAFE Product Team",Dell BSAFE Crypto Module for Java,5361,6,6,46,43.0,107
+validated_software,5,atsec corp.,leancrypto (C),A6569,5,8,51,47.7,107
+validated_software,6,The OpenSSL Corporation,OpenSSL FIPS Provider,A7481,5,5,56,52.3,107
+validated_software,7,atsec corp.,leancrypto (C),A5994,4,7,60,56.1,107
+validated_software,8,Terra Quantum Inc.,TQ42 Cryptography,A5656,4,6,64,59.8,107
+validated_software,9,atsec corp.,leancrypto (C),A6991,3,8,67,62.6,107
+validated_software,10,"Versa Networks, Inc.",OpenSSL FIPS Provider,A9178,3,3,70,65.4,107
+validated_software,11,PQShield Ltd.,PQCryptoLib-Core,5587,2,2,72,67.3,107
+validated_software,12,PQShield LTD,PQCryptoLib-Core,A8807,2,2,74,69.2,107
+validated_software,13,PQShield LTD,PQCryptoLib,A6553,2,2,76,71.0,107
+validated_software,14,IDEMIA Secure Transactions,IDEMIA Sphere Cryptographic Library,A6961,2,2,78,72.9,107
+validated_software,15,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection - mlkem-native (C backend),A7024,2,2,80,74.8,107
+validated_software,16,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection (Portable),A8023,2,2,82,76.6,107
+validated_software,17,"Chainguard, Inc.",Chainguard FIPS Provider for OpenSSL,5523,2,2,84,78.5,107
+validated_software,18,"Arista Networks, Inc.",Aboot crypto verifier,A9230,2,2,86,80.4,107
+validated_software,19,atsec corp.,leancrypto (C),A5615,1,7,87,81.3,107
+validated_software,20,,Dell BSAFE Crypto Module for Java,A9268,1,3,88,82.2,107
+validated_software,21,atsec corp.,leancrypto (Kernel_C),A5639,1,1,89,83.2,107
+validated_software,22,Two Six Technologies,TrustedKMS Cryptographic Module,A8857,1,1,90,84.1,107
+validated_software,23,Shinewave International Inc.,Post-Quantum Cryptography Module within IoT Gateways,A7883,1,1,91,85.0,107
+validated_software,24,"Shanghai Uni-Sentry Intelligent Technology Co., LTD",UniSentry SecIC-HSM PQC Crypto Module,A8354,1,1,92,86.0,107
+validated_software,25,"QuantumXchange, Inc",PhioTX,A6060,1,1,93,86.9,107
+validated_software,26,Quantum Bridge Technologies Inc.,Quantum Bridge cryptolibrary for i7 on Ubuntu,A6281,1,1,94,87.9,107
+validated_software,27,Provision,Provision Cryptographic library,A9146,1,1,95,88.8,107
+validated_software,28,"PQSecure Technologies, LLC",libpqsecure,A6936,1,1,96,89.7,107
+validated_software,29,Legion of the Bouncy Castle Inc.,BC-FJA (Bouncy Castle FIPS Java API),4943,1,1,97,90.7,107
+validated_software,30,"FortifyIQ, Inc.",PQC-ML-DSA-verify-CL,A8914,1,1,98,91.6,107
+validated_software,31,CryptoNext Security,C-QSL (C),A6637,1,1,99,92.5,107
+validated_software,32,CryptoNext Security,C-QSL (AVX2),A6638,1,1,100,93.5,107
+validated_software,33,CryptoNext Security,C-QSL (ARM_NEON),A6639,1,1,101,94.4,107
+validated_software,34,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A8923,1,1,102,95.3,107
+validated_software,35,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A7878,1,1,103,96.3,107
+validated_software,36,CIPHERPLUS PTE. LTD.,CipherPlus Cryptographic Module,A7970,1,1,104,97.2,107
+validated_software,37,Best PQC Intelligent Cybersecurity Ltd.,Best PQC MLKEM,A7795,1,1,105,98.1,107
+validated_software,38,ASUSTeK Computer Inc.,Post-Quantum Cryptography Module,A8672,1,1,106,99.1,107
+validated_software,39,,Rocky Linux 9 NSS Cryptographic Module (Generic C),A7786,1,1,107,100.0,107
+with_in_process_software,1,Virtru Corporation,Virtru Go Cryptographic Module,5460,22,22,22,20.6,107
+with_in_process_software,2,Geomys LLC,Go Cryptographic Module,5581,10,22,32,29.9,107
+with_in_process_software,3,atsec corp.,leancrypto (without PAA - C implementation),A7538,8,8,40,37.4,107
+with_in_process_software,4,"Dell Australia Pty Limited, BSAFE Product Team",Dell BSAFE Crypto Module for Java,5361,6,6,46,43.0,107
+with_in_process_software,5,atsec corp.,leancrypto (C),A6569,5,8,51,47.7,107
+with_in_process_software,6,The OpenSSL Corporation,OpenSSL FIPS Provider,A7481,5,5,56,52.3,107
+with_in_process_software,7,atsec corp.,leancrypto (C),A5994,4,7,60,56.1,107
+with_in_process_software,8,Terra Quantum Inc.,TQ42 Cryptography,A5656,4,6,64,59.8,107
+with_in_process_software,9,atsec corp.,leancrypto (C),A6991,3,8,67,62.6,107
+with_in_process_software,10,"Versa Networks, Inc.",OpenSSL FIPS Provider,A9178,3,3,70,65.4,107
+with_in_process_software,11,PQShield Ltd.,PQCryptoLib-Core,5587,2,2,72,67.3,107
+with_in_process_software,12,PQShield LTD,PQCryptoLib-Core,A8807,2,2,74,69.2,107
+with_in_process_software,13,PQShield LTD,PQCryptoLib,A6553,2,2,76,71.0,107
+with_in_process_software,14,IDEMIA Secure Transactions,IDEMIA Sphere Cryptographic Library,A6961,2,2,78,72.9,107
+with_in_process_software,15,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection - mlkem-native (C backend),A7024,2,2,80,74.8,107
+with_in_process_software,16,"Chelpis Quantum Corp., Ltd.",Chelpis Post-Quantum Collection (Portable),A8023,2,2,82,76.6,107
+with_in_process_software,17,"Chainguard, Inc.",Chainguard FIPS Provider for OpenSSL,5523,2,2,84,78.5,107
+with_in_process_software,18,"Arista Networks, Inc.",Aboot crypto verifier,A9230,2,2,86,80.4,107
+with_in_process_software,19,atsec corp.,leancrypto (C),A5615,1,7,87,81.3,107
+with_in_process_software,20,,Dell BSAFE Crypto Module for Java,A9268,1,3,88,82.2,107
+with_in_process_software,21,atsec corp.,leancrypto (Kernel_C),A5639,1,1,89,83.2,107
+with_in_process_software,22,Two Six Technologies,TrustedKMS Cryptographic Module,A8857,1,1,90,84.1,107
+with_in_process_software,23,Shinewave International Inc.,Post-Quantum Cryptography Module within IoT Gateways,A7883,1,1,91,85.0,107
+with_in_process_software,24,"Shanghai Uni-Sentry Intelligent Technology Co., LTD",UniSentry SecIC-HSM PQC Crypto Module,A8354,1,1,92,86.0,107
+with_in_process_software,25,"QuantumXchange, Inc",PhioTX,A6060,1,1,93,86.9,107
+with_in_process_software,26,Quantum Bridge Technologies Inc.,Quantum Bridge cryptolibrary for i7 on Ubuntu,A6281,1,1,94,87.9,107
+with_in_process_software,27,Provision,Provision Cryptographic library,A9146,1,1,95,88.8,107
+with_in_process_software,28,"PQSecure Technologies, LLC",libpqsecure,A6936,1,1,96,89.7,107
+with_in_process_software,29,Legion of the Bouncy Castle Inc.,BC-FJA (Bouncy Castle FIPS Java API),4943,1,1,97,90.7,107
+with_in_process_software,30,"FortifyIQ, Inc.",PQC-ML-DSA-verify-CL,A8914,1,1,98,91.6,107
+with_in_process_software,31,CryptoNext Security,C-QSL (C),A6637,1,1,99,92.5,107
+with_in_process_software,32,CryptoNext Security,C-QSL (AVX2),A6638,1,1,100,93.5,107
+with_in_process_software,33,CryptoNext Security,C-QSL (ARM_NEON),A6639,1,1,101,94.4,107
+with_in_process_software,34,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A8923,1,1,102,95.3,107
+with_in_process_software,35,Centre for Development of Telematics,C-DOT ML-KEM Cryptographic Algorithms,A7878,1,1,103,96.3,107
+with_in_process_software,36,CIPHERPLUS PTE. LTD.,CipherPlus Cryptographic Module,A7970,1,1,104,97.2,107
+with_in_process_software,37,Best PQC Intelligent Cybersecurity Ltd.,Best PQC MLKEM,A7795,1,1,105,98.1,107
+with_in_process_software,38,ASUSTeK Computer Inc.,Post-Quantum Cryptography Module,A8672,1,1,106,99.1,107
+with_in_process_software,39,,Rocky Linux 9 NSS Cryptographic Module (Generic C),A7786,1,1,107,100.0,107

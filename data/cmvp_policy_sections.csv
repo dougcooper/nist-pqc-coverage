@@ -1,0 +1,3955 @@
+cert,kind,embodiment,page,pdf_url,os_candidates,cpu_candidates,section_text
+5596,tested,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5596.pdf,Linux 2023,Graviton4; EPYC 4th,"Operating     Hardware Platform                       Processors          PAA/PAI Hypervisor or Version(s)
+System                                                                            Host OS
+Amazon        Amazon EC2 c6i.metal with 192           Intel(R) Xeon(R) Yes          N/A            AWS-LC
+Linux 2023    GiB system memory and Elastic           Platinum 8375C                               FIPS 4.0.0
+              Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 c6i.metal with 192           Intel(R) Xeon(R) No           N/A            AWS-LC
+Linux 2023    GiB system memory and Elastic           Platinum 8375C                               FIPS 4.0.0
+              Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 r8g.metal-24xl with          Graviton4           Yes       N/A            AWS-LC
+Linux 2023    128 GiB system memory and                                                            FIPS 4.0.0
+              Elastic Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 r8g.metal-24xl with          Graviton4           No        N/A            AWS-LC
+Linux 2023    128 GiB system memory and                                                            FIPS 4.0.0
+              Elastic Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 c7a.metal with 128           AMD EPYC 4th        Yes       N/A            AWS-LC
+Linux 2023    GiB system memory and Elastic           Generation                                   FIPS 4.0.0
+              Block Store (EBS) 200 GiB
+Amazon        Amazon EC2 c7a.metal with 128           AMD EPYC 4th        No        N/A            AWS-LC
+Linux 2023    GiB system memory and Elastic           Generation                                   FIPS 4.0.0
+              Block Store (EBS) 200 GiB"
+5596,vendor_affirmed,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5596.pdf,,,N/A for this module.
+5595,tested,"Software, Firmware, Hybrid",8,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5595.pdf,Linux 2023,Graviton4; EPYC 4th,"Operating    Hardware Platform              Processors        PAA/PAI Hypervisor      Version(s)
+System                                                                or Host OS
+Amazon     Amazon EC2 c6i.metal with        Intel(R)          Yes       N/A           AWS-LC
+Linux 2023 192 GiB system memory            Xeon(R)                                   FIPS 4.0.0
+           and Elastic Block Store          Platinum
+           (EBS) 200 GiB                    8375C
+Amazon     Amazon EC2 c6i.metal with        Intel(R)          No        N/A           AWS-LC
+Linux 2023 192 GiB system memory            Xeon(R)                                   FIPS 4.0.0
+           and Elastic Block Store          Platinum
+           (EBS) 200 GiB                    8375C
+Amazon     Amazon EC2 r8g.metal-24xl Graviton4                Yes       N/A           AWS-LC
+Linux 2023 with 128 GiB system                                                        FIPS 4.0.0
+           memory and Elastic Block
+           Store (EBS) 200 GiB
+Amazon     Amazon EC2 r8g.metal-24xl Graviton4                No        N/A           AWS-LC
+Linux 2023 with 128 GiB system                                                        FIPS 4.0.0
+           memory and Elastic Block
+           Store (EBS) 200 GiB
+
+
+                                             notice.
+
+AWS-LC 4 Cryptographic Module (dynamic)                   FIPS 140-3 Non-Proprietary Security Policy
+
+
+
+Operating    Hardware Platform              Processors        PAA/PAI Hypervisor      Version(s)
+System                                                                or Host OS
+Amazon     Amazon EC2 c7a.metal with AMD EPYC 4th             Yes      N/A            AWS-LC
+Linux 2023 128 GiB system memory     Generation                                       FIPS 4.0.0
+           and Elastic Block Store
+           (EBS) 200 GiB
+Amazon     Amazon EC2 c7a.metal with AMD EPYC 4th             No       N/A            AWS-LC
+Linux 2023 128 GiB system memory     Generation                                       FIPS 4.0.0
+           and Elastic Block Store
+           (EBS) 200 GiB"
+5595,vendor_affirmed,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5595.pdf,,,N/A for this module.
+5588,tested,"Software, Firmware, Hybrid",12,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5588.pdf,,,N/A for this module.
+5588,vendor_affirmed,"Software, Firmware, Hybrid",12,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5588.pdf,,,N/A for this module.
+5586,tested,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5586.pdf,Ubuntu; Linux,," Operating                     Hardware                Processors                   PAA/PAI Hypervisor   Version(s)
+ System                        Platform                                                     or Host OS
+ Ubuntu Linux                  Dell Inspiron           Intel i7-8550U               No      N/A          3.5.9"
+5586,vendor_affirmed,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5586.pdf,,,N/A for this module.
+5581,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5581.pdf,Linux; IOS 3.1.3.00; Alpine Linux 3.22; Amazon Linux; Oracle Linux 9; Linux 5.4; Linux 6.6.103; Linux 6.6.106; macOS; FreeBSD 14; Windows Server; Windows 11; Ubuntu 24.04,Ampere Altra; Power10; EPYC; Graviton4; Apple M2; Core i3-," Operating            Hardware             Processors              PAA/PAI Hypervisor or Host       Version(s)
+ System               Platform                                             OS
+
+
+ Red Hat              Dell PowerEdge       Intel Xeon Silver       Yes       N/A                    v1.26.0
+ Enterprise Linux     R660                 4410Y
+ 9
+
+
+ Red Hat              Dell PowerEdge       Intel Xeon Silver       No        N/A                    v1.26.0
+ Enterprise Linux     R660                 4410Y
+ 9
+
+
+ Red Hat              ASRock Rack          Ampere Altra            Yes       N/A                    v1.26.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 9                    1L2T
+
+
+ Red Hat              ASRock Rack          Ampere Altra            No        N/A                    v1.26.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 9                    1L2T
+
+
+ Red Hat              IBM z16 3931-        IBM Z System            Yes       PR/SM Driver Level     v1.26.0
+ Enterprise Linux     A01                  z16                               51 with Bundle
+ 9                                                                           Level H34
+
+
+
+
+Operating          Hardware        Processors             PAA/PAI Hypervisor or Host    Version(s)
+System             Platform                                       OS
+
+
+Red Hat            IBM z16 3931-   IBM Z System           No       PR/SM Driver Level   v1.26.0
+Enterprise Linux   A01             z16                             51 with Bundle
+9                                                                  Level H34
+
+
+Red Hat            IBM 9080-HEX    IBM Power10            Yes      PowerVM              v1.26.0
+Enterprise Linux                                                   FW1040.00 with
+9                                                                  VIOS 3.1.3.00
+
+
+Red Hat            IBM 9080-HEX    IBM Power10            No       PowerVM              v1.26.0
+Enterprise Linux                                                   FW1040.00 with
+9                                                                  VIOS 3.1.3.00
+
+
+Alpine Linux 3.22 Dell PowerEdge   Intel Xeon Silver      Yes      Podman 5 on Linux    v1.26.0
+image             R660             4410Y                           6.12
+
+
+Alpine Linux 3.22 Dell PowerEdge   Intel Xeon Silver      No       Podman 5 on Linux    v1.26.0
+image             R660             4410Y                           6.12
+
+
+Alpine Linux 3.22 Supermicro       AMD EPYC               Yes      Podman 5 on Linux    v1.26.0
+image             H12SSW-AN6       7443P                           6.1
+
+
+Alpine Linux 3.22 Supermicro       AMD EPYC               No       Podman 5 on Linux    v1.26.0
+image             H12SSW-AN6       7443P                           6.1
+
+
+Alpine Linux 3.22 ASRock Rack      Ampere Altra           Yes      Podman 5 on Linux    v1.26.0
+image             ALTRAD8UD-       Q64-22                          6.12
+                  1L2T
+
+
+
+
+Operating        Hardware         Processors            PAA/PAI Hypervisor or Host   Version(s)
+System           Platform                                       OS
+
+
+Alpine Linux 3.22 ASRock Rack     Ampere Altra          No       Podman 5 on Linux   v1.26.0
+image             ALTRAD8UD-      Q64-22                         6.12
+                  1L2T
+
+
+Amazon Linux     Amazon EC2       AWS Graviton4         Yes      N/A                 v1.26.0
+2023             r8g.metal-24xl
+
+
+Amazon Linux     Amazon EC2       AWS Graviton4         No       N/A                 v1.26.0
+2023             r8g.metal-24xl
+
+
+Amazon Linux     Amazon EC2       Intel Xeon            Yes      N/A                 v1.26.0
+2023             c6i.metal        Platinum 8375C
+
+
+Amazon Linux     Amazon EC2       Intel Xeon            No       N/A                 v1.26.0
+2023             c6i.metal        Platinum 8375C
+
+
+Oracle Linux 9   Oracle X9-2C     Intel Xeon            Yes      N/A                 v1.26.0
+                                  Platinum 8358
+
+
+Oracle Linux 9   Oracle X9-2C     Intel Xeon            No       N/A                 v1.26.0
+                                  Platinum 8358
+
+
+Oracle Linux 9   Oracle E6-2C     AMD EPYC              Yes      N/A                 v1.26.0
+                                  9J45
+
+
+Oracle Linux 9   Oracle E6-2C     AMD EPYC              No       N/A                 v1.26.0
+                                  9J45
+
+
+
+
+Operating        Hardware         Processors            PAA/PAI Hypervisor or Host   Version(s)
+System           Platform                                       OS
+
+
+Oracle Linux 9   Oracle A1-2C     Ampere Altra          Yes      N/A                 v1.26.0
+                                  Q80-30
+
+
+Oracle Linux 9   Oracle A1-2C     Ampere Altra          No       N/A                 v1.26.0
+                                  Q80-30
+
+
+OpenWrt 21.02    Ubiquiti         Marvell               No       N/A                 v1.26.0
+with Linux 5.4   EdgeRouter 4     OCTEON III
+                                  CN7130
+
+
+OpenWrt 21.02    Luxul ABR-4500   Broadcom              No       N/A                 v1.26.0
+with Linux 5.4                    BCM47094
+
+
+Google           APIF-824         AMD EPYC              Yes      N/A                 v1.26.0
+Prodimage with                    7B12
+Linux 6.6.103
+
+
+Google           APIF-824         AMD EPYC              No       N/A                 v1.26.0
+Prodimage with                    7B12
+Linux 6.6.103
+
+
+Google           APIF-738         Intel Xeon            Yes      N/A                 v1.26.0
+Prodimage with                    Platinum
+Linux 6.6.106                     8273CL
+
+
+Google           APIF-738         Intel Xeon            No       N/A                 v1.26.0
+Prodimage with                    Platinum
+Linux 6.6.106                     8273CL
+
+
+
+
+Operating        Hardware          Processors             PAA/PAI Hypervisor or Host   Version(s)
+System           Platform                                         OS
+
+
+Google           APIF-091          ARM Neoverse-          Yes      N/A                 v1.26.0
+Prodimage with                     N1
+Linux 6.6.106
+
+
+Google           APIF-091          ARM Neoverse-          No       N/A                 v1.26.0
+Prodimage with                     N1
+Linux 6.6.106
+
+
+Apple macOS      MacBook Air       Apple M2               Yes      N/A                 v1.26.0
+15               (M2, 2022)
+
+
+Apple macOS      MacBook Air       Apple M2               No       N/A                 v1.26.0
+15               (M2, 2022)
+
+
+FreeBSD 14       Lenovo            Intel Core i3-         Yes      N/A                 v1.26.0
+                 ThinkCentre M73   4130T
+
+
+FreeBSD 14       Lenovo            Intel Core i3-         No       N/A                 v1.26.0
+                 ThinkCentre M73   4130T
+
+
+Microsoft        Lenovo            Intel Core i3-         Yes      N/A                 v1.26.0
+Windows Server   ThinkCentre M73   4130T
+2022
+
+
+Microsoft        Lenovo            Intel Core i3-         No       N/A                 v1.26.0
+Windows Server   ThinkCentre M73   4130T
+2022
+
+
+
+
+Operating           Hardware         Processors             PAA/PAI Hypervisor or Host   Version(s)
+System              Platform                                        OS
+
+
+Microsoft           Surface Laptop   Qualcomm               Yes      N/A                 v1.26.0
+Windows 11          7th Edition      Snapdragon X
+                                     Plus
+
+
+Microsoft           Surface Laptop   Qualcomm               No       N/A                 v1.26.0
+Windows 11          7th Edition      Snapdragon X
+                                     Plus
+
+
+SUSE Linux          Dell PowerEdge   Intel Xeon Silver      Yes      N/A                 v1.26.0
+Enterprise Server   R660             4410Y
+16.0
+
+
+SUSE Linux          Dell PowerEdge   Intel Xeon Silver      No       N/A                 v1.26.0
+Enterprise Server   R660             4410Y
+16.0
+
+
+SUSE Linux          ASRock Rack      Ampere Altra           Yes      N/A                 v1.26.0
+Enterprise Server   ALTRAD8UD-       Q64-22
+16.0                1L2T
+
+
+SUSE Linux          ASRock Rack      Ampere Altra           No       N/A                 v1.26.0
+Enterprise Server   ALTRAD8UD-       Q64-22
+16.0                1L2T
+
+
+Red Hat             Dell PowerEdge   Intel Xeon Silver      Yes      N/A                 v1.26.0
+Enterprise Linux    R660             4410Y
+10
+
+
+
+
+ Operating            Hardware             Processors             PAA/PAI Hypervisor or Host   Version(s)
+ System               Platform                                            OS
+
+
+ Red Hat              Dell PowerEdge       Intel Xeon Silver      No       N/A                 v1.26.0
+ Enterprise Linux     R660                 4410Y
+ 10
+
+
+ Red Hat              ASRock Rack          Ampere Altra           Yes      N/A                 v1.26.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 10                   1L2T
+
+
+ Red Hat              ASRock Rack          Ampere Altra           No       N/A                 v1.26.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 10                   1L2T
+
+
+ VMware Photon        Dell PowerEdge       Intel Xeon Silver      Yes      ESXi 9.0            v1.26.0
+ OS 5.0               R660                 4410Y
+
+
+ VMware Photon        Dell PowerEdge       Intel Xeon Silver      No       ESXi 9.0            v1.26.0
+ OS 5.0               R660                 4410Y
+
+
+ Ubuntu 24.04         Dell PowerEdge       Intel Xeon Silver      Yes      ESXi 9.0            v1.26.0
+                      R660                 4410Y
+
+
+ Ubuntu 24.04         Dell PowerEdge       Intel Xeon Silver      No       ESXi 9.0            v1.26.0
+                      R660                 4410Y"
+5581,vendor_affirmed,"Software, Firmware, Hybrid",16,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5581.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows Server 2016; Windows Server 2019; Windows Server 2022; Windows Server 2025; Red Hat Enterprise Linux 10; Oracle Linux 7; Oracle Linux 8; Oracle Linux 9; Red Hat Enterprise Linux 8.10; Red Hat Enterprise Linux 8.8; Red Hat Enterprise Linux 8.5; Red Hat Enterprise Linux 9.5; Rocky Linux 8.5; Ubuntu; Linux 22.04; Linux 24.04; Amazon Linux 2023; Debian; Linux 12; Ubuntu 22.04; Ubuntu 24.04; Ubuntu 20.04.6,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT; Graviton2; Graviton3,"Operating System   Hardware Platform
+
+
+Linux 3.10+        x86-64 architecture
+
+
+Linux 3.10+        ARMv8 architecture
+
+
+Linux 3.10+        ARMv9 architecture
+
+
+Linux 3.10+        ARMv7 architecture
+
+
+Linux 4.x          x86-64 architecture
+
+
+Linux 4.x          ARMv8 architecture
+
+
+Linux 4.x          ARMv9 architecture
+
+
+Linux 4.x          ARMv7 architecture
+
+
+Linux 5.x          x86-64 architecture
+
+
+Linux 5.x          ARMv8 architecture
+
+
+Linux 5.x          ARMv9 architecture
+
+
+Linux 5.x          ARMv7 architecture
+
+
+Linux 6.x          x86-64 architecture
+
+
+
+
+Operating System   Hardware Platform
+
+
+Linux 6.x          ARMv8 architecture
+
+
+Linux 6.x          ARMv9 architecture
+
+
+Linux 6.x          ARMv7 architecture
+
+
+Linux 7.x          x86-64 architecture
+
+
+Linux 7.x          ARMv8 architecture
+
+
+Linux 7.x          ARMv9 architecture
+
+
+Linux 7.x          ARMv7 architecture
+
+
+Apple macOS 12     Apple M series
+
+
+Apple macOS 13     Apple M series
+
+
+Apple macOS 14     Apple M series
+
+
+Apple macOS 15     Apple M series
+
+
+Apple macOS 26     Apple M series
+
+
+FreeBSD 12         x86-64 architecture
+
+
+
+
+Operating System                Hardware Platform
+
+
+FreeBSD 13                      x86-64 architecture
+
+
+FreeBSD 14                      x86-64 architecture
+
+
+FreeBSD 15                      x86-64 architecture
+
+
+Microsoft Windows 10            x86-64 architecture
+
+
+Microsoft Windows 11            x86-64 architecture
+
+
+Microsoft Windows 11            ARMv8 architecture
+
+
+Microsoft Windows 11            ARMv9 architecture
+
+
+Microsoft Windows Server 2016   x86-64 architecture
+
+
+Microsoft Windows Server 2019   x86-64 architecture
+
+
+Microsoft Windows Server 2022   x86-64 architecture
+
+
+Microsoft Windows Server 2025   x86-64 architecture
+
+
+Microsoft Windows Server 2025   ARMv8 architecture
+
+
+Microsoft Windows Server 2025   ARMv9 architecture
+
+
+
+
+Operating System              Hardware Platform
+
+
+Red Hat Enterprise Linux 10   x86-64 architecture
+
+
+Red Hat Enterprise Linux 10   ARMv8 architecture
+
+
+Red Hat Enterprise Linux 10   ARMv9 architecture
+
+
+Red Hat Enterprise Linux 10   IBM Z System z16
+
+
+Red Hat Enterprise Linux 10   IBM Power10
+
+
+Oracle Linux 7 with UEK6      Oracle X series servers
+
+
+Oracle Linux 7 with UEK6      Oracle E series servers
+
+
+Oracle Linux 7 with UEK6      Oracle A series servers
+
+
+Oracle Linux 7 with UEK6      Marvell OCTEON TX2 CN93XX
+
+
+Oracle Linux 7 with UEK6      AMD Pensando DSC2-2Q200
+
+
+Oracle Linux 7 with UEK6      Marvell OCTEON III CN73XX
+
+
+Oracle Linux 7 with UEK6      ARM Cortex-A7
+
+
+Oracle Linux 7 with UEK6      ARM Cortex-A9
+
+
+
+
+Operating System                           Hardware Platform
+
+
+Oracle Linux 8 with UEK7                   Oracle X series servers
+
+
+Oracle Linux 8 with UEK7                   Oracle E series servers
+
+
+Oracle Linux 8 with UEK7                   Oracle A series servers
+
+
+Oracle Linux 9 with UEK7                   Oracle X series servers
+
+
+Oracle Linux 9 with UEK7                   Oracle E series servers
+
+
+Oracle Linux 9 with UEK7                   Oracle A series servers
+
+
+Oracle Linux 9 with UEK7                   Marvell OCTEON TX2 CN93XX
+
+
+Oracle Linux 9 with UEK7                   AMD Pensando DSC2-2Q200
+
+
+Oracle Linux 9 with UEK7                   Marvell OCTEON III CN73XX
+
+
+Windows Server 2022                        Dell XR4510c with Intel Xeon D-2776NT
+
+
+Windows Server 2025                        Dell XR4510c with Intel Xeon D-2776NT
+
+
+Azure Local 22H2                           Dell XR4510c with Intel Xeon D-2776NT
+
+
+Red Hat Enterprise Linux 8.10 on Hyper-V   Dell XR4510c with Intel Xeon D-2776NT
+
+
+
+
+Operating System                          Hardware Platform
+
+
+Red Hat Enterprise Linux 8.8 on Hyper-V   Dell XR4510c with Intel Xeon D-2776NT
+
+
+Red Hat Enterprise Linux 8.5 on Hyper-V   Dell XR4510c with Intel Xeon D-2776NT
+
+
+Red Hat Enterprise Linux 9.5 on Hyper-V   Dell XR4510c with Intel Xeon D-2776NT
+
+
+Rocky Linux 8.5 on Hyper-V                Dell XR4510c with Intel Xeon D-2776NT
+
+
+Ubuntu Linux 22.04 on Hyper-V             Dell XR4510c with Intel Xeon D-2776NT
+
+
+Ubuntu Linux 24.04 on Hyper-V             Dell XR4510c with Intel Xeon D-2776NT
+
+
+Amazon Linux 2023                         AWS Graviton2
+
+
+Amazon Linux 2023                         AWS Graviton3
+
+
+Amazon Linux 2023                         x86-64 architecture
+
+
+Amazon Linux 2023                         ARMv8 architecture
+
+
+Amazon Linux 2023                         ARMv9 architecture
+
+
+HPE Alletra Storage ArcusOS Release       HPE Alletra Storage MP B10000
+10.7 (or later) on Debian GNU/Linux 12
+(or later)
+
+
+
+
+Operating System                             Hardware Platform
+
+
+Security Director Cloud 26.2.1 or later on   VM (VMWare/KVM/Azure…)
+Host OS Ubuntu 22.04 LTS and Container
+OS Ubuntu 24.04 LTS
+
+
+Security Director On-Prem 26.2.1 or later    VM (VMWare/KVM/Azure…)
+on Host OS Ubuntu 20.04.6 LTS and
+Container OS Ubuntu 24.04 LTS
+
+
+HPE Alletra Storage FleetOS Release          HPE Alletra Storage MP X10000"
+5525,tested,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5525.pdf,Amazon Linux,Graviton4; Intel Xeon Platinum 8375C,"The module was tested in the following operating environments.
+
+     Operating           Hardware                   Processors              PAA/PAI     Hypervisor      Version(s)
+      System             Platform                                                       or Host OS
+
+ Amazon Linux          r8g.metal-       Graviton4 (ARMv9)                   Yes         N/A          AWS-LC FIPS
+ 2023                  24xl                                                                          3.1.0
+
+ Amazon Linux          c6i.metal        Intel Xeon Platinum 8375C           Yes         N/A          AWS-LC FIPS
+ 2023                                   (AES-NI)                                                     3.1.0
+
+ Amazon Linux          r8g.metal-       Graviton4 (ARMv9)                   No          N/A          AWS-LC FIPS
+ 2023                  24xl                                                                          3.1.0
+
+ Amazon Linux          c6i.metal        Intel Xeon Platinum 8375C           No          N/A          AWS-LC FIPS
+ 2023                                   (AES-NI)                                                     3.1.0"
+5525,vendor_affirmed,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5525.pdf,,,"N/A for this module.
+
+Porting guidance is defined in the FIPS 140-3 CMVP Management Manual Section 7.9. FIPS 140-3
+validation compliance can be maintained when the following requirements are met:
+
+        No source code modifications are required to recompile the module and port it to another
+         operating environment
+
+
+
+
+Document Version 1.0                                © SafeLogic, Inc.                                   Page 9 of 115
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Module based on AWS-LC FIPS
+
+
+        The module is operating on any general-purpose platform/processor that supports the specified
+         operating system as listed on the validation entry or another compatible operating system.
+
+CMVP makes no statement as to the correct operation of the module or the security strengths of the
+generated keys when so ported if the specific operational environment is not listed on the validation
+certificate."
+5523,tested,"Software, Firmware, Hybrid",8,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5523.pdf,Amazon Linux 2023,Graviton3,"Chainguard FIPS Provider for OpenSSL                                                       FIPS 140-3 Non-Proprietary Security Policy
+
+
+
+    Operating System                   Hardware            Processors         PAA/PAI Hypervisor or Version(s)
+                                       Platform                                         Host OS
+Chainguard Image 20230214 EC2 m7i.metal-                    Intel Xeon             Yes                N/A                3.6.0-r4
+  on Amazon Linux 2023        24xl                       Platinum 8488C
+Chainguard Image 20230214 EC2 m7i.metal-                    Intel Xeon             No                 N/A                3.6.0-r4
+  on Amazon Linux 2023        24xl                       Platinum 8488C
+Chainguard Image 20230214 EC2 m7g.metal                  AWS Graviton3             Yes                N/A                3.6.0-r4
+  on Amazon Linux 2023
+Chainguard Image 20230214 EC2 m7g.metal                  AWS Graviton3             No                 N/A                3.6.0-r4
+  on Amazon Linux 2023"
+5523,vendor_affirmed,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5523.pdf,AlmaLinux 9; AlmaLinux 10; Amazon Linux 2; Amazon Linux 2023; Linux 2; Linux 3; Centos; Debian 12; Debian 13; RHEL 9; RHEL 10; Linux 9; Linux 10; SUSE Linux Enterprise Server; Ubuntu 20.04; Ubuntu 22.04; Ubuntu 24.04; Ubuntu 26.04,Intel Xeon Platinum 8488C; Graviton3; Intel Xeon Platinum 8473C; Intel Xeon Platinum 8488CC; Intel Xeon Platinum 8481C,"      Operating System                                                 Hardware Platform
+        glibc 2.34+ (Host)                                Generic Hardware Platform ELF x86-64-v2+
+        glibc 2.34+ (Host)                                 Generic Hardware Platform ELF ARMv8a+
+           AlmaLinux 9                      AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+           AlmaLinux 9                               AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+          AlmaLinux 10                      AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+          AlmaLinux 10                               AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+         Amazon Linux 2                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+         Amazon Linux 2                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+       Amazon Linux 2023                    AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+       Amazon Linux 2023                             AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+          Azure Linux 2                 Azure Esv5-series with Intel Xeon Platinum 8473C, PAA/PAI, under Azure
+                                                                     Host Hypervisor
+          Azure Linux 2                   Azure Dpsv6-series with Azure Cobalt 100, PAA/PAI, under Azure Host
+                                                                      Hypervisor
+          Azure Linux 3                 Azure Esv5-series with Intel Xeon Platinum 8473C, PAA/PAI, under Azure
+                                                                     Host Hypervisor
+          Azure Linux 3                   Azure Dpsv6-series with Azure Cobalt 100, PAA/PAI, under Azure Host
+                                                                      Hypervisor
+           Bottlerocket                    AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488CC, PAA/PAI
+           Bottlerocket                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+         Centos Stream 9                    AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+         Centos Stream 9                             AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+         Centos Stream 10                   AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+         Centos Stream 10                            AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+            Chainguard                      AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+
+Chainguard FIPS Provider for OpenSSL                                                       FIPS 140-3 Non-Proprietary Security Policy
+
+
+
+      Operating System                                                 Hardware Platform
+            Chainguard                               AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+        Chainguard (Host)                   AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+        Chainguard (Host)                            AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+        Chainguard (Host)               Azure Esv5-series with Intel Xeon Platinum 8473C, PAA/PAI, under Azure
+                                                                     Host Hypervisor
+        Chainguard (Host)                 Azure Dpsv6-series with Azure Cobalt 100, PAA/PAI, under Azure Host
+                                                                      Hypervisor
+        Chainguard (Host)                 GCP c3-highcpu-192-metal with Intel Xeon Platinum 8481C, PAA/PAI,
+                                                                   under Titanium
+        Chainguard (Host)                                     GCP c4a with Google Axion, PAA/PAI
+        Chainguard (Host)                    Raspberry Pi 5 B Rev 1.0 8GB with Broadcom BCM2712, PAA/PAI
+      Debian 12 Bookworm                    AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+      Debian 12 Bookworm                             AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+         Debian 13 Trixie                   AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+         Debian 13 Trixie                            AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+            Google COS                           GCP c3-highcpu-192-metal with Intel Xeon Platinum 8481C
+            Google COS                              GCP c4a with Google Axion, PAA/PAI, under Titanium
+              RHEL 9                        AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+              RHEL 9                                 AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+             RHEL 10                        AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+             RHEL 10                                 AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+           RockyLinux 9                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+           RockyLinux 9                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+          RockyLinux 10                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+          RockyLinux 10                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+  SUSE Linux Enterprise Server              AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+            15 SP6
+  SUSE Linux Enterprise Server                       AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+            15 SP6
+  SUSE Linux Enterprise Server              AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+              16
+  SUSE Linux Enterprise Server                       AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+              16
+           Ubuntu 20.04                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+           Ubuntu 20.04                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+           Ubuntu 22.04                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+           Ubuntu 22.04                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+           Ubuntu 24.04                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+
+Chainguard FIPS Provider for OpenSSL                                                       FIPS 140-3 Non-Proprietary Security Policy
+
+
+
+      Operating System                                                 Hardware Platform
+           Ubuntu 24.04                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI
+           Ubuntu 26.04                     AWS EC2 m7i.metal-24x with Intel Xeon Platinum 8488C, PAA/PAI
+           Ubuntu 26.04                              AWS EC2 m7g.metal with AWS Graviton3, PAA/PAI"
+5460,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5460.pdf,Linux 9; IOS 3.1.3.00; Alpine Linux 3.20; Linux; Oracle Linux 9; Linux 5.4; Linux 5.10; macOS 15; FreeBSD 14; Windows; macOS; Windows 11,Ampere Altra; Power10; EPYC; Graviton4; Apple M2; Core i3-," Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ Red Hat Enterprise Dell PowerEdge Intel     Xeon Yes                           N/A                    v1.0.0 and
+ Linux 9            R660           Silver 4410Y                                                        v1.0.1
+
+
+ Red Hat Enterprise Dell PowerEdge Intel     Xeon No                            N/A                    v1.0.0 and
+ Linux 9            R660           Silver 4410Y                                                        v1.0.1
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 10 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ Red Hat Enterprise ASRock   Rack Ampere Altra Yes                              N/A                    v1.0.0 and
+ Linux 9            ALTRAD8UD-    Q64-22                                                               v1.0.1
+                    1L2T
+
+
+ Red Hat Enterprise ASRock   Rack Ampere Altra No                               N/A                    v1.0.0 and
+ Linux 9            ALTRAD8UD-    Q64-22                                                               v1.0.1
+                    1L2T
+
+
+ Red Hat Enterprise IBM z16 3931- IBM Z System Yes                              PR/SM       Driver v1.0.0 and
+ Linux 9            A01           z16                                           Level 51 with v1.0.1
+                                                                                Bundle Level H29
+
+
+ Red Hat Enterprise IBM z16 3931- IBM Z System No                               PR/SM       Driver v1.0.0 and
+ Linux 9            A01           z16                                           Level 51 with v1.0.1
+                                                                                Bundle Level H29
+
+
+ Red Hat Enterprise IBM 9080-HEX                 IBM Power10          Yes       PowerVM        v1.0.0 and
+ Linux 9                                                                        FW1040.00 with v1.0.1
+                                                                                VIOS 3.1.3.00
+
+
+ Red Hat Enterprise IBM 9080-HEX                 IBM Power10          No        PowerVM        v1.0.0 and
+ Linux 9                                                                        FW1040.00 with v1.0.1
+                                                                                VIOS 3.1.3.00
+
+
+ Alpine Linux 3.20 Dell PowerEdge Intel     Xeon Yes                            Podman 4 on Red v1.0.0 and
+ image             R660           Silver 4410Y                                  Hat     Enterprise v1.0.1
+                                                                                Linux 9
+
+
+ Alpine Linux 3.20 Dell PowerEdge Intel     Xeon No                             Podman 4 on Red v1.0.0 and
+ image             R660           Silver 4410Y                                  Hat     Enterprise v1.0.1
+                                                                                Linux 9
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 11 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ Alpine Linux 3.20 Dell PowerEdge AMD                        EPYC Yes           Podman 4 on Red v1.0.0 and
+ image             R6615          9454P                                         Hat     Enterprise v1.0.1
+                                                                                Linux 9
+
+
+ Alpine Linux 3.20 Dell PowerEdge AMD                        EPYC No            Podman 4 on Red v1.0.0
+ image             R6615          9454P                                         Hat     Enterprise
+                                                                                Linux 9
+
+
+ Alpine Linux 3.20 ASRock   Rack Ampere Altra Yes                               Podman 4 on Red v1.0.0 and
+ image             ALTRAD8UD-    Q64-22                                         Hat     Enterprise v1.0.1
+                   1L2T                                                         Linux 9
+
+
+ Alpine Linux 3.20 ASRock   Rack Ampere Altra No                                Podman 4 on Red v1.0.0 and
+ image             ALTRAD8UD-    Q64-22                                         Hat     Enterprise v1.0.1
+                   1L2T                                                         Linux 9
+
+
+ Amazon           Linux Amazon     EC2 AWS                            Yes       N/A                    v1.0.0 and
+ 2023                   r8g.metal-24xl Graviton4                                                       v1.0.1
+
+
+ Amazon           Linux Amazon     EC2 AWS                            No        N/A                    v1.0.0 and
+ 2023                   r8g.metal-24xl Graviton4                                                       v1.0.1
+
+
+ Amazon           Linux Amazon           EC2 Intel    Xeon Yes                  N/A                    v1.0.0 and
+ 2023                   c6i.metal            Platinum                                                  v1.0.1
+                                             8375C
+
+
+ Amazon           Linux Amazon           EC2 Intel    Xeon No                   N/A                    v1.0.0 and
+ 2023                   c6i.metal            Platinum                                                  v1.0.1
+                                             8375C
+
+
+ Oracle Linux 9            Dell PowerEdge Intel     Xeon Yes                    N/A                    v1.0.0 and
+                           R660           Silver 4410Y                                                 v1.0.1
+
+
+
+Virtru Corporation, 2026.                                                                              Page 12 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors            PAA/PAI Hypervisor          or Version(s)
+                           Platform                                            Host OS
+
+
+ Oracle Linux 9            Dell PowerEdge Intel     Xeon No                     N/A                    v1.0.0 and
+                           R660           Silver 4410Y                                                 v1.0.1
+
+
+ Oracle Linux 9            Dell PowerEdge AMD                EPYC Yes           N/A                    v1.0.0 and
+                           R6615          9454P                                                        v1.0.1
+
+
+ Oracle Linux 9            Dell PowerEdge AMD                EPYC No            N/A                    v1.0.0 and
+                           R6615          9454P                                                        v1.0.1
+
+
+ Oracle Linux 9            ASRock   Rack Ampere Altra Yes                       N/A                    v1.0.0 and
+                           ALTRAD8UD-    Q64-22                                                        v1.0.1
+                           1L2T
+
+
+ Oracle Linux 9            ASRock   Rack Ampere Altra No                        N/A                    v1.0.0 and
+                           ALTRAD8UD-    Q64-22                                                        v1.0.1
+                           1L2T
+
+
+ Linux 5.4                 Ubiquiti              Marvell               No       N/A                    v1.0.0 and
+                           EdgeRouter 4          OCTEON          III                                   v1.0.1
+                                                 CN7130
+
+
+ Linux 5.4                 CZ.NIC       Turris Marvell                 No       N/A                    v1.0.0 and
+                           Omnia               ARMADA-385                                              v1.0.1
+
+
+ Google Prodimage APIF-824                       AMD         EPYC Yes           N/A                    v1.0.0 and
+ with Linux 5.10                                 7B12                                                  v1.0.1
+
+
+ Google Prodimage APIF-824                       AMD         EPYC No            N/A                    v1.0.0 and
+ with Linux 5.10                                 7B12                                                  v1.0.1
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 13 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ Google Prodimage APIF-738                       Intel    Xeon Yes              N/A                    v1.0.0 and
+ with Linux 5.10                                 Platinum                                              v1.0.1
+                                                 8273CL
+
+
+ Google Prodimage APIF-738                       Intel    Xeon No               N/A                    v1.0.0 and
+ with Linux 5.10                                 Platinum                                              v1.0.1
+                                                 8273CL
+
+
+ Google Prodimage APIF-091                       ARM Neoverse- Yes              N/A                    v1.0.0 and
+ with Linux 5.10                                 N1                                                    v1.0.1
+
+
+ Google Prodimage APIF-091                       ARM Neoverse- No               N/A                    v1.0.0 and
+ with Linux 5.10                                 N1                                                    v1.0.1
+
+
+ Apple macOS 15            MacBook    Air Apple M2                    Yes       N/A                    v1.0.0 and
+                           (M2, 2022)                                                                  v1.0.1
+
+
+ Apple macOS 15            MacBook    Air Apple M2                    No        N/A                    v1.0.0 and
+                           (M2, 2022)                                                                  v1.0.1
+
+
+ FreeBSD 14                Lenovo                Intel Core i3- Yes             N/A                    v1.0.0 and
+                           ThinkCentre           4130T                                                 v1.0.1
+                           M73
+
+
+ FreeBSD 14                Lenovo                Intel Core i3- No              N/A                    v1.0.0 and
+                           ThinkCentre           4130T                                                 v1.0.1
+                           M73
+
+
+ Microsoft Windows Lenovo                        Intel Core i3- Yes             N/A                    v1.0.0 and
+ Server 2022       ThinkCentre                   4130T                                                 v1.0.1
+                   M73
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 14 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ Microsoft Windows Lenovo                        Intel Core i3- No              N/A                    v1.0.0 and
+ Server 2022       ThinkCentre                   4130T                                                 v1.0.1
+                   M73
+
+
+ Microsoft Windows Surface Laptop Qualcomm     Yes                              N/A                    v1.0.0 and
+ 11                7th Edition    Snapdragon X                                                         v1.0.1
+                                  Plus
+
+
+ Microsoft Windows Surface Laptop Qualcomm     No                               N/A                    v1.0.0 and
+ 11                7th Edition    Snapdragon X                                                         v1.0.1
+                                  Plus
+
+
+ SUSE            Linux Dell PowerEdge Intel     Xeon Yes                        N/A                    v1.0.0 and
+ Enterprise     Server R660           Silver 4410Y                                                     v1.0.1
+ 15 SP6
+
+
+ SUSE            Linux Dell PowerEdge Intel     Xeon No                         N/A                    v1.0.0 and
+ Enterprise     Server R660           Silver 4410Y                                                     v1.0.1
+ 15 SP6
+
+
+ SUSE            Linux ASRock   Rack Ampere Altra Yes                           N/A                    v1.0.0 and
+ Enterprise     Server ALTRAD8UD-    Q64-22                                                            v1.0.1
+ 15 SP6                1L2T
+
+
+ SUSE            Linux ASRock   Rack Ampere Altra No                            N/A                    v1.0.0 and
+ Enterprise     Server ALTRAD8UD-    Q64-22                                                            v1.0.1
+ 15 SP6                1L2T
+
+
+ JavaScriptCore            MacBook    Air Apple M2                    No        Apple Safari 26 v1.0.1
+ WebAssembly               (M2, 2022)                                           on Apple macOS
+ engine                                                                         26
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 15 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating System          Hardware              Processors           PAA/PAI Hypervisor           or Version(s)
+                           Platform                                           Host OS
+
+
+ V8 WebAssembly Lenovo                        Intel Core i3- No                 Google Chrome v1.0.1
+ engine         Thinkpad                  L13 1115G4                            150 on Microsoft
+                Gen 2                                                           Windows 11
+
+
+ V8 WebAssembly Lenovo                        Intel Core i3- No                 Microsoft  Edge v1.0.1
+ engine         Thinkpad                  L13 1115G4                            148 on Microsoft
+                Gen 2                                                           Windows 11
+
+
+ SpiderMonkey              Lenovo             Intel Core i3- No                 Mozilla  Firefox v1.0.1
+ WebAssembly               Thinkpad       L13 1115G4                            152 on Microsoft
+ engine                    Gen 2                                                Windows 11"
+5460,vendor_affirmed,"Software, Firmware, Hybrid",16,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5460.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 11; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT," Operating         Hardware Platform
+ System
+
+
+ Linux 3.10+       x86-64 architecture
+
+
+ Linux 3.10+       ARMv8 architecture
+
+
+ Linux 3.10+       ARMv9 architecture
+
+
+ Linux 3.10+       ARMv7 architecture
+
+
+ Linux 4.x         x86-64 architecture
+
+
+ Linux 4.x         ARMv8 architecture
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 16 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Linux 4.x         ARMv9 architecture
+
+
+ Linux 4.x         ARMv7 architecture
+
+
+ Linux 5.x         x86-64 architecture
+
+
+ Linux 5.x         ARMv8 architecture
+
+
+ Linux 5.x         ARMv9 architecture
+
+
+ Linux 5.x         ARMv7 architecture
+
+
+ Linux 6.x         x86-64 architecture
+
+
+ Linux 6.x         ARMv8 architecture
+
+
+ Linux 6.x         ARMv9 architecture
+
+
+ Linux 6.x         ARMv7 architecture
+
+
+ Linux 7.x         x86-64 architecture
+
+
+ Linux 7.x         ARMv8 architecture
+
+
+ Linux 7.x         ARMv9 architecture
+
+
+ Linux 7.x         ARMv7 architecture
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 17 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Apple             Apple M series
+ macOS 11
+
+
+ Apple             Apple M series
+ macOS 12
+
+
+ Apple             Apple M series
+ macOS 13
+
+
+ Apple             Apple M series
+ macOS 14
+
+
+ Apple             Apple M series
+ macOS 15
+
+
+ Apple             Apple M series
+ macOS 26
+
+
+ FreeBSD 12        x86-64 architecture
+
+
+ FreeBSD 13        x86-64 architecture
+
+
+ FreeBSD 14        x86-64 architecture
+
+
+ FreeBSD 15        x86-64 architecture
+
+
+ Microsoft  x86-64 architecture
+ Windows 10
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 18 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Microsoft  x86-64 architecture
+ Windows 11
+
+
+ Microsoft  ARMv8 architecture
+ Windows 11
+
+
+ Microsoft  ARMv9 architecture
+ Windows 11
+
+
+ Microsoft         x86-64 architecture
+ Windows
+ Server 2016
+
+
+ Microsoft         x86-64 architecture
+ Windows
+ Server 2019
+
+
+ Microsoft         x86-64 architecture
+ Windows
+ Server 2022
+
+
+ Microsoft         x86-64 architecture
+ Windows
+ Server 2025
+
+
+ Microsoft         ARMv8 architecture
+ Windows
+ Server 2025
+
+
+ Microsoft         ARMv9 architecture
+ Windows
+ Server 2025
+
+
+
+Virtru Corporation, 2026.                                                                              Page 19 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Red       Hat x86-64 architecture
+ Enterprise
+ Linux 10
+
+
+ Red       Hat ARMv8 architecture
+ Enterprise
+ Linux 10
+
+
+ Red       Hat ARMv9 architecture
+ Enterprise
+ Linux 10
+
+
+ Red       Hat IBM Z System z16
+ Enterprise
+ Linux 10
+
+
+ Red       Hat IBM Power10
+ Enterprise
+ Linux 10
+
+
+ Oracle Linux Oracle X series servers
+ 7 with UEK6
+
+
+ Oracle Linux Oracle E series servers
+ 7 with UEK6
+
+
+ Oracle Linux Oracle A series servers
+ 7 with UEK6
+
+
+ Oracle Linux Marvell OCTEON TX2 CN93XX
+ 7 with UEK6
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 20 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Oracle Linux AMD Pensando DSC2-2Q200
+ 7 with UEK6
+
+
+ Oracle Linux Marvell OCTEON III CN73XX
+ 7 with UEK6
+
+
+ Oracle Linux ARM Cortex-A7
+ 7 with UEK6
+
+
+ Oracle Linux ARM Cortex-A9
+ 7 with UEK6
+
+
+ Oracle Linux Oracle X series servers
+ 8 with UEK7
+
+
+ Oracle Linux Oracle E series servers
+ 8 with UEK7
+
+
+ Oracle Linux Oracle A series servers
+ 8 with UEK7
+
+
+ Oracle Linux Oracle X series servers
+ 9 with UEK7
+
+
+ Oracle Linux Oracle E series servers
+ 9 with UEK7
+
+
+ Oracle Linux Oracle A series servers
+ 9 with UEK7
+
+
+
+
+Virtru Corporation, 2026.                                                                              Page 21 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Oracle Linux Marvell OCTEON TX2 CN93XX
+ 9 with UEK7
+
+
+ Oracle Linux AMD Pensando DSC2-2Q200
+ 9 with UEK7
+
+
+ Oracle Linux Marvell OCTEON III CN73XX
+ 9 with UEK7
+
+
+ Windows           Dell XR4510c with Intel Xeon D-2776NT
+ Server 2022
+
+
+ Windows           Dell XR4510c with Intel Xeon D-2776NT
+ Server 2025
+
+
+ Azure Local Dell XR4510c with Intel Xeon D-2776NT
+ 22H2
+
+
+ Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.10
+ on Hyper-V
+
+
+ Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.8 on
+ Hyper-V
+
+
+ Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.5 on
+ Hyper-V
+
+
+
+Virtru Corporation, 2026.                                                                              Page 22 of 90
+This document may be reproduced and distributed only in its original form entirely without revision.
+FIPS 140-3 Non-Proprietary Security Policy: Virtru Go Cryptographic Module
+
+
+
+ Operating         Hardware Platform
+ System
+
+
+ Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 9.5 on
+ Hyper-V
+
+
+ Rocky Linux Dell XR4510c with Intel Xeon D-2776NT"
+5416,tested,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5416.pdf,,,N/A for this module.
+5416,vendor_affirmed,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5416.pdf,,,N/A for this module.
+5349,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5349.pdf,Linux 9; IOS 3.1.3.00; Alpine Linux 3.20; Amazon Linux 2023; Oracle Linux 9; Linux 5.4; Linux 5.10; macOS 15; FreeBSD 14; Windows Server; Windows 11; Linux,Ampere Altra; Power10; EPYC 9454P; Graviton4; EPYC; Apple M2; Core i3-,"The module operates in a modifiable operational environment under the FIPS 140-3 definitions. The
+module operates on a general purpose computer (GPC) running a general purpose operating system
+(GPOS).
+
+The module was tested in the following operating environments.
+
+ Operating System          Hardware          Processors       PAA/PAI   Hypervisor or Host OS     Version(s)
+                           Platform
+
+ Red Hat Enterprise    Dell PowerEdge     Intel Xeon Silver   Yes       N/A                       v1.0.0
+ Linux 9               R660               4410Y
+
+ Red Hat Enterprise    Dell PowerEdge     Intel Xeon Silver   No        N/A                       v1.0.0
+ Linux 9               R660               4410Y
+
+ Red Hat Enterprise    ASRock Rack        Ampere Altra        Yes       N/A                       v1.0.0
+ Linux 9               ALTRAD8UD-1L2T     Q64-22
+
+ Red Hat Enterprise    ASRock Rack        Ampere Altra        No        N/A                       v1.0.0
+ Linux 9               ALTRAD8UD-1L2T     Q64-22
+
+ Red Hat Enterprise    IBM z16 3931-A01   IBM Z System z16    Yes       PR/SM Driver Level 51     v1.0.0
+ Linux 9                                                                with Bundle Level H29
+
+ Red Hat Enterprise    IBM z16 3931-A01   IBM Z System z16    No        PR/SM Driver Level 51     v1.0.0
+ Linux 9                                                                with Bundle Level H29
+
+ Red Hat Enterprise    IBM 9080-HEX       IBM Power10         Yes       PowerVM FW1040.00         v1.0.0
+ Linux 9                                                                with VIOS 3.1.3.00
+
+ Red Hat Enterprise    IBM 9080-HEX       IBM Power10         No        PowerVM FW1040.00         v1.0.0
+ Linux 9                                                                with VIOS 3.1.3.00
+
+ Alpine Linux 3.20     Dell PowerEdge     Intel Xeon Silver   Yes       Podman 4 on Red Hat       v1.0.0
+ image                 R660               4410Y                         Enterprise Linux 9
+
+ Alpine Linux 3.20     Dell PowerEdge     Intel Xeon Silver   No        Podman 4 on Red Hat       v1.0.0
+ image                 R660               4410Y                         Enterprise Linux 9
+
+ Alpine Linux 3.20     Dell PowerEdge     AMD EPYC 9454P      Yes       Podman 4 on Red Hat       v1.0.0
+ image                 R6615                                            Enterprise Linux 9
+
+
+
+
+Document Version 1.0                         © SafeLogic, Inc.                                  Page 10 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+ Operating System        Hardware         Processors       PAA/PAI   Hypervisor or Host OS   Version(s)
+                         Platform
+
+ Alpine Linux 3.20   Dell PowerEdge    AMD EPYC 9454P      No        Podman 4 on Red Hat     v1.0.0
+ image               R6615                                           Enterprise Linux 9
+
+ Alpine Linux 3.20   ASRock Rack       Ampere Altra        Yes       Podman 4 on Red Hat     v1.0.0
+ image               ALTRAD8UD-1L2T    Q64-22                        Enterprise Linux 9
+
+ Alpine Linux 3.20   ASRock Rack       Ampere Altra        No        Podman 4 on Red Hat     v1.0.0
+ image               ALTRAD8UD-1L2T    Q64-22                        Enterprise Linux 9
+
+ Amazon Linux 2023   Amazon EC2        AWS Graviton4       Yes       N/A                     v1.0.0
+                     r8g.metal-24xl
+
+ Amazon Linux 2023   Amazon EC2        AWS Graviton4       No        N/A                     v1.0.0
+                     r8g.metal-24xl
+
+ Amazon Linux 2023   Amazon EC2        Intel Xeon          Yes       N/A                     v1.0.0
+                     c6i.metal         Platinum 8375C
+
+ Amazon Linux 2023   Amazon EC2        Intel Xeon          No        N/A                     v1.0.0
+                     c6i.metal         Platinum 8375C
+
+ Oracle Linux 9      Dell PowerEdge    Intel Xeon Silver   Yes       N/A                     v1.0.0
+                     R660              4410Y
+
+ Oracle Linux 9      Dell PowerEdge    Intel Xeon Silver   No        N/A                     v1.0.0
+                     R660              4410Y
+
+ Oracle Linux 9      Dell PowerEdge    AMD EPYC 9454P      Yes       N/A                     v1.0.0
+                     R6615
+
+ Oracle Linux 9      Dell PowerEdge    AMD EPYC 9454P      No        N/A                     v1.0.0
+                     R6615
+
+ Oracle Linux 9      ASRock Rack       Ampere Altra        Yes       N/A                     v1.0.0
+                     ALTRAD8UD-1L2T    Q64-22
+
+ Oracle Linux 9      ASRock Rack       Ampere Altra        No        N/A                     v1.0.0
+                     ALTRAD8UD-1L2T    Q64-22
+
+ Linux 5.4           Ubiquiti          Marvell OCTEON      No        N/A                     v1.0.0
+                     EdgeRouter 4      III CN7130
+
+ Linux 5.4           CZ.NIC Turris     Marvell ARMADA-     No        N/A                     v1.0.0
+                     Omnia             385
+
+
+
+
+Document Version 1.0                      © SafeLogic, Inc.                                Page 11 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+ Operating System       Hardware            Processors      PAA/PAI   Hypervisor or Host OS   Version(s)
+                        Platform
+
+ Google Prodimage   APIF-824             AMD EPYC 7B12      Yes       N/A                     v1.0.0
+ with Linux 5.10
+
+ Google Prodimage   APIF-824             AMD EPYC 7B12      No        N/A                     v1.0.0
+ with Linux 5.10
+
+ Google Prodimage   APIF-738             Intel Xeon         Yes       N/A                     v1.0.0
+ with Linux 5.10                         Platinum 8273CL
+
+ Google Prodimage   APIF-738             Intel Xeon         No        N/A                     v1.0.0
+ with Linux 5.10                         Platinum 8273CL
+
+ Google Prodimage   APIF-091             ARM Neoverse-      Yes       N/A                     v1.0.0
+ with Linux 5.10                         N1
+
+ Google Prodimage   APIF-091             ARM Neoverse-      No        N/A                     v1.0.0
+ with Linux 5.10                         N1
+
+ Apple macOS 15     MacBook Air (M2,     Apple M2           Yes       N/A                     v1.0.0
+                    2022)
+
+ Apple macOS 15     MacBook Air (M2,     Apple M2           No        N/A                     v1.0.0
+                    2022)
+
+ FreeBSD 14         Lenovo               Intel Core i3-     Yes       N/A                     v1.0.0
+                    ThinkCentre M73      4130T
+
+ FreeBSD 14         Lenovo               Intel Core i3-     No        N/A                     v1.0.0
+                    ThinkCentre M73      4130T
+
+ Microsoft          Lenovo               Intel Core i3-     Yes       N/A                     v1.0.0
+ Windows Server     ThinkCentre M73      4130T
+ 2022
+
+ Microsoft          Lenovo               Intel Core i3-     No        N/A                     v1.0.0
+ Windows Server     ThinkCentre M73      4130T
+ 2022
+
+ Microsoft          Surface Laptop 7th   Qualcomm           Yes       N/A                     v1.0.0
+ Windows 11         Edition              Snapdragon X
+                                         Plus
+
+ Microsoft          Surface Laptop 7th   Qualcomm           No        N/A                     v1.0.0
+ Windows 11         Edition              Snapdragon X
+                                         Plus
+
+
+
+
+Document Version 1.0                        © SafeLogic, Inc.                             Page 12 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+  Operating System           Hardware              Processors           PAA/PAI   Hypervisor or Host OS   Version(s)
+                             Platform
+
+ SUSE Linux             Dell PowerEdge         Intel Xeon Silver        Yes       N/A                     v1.0.0
+ Enterprise Server      R660                   4410Y
+ 15 SP6
+
+ SUSE Linux             Dell PowerEdge         Intel Xeon Silver        No        N/A                     v1.0.0
+ Enterprise Server      R660                   4410Y
+ 15 SP6
+
+ SUSE Linux             ASRock Rack            Ampere Altra             Yes       N/A                     v1.0.0
+ Enterprise Server      ALTRAD8UD-1L2T         Q64-22
+ 15 SP6
+
+ SUSE Linux             ASRock Rack            Ampere Altra             No        N/A                     v1.0.0
+ Enterprise Server      ALTRAD8UD-1L2T         Q64-22
+ 15 SP6"
+5349,vendor_affirmed,"Software, Firmware, Hybrid",13,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5349.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT,"   Operating                                              Hardware Platform
+    System
+
+ Linux 3.10+      x86-64 architecture
+
+ Linux 3.10+      ARMv8 architecture
+
+ Linux 3.10+      ARMv9 architecture
+
+ Linux 3.10+      ARMv7 architecture
+
+ Linux 4.x        x86-64 architecture
+
+ Linux 4.x        ARMv8 architecture
+
+ Linux 4.x        ARMv9 architecture
+
+ Linux 4.x        ARMv7 architecture
+
+ Linux 5.x        x86-64 architecture
+
+ Linux 5.x        ARMv8 architecture
+
+ Linux 5.x        ARMv9 architecture
+
+ Linux 5.x        ARMv7 architecture
+
+
+
+
+Document Version 1.0                              © SafeLogic, Inc.                                   Page 13 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+  Operating                                     Hardware Platform
+   System
+
+ Linux 6.x     x86-64 architecture
+
+ Linux 6.x     ARMv8 architecture
+
+ Linux 6.x     ARMv9 architecture
+
+ Linux 6.x     ARMv7 architecture
+
+ Linux 7.x     x86-64 architecture
+
+ Linux 7.x     ARMv8 architecture
+
+ Linux 7.x     ARMv9 architecture
+
+ Linux 7.x     ARMv7 architecture
+
+ Apple macOS   Apple M series
+ 11
+
+ Apple macOS   Apple M series
+ 12
+
+ Apple macOS   Apple M series
+ 13
+
+ Apple macOS   Apple M series
+ 14
+
+ Apple macOS   Apple M series
+ 15
+
+ Apple macOS   Apple M series
+ 26
+
+ FreeBSD 12    x86-64 architecture
+
+ FreeBSD 13    x86-64 architecture
+
+ FreeBSD 14    x86-64 architecture
+
+ FreeBSD 15    x86-64 architecture
+
+ Microsoft     x86-64 architecture
+ Windows 10
+
+ Microsoft     x86-64 architecture
+ Windows 11
+
+
+
+
+Document Version 1.0                     © SafeLogic, Inc.                  Page 14 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+  Operating                                     Hardware Platform
+   System
+
+ Microsoft     ARMv8 architecture
+ Windows 11
+
+ Microsoft     ARMv9 architecture
+ Windows 11
+
+ Microsoft     x86-64 architecture
+ Windows
+ Server 2016
+
+ Microsoft     x86-64 architecture
+ Windows
+ Server 2019
+
+ Microsoft     x86-64 architecture
+ Windows
+ Server 2022
+
+ Microsoft     x86-64 architecture
+ Windows
+ Server 2025
+
+ Microsoft     ARMv8 architecture
+ Windows
+ Server 2025
+
+ Microsoft     ARMv9 architecture
+ Windows
+ Server 2025
+
+ Red Hat       x86-64 architecture
+ Enterprise
+ Linux 10
+
+ Red Hat       ARMv8 architecture
+ Enterprise
+ Linux 10
+
+ Red Hat       ARMv9 architecture
+ Enterprise
+ Linux 10
+
+ Red Hat       IBM Z System z16
+ Enterprise
+ Linux 10
+
+
+
+
+Document Version 1.0                     © SafeLogic, Inc.                  Page 15 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+  Operating                                        Hardware Platform
+   System
+
+ Red Hat        IBM Power10
+ Enterprise
+ Linux 10
+
+ Oracle Linux   Oracle X series servers
+ 7 with UEK6
+
+ Oracle Linux   Oracle E series servers
+ 7 with UEK6
+
+ Oracle Linux   Oracle A series servers
+ 7 with UEK6
+
+ Oracle Linux   Marvell OCTEON TX2 CN93XX
+ 7 with UEK6
+
+ Oracle Linux   AMD Pensando DSC2-2Q200
+ 7 with UEK6
+
+ Oracle Linux   Marvell OCTEON III CN73XX
+ 7 with UEK6
+
+ Oracle Linux   ARM Cortex-A7
+ 7 with UEK6
+
+ Oracle Linux   ARM Cortex-A9
+ 7 with UEK6
+
+ Oracle Linux   Oracle X series servers
+ 8 with UEK7
+
+ Oracle Linux   Oracle E series servers
+ 8 with UEK7
+
+ Oracle Linux   Oracle A series servers
+ 8 with UEK7
+
+ Oracle Linux   Oracle X series servers
+ 9 with UEK7
+
+ Oracle Linux   Oracle E series servers
+ 9 with UEK7
+
+ Oracle Linux   Oracle A series servers
+ 9 with UEK7
+
+
+
+
+Document Version 1.0                        © SafeLogic, Inc.               Page 16 of 71
+FIPS 140-3 Non-Proprietary Security Policy: CryptoComply Native Go Module
+
+
+  Operating                                         Hardware Platform
+   System
+
+ Oracle Linux    Marvell OCTEON TX2 CN93XX
+ 9 with UEK7
+
+ Oracle Linux    AMD Pensando DSC2-2Q200
+ 9 with UEK7
+
+ Oracle Linux    Marvell OCTEON III CN73XX
+ 9 with UEK7
+
+ Windows         Dell XR4510c with Intel Xeon D-2776NT
+ Server 2022
+
+ Windows         Dell XR4510c with Intel Xeon D-2776NT
+ Server 2025
+
+ Azure Local     Dell XR4510c with Intel Xeon D-2776NT
+ 22H2
+
+ Red Hat         Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.10 on
+ Hyper-V
+
+ Red Hat         Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.8 on
+ Hyper-V
+
+ Red Hat         Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 8.5 on
+ Hyper-V
+
+ Red Hat         Dell XR4510c with Intel Xeon D-2776NT
+ Enterprise
+ Linux 9.5 on
+ Hyper-V
+
+ Rocky Linux     Dell XR4510c with Intel Xeon D-2776NT"
+5325,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5325.pdf,Linux; IOS 3.1.3.00; Alpine Linux 3.20; Oracle Linux 9; Linux 5.4; Linux 5.10; macOS 15; FreeBSD 14; Windows Server; Windows 11,Ampere Altra; Power10; EPYC; Graviton4; Apple M2; Core i3-," Operating              Hardware           Processors              PAA/PAI Hypervisor or Host Version(s)
+ System                 Platform                                           OS
+
+
+ Red          Hat Dell PowerEdge Intel Xeon Silver Yes                      N/A                        v1.0.0
+ Enterprise Linux R660           4410Y
+ 9
+
+
+
+Operating       Hardware         Processors            PAA/PAI Hypervisor or Host Version(s)
+System          Platform                                       OS
+
+
+Red          Hat Dell PowerEdge Intel Xeon Silver No            N/A                v1.0.0
+Enterprise Linux R660           4410Y
+9
+
+
+Red          Hat ASRock    Rack Ampere        Altra Yes         N/A                v1.0.0
+Enterprise Linux ALTRAD8UD-     Q64-22
+9                1L2T
+
+
+Red          Hat ASRock    Rack Ampere        Altra No          N/A                v1.0.0
+Enterprise Linux ALTRAD8UD-     Q64-22
+9                1L2T
+
+
+Red          Hat IBM z16 3931- IBM Z System Yes                 PR/SM Driver Level v1.0.0
+Enterprise Linux A01           z16                              51 with Bundle Level
+9                                                               H29
+
+
+Red          Hat IBM z16 3931- IBM Z System No                  PR/SM Driver Level v1.0.0
+Enterprise Linux A01           z16                              51 with Bundle Level
+9                                                               H29
+
+
+Red          Hat IBM 9080-HEX    IBM Power10           Yes      PowerVM            v1.0.0
+Enterprise Linux                                                FW1040.00     with
+9                                                               VIOS 3.1.3.00
+
+
+Red          Hat IBM 9080-HEX    IBM Power10           No       PowerVM            v1.0.0
+Enterprise Linux                                                FW1040.00     with
+9                                                               VIOS 3.1.3.00
+
+
+
+
+Operating        Hardware         Processors             PAA/PAI Hypervisor or Host Version(s)
+System           Platform                                        OS
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel Xeon Silver Yes            Podman 4 on Red v1.0.0
+image             R660           4410Y                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel Xeon Silver No             Podman 4 on Red v1.0.0
+image             R660           4410Y                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD           EPYC Yes           Podman 4 on Red v1.0.0
+image             R6615          9454P                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD           EPYC No            Podman 4 on Red v1.0.0
+image             R6615          9454P                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 ASRock    Rack Ampere        Altra Yes          Podman 4 on Red v1.0.0
+image             ALTRAD8UD-     Q64-22                           Hat Enterprise Linux
+                  1L2T                                            9
+
+
+Alpine Linux 3.20 ASRock    Rack Ampere        Altra No           Podman 4 on Red v1.0.0
+image             ALTRAD8UD-     Q64-22                           Hat Enterprise Linux
+                  1L2T                                            9
+
+
+Amazon      Linux Amazon      EC2 AWS Graviton4          Yes      N/A                v1.0.0
+2023              r8g.metal-24xl
+
+
+Amazon      Linux Amazon      EC2 AWS Graviton4          No       N/A                v1.0.0
+2023              r8g.metal-24xl
+
+
+
+Operating         Hardware         Processors            PAA/PAI Hypervisor or Host Version(s)
+System            Platform                                       OS
+
+
+Amazon      Linux Amazon      EC2 Intel      Xeon Yes             N/A                v1.0.0
+2023              c6i.metal       Platinum 8375C
+
+
+Amazon      Linux Amazon      EC2 Intel      Xeon No              N/A                v1.0.0
+2023              c6i.metal       Platinum 8375C
+
+
+Oracle Linux 9    Dell PowerEdge Intel Xeon Silver Yes            N/A                v1.0.0
+                  R660           4410Y
+
+
+Oracle Linux 9    Dell PowerEdge Intel Xeon Silver No             N/A                v1.0.0
+                  R660           4410Y
+
+
+Oracle Linux 9    Dell PowerEdge AMD            EPYC Yes          N/A                v1.0.0
+                  R6615          9454P
+
+
+Oracle Linux 9    Dell PowerEdge AMD            EPYC No           N/A                v1.0.0
+                  R6615          9454P
+
+
+Oracle Linux 9    ASRock    Rack Ampere         Altra Yes         N/A                v1.0.0
+                  ALTRAD8UD-     Q64-22
+                  1L2T
+
+
+Oracle Linux 9    ASRock    Rack Ampere         Altra No          N/A                v1.0.0
+                  ALTRAD8UD-     Q64-22
+                  1L2T
+
+
+Linux 5.4         Ubiquiti         Marvell               No       N/A                v1.0.0
+                  EdgeRouter 4     OCTEON         III
+                                   CN7130
+
+
+Operating      Hardware          Processors            PAA/PAI Hypervisor or Host Version(s)
+System         Platform                                        OS
+
+
+Linux 5.4      CZ.NIC       Turris Marvell             No       N/A                v1.0.0
+               Omnia               ARMADA-385
+
+
+Google         APIF-824          AMD EPYC 7B12 Yes              N/A                v1.0.0
+Prodimage with
+Linux 5.10
+
+
+Google         APIF-824          AMD EPYC 7B12 No               N/A                v1.0.0
+Prodimage with
+Linux 5.10
+
+
+Google         APIF-738          Intel        Xeon Yes          N/A                v1.0.0
+Prodimage with                   Platinum
+Linux 5.10                       8273CL
+
+
+Google         APIF-738          Intel        Xeon No           N/A                v1.0.0
+Prodimage with                   Platinum
+Linux 5.10                       8273CL
+
+
+Google         APIF-091          ARM Neoverse- Yes              N/A                v1.0.0
+Prodimage with                   N1
+Linux 5.10
+
+
+Google         APIF-091          ARM Neoverse- No               N/A                v1.0.0
+Prodimage with                   N1
+Linux 5.10
+
+
+Apple macOS 15 MacBook       Air Apple M2              Yes      N/A                v1.0.0
+               (M2, 2022)
+
+
+
+Operating       Hardware          Processors            PAA/PAI Hypervisor or Host Version(s)
+System          Platform                                        OS
+
+
+Apple macOS 15 MacBook       Air Apple M2               No       N/A                v1.0.0
+               (M2, 2022)
+
+
+FreeBSD 14      Lenovo            Intel Core i3- Yes             N/A                v1.0.0
+                ThinkCentre M73   4130T
+
+
+FreeBSD 14      Lenovo            Intel Core i3- No              N/A                v1.0.0
+                ThinkCentre M73   4130T
+
+
+Microsoft      Lenovo             Intel Core i3- Yes             N/A                v1.0.0
+Windows Server ThinkCentre M73    4130T
+2022
+
+
+Microsoft      Lenovo             Intel Core i3- No              N/A                v1.0.0
+Windows Server ThinkCentre M73    4130T
+2022
+
+
+Microsoft       Surface Laptop Qualcomm                 Yes      N/A                v1.0.0
+Windows 11      7th Edition    Snapdragon        X
+                               Plus
+
+
+Microsoft       Surface Laptop Qualcomm                 No       N/A                v1.0.0
+Windows 11      7th Edition    Snapdragon        X
+                               Plus
+
+
+SUSE        Linux Dell PowerEdge Intel Xeon Silver Yes           N/A                v1.0.0
+Enterprise Server R660           4410Y
+15 SP6
+
+
+
+
+ Operating            Hardware             Processors             PAA/PAI Hypervisor or Host Version(s)
+ System               Platform                                            OS
+
+
+ SUSE        Linux Dell PowerEdge Intel Xeon Silver No                     N/A                v1.0.0
+ Enterprise Server R660           4410Y
+ 15 SP6
+
+
+ SUSE        Linux ASRock    Rack Ampere                Altra Yes          N/A                v1.0.0
+ Enterprise Server ALTRAD8UD-     Q64-22
+ 15 SP6            1L2T
+
+
+ SUSE        Linux ASRock    Rack Ampere                Altra No           N/A                v1.0.0
+ Enterprise Server ALTRAD8UD-     Q64-22
+ 15 SP6            1L2T"
+5325,vendor_affirmed,"Software, Firmware, Hybrid",16,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5325.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 11; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT," Operating       Hardware Platform
+ System
+
+
+ Linux 3.10+     x86-64 architecture
+
+
+ Linux 3.10+     ARMv8 architecture
+
+
+ Linux 3.10+     ARMv9 architecture
+
+
+ Linux 3.10+     ARMv7 architecture
+
+
+ Linux 4.x       x86-64 architecture
+
+
+
+Operating   Hardware Platform
+System
+
+
+Linux 4.x   ARMv8 architecture
+
+
+Linux 4.x   ARMv9 architecture
+
+
+Linux 4.x   ARMv7 architecture
+
+
+Linux 5.x   x86-64 architecture
+
+
+Linux 5.x   ARMv8 architecture
+
+
+Linux 5.x   ARMv9 architecture
+
+
+Linux 5.x   ARMv7 architecture
+
+
+Linux 6.x   x86-64 architecture
+
+
+Linux 6.x   ARMv8 architecture
+
+
+Linux 6.x   ARMv9 architecture
+
+
+Linux 6.x   ARMv7 architecture
+
+
+Linux 7.x   x86-64 architecture
+
+
+Linux 7.x   ARMv8 architecture
+
+
+
+
+Operating    Hardware Platform
+System
+
+
+Linux 7.x    ARMv9 architecture
+
+
+Linux 7.x    ARMv7 architecture
+
+
+Apple        Apple M series
+macOS 11
+
+
+Apple        Apple M series
+macOS 12
+
+
+Apple        Apple M series
+macOS 13
+
+
+Apple        Apple M series
+macOS 14
+
+
+Apple        Apple M series
+macOS 15
+
+
+Apple        Apple M series
+macOS 26
+
+
+FreeBSD 12   x86-64 architecture
+
+
+FreeBSD 13   x86-64 architecture
+
+
+FreeBSD 14   x86-64 architecture
+
+
+
+Operating    Hardware Platform
+System
+
+
+FreeBSD 15   x86-64 architecture
+
+
+Microsoft    x86-64 architecture
+Windows 10
+
+
+Microsoft    x86-64 architecture
+Windows 11
+
+
+Microsoft    ARMv8 architecture
+Windows 11
+
+
+Microsoft    ARMv9 architecture
+Windows 11
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2016
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2019
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2022
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2025
+
+
+Operating     Hardware Platform
+System
+
+
+Microsoft   ARMv8 architecture
+Windows
+Server 2025
+
+
+Microsoft   ARMv9 architecture
+Windows
+Server 2025
+
+
+Red       Hat x86-64 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat ARMv8 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat ARMv9 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Z System z16
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Power10
+Enterprise
+Linux 10
+
+
+Oracle Linux Oracle X series servers
+7 with UEK6
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux Oracle E series servers
+7 with UEK6
+
+
+Oracle Linux Oracle A series servers
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+7 with UEK6
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A7
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A9
+7 with UEK6
+
+
+Oracle Linux Oracle X series servers
+8 with UEK7
+
+
+Oracle Linux Oracle E series servers
+8 with UEK7
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux Oracle A series servers
+8 with UEK7
+
+
+Oracle Linux Oracle X series servers
+9 with UEK7
+
+
+Oracle Linux Oracle E series servers
+9 with UEK7
+
+
+Oracle Linux Oracle A series servers
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+9 with UEK7
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+9 with UEK7
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2022
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2025
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Azure Local Dell XR4510c with Intel Xeon D-2776NT
+22H2
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.10
+on Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.8 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.5 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 9.5 on
+Hyper-V
+
+
+Rocky Linux Dell XR4510c with Intel Xeon D-2776NT"
+5324,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5324.pdf,Linux; IOS 3.1.3.00; Alpine Linux 3.20; Oracle Linux 9; Linux 5.4; Linux 5.10; macOS 15; FreeBSD 14; Windows Server; Windows 11,Ampere Altra; Power10; EPYC; Graviton4; Apple M2; Core i3-," Operating              Hardware           Processors              PAA/PAI Hypervisor or Host Version(s)
+ System                 Platform                                           OS
+
+
+ Red          Hat Dell PowerEdge Intel Xeon Silver Yes                      N/A                        v1.0.0
+ Enterprise Linux R660           4410Y
+ 9
+
+
+
+Operating       Hardware         Processors            PAA/PAI Hypervisor or Host Version(s)
+System          Platform                                       OS
+
+
+Red          Hat Dell PowerEdge Intel Xeon Silver No            N/A                v1.0.0
+Enterprise Linux R660           4410Y
+9
+
+
+Red          Hat ASRock    Rack Ampere        Altra Yes         N/A                v1.0.0
+Enterprise Linux ALTRAD8UD-     Q64-22
+9                1L2T
+
+
+Red          Hat ASRock    Rack Ampere        Altra No          N/A                v1.0.0
+Enterprise Linux ALTRAD8UD-     Q64-22
+9                1L2T
+
+
+Red          Hat IBM z16 3931- IBM Z System Yes                 PR/SM Driver Level v1.0.0
+Enterprise Linux A01           z16                              51 with Bundle Level
+9                                                               H29
+
+
+Red          Hat IBM z16 3931- IBM Z System No                  PR/SM Driver Level v1.0.0
+Enterprise Linux A01           z16                              51 with Bundle Level
+9                                                               H29
+
+
+Red          Hat IBM 9080-HEX    IBM Power10           Yes      PowerVM            v1.0.0
+Enterprise Linux                                                FW1040.00     with
+9                                                               VIOS 3.1.3.00
+
+
+Red          Hat IBM 9080-HEX    IBM Power10           No       PowerVM            v1.0.0
+Enterprise Linux                                                FW1040.00     with
+9                                                               VIOS 3.1.3.00
+
+
+
+
+Operating        Hardware         Processors             PAA/PAI Hypervisor or Host Version(s)
+System           Platform                                        OS
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel Xeon Silver Yes            Podman 4 on Red v1.0.0
+image             R660           4410Y                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel Xeon Silver No             Podman 4 on Red v1.0.0
+image             R660           4410Y                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD           EPYC Yes           Podman 4 on Red v1.0.0
+image             R6615          9454P                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD           EPYC No            Podman 4 on Red v1.0.0
+image             R6615          9454P                            Hat Enterprise Linux
+                                                                  9
+
+
+Alpine Linux 3.20 ASRock    Rack Ampere        Altra Yes          Podman 4 on Red v1.0.0
+image             ALTRAD8UD-     Q64-22                           Hat Enterprise Linux
+                  1L2T                                            9
+
+
+Alpine Linux 3.20 ASRock    Rack Ampere        Altra No           Podman 4 on Red v1.0.0
+image             ALTRAD8UD-     Q64-22                           Hat Enterprise Linux
+                  1L2T                                            9
+
+
+Amazon      Linux Amazon      EC2 AWS Graviton4          Yes      N/A                v1.0.0
+2023              r8g.metal-24xl
+
+
+Amazon      Linux Amazon      EC2 AWS Graviton4          No       N/A                v1.0.0
+2023              r8g.metal-24xl
+
+
+
+Operating         Hardware         Processors            PAA/PAI Hypervisor or Host Version(s)
+System            Platform                                       OS
+
+
+Amazon      Linux Amazon      EC2 Intel      Xeon Yes             N/A                v1.0.0
+2023              c6i.metal       Platinum 8375C
+
+
+Amazon      Linux Amazon      EC2 Intel      Xeon No              N/A                v1.0.0
+2023              c6i.metal       Platinum 8375C
+
+
+Oracle Linux 9    Dell PowerEdge Intel Xeon Silver Yes            N/A                v1.0.0
+                  R660           4410Y
+
+
+Oracle Linux 9    Dell PowerEdge Intel Xeon Silver No             N/A                v1.0.0
+                  R660           4410Y
+
+
+Oracle Linux 9    Dell PowerEdge AMD            EPYC Yes          N/A                v1.0.0
+                  R6615          9454P
+
+
+Oracle Linux 9    Dell PowerEdge AMD            EPYC No           N/A                v1.0.0
+                  R6615          9454P
+
+
+Oracle Linux 9    ASRock    Rack Ampere         Altra Yes         N/A                v1.0.0
+                  ALTRAD8UD-     Q64-22
+                  1L2T
+
+
+Oracle Linux 9    ASRock    Rack Ampere         Altra No          N/A                v1.0.0
+                  ALTRAD8UD-     Q64-22
+                  1L2T
+
+
+Linux 5.4         Ubiquiti         Marvell               No       N/A                v1.0.0
+                  EdgeRouter 4     OCTEON         III
+                                   CN7130
+
+
+Operating      Hardware          Processors            PAA/PAI Hypervisor or Host Version(s)
+System         Platform                                        OS
+
+
+Linux 5.4      CZ.NIC       Turris Marvell             No       N/A                v1.0.0
+               Omnia               ARMADA-385
+
+
+Google         APIF-824          AMD EPYC 7B12 Yes              N/A                v1.0.0
+Prodimage with
+Linux 5.10
+
+
+Google         APIF-824          AMD EPYC 7B12 No               N/A                v1.0.0
+Prodimage with
+Linux 5.10
+
+
+Google         APIF-738          Intel        Xeon Yes          N/A                v1.0.0
+Prodimage with                   Platinum
+Linux 5.10                       8273CL
+
+
+Google         APIF-738          Intel        Xeon No           N/A                v1.0.0
+Prodimage with                   Platinum
+Linux 5.10                       8273CL
+
+
+Google         APIF-091          ARM Neoverse- Yes              N/A                v1.0.0
+Prodimage with                   N1
+Linux 5.10
+
+
+Google         APIF-091          ARM Neoverse- No               N/A                v1.0.0
+Prodimage with                   N1
+Linux 5.10
+
+
+Apple macOS 15 MacBook       Air Apple M2              Yes      N/A                v1.0.0
+               (M2, 2022)
+
+
+
+Operating       Hardware          Processors            PAA/PAI Hypervisor or Host Version(s)
+System          Platform                                        OS
+
+
+Apple macOS 15 MacBook       Air Apple M2               No       N/A                v1.0.0
+               (M2, 2022)
+
+
+FreeBSD 14      Lenovo            Intel Core i3- Yes             N/A                v1.0.0
+                ThinkCentre M73   4130T
+
+
+FreeBSD 14      Lenovo            Intel Core i3- No              N/A                v1.0.0
+                ThinkCentre M73   4130T
+
+
+Microsoft      Lenovo             Intel Core i3- Yes             N/A                v1.0.0
+Windows Server ThinkCentre M73    4130T
+2022
+
+
+Microsoft      Lenovo             Intel Core i3- No              N/A                v1.0.0
+Windows Server ThinkCentre M73    4130T
+2022
+
+
+Microsoft       Surface Laptop Qualcomm                 Yes      N/A                v1.0.0
+Windows 11      7th Edition    Snapdragon        X
+                               Plus
+
+
+Microsoft       Surface Laptop Qualcomm                 No       N/A                v1.0.0
+Windows 11      7th Edition    Snapdragon        X
+                               Plus
+
+
+SUSE        Linux Dell PowerEdge Intel Xeon Silver Yes           N/A                v1.0.0
+Enterprise Server R660           4410Y
+15 SP6
+
+
+
+
+ Operating            Hardware             Processors             PAA/PAI Hypervisor or Host Version(s)
+ System               Platform                                            OS
+
+
+ SUSE        Linux Dell PowerEdge Intel Xeon Silver No                     N/A                v1.0.0
+ Enterprise Server R660           4410Y
+ 15 SP6
+
+
+ SUSE        Linux ASRock    Rack Ampere                Altra Yes          N/A                v1.0.0
+ Enterprise Server ALTRAD8UD-     Q64-22
+ 15 SP6            1L2T
+
+
+ SUSE        Linux ASRock    Rack Ampere                Altra No           N/A                v1.0.0
+ Enterprise Server ALTRAD8UD-     Q64-22
+ 15 SP6            1L2T"
+5324,vendor_affirmed,"Software, Firmware, Hybrid",16,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5324.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 11; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT," Operating       Hardware Platform
+ System
+
+
+ Linux 3.10+     x86-64 architecture
+
+
+ Linux 3.10+     ARMv8 architecture
+
+
+ Linux 3.10+     ARMv9 architecture
+
+
+ Linux 3.10+     ARMv7 architecture
+
+
+ Linux 4.x       x86-64 architecture
+
+
+
+Operating   Hardware Platform
+System
+
+
+Linux 4.x   ARMv8 architecture
+
+
+Linux 4.x   ARMv9 architecture
+
+
+Linux 4.x   ARMv7 architecture
+
+
+Linux 5.x   x86-64 architecture
+
+
+Linux 5.x   ARMv8 architecture
+
+
+Linux 5.x   ARMv9 architecture
+
+
+Linux 5.x   ARMv7 architecture
+
+
+Linux 6.x   x86-64 architecture
+
+
+Linux 6.x   ARMv8 architecture
+
+
+Linux 6.x   ARMv9 architecture
+
+
+Linux 6.x   ARMv7 architecture
+
+
+Linux 7.x   x86-64 architecture
+
+
+Linux 7.x   ARMv8 architecture
+
+
+
+
+Operating    Hardware Platform
+System
+
+
+Linux 7.x    ARMv9 architecture
+
+
+Linux 7.x    ARMv7 architecture
+
+
+Apple        Apple M series
+macOS 11
+
+
+Apple        Apple M series
+macOS 12
+
+
+Apple        Apple M series
+macOS 13
+
+
+Apple        Apple M series
+macOS 14
+
+
+Apple        Apple M series
+macOS 15
+
+
+Apple        Apple M series
+macOS 26
+
+
+FreeBSD 12   x86-64 architecture
+
+
+FreeBSD 13   x86-64 architecture
+
+
+FreeBSD 14   x86-64 architecture
+
+
+
+Operating    Hardware Platform
+System
+
+
+FreeBSD 15   x86-64 architecture
+
+
+Microsoft    x86-64 architecture
+Windows 10
+
+
+Microsoft    x86-64 architecture
+Windows 11
+
+
+Microsoft    ARMv8 architecture
+Windows 11
+
+
+Microsoft    ARMv9 architecture
+Windows 11
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2016
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2019
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2022
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2025
+
+
+Operating     Hardware Platform
+System
+
+
+Microsoft   ARMv8 architecture
+Windows
+Server 2025
+
+
+Microsoft   ARMv9 architecture
+Windows
+Server 2025
+
+
+Red       Hat x86-64 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat ARMv8 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat ARMv9 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Z System z16
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Power10
+Enterprise
+Linux 10
+
+
+Oracle Linux Oracle X series servers
+7 with UEK6
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux Oracle E series servers
+7 with UEK6
+
+
+Oracle Linux Oracle A series servers
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+7 with UEK6
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A7
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A9
+7 with UEK6
+
+
+Oracle Linux Oracle X series servers
+8 with UEK7
+
+
+Oracle Linux Oracle E series servers
+8 with UEK7
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux Oracle A series servers
+8 with UEK7
+
+
+Oracle Linux Oracle X series servers
+9 with UEK7
+
+
+Oracle Linux Oracle E series servers
+9 with UEK7
+
+
+Oracle Linux Oracle A series servers
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+9 with UEK7
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+9 with UEK7
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2022
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2025
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Azure Local Dell XR4510c with Intel Xeon D-2776NT
+22H2
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.10
+on Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.8 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.5 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 9.5 on
+Hyper-V
+
+
+Rocky Linux Dell XR4510c with Intel Xeon D-2776NT"
+5323,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5323.pdf,Linux; IOS 3.1.3.00; Alpine Linux,Ampere Altra; Power10," Operating            Hardware             Processors              PAA/PAI Hypervisor or Host       Version(s)
+ System               Platform                                             OS
+
+
+ Red Hat              Dell PowerEdge       Intel Xeon Silver       Yes      N/A                     v1.0.0
+ Enterprise Linux     R660                 4410Y
+ 9
+
+
+ Red Hat              Dell PowerEdge       Intel Xeon Silver       No       N/A                     v1.0.0
+ Enterprise Linux     R660                 4410Y
+ 9
+
+
+ Red Hat              ASRock Rack          Ampere Altra            Yes      N/A                     v1.0.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 9                    1L2T
+
+
+ Red Hat              ASRock Rack          Ampere Altra            No       N/A                     v1.0.0
+ Enterprise Linux     ALTRAD8UD-           Q64-22
+ 9                    1L2T
+
+
+ Red Hat              IBM z16 3931-        IBM Z System            Yes      PR/SM Driver Level      v1.0.0
+ Enterprise Linux     A01                  z16                              51 with Bundle
+ 9                                                                          Level H29
+
+
+
+
+Operating          Hardware         Processors             PAA/PAI Hypervisor or Host      Version(s)
+System             Platform                                        OS
+
+
+Red Hat            IBM z16 3931-    IBM Z System           No       PR/SM Driver Level     v1.0.0
+Enterprise Linux   A01              z16                             51 with Bundle
+9                                                                   Level H29
+
+
+Red Hat            IBM 9080-HEX     IBM Power10            Yes      PowerVM                v1.0.0
+Enterprise Linux                                                    FW1040.00 with
+9                                                                   VIOS 3.1.3.00
+
+
+Red Hat            IBM 9080-HEX     IBM Power10            No       PowerVM                v1.0.0
+Enterprise Linux                                                    FW1040.00 with
+9                                                                   VIOS 3.1.3.00
+
+
+Alpine Linux       Dell PowerEdge   Intel Xeon Silver      Yes      Podman 4 on Red        v1.0.0"
+5323,vendor_affirmed,"Software, Firmware, Hybrid",15,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5323.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 11; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT,"Operating     Hardware Platform
+System
+
+
+Linux 3.10+   x86-64 architecture
+
+
+Linux 3.10+   ARMv8 architecture
+
+
+Linux 3.10+   ARMv9 architecture
+
+
+Linux 3.10+   ARMv7 architecture
+
+
+Linux 4.x     x86-64 architecture
+
+
+Linux 4.x     ARMv8 architecture
+
+
+Linux 4.x     ARMv9 architecture
+
+
+Linux 4.x     ARMv7 architecture
+
+
+Linux 5.x     x86-64 architecture
+
+
+Linux 5.x     ARMv8 architecture
+
+
+Linux 5.x     ARMv9 architecture
+
+
+Linux 5.x     ARMv7 architecture
+
+
+Linux 6.x     x86-64 architecture
+
+
+
+
+Operating   Hardware Platform
+System
+
+
+Linux 6.x   ARMv8 architecture
+
+
+Linux 6.x   ARMv9 architecture
+
+
+Linux 6.x   ARMv7 architecture
+
+
+Linux 7.x   x86-64 architecture
+
+
+Linux 7.x   ARMv8 architecture
+
+
+Linux 7.x   ARMv9 architecture
+
+
+Linux 7.x   ARMv7 architecture
+
+
+Apple       Apple M series
+macOS 11
+
+
+Apple       Apple M series
+macOS 12
+
+
+Apple       Apple M series
+macOS 13
+
+
+Apple       Apple M series
+macOS 14
+
+
+
+
+Operating    Hardware Platform
+System
+
+
+Apple        Apple M series
+macOS 15
+
+
+Apple        Apple M series
+macOS 26
+
+
+FreeBSD 12   x86-64 architecture
+
+
+FreeBSD 13   x86-64 architecture
+
+
+FreeBSD 14   x86-64 architecture
+
+
+FreeBSD 15   x86-64 architecture
+
+
+Microsoft    x86-64 architecture
+Windows 10
+
+
+Microsoft    x86-64 architecture
+Windows 11
+
+
+Microsoft    ARMv8 architecture
+Windows 11
+
+
+Microsoft    ARMv9 architecture
+Windows 11
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Microsoft     x86-64 architecture
+Windows
+Server 2016
+
+
+Microsoft     x86-64 architecture
+Windows
+Server 2019
+
+
+Microsoft     x86-64 architecture
+Windows
+Server 2022
+
+
+Microsoft     x86-64 architecture
+Windows
+Server 2025
+
+
+Microsoft     ARMv8 architecture
+Windows
+Server 2025
+
+
+Microsoft     ARMv9 architecture
+Windows
+Server 2025
+
+
+Red Hat       x86-64 architecture
+Enterprise
+Linux 10
+
+
+
+
+Operating      Hardware Platform
+System
+
+
+Red Hat        ARMv8 architecture
+Enterprise
+Linux 10
+
+
+Red Hat        ARMv9 architecture
+Enterprise
+Linux 10
+
+
+Red Hat        IBM Z System z16
+Enterprise
+Linux 10
+
+
+Red Hat        IBM Power10
+Enterprise
+Linux 10
+
+
+Oracle Linux   Oracle X series servers
+7 with UEK6
+
+
+Oracle Linux   Oracle E series servers
+7 with UEK6
+
+
+Oracle Linux   Oracle A series servers
+7 with UEK6
+
+
+Oracle Linux   Marvell OCTEON TX2 CN93XX
+7 with UEK6
+
+
+
+
+Operating      Hardware Platform
+System
+
+
+Oracle Linux   AMD Pensando DSC2-2Q200
+7 with UEK6
+
+
+Oracle Linux   Marvell OCTEON III CN73XX
+7 with UEK6
+
+
+Oracle Linux   ARM Cortex-A7
+7 with UEK6
+
+
+Oracle Linux   ARM Cortex-A9
+7 with UEK6
+
+
+Oracle Linux   Oracle X series servers
+8 with UEK7
+
+
+Oracle Linux   Oracle E series servers
+8 with UEK7
+
+
+Oracle Linux   Oracle A series servers
+8 with UEK7
+
+
+Oracle Linux   Oracle X series servers
+9 with UEK7
+
+
+Oracle Linux   Oracle E series servers
+9 with UEK7
+
+
+
+
+Operating      Hardware Platform
+System
+
+
+Oracle Linux   Oracle A series servers
+9 with UEK7
+
+
+Oracle Linux   Marvell OCTEON TX2 CN93XX
+9 with UEK7
+
+
+Oracle Linux   AMD Pensando DSC2-2Q200
+9 with UEK7
+
+
+Oracle Linux   Marvell OCTEON III CN73XX
+9 with UEK7
+
+
+Windows        Dell XR4510c with Intel Xeon D-2776NT
+Server 2022
+
+
+Windows        Dell XR4510c with Intel Xeon D-2776NT
+Server 2025
+
+
+Azure Local    Dell XR4510c with Intel Xeon D-2776NT
+22H2
+
+
+Red Hat        Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.10
+on Hyper-V
+
+
+Red Hat        Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+
+
+
+
+Operating      Hardware Platform
+System
+
+Linux 8.8 on
+Hyper-V
+
+
+Red Hat        Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.5 on
+Hyper-V
+
+
+Red Hat        Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 9.5 on
+Hyper-V
+
+
+Rocky Linux    Dell XR4510c with Intel Xeon D-2776NT"
+5314,tested,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5314.pdf,Amazon Linux,Graviton4; Intel Xeon Platinum 8375C,"Operating           Hardware       Processors                        PAA/PAI Hypervisor Version(s)
+System              Platform                                                 or Host OS
+Amazon Linux        r8g.metal-     Graviton4 (ARMv9)                 Yes        N/A            AWS-LC FIPS
+2023                24xl                                                                       3.1.0
+Amazon Linux        c6i.metal      Intel Xeon Platinum 8375C         Yes        N/A            AWS-LC FIPS
+2023                               (AES-NI)                                                    3.1.0
+Amazon Linux        r8g.metal-     Graviton4 (ARMv9)                 No         N/A            AWS-LC FIPS
+2023                24xl                                                                       3.1.0
+Amazon Linux        c6i.metal      Intel Xeon Platinum 8375C         No         N/A            AWS-LC FIPS
+2023                               (AES-NI)                                                    3.1.0"
+5314,vendor_affirmed,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5314.pdf,,,"N/A for this module.
+
+
+CMVP makes no statement as to the correct operation of the module or the security
+strengths of the generated keys when so ported if the specific operational environment is
+not listed on the validation certificate.
+
+
+
+
+
+AWS-LC 3 Cryptographic Module (static)                                  FIPS 140-3 Non-Proprietary Security Policy"
+5298,tested,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5298.pdf,Amazon Linux,Graviton4; Intel Xeon Platinum 8375C,"Operating          Hardware        Processors                        PAA/PAI Hypervisor Version(s)
+System             Platform                                                  or Host OS
+Amazon Linux       r8g.metal-      Graviton4 (ARMv9)                 Yes        N/A            AWS-LC FIPS
+2023               24xl                                                                        3.1.0
+Amazon Linux       c6i.metal       Intel Xeon Platinum 8375C         Yes        N/A            AWS-LC FIPS
+2023                               (AES-NI)                                                    3.1.0
+Amazon Linux       r8g.metal-      Graviton4 (ARMv9)                 No         N/A            AWS-LC FIPS
+2023               24xl                                                                        3.1.0
+Amazon Linux       c6i.metal       Intel Xeon Platinum 8375C         No         N/A            AWS-LC FIPS
+2023                               (AES-NI)                                                    3.1.0"
+5298,vendor_affirmed,"Software, Firmware, Hybrid",7,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5298.pdf,,,"N/A for this module.
+
+
+CMVP makes no statement as to the correct operation of the module or the security
+strengths of the generated keys when so ported if the specific operational environment is
+not listed on the validation certificate.
+
+
+
+
+
+AWS-LC 3 Cryptographic Module (dynamic)                                 FIPS 140-3 Non-Proprietary Security Policy"
+5282,tested,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5282.pdf,,,N/A for this module.
+5282,vendor_affirmed,"Software, Firmware, Hybrid",9,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5282.pdf,,,N/A for this module.
+5261,tested,"Software, Firmware, Hybrid",8,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5261.pdf,Ubuntu,Intel Xeon Platinum 8180," Operating           Hardware            Processors                            PAA/PAI Hypervisor Version(s)
+ System              Platform                                                          or Host OS
+ Ubuntu              UCS C220            Intel Xeon Platinum 8180              Yes                2.0.4"
+5261,vendor_affirmed,"Software, Firmware, Hybrid",8,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5261.pdf,Linux 5.4,," Operating              Hardware
+ System                 Platform
+ Linux 5.4-6.12         MX67
+ Linux 5.4-6.12         MX68
+ Linux 5.4-6.12         MX75
+ Linux 5.4-6.12         MX85
+ Linux 5.4-6.12         MX95
+ Linux 5.4-6.12         MX105
+ Linux 5.4-6.12         MX250
+ Linux 5.4-6.12         MX450
+ Linux 5.4-6.12         MX68CW
+ Linux 5.4-6.12         C8455-G2
+ Linux 5.4-6.12         MG52
+ Linux 5.4-6.12         MR28
+ Linux 5.4-6.12         MR36
+ Linux 5.4-6.12         MR44
+ Linux 5.4-6.12         MR56
+ Linux 5.4-6.12         MR57
+ Linux 5.4-6.12         MR76
+ Linux 5.4-6.12         MR78
+ Linux 5.4-6.12         MR86
+ Linux 5.4-6.12         CW9166I
+ Linux 5.4-6.12         CW9166ID1
+ Linux 5.4-6.12         CW9164I
+
+This document may be freely reproduced and distributed whole and intact including this Copyright Notice.
+ Operating              Hardware
+ System                 Platform
+ Linux 5.4-6.12         CW9162I
+ Linux 5.4-6.12         CW9163E
+ Linux 5.4-6.12         CW9178I
+ Linux 5.4-6.12         CW9176I
+ Linux 5.4-6.12         CW9176D1"
+5247,tested,"Software, Firmware, Hybrid",10,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5247.pdf,Linux 9; IOS 3.1.3.00; Alpine Linux 3.20; Linux; Oracle Linux 9; Linux 5.4; Linux 5.10; macOS 15; FreeBSD 14; Windows; macOS; Windows 11,Ampere Altra; Power10; EPYC; Graviton4; Apple M2; Core i3-,"Operating System   Hardware       Processors           PAA/PAI Hypervisor     or Version(s)
+                   Platform                                    Host OS
+
+
+Red Hat Enterprise Dell PowerEdge Intel     Xeon Yes            N/A               v1.0.0 and
+Linux 9            R660           Silver 4410Y                                    v1.0.1
+
+
+Red Hat Enterprise Dell PowerEdge Intel     Xeon No             N/A               v1.0.0 and
+Linux 9            R660           Silver 4410Y                                    v1.0.1
+
+
+Red Hat Enterprise ASRock   Rack Ampere Altra Yes               N/A               v1.0.0 and
+Linux 9            ALTRAD8UD-    Q64-22                                           v1.0.1
+                   1L2T
+
+
+Red Hat Enterprise ASRock   Rack Ampere Altra No                N/A               v1.0.0 and
+Linux 9            ALTRAD8UD-    Q64-22                                           v1.0.1
+                   1L2T
+
+
+Red Hat Enterprise IBM z16 3931- IBM Z System Yes               PR/SM       Driver v1.0.0 and
+Linux 9            A01           z16                            Level 51 with v1.0.1
+                                                                Bundle Level H29
+
+
+Red Hat Enterprise IBM z16 3931- IBM Z System No                PR/SM       Driver v1.0.0 and
+Linux 9            A01           z16                            Level 51 with v1.0.1
+                                                                Bundle Level H29
+
+
+Red Hat Enterprise IBM 9080-HEX   IBM Power10          Yes      PowerVM        v1.0.0 and
+Linux 9                                                         FW1040.00 with v1.0.1
+                                                                VIOS 3.1.3.00
+
+
+Red Hat Enterprise IBM 9080-HEX   IBM Power10          No       PowerVM        v1.0.0 and
+Linux 9                                                         FW1040.00 with v1.0.1
+                                                                VIOS 3.1.3.00
+
+
+
+Operating System   Hardware      Processors           PAA/PAI Hypervisor    or Version(s)
+                   Platform                                   Host OS
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel     Xeon Yes            Podman 4 on Red v1.0.0 and
+image             R660           Silver 4410Y                  Hat     Enterprise v1.0.1
+                                                               Linux 9
+
+
+Alpine Linux 3.20 Dell PowerEdge Intel     Xeon No             Podman 4 on Red v1.0.0 and
+image             R660           Silver 4410Y                  Hat     Enterprise v1.0.1
+                                                               Linux 9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD         EPYC Yes          Podman 4 on Red v1.0.0 and
+image             R6615          9454P                         Hat     Enterprise v1.0.1
+                                                               Linux 9
+
+
+Alpine Linux 3.20 Dell PowerEdge AMD         EPYC No           Podman 4 on Red v1.0.0
+image             R6615          9454P                         Hat     Enterprise
+                                                               Linux 9
+
+
+Alpine Linux 3.20 ASRock   Rack Ampere Altra Yes               Podman 4 on Red v1.0.0 and
+image             ALTRAD8UD-    Q64-22                         Hat     Enterprise v1.0.1
+                  1L2T                                         Linux 9
+
+
+Alpine Linux 3.20 ASRock   Rack Ampere Altra No                Podman 4 on Red v1.0.0 and
+image             ALTRAD8UD-    Q64-22                         Hat     Enterprise v1.0.1
+                  1L2T                                         Linux 9
+
+
+Amazon      Linux Amazon     EC2 AWS                  Yes      N/A             v1.0.0 and
+2023              r8g.metal-24xl Graviton4                                     v1.0.1
+
+
+Amazon      Linux Amazon     EC2 AWS                  No       N/A             v1.0.0 and
+2023              r8g.metal-24xl Graviton4                                     v1.0.1
+
+
+
+Operating System   Hardware        Processors           PAA/PAI Hypervisor   or Version(s)
+                   Platform                                     Host OS
+
+
+Amazon       Linux Amazon      EC2 Intel    Xeon Yes             N/A            v1.0.0 and
+2023               c6i.metal       Platinum                                     v1.0.1
+                                   8375C
+
+
+Amazon       Linux Amazon      EC2 Intel    Xeon No              N/A            v1.0.0 and
+2023               c6i.metal       Platinum                                     v1.0.1
+                                   8375C
+
+
+Oracle Linux 9     Dell PowerEdge Intel     Xeon Yes             N/A            v1.0.0 and
+                   R660           Silver 4410Y                                  v1.0.1
+
+
+Oracle Linux 9     Dell PowerEdge Intel     Xeon No              N/A            v1.0.0 and
+                   R660           Silver 4410Y                                  v1.0.1
+
+
+Oracle Linux 9     Dell PowerEdge AMD        EPYC Yes            N/A            v1.0.0 and
+                   R6615          9454P                                         v1.0.1
+
+
+Oracle Linux 9     Dell PowerEdge AMD        EPYC No             N/A            v1.0.0 and
+                   R6615          9454P                                         v1.0.1
+
+
+Oracle Linux 9     ASRock   Rack Ampere Altra Yes                N/A            v1.0.0 and
+                   ALTRAD8UD-    Q64-22                                         v1.0.1
+                   1L2T
+
+
+Oracle Linux 9     ASRock   Rack Ampere Altra No                 N/A            v1.0.0 and
+                   ALTRAD8UD-    Q64-22                                         v1.0.1
+                   1L2T
+
+
+
+
+Operating System   Hardware        Processors            PAA/PAI Hypervisor   or Version(s)
+                   Platform                                      Host OS
+
+
+Linux 5.4          Ubiquiti        Marvell               No       N/A            v1.0.0 and
+                   EdgeRouter 4    OCTEON         III                            v1.0.1
+                                   CN7130
+
+
+Linux 5.4          CZ.NIC     Turris Marvell             No       N/A            v1.0.0 and
+                   Omnia             ARMADA-385                                  v1.0.1
+
+
+Google Prodimage APIF-824          AMD        EPYC Yes            N/A            v1.0.0 and
+with Linux 5.10                    7B12                                          v1.0.1
+
+
+Google Prodimage APIF-824          AMD        EPYC No             N/A            v1.0.0 and
+with Linux 5.10                    7B12                                          v1.0.1
+
+
+Google Prodimage APIF-738          Intel    Xeon Yes              N/A            v1.0.0 and
+with Linux 5.10                    Platinum                                      v1.0.1
+                                   8273CL
+
+
+Google Prodimage APIF-738          Intel    Xeon No               N/A            v1.0.0 and
+with Linux 5.10                    Platinum                                      v1.0.1
+                                   8273CL
+
+
+Google Prodimage APIF-091          ARM Neoverse- Yes              N/A            v1.0.0 and
+with Linux 5.10                    N1                                            v1.0.1
+
+
+Google Prodimage APIF-091          ARM Neoverse- No               N/A            v1.0.0 and
+with Linux 5.10                    N1                                            v1.0.1
+
+
+Apple macOS 15     MacBook    Air Apple M2               Yes      N/A            v1.0.0 and
+                   (M2, 2022)                                                    v1.0.1
+
+
+Operating System    Hardware       Processors           PAA/PAI Hypervisor   or Version(s)
+                    Platform                                    Host OS
+
+
+Apple macOS 15      MacBook    Air Apple M2             No       N/A            v1.0.0 and
+                    (M2, 2022)                                                  v1.0.1
+
+
+FreeBSD 14          Lenovo         Intel Core i3- Yes            N/A            v1.0.0 and
+                    ThinkCentre    4130T                                        v1.0.1
+                    M73
+
+
+FreeBSD 14          Lenovo         Intel Core i3- No             N/A            v1.0.0 and
+                    ThinkCentre    4130T                                        v1.0.1
+                    M73
+
+
+Microsoft Windows Lenovo           Intel Core i3- Yes            N/A            v1.0.0 and
+Server 2022       ThinkCentre      4130T                                        v1.0.1
+                  M73
+
+
+Microsoft Windows Lenovo           Intel Core i3- No             N/A            v1.0.0 and
+Server 2022       ThinkCentre      4130T                                        v1.0.1
+                  M73
+
+
+Microsoft Windows Surface Laptop Qualcomm     Yes                N/A            v1.0.0 and
+11                7th Edition    Snapdragon X                                   v1.0.1
+                                 Plus
+
+
+Microsoft Windows Surface Laptop Qualcomm     No                 N/A            v1.0.0 and
+11                7th Edition    Snapdragon X                                   v1.0.1
+                                 Plus
+
+
+SUSE          Linux Dell PowerEdge Intel     Xeon Yes            N/A            v1.0.0 and
+Enterprise   Server R660           Silver 4410Y                                 v1.0.1
+15 SP6
+
+
+ Operating System       Hardware            Processors             PAA/PAI Hypervisor    or Version(s)
+                        Platform                                           Host OS
+
+
+ SUSE           Linux Dell PowerEdge Intel     Xeon No                      N/A              v1.0.0 and
+ Enterprise    Server R660           Silver 4410Y                                            v1.0.1
+ 15 SP6
+
+
+ SUSE           Linux ASRock   Rack Ampere Altra Yes                        N/A              v1.0.0 and
+ Enterprise    Server ALTRAD8UD-    Q64-22                                                   v1.0.1
+ 15 SP6               1L2T
+
+
+ SUSE           Linux ASRock   Rack Ampere Altra No                         N/A              v1.0.0 and
+ Enterprise    Server ALTRAD8UD-    Q64-22                                                   v1.0.1
+ 15 SP6               1L2T
+
+
+ JavaScriptCore         MacBook    Air Apple M2                    No       Apple Safari 26 v1.0.1
+ WebAssembly            (M2, 2022)                                          on Apple macOS
+ engine                                                                     26
+
+
+ V8 WebAssembly Lenovo                   Intel Core i3- No                  Google Chrome v1.0.1
+ engine         Thinkpad             L13 1115G4                             150 on Microsoft
+                Gen 2                                                       Windows 11
+
+
+ V8 WebAssembly Lenovo                   Intel Core i3- No                  Microsoft  Edge v1.0.1
+ engine         Thinkpad             L13 1115G4                             148 on Microsoft
+                Gen 2                                                       Windows 11
+
+
+ SpiderMonkey           Lenovo           Intel Core i3- No                  Mozilla  Firefox v1.0.1
+ WebAssembly            Thinkpad     L13 1115G4                             152 on Microsoft
+ engine                 Gen 2                                               Windows 11"
+5247,vendor_affirmed,"Software, Firmware, Hybrid",16,https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp5247.pdf,Linux 3.10; Linux 4; Linux 5; Linux 6; Linux 7; macOS 11; macOS 12; macOS 13; macOS 14; macOS 15; macOS 26; FreeBSD 12; FreeBSD 13; FreeBSD 14; FreeBSD 15; Windows 10; Windows 11; Windows; Linux 10; Oracle Linux; Linux 8.10; Linux 8.8; Linux 8.5; Linux 9.5; Rocky Linux,Power10; Cortex-A7; Cortex-A9; Intel Xeon D-2776NT,"Operating     Hardware Platform
+System
+
+
+Linux 3.10+   x86-64 architecture
+
+
+Linux 3.10+   ARMv8 architecture
+
+
+Linux 3.10+   ARMv9 architecture
+
+
+Linux 3.10+   ARMv7 architecture
+
+
+Linux 4.x     x86-64 architecture
+
+
+Linux 4.x     ARMv8 architecture
+
+
+Linux 4.x     ARMv9 architecture
+
+
+Linux 4.x     ARMv7 architecture
+
+
+Linux 5.x     x86-64 architecture
+
+
+Linux 5.x     ARMv8 architecture
+
+
+Linux 5.x     ARMv9 architecture
+
+
+Linux 5.x     ARMv7 architecture
+
+
+Linux 6.x     x86-64 architecture
+
+
+
+
+Operating   Hardware Platform
+System
+
+
+Linux 6.x   ARMv8 architecture
+
+
+Linux 6.x   ARMv9 architecture
+
+
+Linux 6.x   ARMv7 architecture
+
+
+Linux 7.x   x86-64 architecture
+
+
+Linux 7.x   ARMv8 architecture
+
+
+Linux 7.x   ARMv9 architecture
+
+
+Linux 7.x   ARMv7 architecture
+
+
+Apple       Apple M series
+macOS 11
+
+
+Apple       Apple M series
+macOS 12
+
+
+Apple       Apple M series
+macOS 13
+
+
+Apple       Apple M series
+macOS 14
+
+
+
+
+Operating    Hardware Platform
+System
+
+
+Apple        Apple M series
+macOS 15
+
+
+Apple        Apple M series
+macOS 26
+
+
+FreeBSD 12   x86-64 architecture
+
+
+FreeBSD 13   x86-64 architecture
+
+
+FreeBSD 14   x86-64 architecture
+
+
+FreeBSD 15   x86-64 architecture
+
+
+Microsoft    x86-64 architecture
+Windows 10
+
+
+Microsoft    x86-64 architecture
+Windows 11
+
+
+Microsoft    ARMv8 architecture
+Windows 11
+
+
+Microsoft    ARMv9 architecture
+Windows 11
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2016
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2019
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2022
+
+
+Microsoft   x86-64 architecture
+Windows
+Server 2025
+
+
+Microsoft   ARMv8 architecture
+Windows
+Server 2025
+
+
+Microsoft   ARMv9 architecture
+Windows
+Server 2025
+
+
+Red       Hat x86-64 architecture
+Enterprise
+Linux 10
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Red       Hat ARMv8 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat ARMv9 architecture
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Z System z16
+Enterprise
+Linux 10
+
+
+Red       Hat IBM Power10
+Enterprise
+Linux 10
+
+
+Oracle Linux Oracle X series servers
+7 with UEK6
+
+
+Oracle Linux Oracle E series servers
+7 with UEK6
+
+
+Oracle Linux Oracle A series servers
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+7 with UEK6
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+7 with UEK6
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A7
+7 with UEK6
+
+
+Oracle Linux ARM Cortex-A9
+7 with UEK6
+
+
+Oracle Linux Oracle X series servers
+8 with UEK7
+
+
+Oracle Linux Oracle E series servers
+8 with UEK7
+
+
+Oracle Linux Oracle A series servers
+8 with UEK7
+
+
+Oracle Linux Oracle X series servers
+9 with UEK7
+
+
+Oracle Linux Oracle E series servers
+9 with UEK7
+
+
+
+
+Operating     Hardware Platform
+System
+
+
+Oracle Linux Oracle A series servers
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON TX2 CN93XX
+9 with UEK7
+
+
+Oracle Linux AMD Pensando DSC2-2Q200
+9 with UEK7
+
+
+Oracle Linux Marvell OCTEON III CN73XX
+9 with UEK7
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2022
+
+
+Windows     Dell XR4510c with Intel Xeon D-2776NT
+Server 2025
+
+
+Azure Local Dell XR4510c with Intel Xeon D-2776NT
+22H2
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.10
+on Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+
+
+
+
+Operating      Hardware Platform
+System
+
+Linux 8.8 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 8.5 on
+Hyper-V
+
+
+Red       Hat Dell XR4510c with Intel Xeon D-2776NT
+Enterprise
+Linux 9.5 on
+Hyper-V
+
+
+Rocky Linux Dell XR4510c with Intel Xeon D-2776NT"

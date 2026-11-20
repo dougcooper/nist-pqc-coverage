@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-11-20T01:16:29+00:00",
+  "data_as_of": "2026-11-19",
+  "counts": {
+    "cavp_pqc_validations": 344,
+    "cavp_operating_environments": 1249,
+    "cavp_oe_algorithm_rows": 64768,
+    "cmvp_pqc_certificates": 32,
+    "cmvp_in_process_rows": 399,
+    "cmvp_in_process_matched": 95,
+    "policy_sections": 36,
+    "policy_tested_sections": 18,
+    "policy_vendor_affirmed_sections": 18,
+    "coverage_rows": 15935,
+    "validated_targets": 112,
+    "validated_software_targets": 107,
+    "with_in_process_targets": 187,
+    "coverage_by_source": {
+      "CAVP": 6979,
+      "CMVP": 1249,
+      "CMVP-IUT": 2389,
+      "CMVP-MIP": 5318
+    }
+  },
+  "nist": {
+    "cavp_search": "https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/validation-search",
+    "cmvp_search": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all",
+    "cmvp_mip": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/modules-in-process-list",
+    "cmvp_iut": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/iut-list"
+  },
+  "pqc_algorithms": [
+    "ML-KEM EncapDecap",
+    "ML-KEM KeyGen",
+    "ML-DSA KeyGen",
+    "ML-DSA SigGen",
+    "ML-DSA SigVer",
+    "SLH-DSA KeyGen",
+    "SLH-DSA SigGen",
+    "SLH-DSA SigVer",
+    "LMS KeyGen",
+    "LMS SigGen",
+    "LMS SigVer"
+  ],
+  "excluded_non_active_cmvp": 0,
+  "include_historical": false,
+  "notes": [
+    "CMVP certificate pages do not list operating environments; they are inherited from the linked CAVP validations.",
+    "Modules-in-process and IUT lists carry no algorithms; PQC evidence is inferred from vendor/name matching and must be treated as indicative (see pqc_evidence).",
+    "OS family, product, version and CPU architecture are normalized heuristically from CAVP operating-environment text.",
+    "Security policy PDFs are extracted best-effort: the raw tested and vendor-affirmed OE sections are authoritative, while the OS/CPU candidate columns are regex hints, not compliance evidence."
+  ]
+}

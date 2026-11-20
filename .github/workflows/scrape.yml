@@ -1,0 +1,37 @@
+name: scrape
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: nist-cache-${{ github.run_id }}
+          restore-keys: nist-cache-
+      - name: Scrape NIST
+        run: uv run nist-pqc scrape --max-age-days 2
+      - name: Run parser tests
+        run: uv run pytest
+      - name: Commit refreshed data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: refresh NIST PQC validations"
+          file_pattern: "data/*.csv data/metadata.json"

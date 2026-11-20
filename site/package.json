@@ -1,0 +1,13 @@
+{
+  "name": "nist-pqc-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build",
+    "sources": "node scripts/sync-data.mjs"
+  },
+  "dependencies": {
+    "@observablehq/framework": "1.13.4"
+  }
+}
