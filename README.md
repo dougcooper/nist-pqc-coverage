@@ -78,12 +78,30 @@ become SQL parameters.
 - **Tested configurations** — tested and vendor-affirmed operating environments
   quoted from each certificate's non-proprietary security policy.
 - **SQL console** — query the Parquet/CSV data directly with DuckDB-WASM, with a
-  column dictionary, schema browser, and CSV download of any result.
+  column dictionary, schema browser, and CSV download of any result. A plain-English
+  **Ask** panel (experimental, see below) writes SQL for you and drops it into the
+  editor.
 - **Explorer** — the full `pqc_coverage.csv` table with search and filters.
 
 Charts are [ECharts](https://echarts.apache.org/) styled like Evidence (quiet
 axes, rounded bars, theme-aware); tables are a shared component with sorting,
 search, pagination, CSV download, and a card layout below 640 px.
+
+### Ask the data (experimental)
+
+The SQL console has an optional **Ask** panel that turns a question into SQL with
+a small language model running entirely in your browser
+([WebLLM](https://github.com/mlc-ai/web-llm), Qwen2.5-Coder 1.5B, about 1 GB) and
+then runs the query through the same read-only console. Nothing is sent to a
+server; the model is fetched from Hugging Face once and cached in the browser
+(Storage → Cache Storage), with a **Delete model** button to reclaim the space.
+
+It only appears on a desktop-sized window with a WebGPU adapter that has at least
+1 GiB of buffer size, and it never downloads anything until you click
+**Download model**. On integrated GPUs the browser can lose the WebGPU device
+during generation (`mapAsync` / device-lost errors); the panel reloads the model
+and retries once, and the SQL stays editable, so a failed answer costs a few
+seconds rather than the page. The site works without it.
 
 ## Publishing
 
