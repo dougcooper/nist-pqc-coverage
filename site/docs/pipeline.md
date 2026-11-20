@@ -18,6 +18,7 @@ import {dataTable} from "./components/table.js";
 
 ```js
 const db = await openDb({
+  coverage_raw: FileAttachment("data/pqc_coverage.parquet"),
   in_process: FileAttachment("data/cmvp_in_process.parquet"),
   cavp: FileAttachment("data/cavp_validations.parquet")
 });
@@ -215,4 +216,12 @@ display(
     csv: "cavp-without-cmvp.csv"
   })
 );
+```
+
+```js
+import {mountAgent} from "./components/ask.js";
+```
+
+```js
+await mountAgent({db, source: FileAttachment("data/llm-worker.worker")});
 ```

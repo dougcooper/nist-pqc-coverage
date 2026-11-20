@@ -16,7 +16,7 @@ and `targets` (one row per OS/architecture with product and vendor counts).
 ```js
 import {openDb, query} from "./components/db.js";
 import {createConsole} from "./components/console.js";
-import {capability, createAskPanel, describeData} from "./components/ask.js";
+import {mountAgent} from "./components/ask.js";
 ```
 
 ```js
@@ -29,33 +29,19 @@ const db = await openDb({
 });
 ```
 
-## Ask the data
-
-```js
-const report = await capability();
-if (report.ok) {
-  const ask = createAskPanel({
-    source: FileAttachment("data/llm-worker.worker"),
-    describe: () => describeData(db),
-    onSql: (sql, options) => sqlConsole.setQuery(sql, options),
-    shaderF16: report.shaderF16
-  });
-  display(ask.el);
-  await ask.refresh();
-} else {
-  display(
-    html`<div class="note small">
-      <strong>Ask is not available here.</strong> ${report.reason}
-    </div>`
-  );
-}
-```
-
 ## Query
 
 ```js
 const sqlConsole = createConsole({db});
 display(sqlConsole.el);
+```
+
+```js
+await mountAgent({
+  db,
+  source: FileAttachment("data/llm-worker.worker"),
+  onSql: (sql, options) => sqlConsole.setQuery(sql, options)
+});
 ```
 
 Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or <kbd>Cmd</kbd>+<kbd>Enter</kbd>) to run

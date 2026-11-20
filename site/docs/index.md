@@ -222,3 +222,11 @@ display(
   Matched by keyword on vendor, module, and description text. Certificates that
   do not name a known library are omitted; the mapping is a hint, not an audit.
 </div>
+
+```js
+import {mountAgent} from "./components/ask.js";
+```
+
+```js
+await mountAgent({db, source: FileAttachment("data/llm-worker.worker")});
+```

@@ -236,3 +236,11 @@ unknownRows.length
     })
   : html`<div class="note">Every environment in this filter was parsed into an OS family.</div>`
 ```
+
+```js
+import {mountAgent} from "./components/ask.js";
+```
+
+```js
+await mountAgent({db, source: FileAttachment("data/llm-worker.worker")});
+```

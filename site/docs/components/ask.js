@@ -1,10 +1,12 @@
-// "Ask" panel: a small model in a Web Worker turns a question into SQL, which
-// the console then runs. Everything stays in the browser; nothing is uploaded.
+// "Ask" agent: a small model in a Web Worker turns a question into SQL, runs it
+// against the page's DuckDB, and answers in a chat drawer. Everything stays in
+// the browser; nothing is uploaded.
 //
-// The panel only appears on desktop machines that have a usable WebGPU adapter.
-// The model is a ~1 GB download, so nothing is fetched until the reader asks.
+// It only appears on desktop machines that have a usable WebGPU adapter, and the
+// model is a ~1 GB download, so nothing is fetched until the reader asks.
 import {query} from "./db.js";
-import {validateStatement} from "./sql.js";
+import {runStatement, toCsv, validateStatement} from "./sql.js";
+import {barChart, lineChart} from "./echarts.js";
 
 export const MODELS = [
   {
@@ -70,7 +72,7 @@ with_in_process: validated plus modules in process at CMVP.
 targets: one row per (os_name, arch) over validated: target, os_family, vendors, products, certs.
 cavp: one row per CAVP validation: cert, vendor, implementation, cmvp_status.
 in_process: one row per CMVP in-process module: module, vendor, list, status, status_date, pqc_evidence.
-Rules: one SELECT, no semicolon; use validated (not coverage) for validated products; count products with count(DISTINCT product_key); ILIKE for names.`;
+Rules: one SELECT, no semicolon; only use tables listed as available; use validated (not coverage) for validated products; count products with count(DISTINCT product_key); ILIKE for names.`;
 
 const EXAMPLES = `Examples:
 Q: Which software modules cover Windows on arm64?
@@ -120,17 +122,25 @@ export async function describeData(db) {
     .map((row) => `${row.column_name} ${row.data_type.toLowerCase()}`)
     .join(", ")}`;
 
-  const values = await Promise.all(
-    ["os_family", "arch", "source", "pqc_family"].map(async (column) => {
-      const rows = await query(
-        db,
-        `SELECT DISTINCT ${column} AS value FROM coverage
-         WHERE ${column} IS NOT NULL AND ${column} <> '' ORDER BY 1`
-      );
-      return `${column}: ${rows.map((row) => row.value).join(", ")}`;
-    })
-  );
-  return `${schema}\nDistinct values — ${values.join("; ")}`;
+  const [tables, values] = await Promise.all([
+    query(
+      db,
+      `SELECT table_name FROM information_schema.tables
+       WHERE table_schema = 'main' ORDER BY 1`
+    ),
+    Promise.all(
+      ["os_family", "arch", "source", "pqc_family"].map(async (column) => {
+        const rows = await query(
+          db,
+          `SELECT DISTINCT ${column} AS value FROM coverage
+           WHERE ${column} IS NOT NULL AND ${column} <> '' ORDER BY 1`
+        );
+        return `${column}: ${rows.map((row) => row.value).join(", ")}`;
+      })
+    )
+  ]);
+  const available = `Available tables: ${tables.map((row) => row.table_name).join(", ")}`;
+  return `${schema}\n${available}\nDistinct values — ${values.join("; ")}`;
 }
 
 function parseAnswer(text) {
@@ -193,53 +203,110 @@ export async function askOnce({source, model, system, question, onProgress}) {
   }
 }
 
-export function createAskPanel({source, describe, onSql, models = MODELS, shaderF16 = true}) {
-  const el = document.createElement("section");
-  el.className = "ask-panel";
-  el.innerHTML = `
-    <div class="ask-head">
-      <div>
-        <h3>Ask a question</h3>
-        <p class="small muted">Type a question in plain English. The model runs in
-          this browser and writes the SQL; nothing is uploaded. The first question
-          downloads about 1 GB.</p>
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+}
+
+/** A compact table for the chat: the first columns, the first rows. */
+function resultTable(out, limit = 25) {
+  const wrap = element("div", "agent-table");
+  const columns = out.columns.length > 6 ? out.columns.slice(0, 6) : out.columns;
+  const table = element("table");
+  const head = element("thead");
+  const headRow = element("tr");
+  for (const column of columns) headRow.append(element("th", "", column));
+  head.append(headRow);
+  const body = element("tbody");
+  for (const row of out.rows.slice(0, limit)) {
+    const tr = element("tr");
+    for (const column of columns) {
+      const value = row[column];
+      tr.append(element("td", "", value == null ? "" : String(value)));
+    }
+    body.append(tr);
+  }
+  table.append(head, body);
+  wrap.append(table);
+  if (out.rows.length > limit) {
+    wrap.append(element("p", "small muted", `Showing ${limit} of ${out.rows.length} rows. Ask for fewer columns or use the SQL console.`));
+  }
+  return wrap;
+}
+
+/** The drawer: a floating button that opens a chat about the data. */
+export function createAgent({db, onSql, source, describe, models = MODELS, shaderF16 = true}) {
+  const root = element("div", "agent");
+  root.innerHTML = `
+    <button type="button" class="agent-fab" aria-expanded="false" aria-controls="agent-drawer">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+        <path d="M12 2.6l1.9 5.3 5.3 1.9-5.3 1.9L12 17l-1.9-5.3L4.8 9.8l5.3-1.9L12 2.6z" fill="currentColor"/>
+      </svg>
+      <span>Ask</span>
+    </button>
+    <aside class="agent-drawer" id="agent-drawer" hidden aria-label="Ask the data">
+      <header class="agent-head">
+        <div>
+          <h3>Ask the data</h3>
+          <p class="small muted">A small model in this browser writes the SQL and runs it.
+            Nothing is uploaded.</p>
+        </div>
+        <button type="button" class="agent-close" aria-label="Close the chat">&times;</button>
+      </header>
+      <details class="agent-setup" open>
+        <summary class="small">Model <span class="agent-model-label"></span>
+          <span class="agent-badge" hidden></span></summary>
+        <div class="agent-setup-body">
+          <select class="agent-model" aria-label="Model"></select>
+          <button type="button" class="agent-load">Download model</button>
+          <button type="button" class="agent-delete" hidden>Delete</button>
+          <span class="agent-storage small muted"></span>
+        </div>
+        <div class="agent-progress" hidden>
+          <div class="agent-progress-track"><div class="agent-progress-fill"></div></div>
+          <span class="agent-progress-text small muted"></span>
+        </div>
+      </details>
+      <div class="agent-log" aria-live="polite">
+        <div class="agent-empty small muted">
+          <p>Ask about the data in plain English, for example:</p>
+          <ul>
+            <li>Which software modules cover Windows on arm64?</li>
+            <li>How many validated products are there per PQC family?</li>
+            <li>Which vendors cover the most OS and CPU targets?</li>
+          </ul>
+        </div>
       </div>
-      <span class="ask-badge" hidden></span>
-    </div>
-    <div class="ask-setup">
-      <label class="small">Model
-        <select class="ask-model"></select>
-      </label>
-      <button type="button" class="ask-load">Download model</button>
-      <span class="ask-storage small muted"></span>
-      <button type="button" class="ask-delete" hidden>Delete model</button>
-      <div class="ask-progress" hidden>
-        <div class="ask-progress-track"><div class="ask-progress-fill"></div></div>
-        <span class="ask-progress-text small muted"></span>
-      </div>
-    </div>
-    <div class="ask-input" hidden>
-      <input class="ask-question" type="search" placeholder="Which software modules cover Windows on arm64?"
-        aria-label="Ask a question about the data" />
-      <button type="button" class="ask-go">Ask</button>
-      <button type="button" class="ask-stop" hidden>Stop</button>
-    </div>
-    <div class="ask-message small" hidden></div>
+      <form class="agent-composer">
+        <textarea class="agent-question" rows="1" placeholder="Ask a question about the data"
+          aria-label="Ask a question about the data"></textarea>
+        <button type="submit" class="agent-send">Ask</button>
+        <button type="button" class="agent-stop" hidden>Stop</button>
+      </form>
+    </aside>
   `;
 
-  const modelSelect = el.querySelector(".ask-model");
-  const loadButton = el.querySelector(".ask-load");
-  const deleteButton = el.querySelector(".ask-delete");
-  const storageLabel = el.querySelector(".ask-storage");
-  const progress = el.querySelector(".ask-progress");
-  const progressFill = el.querySelector(".ask-progress-fill");
-  const progressText = el.querySelector(".ask-progress-text");
-  const inputRow = el.querySelector(".ask-input");
-  const question = el.querySelector(".ask-question");
-  const goButton = el.querySelector(".ask-go");
-  const stopButton = el.querySelector(".ask-stop");
-  const message = el.querySelector(".ask-message");
-  const badge = el.querySelector(".ask-badge");
+  const fab = root.querySelector(".agent-fab");
+  const drawer = root.querySelector(".agent-drawer");
+  const closeButton = root.querySelector(".agent-close");
+  const setup = root.querySelector(".agent-setup");
+  const modelSelect = root.querySelector(".agent-model");
+  const modelLabel = root.querySelector(".agent-model-label");
+  const loadButton = root.querySelector(".agent-load");
+  const deleteButton = root.querySelector(".agent-delete");
+  const storageLabel = root.querySelector(".agent-storage");
+  const progress = root.querySelector(".agent-progress");
+  const progressFill = root.querySelector(".agent-progress-fill");
+  const progressText = root.querySelector(".agent-progress-text");
+  const log = root.querySelector(".agent-log");
+  const empty = root.querySelector(".agent-empty");
+  const composer = root.querySelector(".agent-composer");
+  const question = root.querySelector(".agent-question");
+  const sendButton = root.querySelector(".agent-send");
+  const stopButton = root.querySelector(".agent-stop");
+  const badge = root.querySelector(".agent-badge");
 
   for (const model of models) {
     const option = document.createElement("option");
@@ -251,15 +318,32 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
   let worker = null;
   let requestId = 0;
   let pending = new Map();
-  let ready = null; // model id that is loaded in the worker
+  let ready = null; // model id loaded in the worker
   let schemaText = null;
   let generating = false;
+  let open = false;
 
-  const say = (text, kind = "") => {
-    message.hidden = !text;
-    message.className = `ask-message small ${kind}`;
-    message.textContent = text ?? "";
-  };
+  const selected = () => models.find((model) => model.id === modelSelect.value) ?? models[0];
+
+  function setProgress(fraction, text) {
+    progress.hidden = false;
+    progressFill.style.width = `${Math.round((fraction ?? 0) * 100)}%`;
+    progressText.textContent = text ?? "";
+  }
+
+  function scrollLog() {
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function showDrawer(show) {
+    open = show;
+    drawer.hidden = !show;
+    fab.setAttribute("aria-expanded", String(show));
+    if (show) {
+      question.focus();
+      scrollLog();
+    }
+  }
 
   function send(payload) {
     if (!worker) throw new Error("The model worker is not running.");
@@ -279,85 +363,184 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
     worker.onmessage = (event) => {
       const data = event.data ?? {};
       if (data.type === "progress") {
-        progress.hidden = false;
-        progressFill.style.width = `${Math.round((data.progress ?? 0) * 100)}%`;
-        progressText.textContent = data.text ?? "";
+        setProgress(data.progress, data.text);
         return;
       }
       const handler = pending.get(data.id);
       if (!handler) return;
-      if (data.type === "error") {
-        pending.delete(data.id);
-        handler.reject(new Error(data.error));
-      } else if (data.type === "done" || data.type === "status" || data.type === "pong") {
-        pending.delete(data.id);
-        handler.resolve(data);
-      }
+      pending.delete(data.id);
+      if (data.type === "error") handler.reject(new Error(data.error));
+      else handler.resolve(data);
     };
     worker.onerror = (event) => {
-      say(`The model worker failed: ${event.message ?? "unknown error"}`, "error");
       for (const handler of pending.values()) handler.reject(new Error(event.message));
       pending.clear();
     };
     return worker;
   }
 
-  const selected = () => models.find((model) => model.id === modelSelect.value) ?? models[0];
-
-  async function refresh() {
+  async function refreshModel() {
     const model = selected();
     const id = modelId(model, shaderF16);
     const cached = await isModelCached(id);
+    modelLabel.textContent = model.label;
     badge.hidden = !cached;
-    badge.textContent = cached ? "model cached" : "";
+    badge.textContent = cached ? "cached" : "";
     loadButton.textContent = cached ? "Load model" : `Download model (${model.size})`;
     deleteButton.hidden = !cached;
     const info = await storageInfo();
     storageLabel.textContent = info?.label ?? "";
-    if (!cached) {
-      ready = null;
-      inputRow.hidden = true;
-    }
+    if (!cached) ready = null;
+    setup.open = !ready;
     return cached;
   }
 
-  async function load() {
+  async function loadModel() {
     const model = selected();
     const id = modelId(model, shaderF16);
-    say("");
     loadButton.disabled = true;
-    progress.hidden = false;
-    progressFill.style.width = "0%";
-    progressText.textContent = "Starting\u2026";
+    setProgress(0, "Starting\u2026");
     try {
       await navigator.storage?.persist?.();
       await ensureWorker();
       await send({type: "init", model: id});
       ready = id;
       progress.hidden = true;
-      inputRow.hidden = false;
+      await refreshModel();
       question.focus();
-      await refresh();
     } catch (error) {
       progress.hidden = true;
-      say(`Could not load the model: ${error?.message ?? error}`, "error");
+      throw error;
     } finally {
       loadButton.disabled = false;
     }
   }
 
-  async function remove() {
+  async function removeModel() {
     const model = selected();
     const id = modelId(model, shaderF16);
     try {
       if (worker) await send({type: "delete", model: id});
       ready = null;
-      inputRow.hidden = true;
-      say("");
-      await refresh();
+      await refreshModel();
     } catch (error) {
-      say(`Could not delete the model: ${error?.message ?? error}`, "error");
+      appendError(`Could not delete the model: ${error?.message ?? error}`);
     }
+  }
+
+  function appendMessage(className) {
+    empty.hidden = true;
+    const message = element("div", `agent-msg ${className}`);
+    log.append(message);
+    scrollLog();
+    return message;
+  }
+
+  function appendError(text) {
+    const message = appendMessage("agent-assistant");
+    message.append(element("p", "agent-error", text));
+    scrollLog();
+  }
+
+  function renderAnswer(message, answer, out) {
+    message.replaceChildren();
+    message.append(element("h4", "agent-title", answer.title));
+
+    const sqlBlock = element("pre", "agent-sql");
+    sqlBlock.append(element("code", "", out.sql ?? answer.sql));
+    message.append(sqlBlock);
+
+    const actions = element("div", "agent-actions");
+    const copy = element("button", "agent-action", "Copy SQL");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(out.sql ?? answer.sql);
+        copy.textContent = "Copied";
+        setTimeout(() => (copy.textContent = "Copy SQL"), 1500);
+      } catch {
+        copy.textContent = "Copy failed";
+      }
+    });
+    actions.append(copy);
+
+    if (onSql) {
+      const open = element("button", "agent-action", "Open in console");
+      open.type = "button";
+      open.addEventListener("click", () => {
+        onSql(out.sql ?? answer.sql, {...answer, run: false});
+        showDrawer(false);
+        document.querySelector(".sql-console")?.scrollIntoView({behavior: "smooth", block: "center"});
+      });
+      actions.append(open);
+    }
+
+    const csv = element("button", "agent-action", "CSV");
+    csv.type = "button";
+    csv.addEventListener("click", () => {
+      const blob = new Blob([toCsv(out.rows, out.columns)], {type: "text/csv"});
+      const link = element("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "answer.csv";
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    });
+    actions.append(csv);
+
+    actions.append(
+      element("span", "agent-meta small muted", `${out.rows.length} rows \u00b7 ${out.ms.toFixed(0)} ms`)
+    );
+    message.append(actions);
+
+    if (out.rows.length) {
+      const canChart =
+        answer.chart !== "none" &&
+        out.columns.includes(answer.x) &&
+        out.columns.includes(answer.y);
+      if (canChart) {
+        try {
+          const chart =
+            answer.chart === "line"
+              ? lineChart(out.rows, {x: answer.x, series: [{key: answer.y, label: answer.y}], height: 230})
+              : barChart(out.rows, {
+                  x: answer.x,
+                  y: answer.y,
+                  height: 230,
+                  rotate: out.rows.length > 6 ? -35 : 0,
+                  truncate: 26
+                });
+          message.append(chart);
+        } catch {
+          message.append(resultTable(out));
+        }
+      } else {
+        message.append(resultTable(out));
+      }
+    } else {
+      message.append(element("p", "small muted", "No rows."));
+    }
+    scrollLog();
+  }
+
+  function renderFailure(message, answer, error) {
+    message.replaceChildren();
+    message.append(element("h4", "agent-title", answer.title));
+    const sqlBlock = element("pre", "agent-sql");
+    sqlBlock.append(element("code", "", answer.sql));
+    message.append(sqlBlock);
+    message.append(
+      element("p", "agent-error", `That SQL did not run: ${error?.message ?? "unknown error"}. It is in the box above; you can edit it in the SQL console.`)
+    );
+    const actions = element("div", "agent-actions");
+    const copy = element("button", "agent-action", "Copy SQL");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(answer.sql);
+      copy.textContent = "Copied";
+    });
+    actions.append(copy);
+    message.append(actions);
+    scrollLog();
   }
 
   async function generate(messages) {
@@ -365,20 +548,24 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
     return parseAnswer(reply.text);
   }
 
-  async function ask() {
+  async function ask(text) {
     if (generating) return;
-    const text = question.value.trim();
-    if (!text) return;
     generating = true;
-    goButton.disabled = true;
+    sendButton.disabled = true;
     stopButton.hidden = false;
-    say("Thinking\u2026");
+    const message = appendMessage("agent-assistant");
+    const status = element("p", "agent-status small muted", ready ? "Thinking\u2026" : "Loading the model\u2026");
+    message.append(status);
+    scrollLog();
     try {
-      if (!ready) await load();
+      if (!ready) {
+        await loadModel();
+        if (!ready) throw new Error("The model did not load.");
+        status.textContent = "Thinking\u2026";
+      }
       if (!schemaText) schemaText = await describe();
-      const system = buildPrompt(schemaText);
       const messages = [
-        {role: "system", content: system},
+        {role: "system", content: buildPrompt(schemaText)},
         {role: "user", content: text}
       ];
 
@@ -402,9 +589,9 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
           });
           continue;
         }
-        say(`Running: ${answer.title}\u2026`);
-        out = await onSql(answer.sql, answer);
-        if (out?.error) {
+        status.textContent = `Running ${answer.title}\u2026`;
+        out = await runStatement(db, answer.sql);
+        if (out.error) {
           lastError = new Error(out.error);
           messages.push({role: "assistant", content: JSON.stringify(answer)});
           messages.push({
@@ -415,39 +602,83 @@ export function createAskPanel({source, describe, onSql, models = MODELS, shader
         }
       }
 
-      if (!out && answer) {
-        await onSql(answer.sql, {...answer, chart: "none", run: false});
-        say(`That SQL did not run: ${lastError?.message ?? ""} You can edit it in the console below.`, "error");
-      } else if (!out) {
-        say(`The model could not answer: ${lastError?.message ?? "unknown error"}. Try again.`, "error");
-      } else {
-        say(`${answer.title} \u00b7 ${out.rows.length} rows \u00b7 ${out.ms.toFixed(0)} ms`);
+      if (out && answer) renderAnswer(message, answer, out);
+      else if (answer) renderFailure(message, answer, lastError);
+      else {
+        message.replaceChildren(
+          element(
+            "p",
+            "agent-error",
+            `The model could not answer: ${String(lastError?.message ?? "unknown error").replace(/\.$/, "")}. Try again, or reload the page if it keeps happening.`
+          )
+        );
       }
     } catch (error) {
-      say(`${error?.message ?? error}`, "error");
+      message.replaceChildren(element("p", "agent-error", error?.message ?? String(error)));
     } finally {
       generating = false;
-      goButton.disabled = false;
+      sendButton.disabled = false;
       stopButton.hidden = true;
+      scrollLog();
     }
   }
 
-  modelSelect.addEventListener("change", () => refresh());
-  loadButton.addEventListener("click", load);
-  deleteButton.addEventListener("click", remove);
-  goButton.addEventListener("click", ask);
+  fab.addEventListener("click", () => showDrawer(!open));
+  closeButton.addEventListener("click", () => showDrawer(false));
+  drawer.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") showDrawer(false);
+  });
+  modelSelect.addEventListener("change", () => refreshModel());
+  loadButton.addEventListener("click", () => {
+    loadModel().catch((error) =>
+      appendError(`Could not load the model: ${error?.message ?? error}`)
+    );
+  });
+  deleteButton.addEventListener("click", removeModel);
+  composer.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const text = question.value.trim();
+    if (!text) return;
+    question.value = "";
+    question.style.height = "";
+    const echo = appendMessage("agent-user");
+    echo.textContent = text;
+    ask(text);
+  });
   question.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      ask();
+      composer.requestSubmit();
     }
+  });
+  question.addEventListener("input", () => {
+    question.style.height = "auto";
+    question.style.height = `${Math.min(question.scrollHeight, 120)}px`;
   });
   stopButton.addEventListener("click", () => {
     worker?.postMessage({id: ++requestId, type: "abort"});
     for (const handler of pending.values()) handler.reject(new Error("Stopped."));
     pending.clear();
-    say("Stopped.");
   });
 
-  return {el, refresh};
+  refreshModel();
+  return {el: root, open: () => showDrawer(true), close: () => showDrawer(false)};
+}
+
+/** Mount the agent on the page body if this browser can run it. */
+export async function mountAgent({db, onSql, source}) {
+  const report = await capability();
+  if (!report.ok) return null;
+  const agent = createAgent({
+    db,
+    onSql,
+    source,
+    describe: () => describeData(db),
+    shaderF16: report.shaderF16
+  });
+  // The page main element is a stacking context below the table of contents, so
+  // a floating button has to live on the body to sit above it.
+  document.querySelectorAll("body > .agent").forEach((node) => node.remove());
+  document.body.append(agent.el);
+  return agent;
 }

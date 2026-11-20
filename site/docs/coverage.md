@@ -224,3 +224,11 @@ display(
   })
 );
 ```
+
+```js
+import {mountAgent} from "./components/ask.js";
+```
+
+```js
+await mountAgent({db, source: FileAttachment("data/llm-worker.worker")});
+```
