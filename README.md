@@ -81,6 +81,10 @@ become SQL parameters.
   column dictionary, schema browser, and CSV download of any result.
 - **Explorer** — the full `pqc_coverage.csv` table with search and filters.
 
+Charts are [ECharts](https://echarts.apache.org/) styled like Evidence (quiet
+axes, rounded bars, theme-aware); tables are a shared component with sorting,
+search, pagination, CSV download, and a card layout below 640 px.
+
 ## Publishing
 
 The site is static and deploys to GitHub Pages. `.github/workflows/pages.yml`
