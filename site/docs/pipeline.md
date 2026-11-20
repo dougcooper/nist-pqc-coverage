@@ -12,6 +12,7 @@ implementations that do not yet have an active CMVP certificate.
 ```js
 import {num} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
+import {barChart, palette} from "./components/echarts.js";
 ```
 
 ```js
@@ -86,24 +87,16 @@ const evidenceRows = Object.keys(evidenceLabel).map((evidence) => ({
 ```
 
 ```js
-Plot.plot({
-  height: 200,
-  marginLeft: 160,
-  x: {label: "modules", grid: true},
-  y: {label: null},
-  marks: [
-    Plot.barX(evidenceRows, {x: "count", y: "evidence", fill: "#4e79a7", tip: true}),
-    Plot.text(evidenceRows, {
-      x: "count",
-      y: "evidence",
-      text: (d) => d.count,
-      dx: 5,
-      textAnchor: "start",
-      fill: "currentColor"
-    }),
-    Plot.ruleX([0])
-  ]
-})
+display(
+  barChart(evidenceRows, {
+    x: "evidence",
+    y: "count",
+    horizontal: true,
+    labels: true,
+    height: 200,
+    colors: [palette[0]]
+  })
+);
 ```
 
 ## In-process modules

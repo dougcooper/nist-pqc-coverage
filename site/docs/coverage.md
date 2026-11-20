@@ -13,6 +13,7 @@ software-only scope.
 ```js
 import {num} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
+import {barChart, lineChart, palette} from "./components/echarts.js";
 ```
 
 ```js
@@ -94,61 +95,38 @@ const compact = window.innerWidth < 700;
 ```
 
 ```js
-Plot.plot({
-  height: compact ? 520 : 560,
-  marginLeft: compact ? 140 : 260,
-  marginRight: compact ? 50 : 170,
-  x: {label: "distinct products", grid: true},
-  y: {
-    label: null,
-    tickFormat: (d) => (compact && d.length > 24 ? `${d.slice(0, 23)}\u2026` : d)
-  },
-  color: {scheme: "Blues"},
-  marks: [
-    Plot.barX(topTargets, {x: "products", y: "target", fill: "products", tip: true}),
-    Plot.text(topTargets, {
-      x: "products",
-      y: "target",
-      text: (d) =>
-        compact ? `${d.products}` : `${d.products} products / ${d.vendors} vendors`,
-      dx: 5,
-      textAnchor: "start",
-      fill: "currentColor",
-      fontSize: 11
-    }),
-    Plot.ruleX([0])
-  ]
-})
+const vendorsByTarget = new Map(topTargets.map((d) => [d.target, d.vendors]));
+display(
+  barChart(topTargets, {
+    x: "target",
+    y: "products",
+    horizontal: true,
+    labels: true,
+    labelFormat: (products, target) =>
+      `${products} products / ${vendorsByTarget.get(target)} vendors`,
+    truncate: compact ? 24 : 44,
+    height: compact ? 520 : 560,
+    colors: [palette[0]]
+  })
+);
 ```
 
 ## Cumulative coverage
 
 ```js
-const cumulative = targets.flatMap((d) => [
-  {rank: d.rank, pct: d.cumulative_pct_products, series: "products"},
-  {rank: d.rank, pct: d.cumulative_pct_vendors, series: "vendors"}
-]);
-```
-
-```js
-Plot.plot({
-  height: 320,
-  x: {label: "top N targets (ranked by vendor count)", grid: true},
-  y: {label: "% of all validated products / vendors", domain: [0, 100], grid: true},
-  color: {domain: ["products", "vendors"], range: ["#4e79a7", "#f28e2b"], legend: true},
-  marks: [
-    Plot.line(cumulative, {x: "rank", y: "pct", stroke: "series", strokeWidth: 2, tip: true}),
-    Plot.ruleY([90], {stroke: "currentColor", strokeOpacity: 0.25, strokeDasharray: "4 4"}),
-    Plot.text([{rank: targets.length, pct: 92}], {
-      x: "rank",
-      y: "pct",
-      text: () => "90% line",
-      textAnchor: "end",
-      fill: "currentColor",
-      fontSize: 11
-    })
-  ]
-})
+display(
+  lineChart(targets, {
+    x: "rank",
+    xNumeric: true,
+    series: [
+      {key: "cumulative_pct_products", label: "products", color: palette[0]},
+      {key: "cumulative_pct_vendors", label: "vendors", color: palette[1]}
+    ],
+    percent: true,
+    rule: {value: 90, label: "90%"},
+    height: 320
+  })
+);
 ```
 
 ## Greedy product selection

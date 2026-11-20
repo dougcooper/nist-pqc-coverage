@@ -9,8 +9,9 @@ on, drawn from the NIST CAVP and CMVP databases. Use the other pages to see
 targets, coverage curves, and the validation pipeline.
 
 ```js
-import {num, familyColors, families, sourceLabel} from "./components/common.js";
+import {num, familyColors, sourceLabel} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
+import {barChart, palette} from "./components/echarts.js";
 ```
 
 ```js
@@ -85,26 +86,17 @@ const familyRows = await query(db, `
 ```
 
 ```js
-Plot.plot({
-  height: 260,
-  marginLeft: 80,
-  marginRight: 40,
-  x: {label: "distinct products", grid: true},
-  y: {label: null},
-  color: {domain: families, range: families.map((f) => familyColors.get(f))},
-  marks: [
-    Plot.barX(familyRows, {x: "count", y: "family", fill: "family", tip: true}),
-    Plot.text(familyRows, {
-      x: "count",
-      y: "family",
-      text: (d) => d.count,
-      dx: 6,
-      textAnchor: "start",
-      fill: "currentColor"
-    }),
-    Plot.ruleX([0])
-  ]
-})
+display(
+  barChart(familyRows, {
+    x: "family",
+    y: "count",
+    horizontal: true,
+    labels: true,
+    colorBy: "family",
+    colors: (family) => familyColors.get(family) ?? palette[0],
+    height: 200
+  })
+);
 ```
 
 ## Where the coverage comes from
@@ -119,23 +111,16 @@ const sourceRows = (await query(db, `
 ```
 
 ```js
-Plot.plot({
-  height: 200,
-  marginLeft: 150,
-  x: {label: "distinct products", grid: true},
-  y: {label: null},
-  marks: [
-    Plot.barX(sourceRows, {x: "count", y: "source", fill: "#4e79a7", tip: true}),
-    Plot.text(sourceRows, {
-      x: "count",
-      y: "source",
-      text: (d) => d.count,
-      dx: 6,
-      textAnchor: "start"
-    }),
-    Plot.ruleX([0])
-  ]
-})
+display(
+  barChart(sourceRows, {
+    x: "source",
+    y: "count",
+    horizontal: true,
+    labels: true,
+    colors: [palette[0]],
+    height: 180
+  })
+);
 ```
 
 <div class="small">
@@ -158,18 +143,17 @@ const timeline = await query(db, `
 ```
 
 ```js
-Plot.plot({
-  height: 300,
-  marginLeft: 50,
-  marginBottom: 70,
-  x: {label: "quarter first validated", tickRotate: -45},
-  y: {label: "CAVP validations", grid: true},
-  color: {domain: families, range: families.map((f) => familyColors.get(f)), legend: true},
-  marks: [
-    Plot.barY(timeline, {x: "quarter", y: "count", fill: "family", tip: true}),
-    Plot.ruleY([0])
-  ]
-})
+display(
+  barChart(timeline, {
+    x: "quarter",
+    y: "count",
+    series: "family",
+    stack: true,
+    colors: (family) => familyColors.get(family) ?? palette[0],
+    height: 300,
+    rotate: -45
+  })
+);
 ```
 
 ## Top vendors

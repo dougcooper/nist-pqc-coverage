@@ -11,6 +11,7 @@ still thin.
 ```js
 import {num, familyColors, families} from "./components/common.js";
 import {openDb, query} from "./components/db.js";
+import {barChart, heatmap, palette} from "./components/echarts.js";
 ```
 
 ```js
@@ -93,23 +94,14 @@ const cells = d3.cross(osFamilies, archOrder).map(([os_family, arch]) => {
 ```
 
 ```js
-Plot.plot({
-  marginLeft: 90,
-  marginBottom: 45,
-  x: {label: "architecture", domain: archOrder},
-  y: {label: null, domain: osFamilies},
-  color: {scheme: "YlGnBu", legend: true, label: "products", tickFormat: "d"},
-  marks: [
-    Plot.cell(cells, {x: "arch", y: "os_family", fill: "products", tip: true}),
-    Plot.text(cells.filter((d) => d.products > 0), {
-      x: "arch",
-      y: "os_family",
-      text: (d) => d.products,
-      fill: "white",
-      fontWeight: 600
-    })
-  ]
-})
+display(
+  heatmap(cells, {
+    x: "arch",
+    y: "os_family",
+    value: "products",
+    height: Math.max(240, osFamilies.length * 26 + 70)
+  })
+);
 ```
 
 <div class="small">
@@ -133,32 +125,17 @@ const osRows = await query(db, `
 ```
 
 ```js
-const compact = window.innerWidth < 700;
-```
-
-```js
-Plot.plot({
-  height: 480,
-  marginLeft: compact ? 150 : 210,
-  marginRight: compact ? 40 : 20,
-  x: {label: "distinct products", grid: true},
-  y: {
-    label: null,
-    tickFormat: (d) => (compact && d.length > 18 ? `${d.slice(0, 17)}\u2026` : d)
-  },
-  marks: [
-    Plot.barX(osRows, {x: "products", y: "os", fill: "#4e79a7", tip: true}),
-    Plot.text(osRows, {
-      x: "products",
-      y: "os",
-      text: (d) => d.products,
-      dx: 5,
-      textAnchor: "start",
-      fill: "currentColor"
-    }),
-    Plot.ruleX([0])
-  ]
-})
+display(
+  barChart(osRows, {
+    x: "os",
+    y: "products",
+    horizontal: true,
+    labels: true,
+    truncate: window.innerWidth < 700 ? 20 : 40,
+    height: 480,
+    colors: [palette[0]]
+  })
+);
 ```
 
 ## CPUs and SoCs
@@ -175,28 +152,17 @@ const cpuRows = await query(db, `
 ```
 
 ```js
-Plot.plot({
-  height: 480,
-  marginLeft: compact ? 150 : 210,
-  marginRight: compact ? 40 : 20,
-  x: {label: "distinct products", grid: true},
-  y: {
-    label: null,
-    tickFormat: (d) => (compact && d.length > 18 ? `${d.slice(0, 17)}\u2026` : d)
-  },
-  marks: [
-    Plot.barX(cpuRows, {x: "products", y: "cpu", fill: "#59a14f", tip: true}),
-    Plot.text(cpuRows, {
-      x: "products",
-      y: "cpu",
-      text: (d) => d.products,
-      dx: 5,
-      textAnchor: "start",
-      fill: "currentColor"
-    }),
-    Plot.ruleX([0])
-  ]
-})
+display(
+  barChart(cpuRows, {
+    x: "cpu",
+    y: "products",
+    horizontal: true,
+    labels: true,
+    truncate: window.innerWidth < 700 ? 20 : 40,
+    height: 480,
+    colors: [palette[4]]
+  })
+);
 ```
 
 ## Target table
