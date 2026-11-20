@@ -33,6 +33,9 @@ const withSections = certs.map((cert) => ({
 }));
 const parsed = withSections.filter((d) => d.sectionCount > 0).length;
 const affirmed = withSections.filter((d) => d.vendorAffirmed).length;
+
+const certUrl = (row) =>
+  row.url || `https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/${encodeURIComponent(row.cert)}`;
 ```
 
 ```js
@@ -123,7 +126,7 @@ const list = html`<div class="policy-list">${grouped.map((card) => {
   );
   return html`<details class="policy-card">
     <summary>
-      <span class="policy-cert">${card.cert}</span>
+      <span class="policy-cert"><a href="${certUrl(card)}" target="_blank" rel="noopener">${card.cert}</a></span>
       <span class="policy-module">${card.module ?? "module name not stated"}</span>
       <span class="policy-meta">${card.vendor ?? ""}${card.module_type ? ` · ${card.module_type}` : ""}</span>
       <span class="policy-flags">
@@ -135,6 +138,7 @@ const list = html`<div class="policy-list">${grouped.map((card) => {
       <p class="small policy-meta">
         ${card.standard ?? ""}
         ${card.security_policy_url ? html` · <a href="${card.security_policy_url}" target="_blank" rel="noopener">security policy PDF</a>` : ""}
+        ${card.cert ? html` · <a href="${certUrl(card)}" target="_blank" rel="noopener">CMVP certificate</a>` : ""}
       </p>
       ${card.sections.map(sectionNode)}
     </div>
@@ -153,7 +157,9 @@ display(
     <summary>All ${certs.length} PQC certificates, including those without an extracted section</summary>
     ${dataTable(withSections, {
       columns: [
-        {key: "cert", label: "Cert"},
+        {key: "cert", label: "Cert",
+          html: (row) =>
+            `<a href="${certUrl(row)}" target="_blank" rel="noopener">${row.cert}</a>`},
         {key: "vendor", label: "Vendor", width: 180},
         {key: "module", label: "Module", width: 240},
         {key: "module_type", label: "Type"},
