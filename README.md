@@ -8,11 +8,13 @@ analysis.
 ## Quick start
 
 ```bash
-uv sync
+just install
 uv run nist-pqc scrape          # first run: 1-2 hours, 1 request/second
-make site                       # build the static dashboard
-make dev                        # serve it locally at http://localhost:3000
+just site                       # build the static dashboard
+just dev                        # serve it locally at http://localhost:3000
 ```
+
+The tasks are defined in the `justfile`; run `just` to list them.
 
 Use `--workers 4 --delay 0.4` for a faster first run once you are comfortable
 with the request rate; the default stays at one request per second. Cached pages
@@ -20,9 +22,9 @@ are reused (`--refresh` refetches them).
 
 The dashboard is built with [Observable Framework](https://observablehq.com/framework/).
 The pages query the data through DuckDB-WASM, so the committed CSVs are first
-converted to Parquet (`uv run nist-pqc parquet`, also part of `make sync-data`).
-`make site` builds for the GitHub Pages path (`/nist-pqc-coverage/`); use
-`make site BASE=/` for a root-path build.
+converted to Parquet (`uv run nist-pqc parquet`, also part of `just sync-data`).
+`just site` builds for the GitHub Pages path (`/nist-pqc-coverage/`); use
+`just BASE=/ site` for a root-path build.
 
 Outputs land in `data/`:
 
@@ -88,7 +90,7 @@ CMVP tables also keep the raw `description` that produced the evidence.
 ## Dashboard
 
 `site/` is an [Observable Framework](https://observablehq.com/framework/) project.
-`make sync-data` converts `data/*.csv` to Parquet in `site/docs/data/` and copies
+`just sync-data` converts `data/*.csv` to Parquet in `site/docs/data/` and copies
 the CSVs and `metadata.json` beside them. Each page opens DuckDB-WASM once and
 queries shared views (`coverage`, `validated`, `validated_software`,
 `with_in_process`, `targets`) defined in `site/docs/components/db.js`; filters
@@ -167,12 +169,12 @@ The site is static and deploys to GitHub Pages. `.github/workflows/pages.yml`
 builds it from the committed CSVs on every push to `main`;
 `.github/workflows/scrape.yml` refreshes the data weekly and commits any changes.
 If you rename the repository, update `SITE_BASE` in `pages.yml` (and `BASE` in
-the `Makefile`) to match.
+the `justfile`) to match.
 
 ## Development
 
 ```bash
-uv run pytest
+just test
 ```
 
 Fixtures in `tests/fixtures/` are saved NIST pages used by the parser tests.
