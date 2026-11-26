@@ -76,6 +76,8 @@
 .badge.keyword { color: #9a6700; }
 .badge.weak { color: #8b4a00; }
 .badge.none { color: var(--theme-foreground-faint); }
+.badge.open { color: #1a7f37; }
+.badge.restricted { color: #8b4a00; }
 
 .grid-2 {
   display: grid;

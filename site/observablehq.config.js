@@ -16,6 +16,7 @@ export default {
     {name: "Operating environments", path: "/environments"},
     {name: "Coverage", path: "/coverage"},
     {name: "Pipeline", path: "/pipeline"},
+    {name: "Entropy sources", path: "/entropy"},
     {name: "Tested configurations", path: "/policies"},
     {name: "SQL console", path: "/sql"},
     {name: "Explorer", path: "/explorer"},

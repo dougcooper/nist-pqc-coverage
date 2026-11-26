@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from nist_pqc import cavp, cmvp, matching, normalize, policy
+from nist_pqc import cavp, cmvp, esv, matching, normalize, policy
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -70,6 +70,46 @@ def test_parse_cert():
     assert cert.has_pqc
     assert {a.algorithm for a in cert.pqc_algorithms} >= {"ML-DSA KeyGen"}
     assert cert.security_policy_url.endswith("140sp5596.pdf")
+
+
+def test_parse_esv_search():
+    total, rows = esv.parse_search(read("esv_search.html"))
+    assert total == 366
+    assert len(rows) == 3
+    assert rows[0].cert == "E1"
+    assert rows[0].vendor == "NetApp, Inc."
+    assert rows[0].implementation == "NetApp CryptoMod"
+    assert rows[0].date == "8/29/2022"
+    assert rows[0].url.endswith("/entropy-validations/certificate/1")
+
+
+def test_parse_esv_cert():
+    cert = esv.parse_cert(read("esv_cert.html"), "E11", "url")
+    assert cert.vendor == "STMicroelectronics"
+    assert cert.vendor_url == "http://www.st.com"
+    assert cert.implementation == "STM32U5x TRNG"
+    assert cert.standard == "SP 800-90B"
+    assert cert.version == "Revision B"
+    assert cert.noise_source == "Physical"
+    assert cert.reuse_status == "Open for Reuse"
+    assert cert.open_for_reuse
+    assert cert.bits_per_output == "Full entropy"
+    assert cert.output_size_bits == "128"
+    assert cert.operating_environments == [
+        "STM32U5x advanced Arm\u00ae-based 32-bit MCU"
+    ]
+    assert cert.conditioning_cavp_certs == ["A1729 (AES-CMAC)"]
+    assert cert.validated == "12/16/2022"
+    assert cert.last_validated == "12/16/2022"
+    assert cert.lab == "UL Verification Services, Inc."
+    assert cert.public_use_document_url.endswith("E11_PublicUse.docx")
+
+
+def test_parse_esv_entropy_per_sample():
+    assert esv._entropy("Entropy per Sample: 0.52427 Sample Size: 1") == (
+        "0.52427",
+        "1",
+    )
 
 
 def test_parse_in_process_lists():

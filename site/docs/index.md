@@ -72,6 +72,9 @@ html`<div class="stats">
 html`<div class="note">
   Data as of <strong>${meta.data_as_of}</strong>, generated ${meta.generated_at.slice(0, 10)}.
   PQC scope: ${meta.pqc_algorithms.join(", ")}.
+  Separately, ${num.format(meta.counts.esv_certificates)} entropy sources are validated under ESV
+  (${num.format(meta.counts.esv_open_for_reuse)} open for reuse) —
+  see <a href="entropy">Entropy sources</a>.
 </div>`
 ```
 

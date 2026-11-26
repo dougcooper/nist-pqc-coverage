@@ -20,17 +20,18 @@ const NOTES = {
   source: "Program: CAVP | CMVP | CMVP-MIP | CMVP-IUT",
   program: "CAVP | CMVP | CMVP in progress",
   record_id: "CAVP validation id (e.g. 40512) or CMVP certificate number",
-  cert: "CAVP validation number (A####) or CMVP certificate number",
+  cert: "CAVP validation number (A####), CMVP certificate number, or ESV certificate number (E###)",
   vendor: "Vendor named by NIST",
   product: "CAVP Implementation Name or CMVP Module Name",
   module: "CMVP module name",
-  implementation: "CAVP implementation name",
+  implementation: "CAVP implementation name, or the entropy-source name on an ESV certificate",
   module_type: "Type as published: SOFTWARE | HARDWARE | FIRMWARE (CMVP), or the CAVP type",
   module_kind:
     "Normalized module type: software | software_hybrid | firmware | firmware_hybrid | hardware; empty for modules in process",
   type: "CAVP type: SOFTWARE | HARDWARE | FIRMWARE",
   upstream: "Keyword match to a known upstream library (AWS-LC, OpenSSL, Bouncy Castle, ...); empty when no match",
-  description: "Free-text module description from NIST; the evidence for impl_language when it is stated",
+  description: "Free-text description from NIST; the evidence for impl_language when stated. An ESV description describes the entropy source",
+  version: "Version as published (module version or entropy-source version)",
   impl_language:
     "Inferred implementation language (C, C++, C#, Java, Go, Rust, ...); empty when unknown or not applicable. A hint, not a NIST field",
   impl_language_source:
@@ -38,7 +39,8 @@ const NOTES = {
   status:
     "For CAVP rows: active (an active CMVP certificate covers it), in_process (matched to a CMVP module in process), none_yet. For CMVP rows: certificate status.",
   cmvp_status: "active | in_process | none_yet (CAVP rows only)",
-  validated: "1 when the row is in the validated set the dashboard uses; 0 or empty otherwise",
+  validated: "ISO 8601 validation date (CAVP first validated, CMVP validated, or ESV certificate date)",
+  last_validated: "Date of the most recent validation-history entry (ESV); equals validated when there is one entry",
   url: "NIST detail or certificate page",
   oe_id: "NIST operating-environment id",
   oe_name: "Raw operating-environment text from NIST",
@@ -67,6 +69,14 @@ const NOTES = {
   matched_implementations: "CAVP implementation names matched to an in-process module",
   list: "MIP (Modules In Process) or IUT (Implementation Under Test)",
   standard: "FIPS standard, e.g. FIPS 140-3",
+  noise_source: "ESV noise-source classification: Physical | Non-Physical",
+  reuse_status: "ESV reuse status: Open for Reuse | Reuse restricted to vendor",
+  bits_per_output: "ESV entropy per output, e.g. 'Full entropy' or a numeric value",
+  output_size_bits: "ESV output width in bits",
+  operating_environments: "ESV operating-environment text, joined with semicolons",
+  conditioning_cavp_certs: "ESV vetted conditioning components and their CAVP A-numbers",
+  public_use_document_url: "ESV public use document",
+  vendor_url: "Vendor website listed on the ESV certificate",
   level: "Overall FIPS 140-3 security level",
   embodiment: "Embodiment as published (e.g. MultiChipStand, Software)",
   first_validated: "Date first validated (ISO 8601)",
@@ -224,6 +234,10 @@ function llmsTxt(metadata) {
 > ${c.cmvp_in_process_rows} CMVP modules in process, across ${c.validated_targets} validated OS/CPU targets
 > (${c.with_in_process_targets} including modules in progress). Data as of ${metadata.data_as_of}.
 > PQC scope: ML-KEM, ML-DSA, SLH-DSA, LMS.
+>
+> The same dataset also carries ${c.esv_certificates} CMVP entropy-source (ESV)
+> certificates, ${c.esv_open_for_reuse} of them open for reuse. ESV is separate
+> from PQC: it validates an SP 800-90B noise source, not an algorithm.
 
 The dashboard at ${SITE}/ renders these files in a browser with DuckDB-WASM.
 Agents should use the files below directly: they are static, need no key, and
@@ -238,6 +252,9 @@ need no JavaScript.
   with a PQC algorithm.
 - [cmvp_in_process.csv](${DOWNLOADS}/cmvp_in_process.csv): the ${c.cmvp_in_process_rows} modules in process
   (MIP and IUT) with their inferred PQC evidence.
+- [esv_certs.csv](${DOWNLOADS}/esv_certs.csv): the ${c.esv_certificates} validated entropy
+  sources (ESV) with reuse status, noise source, operating environments and
+  conditioning CAVP certificates.
 - [pqc_coverage.csv](${DOWNLOADS}/pqc_coverage.csv): ${c.coverage_rows} long-form rows, one per
   (program, record, operating environment, algorithm). About 8 MB.
 - [schema.json](${DOWNLOADS}/schema.json): every table and column, with types and one-line meanings.
@@ -246,9 +263,9 @@ need no JavaScript.
 If your fetch truncates large files, use summary.json, targets.csv, certificates.csv
 and in_process.csv; they are all small. The full CSV is for code execution.
 
-## The three programs
+## The validation programs
 
-Every row has a \`source\`:
+Every coverage row has a \`source\`:
 
 - **CAVP** — an algorithm validation (a certificate number like A6184). A CAVP
   validation names operating environments and the algorithms validated in each.
@@ -260,11 +277,43 @@ Every row has a \`source\`:
   test at CMVP. NIST publishes no algorithms for these, so PQC relevance is
   inferred (see \`pqc_evidence\`).
 
+ESV entropy-source certificates are a separate table, not a \`source\` value,
+because they validate the platform rather than an algorithm.
+
+## Entropy sources (ESV)
+
+\`esv_certs.csv\` holds the CMVP Entropy Source Validation certificates
+(E-numbers). Each one is a standalone SP 800-90B assessment of a noise source
+that a module can reference instead of re-validating it.
+
+- \`reuse_status\` — \`Open for Reuse\` means another vendor may reference the
+  certificate in a module validation; \`Reuse restricted to vendor\` does not.
+- \`noise_source\` — \`Physical\` (hardware noise) or \`Non-Physical\` (e.g. CPU
+  jitter).
+- \`operating_environments\` — the platform text published on the certificate,
+  joined with semicolons. It is free text, not a normalized target.
+- \`conditioning_cavp_certs\` — vetted conditioning components, with their CAVP
+  A-numbers, when the certificate lists them.
+- \`bits_per_output\`, \`output_size_bits\` — entropy per output and output width.
+
+Open-for-reuse physical sources:
+
+\`\`\`sql
+SELECT cert, implementation, vendor, operating_environments
+FROM read_csv('esv_certs.csv', header = true)
+WHERE reuse_status = 'Open for Reuse' AND noise_source = 'Physical'
+ORDER BY vendor;
+\`\`\`
+
+NIST does not publish which modules reference each certificate, so this table
+cannot tell you which products use a given entropy source.
+
 ## Semantics
 
-- **validated** (\`validated = 1\`): an active CMVP certificate, or a CAVP
-  validation that no active CMVP certificate covers yet. It avoids counting the
-  same module twice. Use it for "certified today" questions.
+- **validated set**: an active CMVP certificate, or a CAVP validation that no
+  active CMVP certificate covers yet. It avoids counting the same module twice.
+  Use it for "certified today" questions; the \`validated\` column is that
+  record's validation date.
 - **target**: a normalized \`(os_name, arch)\` pair, labelled \`os_name / arch\`, or
   just \`arch\` when the module runs on bare metal (os_family \`none\`). Rows with
   \`arch\` empty or \`unknown\` are not targets.
@@ -368,6 +417,9 @@ GROUP BY 1 ORDER BY products DESC;
   \`name_keyword\` and \`cavp_vendor_only\` as leads, not facts.
 - Only modules that include a PQC algorithm are in this dataset. Classical-only
   FIPS modules are out of scope.
+- ESV certificates are not PQC validations. Their operating environments are
+  free text and are not normalized into the OS/CPU targets, and NIST does not
+  publish which modules reference each certificate.
 
 ## Source
 

@@ -156,6 +156,7 @@ const downloads = [
   [FileAttachment("data/cmvp_certs.csv"), "cmvp_certs.csv", "active CMVP certificates with PQC algorithms"],
   [FileAttachment("data/cmvp_cavp_links.csv"), "cmvp_cavp_links.csv", "CMVP certificate → CAVP A-number links"],
   [FileAttachment("data/cmvp_in_process.csv"), "cmvp_in_process.csv", "modules in process / IUT with inferred PQC evidence"],
+  [FileAttachment("data/esv_certs.csv"), "esv_certs.csv", "validated entropy sources (ESV) with reuse status and operating environments"],
   [FileAttachment("data/cmvp_policy_sections.csv"), "cmvp_policy_sections.csv", "tested and vendor-affirmed OE sections from security policies"]
 ].map(([file, name, description]) =>
   html`<li><a href="${file.href}" download="${name}">${name}</a> — ${description}</li>`

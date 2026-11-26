@@ -179,6 +179,7 @@ def write_metadata(
             "cmvp_search": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all",
             "cmvp_mip": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/modules-in-process-list",
             "cmvp_iut": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/iut-list",
+            "esv_search": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/entropy-validations/search",
         },
     }
     if extra:

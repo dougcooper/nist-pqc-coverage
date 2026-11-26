@@ -8,7 +8,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from . import cavp, cmvp, export, language, matching, parquet, policy, upstream
+from . import cavp, cmvp, esv, export, language, matching, parquet, policy, upstream
 from .http import Fetcher
 from .normalize import module_kind_of, normalize_oe
 
@@ -42,6 +42,12 @@ IN_PROCESS_COLUMNS = [
     "list", "module", "vendor", "impl_language", "impl_language_source",
     "standard", "status", "status_date", "pqc_evidence", "match_score",
     "matched_cavp_certs", "matched_implementations", "url",
+]
+ESV_COLUMNS = [
+    "cert", "implementation", "vendor", "standard", "description", "version",
+    "noise_source", "reuse_status", "bits_per_output", "output_size_bits",
+    "operating_environments", "conditioning_cavp_certs", "validated",
+    "last_validated", "lab", "public_use_document_url", "vendor_url", "url",
 ]
 POLICY_COLUMNS = [
     "cert", "kind", "embodiment", "page", "pdf_url",
@@ -169,6 +175,30 @@ def load_in_process(fetcher: Fetcher) -> list[cmvp.InProcessRow]:
     return mip + iut
 
 
+def load_esv(fetcher: Fetcher, workers: int = 1) -> list[esv.EsvCert]:
+    total, summaries = esv.parse_search(fetcher.get_text(esv.search_url()))
+    for page in range(2, esv.search_pages(total) + 1):
+        _, more = esv.parse_search(fetcher.get_text(esv.search_url(page)))
+        summaries.extend(more)
+    unique_summaries = {summary.cert: summary for summary in summaries}
+    log(f"esv: {total} certificates, {len(unique_summaries)} unique to fetch")
+
+    def fetch_one(summary: esv.EsvSummary) -> esv.EsvCert:
+        return esv.parse_cert(
+            fetcher.get_text(summary.url), summary.cert, summary.url
+        )
+
+    certs: list[esv.EsvCert] = []
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        for position, cert in enumerate(
+            pool.map(fetch_one, unique_summaries.values()), start=1
+        ):
+            certs.append(cert)
+            if position % 50 == 0 or position == len(unique_summaries):
+                log(f"esv certificates {position}/{len(unique_summaries)}")
+    return certs
+
+
 def load_policies(
     fetcher: Fetcher, certs: list[cmvp.CmvpCert], cache_dir: str | Path = ".cache"
 ) -> list[dict]:
@@ -226,6 +256,7 @@ def scrape(args: argparse.Namespace) -> None:
     oes = load_operating_environments(fetcher, details, workers=args.workers)
     pqc_certs, _ = load_cmvp(fetcher, limit=args.limit, workers=args.workers)
     in_process = load_in_process(fetcher)
+    esv_certs = load_esv(fetcher, workers=args.workers)
 
     active_certs = [c for c in pqc_certs if c.status.lower() == "active"]
     if args.include_historical:
@@ -427,6 +458,32 @@ def scrape(args: argparse.Namespace) -> None:
             }
         )
 
+    # --- ESV outputs -------------------------------------------------------
+    esv_rows: list[dict] = []
+    for cert in esv_certs:
+        esv_rows.append(
+            {
+                "cert": cert.cert,
+                "implementation": cert.implementation,
+                "vendor": cert.vendor,
+                "standard": cert.standard,
+                "description": cert.description,
+                "version": cert.version,
+                "noise_source": cert.noise_source,
+                "reuse_status": cert.reuse_status,
+                "bits_per_output": cert.bits_per_output,
+                "output_size_bits": cert.output_size_bits,
+                "operating_environments": "; ".join(cert.operating_environments),
+                "conditioning_cavp_certs": "; ".join(cert.conditioning_cavp_certs),
+                "validated": export.to_iso(cert.validated),
+                "last_validated": export.to_iso(cert.last_validated),
+                "lab": cert.lab,
+                "public_use_document_url": cert.public_use_document_url,
+                "vendor_url": cert.vendor_url,
+                "url": cert.url,
+            }
+        )
+
     # --- flat coverage table ----------------------------------------------
     coverage: dict[tuple, dict] = {}
 
@@ -558,6 +615,7 @@ def scrape(args: argparse.Namespace) -> None:
     export.write_csv(out_dir / "cmvp_certs.csv", cmvp_rows, CMVP_CERT_COLUMNS)
     export.write_csv(out_dir / "cmvp_cavp_links.csv", links, CMVP_LINK_COLUMNS)
     export.write_csv(out_dir / "cmvp_in_process.csv", in_process_rows, IN_PROCESS_COLUMNS)
+    export.write_csv(out_dir / "esv_certs.csv", esv_rows, ESV_COLUMNS)
     export.write_csv(out_dir / "cmvp_policy_sections.csv", policy_rows, POLICY_COLUMNS)
     export.write_csv(out_dir / "pqc_coverage.csv", coverage_rows, COVERAGE_COLUMNS)
     export.write_csv(out_dir / "coverage_targets.csv", target_rows, [
@@ -574,6 +632,11 @@ def scrape(args: argparse.Namespace) -> None:
     dates = [
         row["validated"] for row in coverage_rows if row["validated"]
     ] + [row["validated"] for row in cmvp_rows if row["validated"]]
+    dates += [
+        row["last_validated"] or row["validated"]
+        for row in esv_rows
+        if row["last_validated"] or row["validated"]
+    ]
     data_as_of = max(dates) if dates else ""
 
     counts = {
@@ -584,6 +647,13 @@ def scrape(args: argparse.Namespace) -> None:
         "cmvp_in_process_rows": len(in_process_rows),
         "cmvp_in_process_matched": sum(
             1 for row in in_process_rows if row["pqc_evidence"] == "cavp_name_match"
+        ),
+        "esv_certificates": len(esv_rows),
+        "esv_open_for_reuse": sum(
+            1 for row in esv_rows if row["reuse_status"] == "Open for Reuse"
+        ),
+        "esv_physical": sum(
+            1 for row in esv_rows if row["noise_source"] == "Physical"
         ),
         "policy_sections": len(policy_rows),
         "policy_tested_sections": sum(1 for r in policy_rows if r["kind"] == "tested"),
@@ -622,6 +692,10 @@ def scrape(args: argparse.Namespace) -> None:
                 "impl_language_source records which. Hardware and firmware "
                 "without evidence are not_applicable; empty with none means "
                 "unknown.",
+                "ESV certificates validate standalone entropy sources, not PQC "
+                "algorithms. Reuse status and noise-source classification come "
+                "from the ESV certificate page; NIST does not publish which "
+                "modules reference each certificate.",
             ],
         },
     )
@@ -632,6 +706,8 @@ def scrape(args: argparse.Namespace) -> None:
     log(f"cmvp PQC certificates: {len(cmvp_rows)} ({excluded} non-active excluded)")
     log(f"in-process rows: {len(in_process_rows)} "
         f"({counts['cmvp_in_process_matched']} matched to CAVP)")
+    log(f"esv entropy-source certificates: {len(esv_rows)} "
+        f"({counts['esv_open_for_reuse']} open for reuse)")
     log(f"coverage rows: {len(coverage_rows)}")
     log(f"policy sections: {len(policy_rows)} "
         f"({counts['policy_vendor_affirmed_sections']} vendor-affirmed)")

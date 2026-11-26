@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-20T19:39:22+00:00",
-  "data_as_of": "2026-11-19",
+  "generated_at": "2026-11-26T19:05:57+00:00",
+  "data_as_of": "2026-11-24",
   "counts": {
     "cavp_pqc_validations": 344,
     "cavp_operating_environments": 1249,
@@ -8,6 +8,9 @@
     "cmvp_pqc_certificates": 32,
     "cmvp_in_process_rows": 399,
     "cmvp_in_process_matched": 95,
+    "esv_certificates": 366,
+    "esv_open_for_reuse": 108,
+    "esv_physical": 206,
     "policy_sections": 36,
     "policy_tested_sections": 18,
     "policy_vendor_affirmed_sections": 18,
@@ -26,7 +29,8 @@
     "cavp_search": "https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/validation-search",
     "cmvp_search": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all",
     "cmvp_mip": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/modules-in-process-list",
-    "cmvp_iut": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/iut-list"
+    "cmvp_iut": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/iut-list",
+    "esv_search": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/entropy-validations/search"
   },
   "pqc_algorithms": [
     "ML-KEM EncapDecap",
@@ -48,6 +52,7 @@
     "Modules-in-process and IUT lists carry no algorithms; PQC evidence is inferred from vendor/name matching and must be treated as indicative (see pqc_evidence).",
     "OS family, product, version and CPU architecture are normalized heuristically from CAVP operating-environment text.",
     "Security policy PDFs are extracted best-effort: the raw tested and vendor-affirmed OE sections are authoritative, while the OS/CPU candidate columns are regex hints, not compliance evidence.",
-    "Implementation language is inferred from NIST descriptions, product names, or a curated upstream-library map; impl_language_source records which. Hardware and firmware without evidence are not_applicable; empty with none means unknown."
+    "Implementation language is inferred from NIST descriptions, product names, or a curated upstream-library map; impl_language_source records which. Hardware and firmware without evidence are not_applicable; empty with none means unknown.",
+    "ESV certificates validate standalone entropy sources, not PQC algorithms. Reuse status and noise-source classification come from the ESV certificate page; NIST does not publish which modules reference each certificate."
   ]
 }

@@ -34,6 +34,7 @@ Outputs land in `data/`:
 | `cmvp_certs.csv` | CMVP certificate that includes a PQC algorithm |
 | `cmvp_cavp_links.csv` | CMVP certificate -> CAVP A-number link |
 | `cmvp_in_process.csv` | Modules-in-process or IUT row with inferred PQC evidence |
+| `esv_certs.csv` | Completed entropy-source validation (ESV certificate) |
 | `cmvp_policy_sections.csv` | Tested / vendor-affirmed OE section from each security policy PDF |
 | `pqc_coverage.csv` | Flat analysis table: source, product, OE, target, algorithm |
 | `coverage_targets.csv` | OS/CPU target ranked by vendor/product coverage and cumulative curve |
@@ -77,6 +78,12 @@ CMVP tables also keep the raw `description` that produced the evidence.
   compliance claim. "C language API" describes an interface, not the
   implementation, and is not counted.
 - `--include-historical` adds non-active CMVP certificates (excluded by default).
+- ESV certificates validate standalone SP 800-90B entropy sources, not PQC
+  algorithms. `reuse_status` is the usable signal for platform selection: an
+  **Open for Reuse** certificate can be referenced by another vendor's module
+  without re-validating the entropy source. NIST does not publish which modules
+  reference each certificate, so `esv_certs.csv` cannot map certificates to
+  products.
 
 ## Dashboard
 
@@ -96,6 +103,9 @@ become SQL parameters.
   curve, greedy product selection, and per-target drill-down.
 - **Pipeline** — modules in process / IUT with their inferred PQC evidence, and
   validated CAVP implementations without an active CMVP certificate.
+- **Entropy sources** — completed ESV entropy-source certificates with noise
+  source classification, reuse status, operating environments, conditioning
+  CAVP certificates, and the public use document.
 - **Tested configurations** — tested and vendor-affirmed operating environments
   quoted from each certificate's non-proprietary security policy, one collapsible
   card per certificate with a Simple/Expanded switch for the policy text.
