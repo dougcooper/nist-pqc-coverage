@@ -1,0 +1,67 @@
+family,platform_vendor,category,open_physical,esv_certs,open,physical,entropy_vendors,environments,example_environments,certificates
+STM32,STMicroelectronics,MCU / MPU,14,15,15,14,3,17,STM32U5Fx | STM32U5Gx | STM32MP25xx,E331; E299; E283; E262; E255; E228; E186; E163; E158; E135; E116; E86; E53; E11; E131
+Infineon security controller,Infineon,Secure element,7,8,7,8,3,12,M7893B11 | SLB 9672 | SLB 9673,E249; E240; E220; E197; E196; E142; E23; E107
+Samsung Exynos / custom,Samsung,Mobile SoC,6,14,7,13,3,16,S4LV003 | S4LV006X02 | S4LY011A01,E338; E290; E253; E224; E221; E202; E308; E368; E350; E332; E316; E251; E83; E81
+Intel x86,Intel,Server / PC CPU,4,165,36,34,60,579,Intel Xeon C5518 | Intel Xeon D1528 | Intel Xeon D-1567,E233; E232; E179; E164; E362; E359; E321; E271; E243; E219; E218; E217; E210; E208; E205; E181; E172; E157; E139; E138; E126; E118; E117; E115; E110; E105; E101; E91; E84; E77; E62; E60; E59; E49; E24; E15; E372; E371; E366; E365; E364; E361; E360; E356; E354; E347; E346; E345; E344; E340; E337; E335; E334; E329; E328; E326; E325; E318; E317; E315; E314; E313; E312; E310; E309; E307; E306; E305; E303; E300; E297; E296; E295; E294; E293; E292; E291; E280; E279; E277; E273; E272; E267; E266; E265; E264; E263; E260; E257; E241; E239; E238; E235; E234; E230; E226; E223; E216; E215; E214; E211; E209; E206; E200; E191; E190; E189; E177; E175; E174; E170; E169; E162; E151; E145; E141; E130; E129; E127; E125; E124; E123; E122; E121; E104; E99; E90; E89; E87; E85; E79; E76; E75; E74; E73; E72; E71; E70; E69; E68; E66; E65; E64; E61; E56; E54; E52; E50; E48; E47; E37; E36; E31; E30; E29; E28; E22; E21; E20; E19; E16; E8; E7; E3; E1
+AMD x86,AMD,Server / PC CPU,3,39,7,4,19,76,AMD EPYC EIOD2.0 | EPYC 3xxx Family | EPYC 7xx2 Family,E183; E173; E27; E321; E139; E105; E84; E347; E345; E318; E313; E294; E280; E277; E257; E241; E239; E237; E226; E211; E209; E206; E200; E177; E170; E151; E145; E125; E124; E99; E90; E61; E37; E31; E29; E28; E20; E19; E3
+Apple A / M / S,Apple,Application processor,3,11,6,3,7,198,Apple A Series A9 | Apple M Series M1 | Apple M Series M2,E254; E113; E14; E181; E172; E15; E318; E296; E294; E241; E234
+Xilinx Zynq / UltraScale,AMD / Xilinx,FPGA SoC,3,10,4,7,8,12,XCZU15EG | Xilinx® XC7Z015 | Xilinx® XC7Z020,E225; E167; E102; E199; E363; E342; E258; E51; E25; E3
+NXP i.MX,NXP,Application processor,2,5,3,2,5,5,NXP i.MX 6 | RNG4_ES i.MX93 B1 | QNX SDP 8 on NXP i.MX8QM,E244; E82; E100; E349; E294
+Intel CSME / IPU,Intel,Security engine,2,2,2,2,1,13,FNIC CM TRNG E830 | FNIC CM TRNG E835 | Intel® IPU ES2000CC,E179; E136
+NXP KW / MCX,NXP,Wireless MCU,2,2,2,2,1,3,MCX N23x | MCX N94x/54x | KW45 / K32W148 / MCX W71,E185; E184
+Renesas RA,Renesas,MCU / MPU,2,2,2,2,1,2,R7FA6M4AF3CFB | R7FA8M1AHECBD,E288; E176
+ST33 TPM,STMicroelectronics,TPM / secure element,2,2,2,2,1,3,ST33HTPH revision A | ST33G1M2A revision F | ST33K1M5T/A platforms,E45; E41
+YDK QRNG,YDK,QRNG,2,2,2,2,1,2,yRNG-Q5G | yRNG-Q10G,E281; E146
+Qualcomm Snapdragon,Qualcomm,Mobile SoC,1,16,2,11,6,27,"Android 12 on Qualcomm SM6115 Snapdragon 662 | Qualcomm Technologies, Inc. Snapdragon® X2 Plus | Qualcomm Technologies, Inc. Snapdragon® X2 Elite",E67; E308; E358; E351; E318; E296; E294; E282; E236; E234; E207; E193; E155; E154; E153; E152
+Marvell OCTEON,Marvell,Networking SoC,1,12,1,2,9,34,OCTEON TX2 CN93XX/CN96XX | Cavium OCTEON III CN7130 (cnMIPS64) | Cavium OCTEON III CN7350 (cnMIPS64),E231; E341; E329; E318; E309; E170; E128; E99; E90; E61; E37; E3
+Google Tensor,Google,Mobile SoC,1,6,1,4,4,8,IN762 SoC B1 | IN762 SoC C1 | IN763 SoC A0 IMC,E137; E352; E294; E278; E259; E241
+Google Titan,Google,Security key,1,4,1,4,2,5,H1D3P | H100(FSP) | Google H1B2,E147; E201; E187; E149
+Intel Agilex / Arria,Intel,FPGA SoC,1,2,1,2,2,2,Arria10 GX 10AX115N4F40I3SG FPGA | Intel Intel® Agilex™ F-Series and I-Series SoC FPGAs DRNG4.2_Gen3 on Intel® Agilex™ AGF 019/AGF 023/AGI 019/AGI 023 SoC FPGAs,E57; E78
+AisinoChip SCC-XE,Century Longmai,Smartcard,1,1,1,1,1,1,AisinoChip Electronics SCC-XE,E44
+Atlas QRNG,Atlas,QRNG,1,1,1,1,1,2,Atlas QRNG PCIe 1.0 | Atlas QRNG PCIe 1.1,E246
+Feitian HSEC,Feitian,Secure element,1,1,1,1,1,1,HSEC HSC,E134
+JCOP P71D600,IDEMIA,Smartcard,1,1,1,1,1,1,JCOP 4.5 on P71D600,E148
+Microchip 59V02 / TA100,Microchip,Secure element,1,1,1,1,1,5,59V02 A2 | 59V02 A3 | TA100 B5,E194
+Microchip ATECC,Microchip,Secure element,1,1,1,1,1,3,ATECC608A | ATECC608B | ATECC608C,E46
+NXP RW61x,NXP,MCU / MPU,1,1,1,1,1,1,RW61x Wireless MCU with Integrated Tri-radio: 1x1 Wi-Fi® 6 + Bluetooth® Low Energy / 802.15.4,E106
+NXP S32,NXP,MCU / MPU,1,1,1,1,1,2,NXP S32K14X (Armv7E-M) | Apache Nuttx on an NXP S32K14X running on an Armv7E-M,E86
+Quside QRNG,Quside,QRNG,1,1,1,1,1,1,Quside PCIe One - FMC One,E178
+Renesas R-Car,Renesas,Automotive SoC,1,1,1,1,1,1,R-Car U5L4,E256
+Renesas RH850,Renesas,MCU / MPU,1,1,1,1,1,1,RH850/U2B6,E204
+SEALSQ QS7001,SEALSQ,Secure element,1,1,1,1,1,1,QS7001 Rev. C,E333
+Thales Aquarius,Thales,Secure element,1,1,1,1,1,1,Aquarius rev C,E144
+Arm server,Arm / Ampere / AWS,Server SoC,0,38,12,1,12,44,Amazon Linux 2023 running on AWS Graviton4 | Ubuntu 22.04 LTS running on ARM Neoverse V2 | Amazon Graviton4 AWS Graviton4 (instance0.0),E362; E359; E321; E243; E218; E217; E172; E105; E77; E62; E60; E59; E347; E340; E318; E311; E280; E266; E257; E209; E206; E200; E191; E177; E127; E125; E124; E99; E90; E76; E75; E61; E37; E31; E29; E28; E19; E3
+IBM Z,IBM,Server CPU,0,22,7,0,5,9,RHEL 8 on IBM Z System z15(TM) | RHEL 9 on IBM Z System z16(TM) | Ubuntu 22.04 on IBM Z System z15(TM),E243; E218; E217; E172; E62; E60; E59; E366; E318; E209; E206; E200; E177; E175; E174; E54; E48; E47; E31; E29; E28; E19
+IBM POWER,IBM,Server CPU,0,16,1,2,6,13,IBM Power10 IBM Power | IBM Power11 IBM Power | HMC 1121 on IBM POWER Series POWER9,E172; E369; E366; E318; E296; E175; E174; E150; E120; E54; E48; E47; E31; E29; E28; E19
+Broadcom BCM,Broadcom,Networking SoC,0,12,1,5,6,28,Broadcom 3nm TRNG (secr_trngab_3nm) | Broadcom 5nm TRNG (secr_trngab_5nm) | Broadcom 7nm TRNG (secr_trngab_7nm),E118; E334; E328; E318; E313; E180; E43; E42; E40; E35; E7; E3
+NXP QorIQ / Layerscape,NXP,Networking SoC,0,8,2,3,8,16,NXP® QorIQ® LS1021A | WatchGuard Firebox OS on NXP LS1012A | WatchGuard Firebox OS on NXP LS1023A,E88; E77; E324; E313; E182; E160; E97; E38
+Nuvoton,Nuvoton,MCU / MPU,0,5,0,4,2,10,Nuvoton NPCM8mnx | Nuvoton NPCD324HA0DX | Nuvoton NPCX499HA0BX,E344; E161; E114; E94; E18
+Qualcomm IPQ,Qualcomm,Networking SoC,0,5,2,0,5,15,SmartZone OS 7.1.1.3 on QCA IPQ5332 | SmartZone OS 7.1.1.3 on QCA IPQ9570 | AWOS 5.0 on ARM Cortex-A53 (IPQ5332),E270; E84; E330; E7; E3
+IBM Capri ASIC,IBM,Custom ASIC,0,4,0,4,2,5,IBM 405 (ASIC 02WP146) PC | IBM 405 (ASIC 02WP147) PC | IBM 470 (ASIC 02WP146) PC,E355; E339; E322; E9
+Google security chip,Google,Security chip,0,3,0,3,1,3,"Google NPCR11 | Google CPA2601 | GCNX-3200AB-CB5T, Version A1",E370; E353; E289
+Analog Devices,Analog Devices,Secure element,0,2,0,2,1,5,"Analog Devices, Inc. DS28S60Q+ | Analog Devices, Inc. DS28S60CQ+ | Analog Devices, Inc. ADTS41-11111",E245; E159
+Atmel,Microchip / Atmel,MCU / MPU,0,2,0,1,2,2,Atmel 5185912 | Summit Linux 11.1 on Microchip AT91SAM9G ARM926EJ-S,E132; E119
+Marvell Armada,Marvell,Networking SoC,0,2,0,0,2,3,Marvel Armada 88F7040 (Cortex-A72) w/ Cisco IOS-XE 17 | Marvell 88F6920 (ARM V7 Cortex-A9) w/ Cisco IOS-XE 17 | Wind River Linux LTS 21 on Marvell Quad Core Arm v7 MV78460,E26; E3
+Microchip SAM,Microchip,MCU / MPU,0,2,0,0,2,3,Summit Linux 11.1 on Microchip SAMA5D3 ATSAMA5D31 | Summit Linux 11.1 on Microchip SAMA5D3 ATSAMA5D36 | Microchip ATSAMA5D27C-LD2G running on Buildroot 2025.02-mchp (kernel 6.12.19),E286; E119
+Microsoft DPU / HSM,Microsoft,DPU / HSM,0,2,0,2,1,3,Microsoft DPU-SBP-F2 rev A0 | Microsoft M1244265-004 B0 (TRNG HSM) | Microsoft M1244265-004 B0 (TRNG HSP),E336; E166
+Qualcomm QCM / QCS,Qualcomm,Other SoC / SBC,0,2,0,2,1,4,"Qualcomm Technologies, Inc. N/A QCM4490 | Qualcomm Technologies, Inc. N/A QCM6490 | Qualcomm Technologies, Inc. N/A QCS4490",E153; E95
+Allwinner,Allwinner,Other SoC / SBC,0,1,0,0,1,1,Armbian 25.05 on AllWinner H5/ Cortex-A53 (ARM 8-A),E301
+AMD Versal,AMD / Xilinx,FPGA SoC,0,1,0,1,1,2,Versal XCVM1402-2MLEVSVD1760 Dual-Core Arm® Cortex A72 MPcore | Versal XCVM1802-2LLEVSVD1760 Dual-Core Arm® Cortex A72 MPcore,E302
+AutoChips AC8025,AutoChips,Automotive SoC,0,1,0,1,1,1,AutoChips AC8025H Board,E250
+HPE iLO,HPE,Management controller,0,1,0,0,1,2,iLO5 using Green Hills INTEGRITY 11.2.4 RTOS on ARM Cortex-A9 (v3.05a) | iLO6 using Green Hills INTEGRITY 11.2.4 RTOS on ARM Cortex-A9 (v1.60a),E268
+ID Quantique QRNG,ID Quantique,QRNG,0,1,0,1,1,6,IDQ6MC1 | IDQ20MC1 | IDQ250C2,E63
+iMQ HQS60 / SQ71,iMQ,Secure element,0,1,0,1,1,2,SQ71xx Series | HQS60xx Series,E227
+Infineon SEMPER,Infineon,Secure NOR flash,0,1,0,1,1,1,SEMPER™ Secure NOR Flash,E165
+Marvell 9130,Marvell,Networking SoC,0,1,0,1,1,1,Marvel 9130 CPU,E109
+MediaTek Dimensity,MediaTek,Mobile SoC,0,1,0,1,1,1,MediaTek Dimensity MT6993Z,E323
+Microchip AVR,Microchip,MCU / MPU,0,1,0,1,1,1,AVR Secure Processor,E2
+Microchip PolarFire,Microchip,FPGA SoC,0,1,0,0,1,1,Silvus OS v2.0 on Polar Fire MPFS250T,E320
+Microsemi SmartFusion2,Microchip,FPGA SoC,0,1,0,1,1,1,Microsemi SmartFusion2 SOC FPGA,E4
+NVIDIA,NVIDIA,GPU / SoC,0,1,0,1,1,1,Nvidia Network Adaptor Security (PSC-SE),E201
+NXP C29X,NXP,Secure element,0,1,0,1,1,1,NXP C29X SoC,E252
+NXP SE05x,NXP,Secure element,0,1,0,1,1,2,FIPS SE050 | FIPS SE051,E93
+Raspberry Pi,Raspberry Pi,Other SoC / SBC,0,1,0,0,1,2,Raspberry Pi OS 11 (ARMv7l) on ARM Cortex-A72 | Raspberry Pi OS 11 (AArch64) on ARM Cortex-A72,E21
+Renesas RZ,Renesas,MCU / MPU,0,1,0,0,1,1,Switch Engine 33.4 on 4120-24MW-4Y with Renesas RZ/G2E (ARM Cortex-A53),E334
+Silicon Labs EFR32,Silicon Labs,MCU / MPU,0,1,0,1,1,1,EFR32xG21,E156
+Silicon Labs SixG301x,Silicon Labs,Wireless MCU,0,1,0,1,1,1,SixG301x,E287
+ST31,STMicroelectronics,Secure element,0,1,0,1,1,1,ST31N600 revB and revC,E112

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T19:05:57+00:00",
+  "generated_at": "2026-11-27T13:04:50+00:00",
   "data_as_of": "2026-11-24",
   "counts": {
     "cavp_pqc_validations": 344,
@@ -11,6 +11,11 @@
     "esv_certificates": 366,
     "esv_open_for_reuse": 108,
     "esv_physical": 206,
+    "platform_families": 66,
+    "platform_cert_matches": 475,
+    "platform_mapped_certificates": 321,
+    "platform_open_physical_families": 31,
+    "platform_unmapped_certificates": 45,
     "policy_sections": 36,
     "policy_tested_sections": 18,
     "policy_vendor_affirmed_sections": 18,
@@ -53,6 +58,8 @@
     "OS family, product, version and CPU architecture are normalized heuristically from CAVP operating-environment text.",
     "Security policy PDFs are extracted best-effort: the raw tested and vendor-affirmed OE sections are authoritative, while the OS/CPU candidate columns are regex hints, not compliance evidence.",
     "Implementation language is inferred from NIST descriptions, product names, or a curated upstream-library map; impl_language_source records which. Hardware and firmware without evidence are not_applicable; empty with none means unknown.",
-    "ESV certificates validate standalone entropy sources, not PQC algorithms. Reuse status and noise-source classification come from the ESV certificate page; NIST does not publish which modules reference each certificate."
+    "ESV certificates validate standalone entropy sources, not PQC algorithms. Reuse status and noise-source classification come from the ESV certificate page; NIST does not publish which modules reference each certificate.",
+    "Platform families are a curated regex mapping over the free-text ESV operating environments, not a NIST platform certification or an ESV-to-module mapping. A certificate can match several families, so family counts overlap; verify chip support and vendor reuse terms before relying on one.",
+    "Certificates that match no platform family are written to platform_unmapped_certs.csv and shown separately in the dashboard so a new platform is not hidden by the current family config."
   ]
 }

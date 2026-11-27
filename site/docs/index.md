@@ -74,7 +74,9 @@ html`<div class="note">
   PQC scope: ${meta.pqc_algorithms.join(", ")}.
   Separately, ${num.format(meta.counts.esv_certificates)} entropy sources are validated under ESV
   (${num.format(meta.counts.esv_open_for_reuse)} open for reuse) —
-  see <a href="entropy">Entropy sources</a>.
+  see <a href="entropy">Entropy sources</a>, which groups them into
+  ${num.format(meta.counts.platform_families)} chip families,
+  ${num.format(meta.counts.platform_open_physical_families)} with an open + physical source.
 </div>`
 ```
 

@@ -8,7 +8,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from . import cavp, cmvp, esv, export, language, matching, parquet, policy, upstream
+from . import cavp, cmvp, esv, export, language, matching, parquet, platforms, policy, upstream
 from .http import Fetcher
 from .normalize import module_kind_of, normalize_oe
 
@@ -484,6 +484,11 @@ def scrape(args: argparse.Namespace) -> None:
             }
         )
 
+    # --- platform shortlist -------------------------------------------------
+    platform_rows, platform_cert_rows, platform_unmapped_rows = (
+        platforms.build_platforms(esv_rows)
+    )
+
     # --- flat coverage table ----------------------------------------------
     coverage: dict[tuple, dict] = {}
 
@@ -616,6 +621,21 @@ def scrape(args: argparse.Namespace) -> None:
     export.write_csv(out_dir / "cmvp_cavp_links.csv", links, CMVP_LINK_COLUMNS)
     export.write_csv(out_dir / "cmvp_in_process.csv", in_process_rows, IN_PROCESS_COLUMNS)
     export.write_csv(out_dir / "esv_certs.csv", esv_rows, ESV_COLUMNS)
+    export.write_csv(
+        out_dir / "platform_families.csv",
+        platform_rows,
+        platforms.FAMILY_COLUMNS,
+    )
+    export.write_csv(
+        out_dir / "platform_family_certs.csv",
+        platform_cert_rows,
+        platforms.CERT_COLUMNS,
+    )
+    export.write_csv(
+        out_dir / "platform_unmapped_certs.csv",
+        platform_unmapped_rows,
+        platforms.UNMAPPED_COLUMNS,
+    )
     export.write_csv(out_dir / "cmvp_policy_sections.csv", policy_rows, POLICY_COLUMNS)
     export.write_csv(out_dir / "pqc_coverage.csv", coverage_rows, COVERAGE_COLUMNS)
     export.write_csv(out_dir / "coverage_targets.csv", target_rows, [
@@ -655,6 +675,15 @@ def scrape(args: argparse.Namespace) -> None:
         "esv_physical": sum(
             1 for row in esv_rows if row["noise_source"] == "Physical"
         ),
+        "platform_families": len(platform_rows),
+        "platform_cert_matches": len(platform_cert_rows),
+        "platform_mapped_certificates": len(
+            {row["cert"] for row in platform_cert_rows}
+        ),
+        "platform_open_physical_families": sum(
+            1 for row in platform_rows if row["open_physical"] > 0
+        ),
+        "platform_unmapped_certificates": len(platform_unmapped_rows),
         "policy_sections": len(policy_rows),
         "policy_tested_sections": sum(1 for r in policy_rows if r["kind"] == "tested"),
         "policy_vendor_affirmed_sections": sum(
@@ -696,6 +725,14 @@ def scrape(args: argparse.Namespace) -> None:
                 "algorithms. Reuse status and noise-source classification come "
                 "from the ESV certificate page; NIST does not publish which "
                 "modules reference each certificate.",
+                "Platform families are a curated regex mapping over the free-text "
+                "ESV operating environments, not a NIST platform certification or "
+                "an ESV-to-module mapping. A certificate can match several families, "
+                "so family counts overlap; verify chip support and vendor reuse "
+                "terms before relying on one.",
+                "Certificates that match no platform family are written to "
+                "platform_unmapped_certs.csv and shown separately in the dashboard "
+                "so a new platform is not hidden by the current family config.",
             ],
         },
     )
@@ -708,6 +745,10 @@ def scrape(args: argparse.Namespace) -> None:
         f"({counts['cmvp_in_process_matched']} matched to CAVP)")
     log(f"esv entropy-source certificates: {len(esv_rows)} "
         f"({counts['esv_open_for_reuse']} open for reuse)")
+    log(f"platform families: {len(platform_rows)} "
+        f"({counts['platform_open_physical_families']} with open + physical; "
+        f"{len(platform_cert_rows)} family-certificate matches; "
+        f"{len(platform_unmapped_rows)} unmapped certificates)")
     log(f"coverage rows: {len(coverage_rows)}")
     log(f"policy sections: {len(policy_rows)} "
         f"({counts['policy_vendor_affirmed_sections']} vendor-affirmed)")

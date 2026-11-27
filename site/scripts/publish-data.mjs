@@ -77,6 +77,17 @@ const NOTES = {
   conditioning_cavp_certs: "ESV vetted conditioning components and their CAVP A-numbers",
   public_use_document_url: "ESV public use document",
   vendor_url: "Vendor website listed on the ESV certificate",
+  family:
+    "Curated chipset/platform family (heuristic regex over ESV operating-environment text; not a NIST field)",
+  platform_vendor: "Platform vendor for the family; not necessarily the ESV certificate vendor",
+  open_physical:
+    "Certificates matching the family that are both Open for Reuse and Physical",
+  esv_certs: "ESV certificates matching the family; a certificate can match several families",
+  environments: "Distinct matching operating-environment strings",
+  example_environments: "Shortest matching operating-environment strings",
+  certificates: "ESV certificate numbers matching the family",
+  matched_environments:
+    "ESV operating-environment strings that matched the family pattern; the evidence for the match",
   level: "Overall FIPS 140-3 security level",
   embodiment: "Embodiment as published (e.g. MultiChipStand, Software)",
   first_validated: "Date first validated (ISO 8601)",
@@ -238,6 +249,8 @@ function llmsTxt(metadata) {
 > The same dataset also carries ${c.esv_certificates} CMVP entropy-source (ESV)
 > certificates, ${c.esv_open_for_reuse} of them open for reuse. ESV is separate
 > from PQC: it validates an SP 800-90B noise source, not an algorithm.
+> ${c.platform_families} chipset/platform families are derived from
+> ${c.platform_mapped_certificates} of those certificates; the mapping is heuristic.
 
 The dashboard at ${SITE}/ renders these files in a browser with DuckDB-WASM.
 Agents should use the files below directly: they are static, need no key, and
@@ -255,6 +268,14 @@ need no JavaScript.
 - [esv_certs.csv](${DOWNLOADS}/esv_certs.csv): the ${c.esv_certificates} validated entropy
   sources (ESV) with reuse status, noise source, operating environments and
   conditioning CAVP certificates.
+- [platform_families.csv](${DOWNLOADS}/platform_families.csv): ${c.platform_families} chipset/platform
+  families with open/physical ESV counts; a family is a curated regex
+  over ESV operating-environment text.
+- [platform_family_certs.csv](${DOWNLOADS}/platform_family_certs.csv): ${c.platform_cert_matches}
+  family × ESV-certificate matches, including the environment text that matched.
+- [platform_unmapped_certs.csv](${DOWNLOADS}/platform_unmapped_certs.csv): ${c.platform_unmapped_certificates}
+  ESV certificates that match no configured platform family, with their raw
+  operating environments.
 - [pqc_coverage.csv](${DOWNLOADS}/pqc_coverage.csv): ${c.coverage_rows} long-form rows, one per
   (program, record, operating environment, algorithm). About 8 MB.
 - [schema.json](${DOWNLOADS}/schema.json): every table and column, with types and one-line meanings.
@@ -280,7 +301,7 @@ Every coverage row has a \`source\`:
 ESV entropy-source certificates are a separate table, not a \`source\` value,
 because they validate the platform rather than an algorithm.
 
-## Entropy sources (ESV)
+## Entropy source certificates (ESV)
 
 \`esv_certs.csv\` holds the CMVP Entropy Source Validation certificates
 (E-numbers). Each one is a standalone SP 800-90B assessment of a noise source
@@ -307,6 +328,38 @@ ORDER BY vendor;
 
 NIST does not publish which modules reference each certificate, so this table
 cannot tell you which products use a given entropy source.
+
+## Entropy sources (heuristic)
+
+\`platform_families.csv\` groups the ESV certificates into ${c.platform_families}
+chipset/platform families: STM32, Samsung Exynos/custom, Apple A/M/S, Infineon
+security controllers, Xilinx Zynq, NXP i.MX, Renesas RA, Qualcomm Snapdragon,
+and others. ${c.platform_mapped_certificates} of the ${c.esv_certificates}
+certificates match at least one family; because one certificate can serve
+several families, the ${c.platform_cert_matches} family-certificate matches
+overlap and family counts must not be added together.
+
+The family rules live in \`src/nist_pqc/platform_families.toml\`. Certificates
+that match none of them are not dropped: ${c.platform_unmapped_certificates}
+are in \`platform_unmapped_certs.csv\` with their raw operating environments, and
+the dashboard lists them under **Unmapped certificates** so a new platform can
+surface before a family rule exists.
+
+The default dashboard view is the open-for-reuse, physical subset:
+\`open_physical\` is the number of certificates for that family that are both.
+
+\`\`\`sql
+SELECT family, open_physical, esv_certs, open, physical, entropy_vendors
+FROM read_csv('platform_families.csv', header = true)
+ORDER BY open_physical DESC, esv_certs DESC;
+\`\`\`
+
+Each match in \`platform_family_certs.csv\` carries the \`matched_environments\`
+that caused the assignment, so the heuristic can be audited certificate by
+certificate. This is not a NIST platform certification or an ESV-to-module
+mapping: operating environments are vendor-declared free text, and a platform
+still needs its own FIPS 140-3 module validation. Verify the exact silicon, the
+source variant, and the vendor's reuse terms.
 
 ## Semantics
 
@@ -420,6 +473,10 @@ GROUP BY 1 ORDER BY products DESC;
 - ESV certificates are not PQC validations. Their operating environments are
   free text and are not normalized into the OS/CPU targets, and NIST does not
   publish which modules reference each certificate.
+- Platform families are a curated regex over the free-text ESV operating
+  environments, not a NIST mapping. A certificate can match several families,
+  so counts overlap; use matched_environments to audit an assignment and
+  confirm the chip and reuse terms with the vendor.
 
 ## Source
 

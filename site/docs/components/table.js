@@ -1,7 +1,9 @@
 // Sortable, searchable table that becomes a card list on phones.
 //
-// Columns: [{key, label, width?, format?, badge?, hideOnCard?}]. `format(value,
-// row)` returns text or an html string; `badge(value, row)` returns a class name.
+// Columns: [{key, label, width?, format?, html?, badge?, hideOnCard?, hideOnTable?, sortable?}].
+// `format(value, row)` returns text; `html(row)` returns html; `badge(value, row)`
+// returns a class name. `searchKeys` and `csvKeys` let hidden fields stay
+// searchable and downloadable.
 
 import {toCsv} from "./sql.js";
 
@@ -28,6 +30,8 @@ export function dataTable(rows, options = {}) {
     sort,
     reverse = false,
     csv = "table.csv",
+    csvKeys,
+    searchKeys,
     cardTitle,
     empty = "No rows match."
   } = options;
@@ -67,7 +71,7 @@ export function dataTable(rows, options = {}) {
   download.textContent = "Download CSV";
   download.download = csv;
   download.href = URL.createObjectURL(
-    new Blob([toCsv(rows, columns.map((column) => column.key))], {type: "text/csv"})
+    new Blob([toCsv(rows, csvKeys ?? columns.map((column) => column.key))], {type: "text/csv"})
   );
 
   if (search) toolbar.append(searchInput);
@@ -84,7 +88,7 @@ export function dataTable(rows, options = {}) {
   function sortedRows() {
     let result = rows;
     if (state.query) {
-      const keys = columns.map((column) => column.key);
+      const keys = searchKeys ?? columns.map((column) => column.key);
       result = rows.filter((row) =>
         keys.some((key) => {
           const value = row[key];
@@ -108,35 +112,37 @@ export function dataTable(rows, options = {}) {
   }
 
   function cellHtml(row, column) {
+    if (column.html) return column.html(row);
     const value = valueOf(row, column);
     if (value === null) return "";
     if (column.badge) {
       const className = column.badge(row[column.key], row);
       return `<span class="badge ${escapeHtml(className)}">${escapeHtml(value)}</span>`;
     }
-    if (column.html) return column.html(row);
     return escapeHtml(value);
   }
 
   function renderTable(result, start, end) {
-    const head = columns
+    const tableColumns = columns.filter((column) => column.hideOnTable !== true);
+    const head = tableColumns
       .map((column) => {
         const active = state.sortKey === column.key;
-        const marker = active ? (state.reverse ? " \u25b4" : " \u25be") : "";
-        return `<th${column.width ? ` style="min-width:${column.width}px"` : ""}>
-          <button type="button" class="dt-sort" data-key="${escapeHtml(column.key)}">${escapeHtml(
-            column.label
-          )}${marker}</button></th>`;
+        const marker = active ? (state.reverse ? " \u25be" : " \u25b4") : "";
+        const label = escapeHtml(column.label);
+        const content = column.sortable === false
+          ? label
+          : `<button type="button" class="dt-sort" data-key="${escapeHtml(column.key)}">${label}${marker}</button>`;
+        return `<th${column.width ? ` style="min-width:${column.width}px"` : ""}>${content}</th>`;
       })
       .join("");
     const bodyRows = result
       .slice(start, end)
-      .map((row) => `<tr>${columns.map((column) => `<td>${cellHtml(row, column)}</td>`).join("")}</tr>`)
+      .map((row) => `<tr>${tableColumns.map((column) => `<td>${cellHtml(row, column)}</td>`).join("")}</tr>`)
       .join("");
 
     body.innerHTML = `<div class="table-scroll"><table class="dt-table">
       <thead><tr>${head}</tr></thead>
-      <tbody>${bodyRows || `<tr><td colspan="${columns.length}" class="muted">${escapeHtml(empty)}</td></tr>`}</tbody>
+      <tbody>${bodyRows || `<tr><td colspan="${tableColumns.length}" class="muted">${escapeHtml(empty)}</td></tr>`}</tbody>
     </table></div>`;
 
     for (const button of body.querySelectorAll(".dt-sort")) {

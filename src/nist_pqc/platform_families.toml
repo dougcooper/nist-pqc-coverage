@@ -1,0 +1,410 @@
+# Chipset and platform families for the ESV shortlist.
+#
+# NIST publishes operating environments as free text. Each family below is a
+# conservative regex matched against one semicolon-separated environment
+# string. A certificate can match several families, so family counts overlap.
+#
+# This list covers embedded chipsets, server and PC processors, and security
+# chips. SSD/storage-controller subsystems are intentionally left out: they do
+# not identify a reusable platform family in the same way as a CPU or SoC.
+#
+# Add a family here and rerun `just scrape`; certificates that match no family
+# stay in platform_unmapped_certs.csv so new platforms are not hidden.
+#
+# Patterns are Python regular expressions, compiled case-insensitively.
+
+[[family]]
+name = "STM32"
+vendor = "STMicroelectronics"
+category = "MCU / MPU"
+pattern = '\bSTM32'
+
+[[family]]
+name = "Samsung Exynos / custom"
+vendor = "Samsung"
+category = "Mobile SoC"
+pattern = 'Exynos|Samsung.*(?:ELAN|Eldora|Evan|Elroy)|S4L[A-Z]\d'
+
+[[family]]
+name = "Apple A / M / S"
+vendor = "Apple"
+category = "Application processor"
+pattern = '\bApple\b.*(?:\b(?:A|M|S)\s*Series\b|\bA1[2-9]\s+Bionic\b|\bM[1-4]\b|\bS[5-9]\b)'
+
+[[family]]
+name = "Infineon security controller"
+vendor = "Infineon"
+category = "Secure element"
+pattern = '\bSLB\s?\d|\bSLC\s?\d|\bCYB\d|OPTIGA|\bM7893'
+
+[[family]]
+name = "Xilinx Zynq / UltraScale"
+vendor = "AMD / Xilinx"
+category = "FPGA SoC"
+pattern = 'Zynq|\bXC7Z|\bXCZU|\bXCVU|\bZU\d+EG|\bZC7\d{2}'
+
+[[family]]
+name = "NXP i.MX"
+vendor = "NXP"
+category = "Application processor"
+pattern = '\bi\.?\s?mx\s?\d|\bimx\d'
+
+[[family]]
+name = "Renesas RA"
+vendor = "Renesas"
+category = "MCU / MPU"
+pattern = 'R7FA'
+
+[[family]]
+name = "Qualcomm Snapdragon"
+vendor = "Qualcomm"
+category = "Mobile SoC"
+pattern = 'Snapdragon'
+
+[[family]]
+name = "Marvell OCTEON"
+vendor = "Marvell"
+category = "Networking SoC"
+pattern = 'OCTEON|\bCN7\d|\bCN10\d'
+
+[[family]]
+name = "Intel Agilex / Arria"
+vendor = "Intel"
+category = "FPGA SoC"
+pattern = 'Agilex|Arria\s*10'
+
+[[family]]
+name = "NXP RW61x"
+vendor = "NXP"
+category = "MCU / MPU"
+pattern = '\bRW6\d'
+
+[[family]]
+name = "NXP S32"
+vendor = "NXP"
+category = "MCU / MPU"
+pattern = '\bS32[KGV]\d'
+
+[[family]]
+name = "Broadcom BCM"
+vendor = "Broadcom"
+category = "Networking SoC"
+pattern = 'Broadcom|\bBCM\d'
+
+[[family]]
+name = "NXP QorIQ / Layerscape"
+vendor = "NXP"
+category = "Networking SoC"
+pattern = 'QorIQ|Layerscape|\bLS\d{4}[A-Z]?\b|\bLX\d{4}[A-Z]?\b'
+
+[[family]]
+name = "Nuvoton"
+vendor = "Nuvoton"
+category = "MCU / MPU"
+pattern = 'Nuvoton|\bNPCT|\bNPCM|\bNPCX|\bNPCD'
+
+[[family]]
+name = "Qualcomm IPQ"
+vendor = "Qualcomm"
+category = "Networking SoC"
+pattern = '\bIPQ\d'
+
+[[family]]
+name = "Analog Devices"
+vendor = "Analog Devices"
+category = "Secure element"
+pattern = 'Analog Devices|\bDS28S|\bADTS'
+
+[[family]]
+name = "Atmel"
+vendor = "Microchip / Atmel"
+category = "MCU / MPU"
+pattern = 'Atmel|\bAT91'
+
+[[family]]
+name = "Marvell Armada"
+vendor = "Marvell"
+category = "Networking SoC"
+pattern = 'Armada|\b88F\d|\bMV7\d{4}\b'
+
+[[family]]
+name = "Microchip SAM"
+vendor = "Microchip"
+category = "MCU / MPU"
+pattern = '\bATSAM|\bSAMA\d|\bSAM[ADGSE]\d'
+
+[[family]]
+name = "Qualcomm QCM / QCS"
+vendor = "Qualcomm"
+category = "Other SoC / SBC"
+pattern = '\bQCM\d|\bQCS\d'
+
+[[family]]
+name = "AMD Versal"
+vendor = "AMD / Xilinx"
+category = "FPGA SoC"
+pattern = 'Versal|\bXCVM'
+
+[[family]]
+name = "Allwinner"
+vendor = "Allwinner"
+category = "Other SoC / SBC"
+pattern = 'Allwinner|\bH5\b|\bH6\b|\bH616\b'
+
+[[family]]
+name = "MediaTek Dimensity"
+vendor = "MediaTek"
+category = "Mobile SoC"
+pattern = 'MediaTek|Dimensity|\bMT\d{4}'
+
+[[family]]
+name = "Microchip AVR"
+vendor = "Microchip"
+category = "MCU / MPU"
+pattern = '\bAVR\b|ATmega|ATtiny'
+
+[[family]]
+name = "Microsemi SmartFusion2"
+vendor = "Microchip"
+category = "FPGA SoC"
+pattern = 'SmartFusion'
+
+[[family]]
+name = "Raspberry Pi"
+vendor = "Raspberry Pi"
+category = "Other SoC / SBC"
+pattern = 'Raspberry Pi|\bRP2040|\bBCM27'
+
+[[family]]
+name = "Renesas RZ"
+vendor = "Renesas"
+category = "MCU / MPU"
+pattern = '\bRZ/[A-Z]'
+
+[[family]]
+name = "Silicon Labs EFR32"
+vendor = "Silicon Labs"
+category = "MCU / MPU"
+pattern = 'EFR32'
+
+[[family]]
+name = "Renesas RH850"
+vendor = "Renesas"
+category = "MCU / MPU"
+pattern = 'RH850'
+
+[[family]]
+name = "Renesas R-Car"
+vendor = "Renesas"
+category = "Automotive SoC"
+pattern = 'R-Car'
+
+[[family]]
+name = "Intel x86"
+vendor = "Intel"
+category = "Server / PC CPU"
+pattern = '\bXeon\b|\bAtom\b|\bPentium\b|\bCeleron\b|Core\(R\)|Core™|Core i[3579]|Core Ultra|Skylake|Ice Lake|Sapphire Rapids|Emerald Rapids|Granite Rapids|Cascade Lake|CascadeLake|Broadwell|Haswell|Denverton|Coffee Lake|Kaby Lake|Alder Lake|Raptor Lake|Arrow Lake|Meteor Lake|Lunar Lake|Tiger Lake|Rocket Lake|Comet Lake|Whiskey Lake|Cannon Lake|Knights Landing|Knights Mill'
+
+[[family]]
+name = "Intel CSME / IPU"
+vendor = "Intel"
+category = "Security engine"
+pattern = '\bCSME\b|\bIPU\b|\bPSE TRNG\b|\bSSE TRNG\b|\bFNIC\b'
+
+[[family]]
+name = "AMD x86"
+vendor = "AMD"
+category = "Server / PC CPU"
+pattern = '\bEPYC\b|\bRyzen\b|\bOpteron\b|\bThreadripper\b|\bAthlon\b|Krackan|Strix'
+
+[[family]]
+name = "IBM POWER"
+vendor = "IBM"
+category = "Server CPU"
+pattern = '\bPOWER\d|\bPowerVM\b|\bIBM Power\b|\bPOWER Series\b'
+
+[[family]]
+name = "IBM Z"
+vendor = "IBM"
+category = "Server CPU"
+pattern = '\bIBM Z\b|\bSystem z\d|\bz1[5-9]\b|\bTelum\b'
+
+[[family]]
+name = "Arm server"
+vendor = "Arm / Ampere / AWS"
+category = "Server SoC"
+pattern = 'Ampere|Graviton|Neoverse|Altra'
+
+[[family]]
+name = "NVIDIA"
+vendor = "NVIDIA"
+category = "GPU / SoC"
+pattern = 'NVIDIA|NvRNG'
+
+[[family]]
+name = "NXP KW / MCX"
+vendor = "NXP"
+category = "Wireless MCU"
+pattern = '\bKW\d|\bK32W\d|\bMCX\s?[A-Z]\d'
+
+[[family]]
+name = "ST33 TPM"
+vendor = "STMicroelectronics"
+category = "TPM / secure element"
+pattern = '\bST33[A-Z0-9]'
+
+[[family]]
+name = "Microchip ATECC"
+vendor = "Microchip"
+category = "Secure element"
+pattern = 'ATECC\d'
+
+[[family]]
+name = "Microchip 59V02 / TA100"
+vendor = "Microchip"
+category = "Secure element"
+pattern = '\b59V0\d|\bTA10\d'
+
+[[family]]
+name = "Google Titan"
+vendor = "Google"
+category = "Security key"
+pattern = '\bTitan\b|\bH1[A-Z0-9]{2,}'
+
+[[family]]
+name = "Google Tensor"
+vendor = "Google"
+category = "Mobile SoC"
+pattern = '\bIN76\d|\bTensor\b'
+
+[[family]]
+name = "Thales Aquarius"
+vendor = "Thales"
+category = "Secure element"
+pattern = 'Aquarius'
+
+[[family]]
+name = "Feitian HSEC"
+vendor = "Feitian"
+category = "Secure element"
+pattern = '\bHSEC\b'
+
+[[family]]
+name = "JCOP P71D600"
+vendor = "IDEMIA"
+category = "Smartcard"
+pattern = 'JCOP|P71D600'
+
+[[family]]
+name = "AisinoChip SCC-XE"
+vendor = "Century Longmai"
+category = "Smartcard"
+pattern = 'AisinoChip|SCC-XE'
+
+[[family]]
+name = "SEALSQ QS7001"
+vendor = "SEALSQ"
+category = "Secure element"
+pattern = '\bQS7001\b|SEALSQ'
+
+[[family]]
+name = "YDK QRNG"
+vendor = "YDK"
+category = "QRNG"
+pattern = '\bYDK\b|yRNG-'
+
+[[family]]
+name = "Quside QRNG"
+vendor = "Quside"
+category = "QRNG"
+pattern = 'Quside'
+
+[[family]]
+name = "Atlas QRNG"
+vendor = "Atlas"
+category = "QRNG"
+pattern = 'Atlas QRNG|Atlas.*QRNG'
+
+[[family]]
+name = "Google security chip"
+vendor = "Google"
+category = "Security chip"
+pattern = 'NPCR11|CPA2601|GCNX-3200|Knuckle'
+
+[[family]]
+name = "IBM Capri ASIC"
+vendor = "IBM"
+category = "Custom ASIC"
+pattern = 'Capri ASIC|IBM 470|IBM 405'
+
+[[family]]
+name = "Microsoft DPU / HSM"
+vendor = "Microsoft"
+category = "DPU / HSM"
+pattern = 'DPU-SBP|M1244265'
+
+[[family]]
+name = "Microchip PolarFire"
+vendor = "Microchip"
+category = "FPGA SoC"
+pattern = 'PolarFire|MPFS\d'
+
+[[family]]
+name = "Silicon Labs SixG301x"
+vendor = "Silicon Labs"
+category = "Wireless MCU"
+pattern = 'SixG301|SiWG301'
+
+[[family]]
+name = "AutoChips AC8025"
+vendor = "AutoChips"
+category = "Automotive SoC"
+pattern = 'AC8025'
+
+[[family]]
+name = "iMQ HQS60 / SQ71"
+vendor = "iMQ"
+category = "Secure element"
+pattern = 'HQS60|SQ71'
+
+[[family]]
+name = "NXP SE05x"
+vendor = "NXP"
+category = "Secure element"
+pattern = 'SE050|SE051'
+
+[[family]]
+name = "NXP C29X"
+vendor = "NXP"
+category = "Secure element"
+pattern = 'C29X'
+
+[[family]]
+name = "Infineon SEMPER"
+vendor = "Infineon"
+category = "Secure NOR flash"
+pattern = 'SEMPER'
+
+[[family]]
+name = "ST31"
+vendor = "STMicroelectronics"
+category = "Secure element"
+pattern = '\bST31N'
+
+[[family]]
+name = "ID Quantique QRNG"
+vendor = "ID Quantique"
+category = "QRNG"
+pattern = 'Quantis|IDQ\d|ID Quantique'
+
+[[family]]
+name = "Marvell 9130"
+vendor = "Marvell"
+category = "Networking SoC"
+pattern = 'Marvell?\s+9130'
+
+[[family]]
+name = "HPE iLO"
+vendor = "HPE"
+category = "Management controller"
+pattern = 'iLO[56]'

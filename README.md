@@ -37,6 +37,9 @@ Outputs land in `data/`:
 | `cmvp_cavp_links.csv` | CMVP certificate -> CAVP A-number link |
 | `cmvp_in_process.csv` | Modules-in-process or IUT row with inferred PQC evidence |
 | `esv_certs.csv` | Completed entropy-source validation (ESV certificate) |
+| `platform_families.csv` | Chipset/platform family with open/physical ESV counts |
+| `platform_family_certs.csv` | (platform family, ESV certificate) match with the matched environment text |
+| `platform_unmapped_certs.csv` | ESV certificate that matches no configured platform family, with raw operating environments |
 | `cmvp_policy_sections.csv` | Tested / vendor-affirmed OE section from each security policy PDF |
 | `pqc_coverage.csv` | Flat analysis table: source, product, OE, target, algorithm |
 | `coverage_targets.csv` | OS/CPU target ranked by vendor/product coverage and cumulative curve |
@@ -86,6 +89,14 @@ CMVP tables also keep the raw `description` that produced the evidence.
   without re-validating the entropy source. NIST does not publish which modules
   reference each certificate, so `esv_certs.csv` cannot map certificates to
   products.
+- The platform-family mapping is a curated regex mapping over the free-text ESV
+  operating environments, not a NIST platform certification or an ESV-to-module
+  mapping. A certificate can match several families, so family counts overlap.
+  Treat the shortlist as a lead: verify the chip, source variant, and reuse terms
+  with the vendor. The family rules live in
+  `src/nist_pqc/platform_families.toml`; certificates that match none are kept
+  in `platform_unmapped_certs.csv` and shown under **Unmapped certificates** in
+  the dashboard.
 
 ## Dashboard
 
@@ -105,9 +116,10 @@ become SQL parameters.
   curve, greedy product selection, and per-target drill-down.
 - **Pipeline** — modules in process / IUT with their inferred PQC evidence, and
   validated CAVP implementations without an active CMVP certificate.
-- **Entropy sources** — completed ESV entropy-source certificates with noise
-  source classification, reuse status, operating environments, conditioning
-  CAVP certificates, and the public use document.
+- **Entropy sources** — ESV sources grouped into chipset and platform families (including server CPUs and security chips), with
+  entropy-vendor/noise/reuse/full-entropy filters, open + physical counts,
+  the matching certificate and environment detail for each family, and the full
+  ESV certificate register at the bottom of the page.
 - **Tested configurations** — tested and vendor-affirmed operating environments
   quoted from each certificate's non-proprietary security policy, one collapsible
   card per certificate with a Simple/Expanded switch for the policy text.
